@@ -1,1 +1,10 @@
 language: java
+addons:
+  sonarcloud:
+    organization: "thibaultanani-github"
+    token:
+      secure: "f7de74617f4b6c2846327d3af84ae82b8854f43f" # encrypted value of your token
+
+script:
+#  - sonar-scanner
+  - ./gradlew sonarqube
