@@ -1,23 +1,39 @@
 
 language: android
-dist: trusty
+jdk: oraclejdk8
+env:
+  global:
+    - ANDROID_API_LEVEL=25
+    - ANDROID_BUILD_TOOLS_VERSION=25.0.0
 android:
   components:
     - tools
-    - build-tools-24.0.1
-    - android-24
     - platform-tools
+    - build-tools-25.0.0
+    - android-22
+    - sys-img-armeabi-v7a-android-22
+
+before_install:
+  - yes | sdkmanager "platforms;android-27"
+  - yes | sdkmanager "platforms;android-28"
+
+before_script:
+  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
+  - emulator -avd test -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
 
 
-addons:
-  sonarcloud:
-   organization: "thibaultanani-github"
-    token:
-      secure: "f7de74617f4b6c2846327d3af84ae82b8854f43f"
-sudo: false
-script:
+
+#addons:
+ # sonarcloud:
+  # organization: "thibaultanani-github"
+   # token:
+    #  secure: "f7de74617f4b6c2846327d3af84ae82b8854f43f"
+# sudo: false
+ #script:
    #- ./gradlew check jacocoTestReport coveralls sendCoverageToCodacy
     #- bash <(curl -s https://codecov.io/bash)
   #- sonar-scanner
-   - ./gradlew sonarqube
+  # - ./gradlew sonarqube
 
