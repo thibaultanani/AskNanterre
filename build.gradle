@@ -23,11 +23,11 @@ apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'org.sonarqube'
 
-/*sonarqube {
+sonarqube {
     properties {
         property "sonar.projectKey", "thibaultanani_AskNanterre"
     }
-}*/
+}
 
 allprojects {
     repositories {

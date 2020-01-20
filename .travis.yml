@@ -9,15 +9,15 @@ android:
     - platform-tools
 
 
-#addons:
-  #sonarcloud:
-   # organization: "thibaultanani-github"
-   # token:
-     # secure: "f7de74617f4b6c2846327d3af84ae82b8854f43f"
-#sudo: false
-#script:
- #  - ./gradlew check jacocoTestReport coveralls sendCoverageToCodacy
-  #  - bash <(curl -s https://codecov.io/bash)
-#  - sonar-scanner
-   #- ./gradlew sonarqube
+addons:
+  sonarcloud:
+   organization: "thibaultanani-github"
+    token:
+      secure: "f7de74617f4b6c2846327d3af84ae82b8854f43f"
+sudo: false
+script:
+   #- ./gradlew check jacocoTestReport coveralls sendCoverageToCodacy
+    #- bash <(curl -s https://codecov.io/bash)
+  #- sonar-scanner
+   - ./gradlew sonarqube
 
