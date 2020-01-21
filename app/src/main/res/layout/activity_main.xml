@@ -9,10 +9,30 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!!"
+        android:text="Reponse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <fragment
+        android:id="@+id/Rep1"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        class="com.example.asknanterre.Response"
+        </fragment>
+
+<Button
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="next activity"
+android:onClick="goToResponse"
+        />
+
+<activity
+    android:name="ResponseActivity"
+    android:label="@string/asknanterre"
+</activity>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
