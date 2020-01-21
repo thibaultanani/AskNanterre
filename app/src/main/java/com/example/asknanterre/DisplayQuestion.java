@@ -18,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -29,12 +31,10 @@ public class DisplayQuestion extends AppCompatActivity {
     List<Question> questions;
     SimpleAdapter adapter;
     ArrayList<HashMap<String, String>> data;
-
     List<Question> quest = Question.listAll(Question.class);
     String[] q1 = new String[quest.size()];
     String[] q2 = new String[quest.size()];
     String[] q3 = new String[quest.size()];
-
 
 
     @Override
@@ -43,6 +43,11 @@ public class DisplayQuestion extends AppCompatActivity {
         setContentView(R.layout.activity_displayquestion);
 
         myListView = (ListView) findViewById(R.id.myListView);
+
+        //Collections.sort(quest, new UpvoteSorter());
+        for (Question q: quest) {
+            Log.d("gfgfgfgf", q.toString() + "" + q.getNom() + "" + q.getUpvote());
+        }
 
         for(int i=0; i<quest.size(); i++) {
             q1[i] = quest.get(i).nom;
@@ -60,6 +65,8 @@ public class DisplayQuestion extends AppCompatActivity {
         ArrayList<String> list3 = new ArrayList( Arrays.asList(q3));
         CustomAdapter adapt = new CustomAdapter(list1, list2, list3, this);
         myListView.setAdapter(adapt);
+        Button triBtn=(Button) findViewById(R.id.triupvote);
+
 
 
         /*myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -86,5 +93,28 @@ public class DisplayQuestion extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         //show();
+    }
+
+    public void trier(View v) {
+        myListView = (ListView) findViewById(R.id.myListView);
+
+        Collections.sort(quest, new UpvoteSorter());
+        for (Question q: quest) {
+            Log.d("gfgfgfgf", q.toString() + "" + q.getNom() + "" + q.getUpvote());
+        }
+
+        for(int i=0; i<quest.size(); i++) {
+            q1[i] = quest.get(i).nom;
+            q2[i] = quest.get(i).getId().toString();
+            q3[i] = "" + quest.get(i).upvote;
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, q1);
+        ArrayList<String> list1 = new ArrayList( Arrays.asList(q1));
+        ArrayList<String> list2 = new ArrayList( Arrays.asList(q2));
+        ArrayList<String> list3 = new ArrayList( Arrays.asList(q3));
+        CustomAdapter adapt = new CustomAdapter(list1, list2, list3, this);
+        myListView.setAdapter(adapt);
+
     }
 }
