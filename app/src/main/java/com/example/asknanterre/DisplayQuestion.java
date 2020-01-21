@@ -7,14 +7,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -43,7 +46,10 @@ public class DisplayQuestion extends AppCompatActivity {
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, q1);
-        myListView.setAdapter(adapter);
+        ArrayList<String> list = new ArrayList( Arrays.asList(q1));
+        CustomAdapter adapt = new CustomAdapter(list, this);
+        myListView.setAdapter(adapt);
+
 
         /*myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
