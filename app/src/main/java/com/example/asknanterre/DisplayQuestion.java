@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -26,12 +27,23 @@ public class DisplayQuestion extends AppCompatActivity {
     SimpleAdapter adapter;
     ArrayList<HashMap<String, String>> data;
 
+    List<Question> quest = Question.listAll(Question.class);
+    String[] q1 = new String[quest.size()];
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_displayquestion);
 
         myListView = (ListView) findViewById(R.id.myListView);
+
+        for(int i=0; i<quest.size(); i++) {
+            q1[i] = quest.get(i).nom;
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, q1);
+        myListView.setAdapter(adapter);
 
         /*myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -51,43 +63,11 @@ public class DisplayQuestion extends AppCompatActivity {
             }
         });*/
 
-        data = new ArrayList<HashMap<String, String>>();
-        name=(EditText) findViewById(R.id.slname);
-
-        adapter = new SimpleAdapter(this, data, R.layout.item,
-                new String[]{"id","name"},
-                new int[]   { R.id.textView_id,
-                        R.id.textView_name});
-        myListView.setAdapter(adapter);
-
-    }
-
-    private void show(){
-        data.clear();
-        try {
-            questions = Question.find(Question.class,
-                    "name = ?" + name.getText().toString()) ;
-
-            if(questions.size() !=0) {
-                Iterator i = questions.iterator();
-                while(i.hasNext()){
-                    Question q= (Question) i.next();
-                    HashMap<String,String> item = new HashMap<String,String>();
-                    item.put("name", q.getNom());
-                    data.add(item);
-                }
-
-            }
-
-        }catch(Exception e){
-            Log.e ("Main : ",e.toString());
-        }
-        adapter.notifyDataSetChanged();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        show();
+        //show();
     }
 }

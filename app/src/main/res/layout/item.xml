@@ -11,11 +11,5 @@
         android:gravity="center_vertical|center_horizontal"
         android:text="Name"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    <TextView
-        android:id="@+id/textView_id"
-        android:layout_width="0dip"
-        android:layout_height="0dip"
-        android:layout_margin="0dip"
-        android:textSize="0dip" />
 
 </LinearLayout>

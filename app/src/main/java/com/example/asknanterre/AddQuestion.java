@@ -22,7 +22,7 @@ public class AddQuestion extends AppCompatActivity {
         Question q = new Question(name.getText().toString());
         q.save();
 
-        Toast.makeText(this, "la Question" + name.getText(), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "la Question: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
 
         name.setText("");
     }

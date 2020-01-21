@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:text="Ajouter un contact"
+        android:text="Ajouter une question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ADD"
@@ -17,7 +17,7 @@
         />
 
     <Button
-        android:text="Rechrecher un contact"
+        android:text="Afficher les questions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="41dp"
