@@ -32,6 +32,7 @@ public class DisplayQuestion extends AppCompatActivity {
 
     List<Question> quest = Question.listAll(Question.class);
     String[] q1 = new String[quest.size()];
+    String[] q2 = new String[quest.size()];
 
 
     @Override
@@ -43,11 +44,17 @@ public class DisplayQuestion extends AppCompatActivity {
 
         for(int i=0; i<quest.size(); i++) {
             q1[i] = quest.get(i).nom;
+            q2[i] = quest.get(i).getId().toString();
+        }
+
+        for(int i=0; i<q2.length; i++) {
+            Log.d("valeur de la liste " + i + ":", q2[i]);
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, q1);
-        ArrayList<String> list = new ArrayList( Arrays.asList(q1));
-        CustomAdapter adapt = new CustomAdapter(list, this);
+        ArrayList<String> list1 = new ArrayList( Arrays.asList(q1));
+        ArrayList<String> list2 = new ArrayList( Arrays.asList(q2));
+        CustomAdapter adapt = new CustomAdapter(list1, list2, this);
         myListView.setAdapter(adapt);
 
 

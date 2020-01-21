@@ -13,24 +13,26 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends BaseAdapter implements ListAdapter {
 
-    private ArrayList<String> list = new ArrayList<String>();
+    private ArrayList<String> list1 = new ArrayList<String>();
+    private ArrayList<String> list2 = new ArrayList<String>();
     private Context context;
 
 
 
-    public CustomAdapter(ArrayList<String> list, Context context) {
-        this.list = list;
+    public CustomAdapter(ArrayList<String> list1, ArrayList<String> list2, Context context) {
+        this.list1 = list1;
+        this.list2 = list2;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return list1.size();
     }
 
     @Override
     public Object getItem(int pos) {
-        return list.get(pos);
+        return list1.get(pos);
     }
 
     @Override
@@ -49,7 +51,7 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter {
 
         //Handle TextView and display string from your list
         TextView listItemText = (TextView)view.findViewById(R.id.textView_name);
-        listItemText.setText(list.get(position));
+        listItemText.setText(list1.get(position));
 
         //Handle buttons and add onClickListeners
         Button deleteBtn = (Button)view.findViewById(R.id.del);
@@ -59,7 +61,9 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter {
             @Override
             public void onClick(View v) {
                 //do something
-                list.remove(position); //or some other task
+                Question question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
+                question.delete();
+                list1.remove(position); //or some other task
                 notifyDataSetChanged();
             }
         });
