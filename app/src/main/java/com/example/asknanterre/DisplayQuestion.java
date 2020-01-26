@@ -116,5 +116,7 @@ public class DisplayQuestion extends AppCompatActivity {
         CustomAdapter adapt = new CustomAdapter(list1, list2, list3, this);
         myListView.setAdapter(adapt);
 
+
+
     }
 }

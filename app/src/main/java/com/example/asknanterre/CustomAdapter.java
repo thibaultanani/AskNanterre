@@ -81,6 +81,7 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter {
                 question.upvote= question.upvote+1;
                 question.save();
 
+
             }
         });
         /*addBtn.setOnClickListener(new View.OnClickListener(){
