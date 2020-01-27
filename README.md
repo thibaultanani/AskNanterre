@@ -34,13 +34,13 @@ Il faut installer certains outils avant de pouvoir utiliser notre projet
 
 #### Installer AndroidStudio
 
-* Télécharger et installer AndroidStudio : [Télécharger AndroidStudio] (https://developer.android.com/studio/install)
+* Télécharger et installer AndroidStudio : - [Télécharger AndroidStudio] (https://developer.android.com/studio/install)
 
 ## Comment lancer l'application
 
 ### Via l'émulateur d'AndroidStudio
 
-Suivre ce tuto : [Tutoriel AVD Manager] (https://vogella.developpez.com/tutoriels/android/installation-outils-developpement/#L5)
+Suivre ce tuto : - [Tutoriel AVD Manager] (https://vogella.developpez.com/tutoriels/android/installation-outils-developpement/#L5)
 
 ### Cloner AskNanterre
 
@@ -48,7 +48,7 @@ Dès que Git a été installé, il faut faire : git clone https://github.com/thi
 
 ## Auteurs
 
-* #### ANANI AGONDJA Thibault
-* #### LOURME Matthieu
-* #### TABIT Mohamed
-* #### VU Phi Yen
+* #### ANANI AGONDJA Thibault - [Github](https://github.com/thibaultanani)
+* #### LOURME Matthieu - [Github](https://github.com/matthieulourme)
+* #### TABIT Mohamed - [Github](https://github.com/TabitMohamed)
+* #### VU Phi Yen - [Github](https://github.com/phiyenv)
