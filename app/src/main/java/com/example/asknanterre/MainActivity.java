@@ -14,6 +14,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void displayCours(View v) {
+        Intent intent = new Intent(this, DisplayCours.class);
+        startActivity(intent);
+    }
+    public void addCours(View v){
+        Intent intent = new Intent(this, AddCours.class);
+        startActivity(intent);
+    }
+
     public void addQuestion(View v){
         Intent intent = new Intent(this, AddQuestion.class);
         startActivity(intent);

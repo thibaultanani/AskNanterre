@@ -77,7 +77,6 @@ public class DisplayQuestion extends AppCompatActivity {
                 intent.putExtra("id",id.getText());
                 if (findViewById(R.id.Modify) != null) {
                     modifyFragment firstFragment = new modifyFragment();
-
                     FragmentTransaction transaction =
                             getFragmentManager().beginTransaction();
                     transaction.add(R.id.Modify, firstFragment);
@@ -116,7 +115,9 @@ public class DisplayQuestion extends AppCompatActivity {
         CustomAdapter adapt = new CustomAdapter(list1, list2, list3, this);
         myListView.setAdapter(adapt);
 
-
-
     }
+
+
+
+
 }
