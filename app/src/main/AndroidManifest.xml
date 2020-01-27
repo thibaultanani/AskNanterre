@@ -22,6 +22,9 @@
         <activity android:name=".AddUser"/>
         <activity android:name=".HomeActivity"/>
         <activity android:name=".ConnectionActivity"/>
+        <meta-data
+            android:name="VERSION"
+            android:value="2"/>
     </application>
 
 </manifest>

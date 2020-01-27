@@ -11,16 +11,16 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
     }
 
-    public void addUser(View v){
-        Intent intent = new Intent(this, AddUser.class);
+    public void addQuestion(View v){
+        Intent intent = new Intent(this, AddQuestion.class);
         startActivity(intent);
     }
 
-    public void connection(View v){
-        Intent intent = new Intent(this, ConnectionActivity.class);
+    public void displayQuestion(View v){
+        Intent intent = new Intent(this, DisplayQuestion.class);
         startActivity(intent);
     }
 }

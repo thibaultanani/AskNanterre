@@ -13,7 +13,7 @@
         android:id="@+id/ADD"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="105dp"
-        android:onClick="addQuestion"
+        android:onClick="connection"
         />
 
     <Button
@@ -24,7 +24,7 @@
         android:id="@+id/Search"
         android:layout_below="@+id/ADD"
         android:layout_centerHorizontal="true"
-        android:onClick="displayQuestion"/>
+        android:onClick="addUser"/>
 
 
 </RelativeLayout>
