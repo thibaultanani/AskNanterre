@@ -24,7 +24,7 @@
         <activity android:name=".ConnectionActivity"/>
         <meta-data
             android:name="VERSION"
-            android:value="2"/>
+            android:value="4"/>
     </application>
 
 </manifest>
