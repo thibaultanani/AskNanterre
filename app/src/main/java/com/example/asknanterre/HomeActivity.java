@@ -23,4 +23,9 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DisplayQuestion.class);
         startActivity(intent);
     }
+
+    public void sendFeedBack(View v){
+        Intent intent = new Intent(this, SendFeedBack.class);
+        startActivity(intent);
+    }
 }

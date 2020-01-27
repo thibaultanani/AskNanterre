@@ -13,7 +13,11 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="message/rfc822"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -22,6 +26,7 @@
         <activity android:name=".AddUser"/>
         <activity android:name=".HomeActivity"/>
         <activity android:name=".ConnectionActivity"/>
+        <activity android:name=".SendFeedBack"/>
         <meta-data
             android:name="VERSION"
             android:value="2"/>
