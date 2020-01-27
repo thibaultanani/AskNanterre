@@ -35,7 +35,7 @@
             android:text="Repondre"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="18sp"
-            android:onClick="answerQuestion"/>
+            android:onClick="repondre"/>
 
         <Button
             android:id="@+id/like"

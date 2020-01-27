@@ -12,11 +12,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Question q = new Question ();
-        q.save();
-        Answer r = new Answer();
-        r.save();
     }
 
     public void addQuestion(View v){
@@ -25,12 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayQuestion(View v){
-
-        Intent intent = new Intent(this,DisplayQuestion.class);
+        Intent intent = new Intent(this, DisplayQuestion.class);
         startActivity(intent);
     }
-
-
-
-    //
 }

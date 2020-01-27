@@ -118,7 +118,7 @@ public class DisplayQuestion extends AppCompatActivity {
     }
 
 
-    public void answerQuestion(View v){
+    public void repondre(View v){
         Intent intent = new Intent(this, AnswerQuestion.class);
         startActivity(intent);
     }

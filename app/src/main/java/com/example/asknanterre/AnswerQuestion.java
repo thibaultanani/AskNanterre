@@ -25,7 +25,6 @@ public class AnswerQuestion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answerquestion);
-        startActivity(new Intent(getApplicationContext(), AnswerQuestion.class));
 
     }
 
