@@ -44,7 +44,7 @@ public class DisplayCours extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, q1);
         myListView2.setAdapter(adapter);
         ArrayList<String> list1 = new ArrayList( Arrays.asList(q1));
-        CustomAdapter adapt = new CustomAdapter(list1,this);
+        CustomAdapterCours adapt = new CustomAdapterCours(list1,this);
         myListView2.setAdapter(adapt);
 
 
