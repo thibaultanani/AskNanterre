@@ -25,6 +25,9 @@
         <meta-data
             android:name="VERSION"
             android:value="4"/>
+        <activity android:name=".AnswerQuestion"/>
+        <activity android:name=".DisplayAnswerQuestion"/>
+
     </application>
 
 </manifest>

@@ -116,7 +116,18 @@ public class DisplayQuestion extends AppCompatActivity {
         CustomAdapter adapt = new CustomAdapter(list1, list2, list3, this);
         myListView.setAdapter(adapt);
 
-
-
     }
+
+
+    public void repondre(View v){
+        Intent intent = new Intent(this, AnswerQuestion.class);
+        startActivity(intent);
+    }
+
+    public void displayAnswerQuestion (View v) {
+        Intent intent = new Intent (this, DisplayAnswerQuestion.class);
+        startActivity(intent);
+    }
+
 }
+
