@@ -77,6 +77,7 @@ public class DisplayQuestion extends AppCompatActivity {
                 intent.putExtra("id",id.getText());
                 if (findViewById(R.id.Modify) != null) {
                     modifyFragment firstFragment = new modifyFragment();
+
                     FragmentTransaction transaction =
                             getFragmentManager().beginTransaction();
                     transaction.add(R.id.Modify, firstFragment);
@@ -118,6 +119,15 @@ public class DisplayQuestion extends AppCompatActivity {
     }
 
 
+    public void repondre(View v){
+        Intent intent = new Intent(this, AnswerQuestion.class);
+        startActivity(intent);
+    }
 
+    public void displayAnswerQuestion (View v) {
+        Intent intent = new Intent (this, DisplayAnswerQuestion.class);
+        startActivity(intent);
+    }
 
 }
+

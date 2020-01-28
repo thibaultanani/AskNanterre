@@ -2,12 +2,11 @@ package com.example.asknanterre;
 
 import com.orm.SugarRecord;
 
-
-
 public class Question extends SugarRecord  {
     String nom;
     int upvote = 0;
-    public Question(){
+
+    public Question() {
 
     }
 

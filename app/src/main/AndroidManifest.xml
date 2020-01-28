@@ -21,9 +21,15 @@
         <activity android:name=".DisplayQuestion"/>
         <activity android:name=".AddCours"/>
         <activity android:name=".DisplayCours"/>
+        <activity android:name=".AddUser"/>
+        <activity android:name=".HomeActivity"/>
+        <activity android:name=".ConnectionActivity"/>
         <meta-data
             android:name="VERSION"
-            android:value="3"/>
+            android:value="5"/>
+        <activity android:name=".AnswerQuestion"/>
+        <activity android:name=".DisplayAnswerQuestion"/>
+
     </application>
 
 </manifest>

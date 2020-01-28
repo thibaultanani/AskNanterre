@@ -26,4 +26,6 @@ public class AddQuestion extends AppCompatActivity {
 
         name.setText("");
     }
+
 }
+

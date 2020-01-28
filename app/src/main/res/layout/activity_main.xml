@@ -7,45 +7,24 @@
     tools:context=".MainActivity">
 
     <Button
-        android:text="Ajouter une question"
+        android:id="@+id/ADD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ADD"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="105dp"
-        android:onClick="addQuestion"
-        />
+        android:onClick="connection"
+        android:text="Se connecter"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="187dp" />
 
     <Button
-        android:text="Afficher les questions"
+        android:id="@+id/Search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:id="@+id/Search"
         android:layout_below="@+id/ADD"
         android:layout_centerHorizontal="true"
-        android:onClick="displayQuestion"/>
-
-    <Button
-        android:text="Ajouter un cours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ADD_Cours"
-        android:layout_below="@+id/Search"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="105dp"
-        android:onClick="addCours"
-        />
-
-    <Button
-        android:text="Afficher les cours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:id="@+id/Search_Cours"
-        android:layout_below="@+id/ADD_Cours"
-        android:layout_centerHorizontal="true"
-        android:onClick="displayCours"/>
-
+        android:onClick="addUser"
+        android:text="S'inscrire"
+        tools:layout_editor_absoluteX="126dp"
+        tools:layout_editor_absoluteY="405dp" />
 
 </RelativeLayout>

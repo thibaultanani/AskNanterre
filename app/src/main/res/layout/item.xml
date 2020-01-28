@@ -26,7 +26,16 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="18sp" />
 
-
+        <Button
+            android:id="@+id/answ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.46"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:text="Repondre"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp"
+            android:onClick="repondre"/>
 
         <Button
             android:id="@+id/like"
@@ -38,7 +47,15 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="18sp" />
 
-
+        <Button
+            android:id="@+id/showansw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.46"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Afficher les réponses"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textView_upvote"
