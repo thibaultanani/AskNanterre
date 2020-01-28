@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
+   <!-- <Button
         android:id="@+id/ADD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,6 +25,26 @@
         android:onClick="addUser"
         android:text="S'inscrire"
         tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="405dp" />
+        tools:layout_editor_absoluteY="405dp" /> -->
+
+    <Button
+        android:text="Ajouter une queston"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ADD"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="105dp"
+        android:onClick="addQuestion"
+        />
+
+    <Button
+        android:text="Liste des questions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:id="@+id/Display"
+        android:layout_below="@+id/ADD"
+        android:layout_centerHorizontal="true"
+        android:onClick="displayQuestion"/>
 
 </RelativeLayout>
