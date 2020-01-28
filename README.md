@@ -34,13 +34,13 @@ Il faut installer certains outils avant de pouvoir utiliser notre projet
 
 #### Installer AndroidStudio
 
-* Télécharger et installer AndroidStudio : - [Télécharger AndroidStudio] (https://developer.android.com/studio/install)
+* Télécharger et installer AndroidStudio : [Télécharger AndroidStudio](https://developer.android.com/studio/install)
 
 ## Comment lancer l'application
 
 ### Via l'émulateur d'AndroidStudio
 
-Suivre ce tuto : - [Tutoriel AVD Manager] (https://vogella.developpez.com/tutoriels/android/installation-outils-developpement/#L5)
+Suivre ce tuto : [Télécharger AVD Manager](https://vogella.developpez.com/tutoriels/android/installation-outils-developpement/#L5)
 
 ### Cloner AskNanterre
 
