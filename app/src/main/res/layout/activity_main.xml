@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,23 +7,24 @@
     tools:context=".MainActivity">
 
     <Button
-        android:text="Se connecter"
+        android:id="@+id/ADD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ADD"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="105dp"
         android:onClick="connection"
-        />
+        android:text="Se connecter"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="187dp" />
 
     <Button
-        android:text="S'inscrire"
+        android:id="@+id/Search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:id="@+id/Search"
         android:layout_below="@+id/ADD"
         android:layout_centerHorizontal="true"
-        android:onClick="addUser"/>
+        android:onClick="addUser"
+        android:text="S'inscrire"
+        tools:layout_editor_absoluteX="126dp"
+        tools:layout_editor_absoluteY="405dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

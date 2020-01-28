@@ -24,7 +24,7 @@
         <activity android:name=".ConnectionActivity"/>
         <meta-data
             android:name="VERSION"
-            android:value="4"/>
+            android:value="5"/>
         <activity android:name=".AnswerQuestion"/>
         <activity android:name=".DisplayAnswerQuestion"/>
 
