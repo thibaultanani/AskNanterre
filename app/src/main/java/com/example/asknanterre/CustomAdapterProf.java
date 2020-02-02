@@ -51,6 +51,7 @@ public class CustomAdapterProf extends BaseAdapter implements ListAdapter {
             view = inflater.inflate(R.layout.item_prof, null);
         }
 
+
         //Handle TextView and display string from your list
         TextView listItemText = (TextView)view.findViewById(R.id.textView_name);
         String formatedText="Nombre d'upvote: " + list3.get(position);
@@ -58,6 +59,7 @@ public class CustomAdapterProf extends BaseAdapter implements ListAdapter {
         listItemTextUpvote.setText(formatedText);
         listItemText.setText(list1.get(position));
 
+        /*
         //Handle buttons and add onClickListeners
         Button deleteBtn = (Button)view.findViewById(R.id.del);
         Button validateBtn= (Button ) view.findViewById(R.id.val);
@@ -81,7 +83,7 @@ public class CustomAdapterProf extends BaseAdapter implements ListAdapter {
                 question.valide = true;
                 question.save();
             }
-        });
+        });*/
 
 
         return view;
