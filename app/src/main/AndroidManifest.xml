@@ -35,6 +35,7 @@
         <activity android:name=".ProfessorUI"/>
         <activity android:name=".StudentUI"/>
         <activity android:name=".DisplayQuestionProf"/>
+        <activity android:name=".DisplayQuestionStud"/>
 
     </application>
 

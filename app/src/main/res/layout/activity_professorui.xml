@@ -4,22 +4,22 @@
     android:layout_height="match_parent">
 
     <Button
-        android:text="Aller vers l'interface étudiant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:id="@+id/prof_btn"
-        android:layout_centerHorizontal="true"
-        android:onClick="studentUI"/>
-
-    <Button
         android:text="Liste des questions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="41dp"
         android:id="@+id/Display"
-        android:layout_below="@+id/prof_btn"
         android:layout_centerHorizontal="true"
         android:onClick="displayQuestionProf"/>
+
+    <Button
+        android:text="Aller vers l'interface étudiant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:id="@+id/prof_btn"
+        android:layout_below="@+id/Display"
+        android:layout_centerHorizontal="true"
+        android:onClick="studentUI"/>
 
 </RelativeLayout>
