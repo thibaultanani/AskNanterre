@@ -4,6 +4,26 @@
     android:layout_height="match_parent">
 
     <Button
+        android:text="Ajouter une queston"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ADD"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="105dp"
+        android:onClick="addQuestion"
+        />
+
+    <!-- <Button
+        android:text="Liste des questions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:id="@+id/Display"
+        android:layout_below="@+id/ADD"
+        android:layout_centerHorizontal="true"
+        android:onClick="displayQuestion"/> -->
+
+    <Button
         android:text="Aller vers l'interface professeur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

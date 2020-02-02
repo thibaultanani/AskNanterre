@@ -29,11 +29,12 @@
         <activity android:name=".SendFeedBack"/>
         <meta-data
             android:name="VERSION"
-            android:value="5"/>
+            android:value="6"/>
         <activity android:name=".AnswerQuestion"/>
         <activity android:name=".DisplayAnswerQuestion"/>
         <activity android:name=".ProfessorUI"/>
         <activity android:name=".StudentUI"/>
+        <activity android:name=".DisplayQuestionProf"/>
 
     </application>
 
