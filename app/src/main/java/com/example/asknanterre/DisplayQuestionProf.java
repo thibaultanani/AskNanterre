@@ -32,7 +32,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
     List<Question> questions;
     SimpleAdapter adapter;
     ArrayList<HashMap<String, String>> data;
-    List<Question> quest = Question.listAll(Question.class);
+    List<Question> quest = Question.find(Question.class, "valide = 0");
     String[] q1 = new String[quest.size()];
     String[] q2 = new String[quest.size()];
     String[] q3 = new String[quest.size()];
@@ -113,6 +113,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                         question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
                         question.valide = true;
                         question.save();
+                        list1.remove(position);
                         adapt.notifyDataSetChanged();
                         break;
                     case 1:
