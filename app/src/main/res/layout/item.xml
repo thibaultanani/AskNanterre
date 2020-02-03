@@ -55,7 +55,8 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="Afficher les réponses"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:onClick="afficherReponse"/>
 
         <TextView
             android:id="@+id/textView_upvote"

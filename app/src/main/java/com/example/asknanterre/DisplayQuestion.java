@@ -36,6 +36,13 @@ public class DisplayQuestion extends AppCompatActivity {
     String[] q2 = new String[quest.size()];
     String[] q3 = new String[quest.size()];
 
+    List <Answer> answers;
+    List <Answer> answ = Answer.listAll(Answer.class);
+    String [] r1 = new String [answ.size()];
+    String [] r2 = new String[answ.size()];
+    String [] r3 = new String[answ.size()];
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,9 +130,19 @@ public class DisplayQuestion extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void displayAnswerQuestion (View v) {
+    public void afficherReponse (View v) {
         Intent intent = new Intent (this, DisplayAnswerQuestion.class);
         startActivity(intent);
     }
+/*
+    public void answerQuestion2 (View v){
+        EditText name = (EditText) findViewById(R.id.lname);
+
+        Answer r = new Answer(name.getText().toString());
+        r.save();
+
+        Toast.makeText(this, "la reponse: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
+
+        name.setText("");    } */
 
 }
