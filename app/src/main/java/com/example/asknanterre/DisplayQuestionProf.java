@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,12 +31,16 @@ public class DisplayQuestionProf extends AppCompatActivity {
     SwipeMenuListView myListView;
     EditText name;
     List<Question> questions;
-    SimpleAdapter adapter;
     ArrayList<HashMap<String, String>> data;
-    List<Question> quest = Question.find(Question.class, "valide = 0");
-    String[] q1 = new String[quest.size()];
-    String[] q2 = new String[quest.size()];
-    String[] q3 = new String[quest.size()];
+    List<Question> quest;
+    String[] q1;
+    String[] q2;
+    String[] q3;
+    ArrayList<String> list1;
+    ArrayList<String> list2;
+    ArrayList<String> list3;
+    ArrayAdapter<String> adapter;
+    CustomAdapterProf adapt;
     Question question;
 
 
@@ -44,29 +49,8 @@ public class DisplayQuestionProf extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_displayquestionprof);
 
-        myListView = (SwipeMenuListView) findViewById(R.id.myListView);
+        updateList();
 
-        //Collections.sort(quest, new UpvoteSorter());
-        for (Question q: quest) {
-            Log.d("gfgfgfgf", q.toString() + "" + q.getNom() + "" + q.getUpvote());
-        }
-
-        for(int i=0; i<quest.size(); i++) {
-            q1[i] = quest.get(i).nom;
-            q2[i] = quest.get(i).getId().toString();
-            q3[i] = "" + quest.get(i).upvote;
-        }
-
-        for(int i=0; i<q2.length; i++) {
-            Log.d("valeur de la liste " + i + ":", q2[i]);
-        }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, q1);
-        final ArrayList<String> list1 = new ArrayList( Arrays.asList(q1));
-        final ArrayList<String> list2 = new ArrayList( Arrays.asList(q2));
-        ArrayList<String> list3 = new ArrayList( Arrays.asList(q3));
-        final CustomAdapterProf adapt = new CustomAdapterProf(list1, list2, list3,this);
-        myListView.setAdapter(adapt);
         Button triBtn=(Button) findViewById(R.id.triupvote);
 
         SwipeMenuCreator creator = new SwipeMenuCreator() {
@@ -109,24 +93,26 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 switch (index) {
                     case 0:
                         // open
-                        Log.d("TAG", "onMenuItemClick: clicked item " + index);
                         question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
                         question.valide = true;
                         question.save();
+                        Toast.makeText(DisplayQuestionProf.this, "la question: " + list1.get(position) + " a été validée", Toast.LENGTH_LONG).show();
                         list1.remove(position);
                         adapt.notifyDataSetChanged();
+                        updateList();
                         break;
                     case 1:
                         // delete
-                        Log.d("TAG", "onMenuItemClick: clicked item " + index);
                         question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
                         question.delete();
+                        Toast.makeText(DisplayQuestionProf.this, "la question: " + list1.get(position) + " a été supprimée", Toast.LENGTH_LONG).show();
                         list1.remove(position); //or some other task
                         adapt.notifyDataSetChanged();
+                        updateList();
                         break;
                 }
                 // false : close the menu; true : not close the menu
-                return false;
+                return true;
             }
         });
     }
@@ -160,6 +146,26 @@ public class DisplayQuestionProf extends AppCompatActivity {
 
     }
 
+    public void updateList() {
+        quest = Question.find(Question.class, "valide = 0");
+        q1 = new String[quest.size()];
+        q2 = new String[quest.size()];
+        q3 = new String[quest.size()];
+
+        myListView = (SwipeMenuListView) findViewById(R.id.myListView);
+
+        for(int i=0; i<quest.size(); i++) {
+            q1[i] = quest.get(i).nom;
+            q2[i] = quest.get(i).getId().toString();
+            q3[i] = "" + quest.get(i).upvote;
+        }
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, q1);
+        list1 = new ArrayList( Arrays.asList(q1));
+        list2 = new ArrayList( Arrays.asList(q2));
+        list3 = new ArrayList( Arrays.asList(q3));
+        adapt = new CustomAdapterProf(list1, list2, list3,this);
+        myListView.setAdapter(adapt);
+    }
 
     public void repondre(View v){
         Intent intent = new Intent(this, AnswerQuestion.class);
