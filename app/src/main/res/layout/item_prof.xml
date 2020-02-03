@@ -16,6 +16,17 @@
             android:text="Name"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
+        <Button
+            android:id="@+id/answ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.46"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:text="Repondre"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp"
+            android:onClick="repondre"/>
+
         <TextView
             android:id="@+id/textView_upvote"
             android:layout_width="match_parent"
