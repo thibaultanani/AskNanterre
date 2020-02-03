@@ -2,16 +2,14 @@ package com.example.asknanterre;
 
 import com.orm.SugarRecord;
 
-
-
-public class Question extends SugarRecord {
+public class Question extends SugarRecord  {
     String nom;
     int upvote = 0;
+    boolean valide = false;
 
     public Question() {
 
     }
-
 
     public Question(String nom) {
         this.nom = nom;
@@ -25,6 +23,8 @@ public class Question extends SugarRecord {
         return upvote;
     }
 
+    public boolean getValide() { return valide; }
+
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -33,4 +33,5 @@ public class Question extends SugarRecord {
         this.upvote = upvote;
     }
 
+    public void setValide(boolean valide) { this.valide = valide; }
 }

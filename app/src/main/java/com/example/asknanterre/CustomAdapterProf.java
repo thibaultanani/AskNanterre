@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends BaseAdapter implements ListAdapter {
+public class CustomAdapterProf extends BaseAdapter implements ListAdapter {
 
     private ArrayList<String> list1 = new ArrayList<String>();
     private ArrayList<String> list2 = new ArrayList<String>();
@@ -20,7 +20,7 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter {
 
 
 
-    public CustomAdapter(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,Context context) {
+    public CustomAdapterProf(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,Context context) {
         this.list1 = list1;
         this.list2 = list2;
         this.list3 = list3;
@@ -48,8 +48,9 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter {
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.item, null);
+            view = inflater.inflate(R.layout.item_prof, null);
         }
+
 
         //Handle TextView and display string from your list
         TextView listItemText = (TextView)view.findViewById(R.id.textView_name);
@@ -58,9 +59,10 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter {
         listItemTextUpvote.setText(formatedText);
         listItemText.setText(list1.get(position));
 
+        /*
         //Handle buttons and add onClickListeners
         Button deleteBtn = (Button)view.findViewById(R.id.del);
-        Button likeBtn= (Button ) view.findViewById(R.id.like);
+        Button validateBtn= (Button ) view.findViewById(R.id.val);
         //Button addBtn = (Button)view.findViewById(R.id.add_btn);
 
         deleteBtn.setOnClickListener(new View.OnClickListener(){
@@ -72,29 +74,18 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter {
                 list1.remove(position); //or some other task
                 notifyDataSetChanged();
             }
-            });
+        });
 
-        likeBtn.setOnClickListener(new View.OnClickListener() {
+        validateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Question question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
-                question.upvote= question.upvote+1;
+                question.valide = true;
                 question.save();
-
-
-            }
-        });
-        /*addBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                //do something
-                notifyDataSetChanged();
             }
         });*/
 
 
         return view;
     }
-
-
 }

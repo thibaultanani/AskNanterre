@@ -6,8 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+   <!-- <Button
+        android:id="@+id/ADD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:onClick="connection"
+        android:text="Se connecter"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="187dp" />
+
     <Button
-        android:text="Ajouter une question"
+        android:id="@+id/Search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ADD"
+        android:layout_centerHorizontal="true"
+        android:onClick="addUser"
+        android:text="S'inscrire"
+        tools:layout_editor_absoluteX="126dp"
+        tools:layout_editor_absoluteY="405dp" />
+
+    <Button
+        android:text="Ajouter une queston"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ADD"
@@ -17,15 +38,33 @@
         />
 
     <Button
-        android:text="Afficher les questions"
+        android:text="Liste des questions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="41dp"
-        android:id="@+id/Search"
+        android:id="@+id/Display"
         android:layout_below="@+id/ADD"
         android:layout_centerHorizontal="true"
-        android:onClick="displayQuestion"/>
+        android:onClick="displayQuestion"/> -->
 
+    <Button
+        android:text="Interface professeur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/prof"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="105dp"
+        android:onClick="professorUI"
+        />
 
+    <Button
+        android:text="Interface étudiant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:id="@+id/stud"
+        android:layout_below="@+id/prof"
+        android:layout_centerHorizontal="true"
+        android:onClick="studentUI"/>
 
 </RelativeLayout>

@@ -3,7 +3,6 @@
     package="com.example.asknanterre">
 
     <application
-
         android:name="com.orm.SugarApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,23 +10,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <meta-data android:name="DATABASE" android:value="sugar_example.db" />
-        <meta-data android:name="VERSION" android:value="2"/>
-        <meta-data android:name="QUERY_LOG" android:value="true" />
-        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.example.asknanterre" />
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="message/rfc822"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".AddQuestion"/>
-        <activity android:name=".AnswerQuestion"/>
         <activity android:name=".DisplayQuestion"/>
+        <activity android:name=".AddUser"/>
+        <activity android:name=".HomeActivity"/>
+        <activity android:name=".ConnectionActivity"/>
+        <activity android:name=".SendFeedBack"/>
+        <meta-data
+            android:name="VERSION"
+            android:value="6"/>
+        <activity android:name=".AnswerQuestion"/>
         <activity android:name=".DisplayAnswerQuestion"/>
+        <activity android:name=".ProfessorUI"/>
+        <activity android:name=".StudentUI"/>
+        <activity android:name=".DisplayQuestionProf"/>
+        <activity android:name=".DisplayQuestionStud"/>
 
     </application>
 

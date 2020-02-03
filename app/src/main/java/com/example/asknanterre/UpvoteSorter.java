@@ -6,7 +6,7 @@ public class UpvoteSorter implements Comparator<Question> {
     @Override
     public int compare(Question q1, Question q2) {
 
-        return q2.getUpvote()-q1.getUpvote();
+            return q2.getUpvote()-q1.getUpvote();
 
     }
 }

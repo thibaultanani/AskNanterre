@@ -1,47 +1,34 @@
 package com.example.asknanterre;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
-public class DisplayQuestion extends AppCompatActivity {
+public class DisplayQuestionStud extends AppCompatActivity {
 
     ListView myListView;
     EditText name;
     List<Question> questions;
     SimpleAdapter adapter;
     ArrayList<HashMap<String, String>> data;
-    List<Question> quest = Question.listAll(Question.class);
+    List<Question> quest = Question.find(Question.class, "valide = 1");
     String[] q1 = new String[quest.size()];
     String[] q2 = new String[quest.size()];
     String[] q3 = new String[quest.size()];
-
-    List <Answer> answers;
-    List <Answer> answ = Answer.listAll(Answer.class);
-    String [] r1 = new String [answ.size()];
-    String [] r2 = new String[answ.size()];
-    String [] r3 = new String[answ.size()];
-
 
 
     @Override
@@ -70,29 +57,10 @@ public class DisplayQuestion extends AppCompatActivity {
         ArrayList<String> list1 = new ArrayList( Arrays.asList(q1));
         ArrayList<String> list2 = new ArrayList( Arrays.asList(q2));
         ArrayList<String> list3 = new ArrayList( Arrays.asList(q3));
-        CustomAdapter adapt = new CustomAdapter(list1, list2, list3, this);
+
+        CustomAdapterStud adapt = new CustomAdapterStud(list1, list2, list3, this);
         myListView.setAdapter(adapt);
         Button triBtn=(Button) findViewById(R.id.triupvote);
-
-
-
-        /*myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getApplicationContext(), modify.class);
-                TextView id =(TextView) view.findViewById(R.id.textView_id);
-                intent.putExtra("id",id.getText());
-                if (findViewById(R.id.Modify) != null) {
-                    modifyFragment firstFragment = new modifyFragment();
-
-                    FragmentTransaction transaction =
-                            getFragmentManager().beginTransaction();
-                    transaction.add(R.id.Modify, firstFragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
-                }
-            }
-        });*/
 
     }
 
@@ -120,7 +88,7 @@ public class DisplayQuestion extends AppCompatActivity {
         ArrayList<String> list1 = new ArrayList( Arrays.asList(q1));
         ArrayList<String> list2 = new ArrayList( Arrays.asList(q2));
         ArrayList<String> list3 = new ArrayList( Arrays.asList(q3));
-        CustomAdapter adapt = new CustomAdapter(list1, list2, list3, this);
+        CustomAdapterStud adapt = new CustomAdapterStud(list1, list2, list3, this);
         myListView.setAdapter(adapt);
 
     }
@@ -130,21 +98,4 @@ public class DisplayQuestion extends AppCompatActivity {
         Intent intent = new Intent(this, AnswerQuestion.class);
         startActivity(intent);
     }
-
-    public void afficherReponse (View v) {
-        Intent intent = new Intent (this, DisplayAnswerQuestion.class);
-        startActivity(intent);
-    }
-/*
-    public void answerQuestion2 (View v){
-        EditText name = (EditText) findViewById(R.id.lname);
-
-        Answer r = new Answer(name.getText().toString());
-        r.save();
-
-        Toast.makeText(this, "la reponse: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
-
-        name.setText("");    } */
-
 }
-

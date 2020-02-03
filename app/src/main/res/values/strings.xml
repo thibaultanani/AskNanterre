@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AskNanterre</string>
+    <string name="upvote_prefix">"Nombre d'Upvote: %s"</string>
 </resources>
