@@ -16,15 +16,7 @@
             android:text="Name"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <Button
-            android:id="@+id/like"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.46"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Aimer"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="18sp" />
+
 
         <TextView
             android:id="@+id/textView_upvote"
