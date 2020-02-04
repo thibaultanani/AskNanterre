@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -20,9 +20,16 @@
 
      <com.baoyz.swipemenulistview.SwipeMenuListView
         android:id="@+id/myListView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/triupvote"
-        android:layout_marginTop="100dp" /> *
+        android:layout_marginTop="100dp" />
 
-</LinearLayout>
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:id="@+id/myListView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/myListView"
+        android:layout_marginTop="100dp"/>
+
+</RelativeLayout>

@@ -5,13 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CustomAdapterProf extends BaseAdapter implements ListAdapter {
+public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
 
     private ArrayList<String> list1 = new ArrayList<String>();
     private ArrayList<String> list2 = new ArrayList<String>();
@@ -20,7 +19,7 @@ public class CustomAdapterProf extends BaseAdapter implements ListAdapter {
 
 
 
-    public CustomAdapterProf(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,Context context) {
+    public CustomAdapterProf2(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,Context context) {
         this.list1 = list1;
         this.list2 = list2;
         this.list3 = list3;
@@ -48,15 +47,15 @@ public class CustomAdapterProf extends BaseAdapter implements ListAdapter {
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.item_prof, null);
+            view = inflater.inflate(R.layout.item_prof2, null);
         }
 
 
         //Handle TextView and display string from your list
-        TextView listItemText = (TextView)view.findViewById(R.id.textView_name);
-        //String formatedText="Nombre d'upvote: " + list3.get(position);
-        //TextView listItemTextUpvote= (TextView) view.findViewById(R.id.textView_upvote);
-        //listItemTextUpvote.setText(formatedText);
+        TextView listItemText = (TextView)view.findViewById(R.id.textView_name2);
+        String formatedText="Nombre d'upvote: " + list3.get(position);
+        TextView listItemTextUpvote= (TextView) view.findViewById(R.id.textView_upvote2);
+        listItemTextUpvote.setText(formatedText);
         listItemText.setText(list1.get(position));
 
         /*
