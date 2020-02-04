@@ -60,7 +60,7 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter {
 
         //Handle buttons and add onClickListeners
         Button deleteBtn = (Button)view.findViewById(R.id.del);
-        Button likeBtn= (Button ) view.findViewById(R.id.like);
+
         //Button addBtn = (Button)view.findViewById(R.id.add_btn);
 
         deleteBtn.setOnClickListener(new View.OnClickListener(){
@@ -74,16 +74,7 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter {
             }
             });
 
-        likeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Question question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
-                question.upvote= question.upvote+1;
-                question.save();
 
-
-            }
-        });
         /*addBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

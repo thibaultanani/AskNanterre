@@ -35,6 +35,11 @@
             android:text="Like"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
+        <Button
+        android:id="@+id/like"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="+1" />
     </LinearLayout>
 
 </LinearLayout>

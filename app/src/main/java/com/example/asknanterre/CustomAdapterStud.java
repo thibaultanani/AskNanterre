@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
@@ -61,8 +62,21 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
 
         //Button addBtn = (Button)view.findViewById(R.id.add_btn);
 
+       Button likeBtn= (Button ) view.findViewById(R.id.like);
+
+        likeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Question question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
+                question.upvote= question.upvote+1;
+
+                question.save();
+                //Modifier list3
+                notifyDataSetChanged();
 
 
+            }
+        });
 
         return view;
     }

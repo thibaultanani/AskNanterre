@@ -1,14 +1,20 @@
 package com.example.asknanterre;
 
+import com.example.asknanterre.CustomAdapter;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +26,7 @@ import java.util.List;
 
 public class DisplayQuestionStud extends AppCompatActivity {
 
+   // private final int position;
     ListView myListView;
     EditText name;
     List<Question> questions;
@@ -39,28 +46,29 @@ public class DisplayQuestionStud extends AppCompatActivity {
         myListView = (ListView) findViewById(R.id.myListView);
 
         //Collections.sort(quest, new UpvoteSorter());
-        for (Question q: quest) {
+        for (Question q : quest) {
             Log.d("gfgfgfgf", q.toString() + "" + q.getNom() + "" + q.getUpvote());
         }
 
-        for(int i=0; i<quest.size(); i++) {
+        for (int i = 0; i < quest.size(); i++) {
             q1[i] = quest.get(i).nom;
             q2[i] = quest.get(i).getId().toString();
             q3[i] = "" + quest.get(i).upvote;
         }
 
-        for(int i=0; i<q2.length; i++) {
+        for (int i = 0; i < q2.length; i++) {
             Log.d("valeur de la liste " + i + ":", q2[i]);
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, q1);
-        ArrayList<String> list1 = new ArrayList( Arrays.asList(q1));
-        ArrayList<String> list2 = new ArrayList( Arrays.asList(q2));
-        ArrayList<String> list3 = new ArrayList( Arrays.asList(q3));
+        ArrayList<String> list1 = new ArrayList(Arrays.asList(q1));
+        ArrayList<String> list2 = new ArrayList(Arrays.asList(q2));
+        ArrayList<String> list3 = new ArrayList(Arrays.asList(q3));
 
         CustomAdapterStud adapt = new CustomAdapterStud(list1, list2, list3, this);
         myListView.setAdapter(adapt);
-        Button triBtn=(Button) findViewById(R.id.triupvote);
+        Button triBtn = (Button) findViewById(R.id.triupvote);
+        adapt.notifyDataSetChanged();
 
     }
 
@@ -74,28 +82,45 @@ public class DisplayQuestionStud extends AppCompatActivity {
         myListView = (ListView) findViewById(R.id.myListView);
 
         Collections.sort(quest, new UpvoteSorter());
-        for (Question q: quest) {
+        for (Question q : quest) {
             Log.d("gfgfgfgf", q.toString() + "" + q.getNom() + "" + q.getUpvote());
         }
 
-        for(int i=0; i<quest.size(); i++) {
+        for (int i = 0; i < quest.size(); i++) {
             q1[i] = quest.get(i).nom;
             q2[i] = quest.get(i).getId().toString();
             q3[i] = "" + quest.get(i).upvote;
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, q1);
-        ArrayList<String> list1 = new ArrayList( Arrays.asList(q1));
-        ArrayList<String> list2 = new ArrayList( Arrays.asList(q2));
-        ArrayList<String> list3 = new ArrayList( Arrays.asList(q3));
+        ArrayList<String> list1 = new ArrayList(Arrays.asList(q1));
+        ArrayList<String> list2 = new ArrayList(Arrays.asList(q2));
+        ArrayList<String> list3 = new ArrayList(Arrays.asList(q3));
         CustomAdapterStud adapt = new CustomAdapterStud(list1, list2, list3, this);
         myListView.setAdapter(adapt);
 
     }
 
 
-    public void repondre(View v){
+    public void repondre(View v) {
         Intent intent = new Intent(this, AnswerQuestion.class);
         startActivity(intent);
     }
-}
+
+
+    private ArrayList<String> list1 = new ArrayList<String>();
+    private ArrayList<String> list2 = new ArrayList<String>();
+    private ArrayList<String> list3 = new ArrayList<String>();
+    private Context context;
+
+
+
+
+   public void liker(View v) {
+
+
+                }
+
+
+    }
+
