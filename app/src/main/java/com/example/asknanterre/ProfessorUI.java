@@ -2,21 +2,29 @@ package com.example.asknanterre;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfessorUI extends AppCompatActivity {
 
     Button btn;
+    BottomNavigationView bottomNavigationView;
+    Menu itemToHide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_professorui);
 
-        btn = (Button)findViewById(R.id.prof_btn);
+        /*btn = (Button)findViewById(R.id.prof_btn);
 
         btn.setOnClickListener(
                 new View.OnClickListener()
@@ -26,11 +34,46 @@ public class ProfessorUI extends AppCompatActivity {
                         Intent intent = new Intent(ProfessorUI.this, StudentUI.class);
                         startActivity(intent);
                     }
-                });
+                });*/
+
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
+        itemToHide = bottomNavigationView.getMenu();
+        itemToHide.findItem(R.id.action_goProf).setVisible(false);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        //Toast.makeText(ProfessorUI.this, "Recents", Toast.LENGTH_SHORT).show();
+                        goToMainActivity();
+                        break;
+                    case R.id.action_goStud:
+                        //Toast.makeText(ProfessorUI.this, "Favorites", Toast.LENGTH_SHORT).show();
+                        goToStudUIActivity();
+                        break;
+                    case R.id.action_goProf:
+                        Toast.makeText(ProfessorUI.this, "Nearby", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     public void displayQuestionProf(View v){
         Intent intent = new Intent(this, DisplayQuestionProf.class);
         startActivity(intent);
     }
+
+    public void goToMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToStudUIActivity(){
+        Intent intent = new Intent(this, StudentUI.class);
+        startActivity(intent);
+    }
+
 }

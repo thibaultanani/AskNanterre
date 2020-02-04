@@ -3,14 +3,20 @@ package com.example.asknanterre;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,7 +35,8 @@ public class DisplayQuestionStud extends AppCompatActivity {
     String[] q1 = new String[quest.size()];
     String[] q2 = new String[quest.size()];
     String[] q3 = new String[quest.size()];
-
+    BottomNavigationView bottomNavigationView;
+    Menu itemToHide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +69,30 @@ public class DisplayQuestionStud extends AppCompatActivity {
         myListView.setAdapter(adapt);
         Button triBtn=(Button) findViewById(R.id.triupvote);
 
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
+        itemToHide = bottomNavigationView.getMenu();
+        itemToHide.findItem(R.id.action_goStud).setVisible(false);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        //Toast.makeText(DisplayQuestionStud.this, "Recents", Toast.LENGTH_SHORT).show();
+                        goToMainActivity();
+                        break;
+                    case R.id.action_goStud:
+                        Toast.makeText(DisplayQuestionStud.this, "Favorites", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_goProf:
+                        //Toast.makeText(DisplayQuestionStud.this, "Nearby", Toast.LENGTH_SHORT).show();
+                        goToProfUIActivity();
+                        break;
+                }
+                return true;
+            }
+        });
+
     }
 
     @Override
@@ -93,9 +124,18 @@ public class DisplayQuestionStud extends AppCompatActivity {
 
     }
 
-
     public void repondre(View v){
         Intent intent = new Intent(this, AnswerQuestion.class);
+        startActivity(intent);
+    }
+
+    public void goToMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToProfUIActivity(){
+        Intent intent = new Intent(this, ProfessorUI.class);
         startActivity(intent);
     }
 }

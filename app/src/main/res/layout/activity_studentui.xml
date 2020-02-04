@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <Button
@@ -23,7 +25,7 @@
         android:layout_centerHorizontal="true"
         android:onClick="displayQuestionStud"/>
 
-    <Button
+    <!--<Button
         android:text="Aller vers l'interface professeur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,6 +33,17 @@
         android:id="@+id/stud_btn"
         android:layout_below="@+id/Display"
         android:layout_centerHorizontal="true"
-        android:onClick="professorUI"/>
+        android:onClick="professorUI"/>-->
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/activity_main_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimary"
+        app:itemIconTint="@drawable/bottom_navigation_colors"
+        app:itemTextColor="@drawable/bottom_navigation_colors"
+        app:menu="@menu/bottom_navigation_menu"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
