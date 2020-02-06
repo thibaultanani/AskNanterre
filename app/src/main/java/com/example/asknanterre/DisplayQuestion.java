@@ -2,9 +2,11 @@ package com.example.asknanterre;
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,7 +16,9 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,6 +54,13 @@ public class DisplayQuestion extends AppCompatActivity {
         setContentView(R.layout.activity_displayquestion);
 
         myListView = (ListView) findViewById(R.id.myListView);
+
+        Window window = this.getWindow();
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorDarkRed));
+
+        ActionBar bar = getSupportActionBar();
+        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorRed)));
+        bar.setTitle("AskNanterre : Etudiant");
 
         //Collections.sort(quest, new UpvoteSorter());
         for (Question q: quest) {

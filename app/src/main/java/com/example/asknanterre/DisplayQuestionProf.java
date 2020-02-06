@@ -5,7 +5,10 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,12 +17,16 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,6 +63,8 @@ public class DisplayQuestionProf extends AppCompatActivity {
     CustomAdapterProf2 adapt2;
     Question question;
     boolean first = true;
+    BottomNavigationView bottomNavigationView;
+    Menu itemToHide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +72,13 @@ public class DisplayQuestionProf extends AppCompatActivity {
         setContentView(R.layout.activity_displayquestionprof);
 
         updateList();
+
+        Window window = this.getWindow();
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorDarkBlue));
+
+        ActionBar bar = getSupportActionBar();
+        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorBlue)));
+        bar.setTitle("AskNanterre : Professeur");
 
         Button triBtn=(Button) findViewById(R.id.triupvote);
 
@@ -125,6 +141,30 @@ public class DisplayQuestionProf extends AppCompatActivity {
                         break;
                 }
                 // false : close the menu; true : not close the menu
+                return true;
+            }
+        });
+
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
+        itemToHide = bottomNavigationView.getMenu();
+        itemToHide.findItem(R.id.action_goProf).setVisible(false);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        //Toast.makeText(DisplayQuestionProf.this, "Recents", Toast.LENGTH_SHORT).show();
+                        goToMainActivity();
+                        break;
+                    case R.id.action_goStud:
+                        //Toast.makeText(DisplayQuestionProf.this, "Favorites", Toast.LENGTH_SHORT).show();
+                        goToStudUIActivity();
+                        break;
+                    case R.id.action_goProf:
+                        Toast.makeText(DisplayQuestionProf.this, "Nearby", Toast.LENGTH_SHORT).show();
+                        break;
+                }
                 return true;
             }
         });
@@ -216,6 +256,16 @@ public class DisplayQuestionProf extends AppCompatActivity {
 
     public void repondre(View v){
         Intent intent = new Intent(this, AnswerQuestion.class);
+        startActivity(intent);
+    }
+
+    public void goToMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToStudUIActivity(){
+        Intent intent = new Intent(this, StudentUI.class);
         startActivity(intent);
     }
 

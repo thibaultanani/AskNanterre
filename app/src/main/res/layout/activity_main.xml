@@ -49,22 +49,27 @@
 
     <Button
         android:text="Interface professeur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/prof"
-        android:layout_centerHorizontal="true"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="105dp"
+        android:background="@drawable/mybutton"
+        android:layout_centerHorizontal="true"
         android:onClick="professorUI"
-        />
+        android:textColor="#ffffff"
+        android:drawableStart="@drawable/ic_arrow" />
 
     <Button
         android:text="Interface étudiant"
-        android:layout_width="wrap_content"
+        android:id="@+id/stud"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="41dp"
-        android:id="@+id/stud"
-        android:layout_below="@+id/prof"
+        android:layout_below="@id/prof"
+        android:background="@drawable/mybutton"
         android:layout_centerHorizontal="true"
-        android:onClick="studentUI"/>
+        android:onClick="studentUI"
+        android:textColor="#ffffff"
+        android:drawableStart="@drawable/ic_arrow"/>
 
 </RelativeLayout>
