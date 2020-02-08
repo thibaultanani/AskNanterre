@@ -34,7 +34,7 @@
         </TableRow>
     </TableLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <!--<com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/activity_main_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
         app:itemIconTint="@drawable/bottom_navigation_colors"
         app:itemTextColor="@drawable/bottom_navigation_colors"
         app:menu="@menu/bottom_navigation_menu"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true" />-->
 
 
 </RelativeLayout>

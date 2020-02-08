@@ -73,12 +73,12 @@ public class DisplayQuestionProf extends AppCompatActivity {
 
         updateList();
 
-        Window window = this.getWindow();
+        /*Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorDarkBlue));
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorBlue)));
-        bar.setTitle("AskNanterre : Professeur");
+        bar.setTitle("AskNanterre : Professeur");*/
 
         Button triBtn=(Button) findViewById(R.id.triupvote);
 
@@ -145,7 +145,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
             }
         });
 
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
+        /*bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
         itemToHide = bottomNavigationView.getMenu();
         itemToHide.findItem(R.id.action_goProf).setVisible(false);
 
@@ -167,7 +167,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 }
                 return true;
             }
-        });
+        });*/
     }
 
     @Override

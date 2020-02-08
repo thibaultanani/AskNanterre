@@ -49,11 +49,11 @@ public class DisplayQuestionStud extends AppCompatActivity {
 
         myListView = (ListView) findViewById(R.id.myListView);
 
-        Window window = this.getWindow();
+        /*Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorDarkRed));
 
         ActionBar bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorRed)));
+        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorRed)));*/
 
         //Collections.sort(quest, new UpvoteSorter());
         for (Question q: quest) {
@@ -79,7 +79,7 @@ public class DisplayQuestionStud extends AppCompatActivity {
         myListView.setAdapter(adapt);
         Button triBtn=(Button) findViewById(R.id.triupvote);
 
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
+        /*bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
         itemToHide = bottomNavigationView.getMenu();
         itemToHide.findItem(R.id.action_goStud).setVisible(false);
 
@@ -101,7 +101,7 @@ public class DisplayQuestionStud extends AppCompatActivity {
                 }
                 return true;
             }
-        });
+        });*/
 
     }
 
