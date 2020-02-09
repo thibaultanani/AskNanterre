@@ -55,12 +55,12 @@ public class DisplayQuestion extends AppCompatActivity {
 
         myListView = (ListView) findViewById(R.id.myListView);
 
-        Window window = this.getWindow();
+        /*Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorDarkRed));
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorRed)));
-        bar.setTitle("AskNanterre : Etudiant");
+        bar.setTitle("AskNanterre : Etudiant");*/
 
         //Collections.sort(quest, new UpvoteSorter());
         for (Question q: quest) {

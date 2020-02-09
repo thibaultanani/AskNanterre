@@ -28,12 +28,12 @@ public class StudentUI extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studentui);
 
-        Window window = this.getWindow();
+        /*Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorDarkRed));
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorRed)));
-        bar.setTitle("AskNanterre : Etudiant");
+        bar.setTitle("AskNanterre : Etudiant");*/
 
         /*btn = (Button)findViewById(R.id.stud_btn);
 
@@ -47,7 +47,7 @@ public class StudentUI extends AppCompatActivity {
                     }
                 });*/
 
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
+        /*bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
         itemToHide = bottomNavigationView.getMenu();
         itemToHide.findItem(R.id.action_goStud).setVisible(false);
 
@@ -69,7 +69,7 @@ public class StudentUI extends AppCompatActivity {
                 }
                 return true;
             }
-        });
+        });*/
     }
 
     /*public void displayQuestion(View v){
@@ -87,12 +87,12 @@ public class StudentUI extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToMainActivity(){
+    public void goToMainActivity(View v){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void goToProfUIActivity(){
+    public void goToProfUIActivity(View v){
         Intent intent = new Intent(this, ProfessorUI.class);
         startActivity(intent);
     }

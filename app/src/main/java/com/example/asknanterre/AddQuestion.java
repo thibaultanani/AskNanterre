@@ -27,7 +27,7 @@ public class AddQuestion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addquestion);
 
-        Window window = this.getWindow();
+        /*Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorDarkRed));
 
         ActionBar bar = getSupportActionBar();
@@ -56,7 +56,7 @@ public class AddQuestion extends AppCompatActivity {
                 }
                 return true;
             }
-        });
+        });*/
     }
 
     public void valider(View v) {
