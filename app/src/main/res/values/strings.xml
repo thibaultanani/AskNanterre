@@ -4,4 +4,11 @@
     <string name="bottom_navigation_menu_home">Home</string>
     <string name="bottom_navigation_menu_etudiant">Vers l\'interface étudiant</string>
     <string name="bottom_navigation_menu_prof">Vers l\'interface professeur</string>
+    <string name="number_prompt">Choisi un nombre de questions</string>
+    <string-array name="number_arrays">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
 </resources>
