@@ -78,6 +78,25 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
             }
         });
 
+
+        Button dislikeBtn= (Button ) view.findViewById(R.id.dislike);
+
+        dislikeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Question question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
+                question.upvote= question.upvote-1;
+
+                question.save();
+                //Modifier list3
+                notifyDataSetChanged();
+
+
+            }
+        });
+
+
+
         return view;
     }
 }
