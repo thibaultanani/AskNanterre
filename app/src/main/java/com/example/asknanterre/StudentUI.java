@@ -82,6 +82,11 @@ public class StudentUI extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void addQuestionQCM(View v){
+        Intent intent = new Intent(this, AddQCM.class);
+        startActivity(intent);
+    }
+
     public void displayQuestionStud(View v){
         Intent intent = new Intent(this, DisplayQuestionStud.class);
         startActivity(intent);

@@ -64,6 +64,7 @@ public class AddQuestion extends AppCompatActivity {
         EditText name = (EditText) findViewById(R.id.lname);
 
         Question q = new Question(name.getText().toString());
+        q.type = 1;
         q.save();
 
         Toast.makeText(this, "la Question: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();

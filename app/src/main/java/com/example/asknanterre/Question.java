@@ -6,6 +6,7 @@ public class Question extends SugarRecord  {
     String nom;
     int upvote = 0;
     boolean valide = false;
+    int type = 1;
 
     public Question() {
 
