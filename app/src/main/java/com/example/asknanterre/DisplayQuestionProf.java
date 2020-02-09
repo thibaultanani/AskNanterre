@@ -145,6 +145,56 @@ public class DisplayQuestionProf extends AppCompatActivity {
             }
         });
 
+
+
+
+
+        //SwipeMenu for second list
+        SwipeMenuCreator creator2 = new SwipeMenuCreator() {
+
+            @Override
+            public void create(SwipeMenu menu) {
+                // create "open" item
+                SwipeMenuItem validateItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                validateItem.setBackground(new ColorDrawable(Color.rgb(0x33, 0xff,
+                        0x57)));
+                // set item width
+                validateItem.setWidth(170);
+                // set item title
+                validateItem.setIcon(R.drawable.ic_validate);
+                // add to menu
+                menu.addMenuItem(validateItem);
+
+
+            }
+        };
+
+        myListView2.setMenuCreator(creator2);
+
+        myListView2.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                switch (index) {
+                    case 0:
+                        // open
+                        question = Question.findById(Question.class, Integer.parseInt(list5.get(position)));
+                        question.repondu = true;
+                        question.save();
+                        Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été mise en répondue", Toast.LENGTH_LONG).show();
+                        adapt.notifyDataSetChanged();
+                        updateList();
+                        break;
+
+                }
+                // false : close the menu; true : not close the menu
+                return true;
+            }
+        });
+
+
+
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
         itemToHide = bottomNavigationView.getMenu();
         itemToHide.findItem(R.id.action_goProf).setVisible(false);
@@ -254,10 +304,6 @@ public class DisplayQuestionProf extends AppCompatActivity {
 
     }
 
-    public void repondre(View v){
-        Intent intent = new Intent(this, AnswerQuestion.class);
-        startActivity(intent);
-    }
 
     public void goToMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);
