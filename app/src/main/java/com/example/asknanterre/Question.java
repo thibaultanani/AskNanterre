@@ -5,6 +5,16 @@ import com.orm.SugarRecord;
 public class Question extends SugarRecord  {
     String nom;
     int upvote = 0;
+    int downvote=0;
+
+    public int getDownvote() {
+        return downvote;
+    }
+
+    public void setDownvote(int downvote) {
+        this.downvote = downvote;
+    }
+
     boolean valide = false;
     boolean repondu= false;
 

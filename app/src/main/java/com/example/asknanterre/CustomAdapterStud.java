@@ -17,16 +17,18 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
     private ArrayList<String> list2 = new ArrayList<String>();
     private ArrayList<String> list3 = new ArrayList<String>();
     private ArrayList<String> list4 = new ArrayList<String>();
+    private ArrayList<String> list5 = new ArrayList<String>();
 
     private Context context;
 
 
 
-    public CustomAdapterStud(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,ArrayList<String> list4,Context context) {
+    public CustomAdapterStud(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,ArrayList<String> list4,ArrayList<String> list5,Context context) {
         this.list1 = list1;
         this.list2 = list2;
         this.list3 = list3;
         this.list4 = list4;
+        this.list5=list5;
         this.context = context;
     }
 
@@ -56,8 +58,10 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
 
         //Handle TextView and display string from your list
         TextView listItemText = (TextView)view.findViewById(R.id.textView_name);
-        String formatedText="Nombre d'upvote: " + list3.get(position);
+        String formatedText="Like: " + list3.get(position);
         TextView listItemTextUpvote= (TextView) view.findViewById(R.id.textView_upvote);
+        String formatedText3="Dislike: " + list5.get(position);
+        TextView listItemTextDownvote= (TextView) view.findViewById(R.id.textView_downvote);
         TextView listItemTextRepondu= (TextView) view.findViewById(R.id.textView_repondu);
 
         if ( list4.get(position).equals("true"))
@@ -72,6 +76,7 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
             }
 
         listItemTextUpvote.setText(formatedText);
+        listItemTextDownvote.setText(formatedText3);
         listItemText.setText(list1.get(position));
 
         //Handle buttons and add onClickListeners
@@ -85,6 +90,23 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
             public void onClick(View v) {
                 Question question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
                 question.upvote= question.upvote+1;
+
+                question.save();
+                //Modifier list3
+                notifyDataSetChanged();
+
+
+            }
+        });
+
+
+        Button dislikeBtn= (Button ) view.findViewById(R.id.dislike);
+
+        dislikeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Question question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
+                question.downvote= question.downvote+1;
 
                 question.save();
                 //Modifier list3

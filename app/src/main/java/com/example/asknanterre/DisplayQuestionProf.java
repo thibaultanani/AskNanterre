@@ -51,12 +51,14 @@ public class DisplayQuestionProf extends AppCompatActivity {
     String[] q4;
     String[] q5;
     String[] q6;
+    String[] q7;
     ArrayList<String> list1;
     ArrayList<String> list2;
     ArrayList<String> list3;
     ArrayList<String> list4;
     ArrayList<String> list5;
     ArrayList<String> list6;
+    ArrayList<String> list7;
     ArrayAdapter<String> adapter;
     ArrayAdapter<String> adapter2;
     CustomAdapterProf adapt;
@@ -238,13 +240,16 @@ public class DisplayQuestionProf extends AppCompatActivity {
             q4[i] = quest2.get(i).nom;
             q5[i] = quest2.get(i).getId().toString();
             q6[i] = "" + quest2.get(i).upvote;
+            q7[i] = "" + quest2.get(i).downvote;
+
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, q1);
         ArrayList<String> list1 = new ArrayList( Arrays.asList(q4));
         ArrayList<String> list2 = new ArrayList( Arrays.asList(q5));
         ArrayList<String> list3 = new ArrayList( Arrays.asList(q6));
-        CustomAdapterProf2 adapt = new CustomAdapterProf2(list1, list2, list3, this);
+        ArrayList<String> list4 = new ArrayList( Arrays.asList(q7));
+        CustomAdapterProf2 adapt = new CustomAdapterProf2(list1, list2, list3,list4, this);
         myListView2.setAdapter(adapt);
 
     }
@@ -259,6 +264,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
         q4 = new String[quest2.size()];
         q5 = new String[quest2.size()];
         q6 = new String[quest2.size()];
+        q7 = new String[quest2.size()];
 
         myListView = (SwipeMenuListView) findViewById(R.id.myListView);
         myListView2 = (SwipeMenuListView) findViewById(R.id.myListView2);
@@ -286,6 +292,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
             q4[i] = quest2.get(i).nom;
             q5[i] = quest2.get(i).getId().toString();
             q6[i] = "" + quest2.get(i).upvote;
+            q7[i] = "" + quest2.get(i).downvote;
         }
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, q1);
@@ -299,7 +306,8 @@ public class DisplayQuestionProf extends AppCompatActivity {
         list4 = new ArrayList( Arrays.asList(q4));
         list5 = new ArrayList( Arrays.asList(q5));
         list6 = new ArrayList( Arrays.asList(q6));
-        adapt2 = new CustomAdapterProf2(list4, list5, list6,this);
+        list7 = new ArrayList( Arrays.asList(q7));
+        adapt2 = new CustomAdapterProf2(list4, list5, list6,list7,this);
         myListView2.setAdapter(adapt2);
 
     }
