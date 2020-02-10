@@ -16,14 +16,16 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
     private ArrayList<String> list1 = new ArrayList<String>();
     private ArrayList<String> list2 = new ArrayList<String>();
     private ArrayList<String> list3 = new ArrayList<String>();
+    private ArrayList<String> list4 = new ArrayList<String>();
     private Context context;
 
 
 
-    public CustomAdapterProf2(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,Context context) {
+    public CustomAdapterProf2(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3, ArrayList<String> list4,Context context) {
         this.list1 = list1;
         this.list2 = list2;
         this.list3 = list3;
+        this.list4=list4;
         this.context = context;
     }
 
@@ -56,7 +58,10 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
         TextView listItemText = (TextView)view.findViewById(R.id.textView_name2);
         String formatedText="" + list3.get(position);
         TextView listItemTextUpvote= (TextView) view.findViewById(R.id.textView_upvote2);
+        String formatedText2="Nombre down: " + list4.get(position);
+        TextView listItemTextDownvote= (TextView) view.findViewById(R.id.textView_downvote2);
         listItemTextUpvote.setText(formatedText);
+        listItemTextDownvote.setText(formatedText2);
         listItemText.setText(list1.get(position));
 
         /*
