@@ -5,7 +5,15 @@
     <string name="bottom_navigation_menu_etudiant">Vers l\'interface étudiant</string>
     <string name="bottom_navigation_menu_prof">Vers l\'interface professeur</string>
     <string name="number_prompt">Choisi un nombre de questions</string>
+    <string name="number_reponse_prompt">Choisi la bonne réponse</string>
     <string-array name="number_arrays">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="number_reponse_arrays">
+        <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>

@@ -72,6 +72,11 @@ public class ProfessorUI extends AppCompatActivity {
         });*/
     }
 
+    public void addQuiz(View v){
+        Intent intent = new Intent(this, AddQuiz.class);
+        startActivity(intent);
+    }
+
     public void displayQuestionProf(View v){
         Intent intent = new Intent(this, DisplayQuestionProf.class);
         startActivity(intent);

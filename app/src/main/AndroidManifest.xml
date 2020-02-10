@@ -29,7 +29,7 @@
         <activity android:name=".SendFeedBack"/>
         <meta-data
             android:name="VERSION"
-            android:value="8"/>
+            android:value="9"/>
         <activity android:name=".AnswerQuestion"/>
         <activity android:name=".DisplayAnswerQuestion"/>
         <activity android:name=".ProfessorUI"/>
@@ -37,6 +37,7 @@
         <activity android:name=".DisplayQuestionProf"/>
         <activity android:name=".DisplayQuestionStud"/>
         <activity android:name=".AddQCM"/>
+        <activity android:name=".AddQuiz"/>
 
     </application>
 
