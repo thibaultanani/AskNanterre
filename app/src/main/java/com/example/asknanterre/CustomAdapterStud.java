@@ -16,14 +16,17 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
     private ArrayList<String> list1 = new ArrayList<String>();
     private ArrayList<String> list2 = new ArrayList<String>();
     private ArrayList<String> list3 = new ArrayList<String>();
+    private ArrayList<String> list4 = new ArrayList<String>();
+
     private Context context;
 
 
 
-    public CustomAdapterStud(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,Context context) {
+    public CustomAdapterStud(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,ArrayList<String> list4,Context context) {
         this.list1 = list1;
         this.list2 = list2;
         this.list3 = list3;
+        this.list4 = list4;
         this.context = context;
     }
 
@@ -55,6 +58,19 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
         TextView listItemText = (TextView)view.findViewById(R.id.textView_name);
         String formatedText="Nombre d'upvote: " + list3.get(position);
         TextView listItemTextUpvote= (TextView) view.findViewById(R.id.textView_upvote);
+        TextView listItemTextRepondu= (TextView) view.findViewById(R.id.textView_repondu);
+
+        if ( list4.get(position).equals("true"))
+            {
+                 String formatedText2=" Répondu";
+                 listItemTextRepondu.setText(formatedText2);
+            }
+        else
+            {
+                 String formatedText2=" Non Répondu";
+                listItemTextRepondu.setText(formatedText2);
+            }
+
         listItemTextUpvote.setText(formatedText);
         listItemText.setText(list1.get(position));
 
