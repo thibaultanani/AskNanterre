@@ -7,6 +7,7 @@ public class Question extends SugarRecord  {
     int upvote = 0;
     boolean valide = false;
     int type = 1;
+    boolean repondu= false;
 
     public Question() {
 
@@ -35,4 +36,12 @@ public class Question extends SugarRecord  {
     }
 
     public void setValide(boolean valide) { this.valide = valide; }
+
+    public boolean isRepondu() {
+        return repondu;
+    }
+
+    public void setRepondu(boolean repondu) {
+        this.repondu = repondu;
+    }
 }

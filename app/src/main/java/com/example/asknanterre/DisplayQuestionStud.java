@@ -45,6 +45,7 @@ public class DisplayQuestionStud extends AppCompatActivity {
     String[] q1 = new String[quest.size()];
     String[] q2 = new String[quest.size()];
     String[] q3 = new String[quest.size()];
+    String[] q4 = new String[quest.size()];
     BottomNavigationView bottomNavigationView;
     Menu itemToHide;
 
@@ -70,6 +71,7 @@ public class DisplayQuestionStud extends AppCompatActivity {
             q1[i] = quest.get(i).nom;
             q2[i] = quest.get(i).getId().toString();
             q3[i] = "" + quest.get(i).upvote;
+            q4[i] = "" + quest.get(i).repondu;
         }
 
         for (int i = 0; i < q2.length; i++) {
@@ -80,8 +82,9 @@ public class DisplayQuestionStud extends AppCompatActivity {
         ArrayList<String> list1 = new ArrayList(Arrays.asList(q1));
         ArrayList<String> list2 = new ArrayList(Arrays.asList(q2));
         ArrayList<String> list3 = new ArrayList(Arrays.asList(q3));
+        ArrayList<String> list4 = new ArrayList(Arrays.asList(q4));
 
-        CustomAdapterStud adapt = new CustomAdapterStud(list1, list2, list3, this);
+        CustomAdapterStud adapt = new CustomAdapterStud(list1, list2, list3,list4 ,this);
         myListView.setAdapter(adapt);
         Button triBtn = (Button) findViewById(R.id.triupvote);
         adapt.notifyDataSetChanged();
@@ -130,13 +133,15 @@ public class DisplayQuestionStud extends AppCompatActivity {
             q1[i] = quest.get(i).nom;
             q2[i] = quest.get(i).getId().toString();
             q3[i] = "" + quest.get(i).upvote;
+            q4[i]= "" + quest.get(i).repondu;
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, q1);
         ArrayList<String> list1 = new ArrayList(Arrays.asList(q1));
         ArrayList<String> list2 = new ArrayList(Arrays.asList(q2));
         ArrayList<String> list3 = new ArrayList(Arrays.asList(q3));
-        CustomAdapterStud adapt = new CustomAdapterStud(list1, list2, list3, this);
+        ArrayList<String> list4 = new ArrayList(Arrays.asList(q4));
+        CustomAdapterStud adapt = new CustomAdapterStud(list1, list2, list3,list4, this);
         myListView.setAdapter(adapt);
 
     }
@@ -150,6 +155,7 @@ public class DisplayQuestionStud extends AppCompatActivity {
     private ArrayList<String> list1 = new ArrayList<String>();
     private ArrayList<String> list2 = new ArrayList<String>();
     private ArrayList<String> list3 = new ArrayList<String>();
+    private ArrayList<String> list4 = new ArrayList<String>();
     private Context context;
 
 
