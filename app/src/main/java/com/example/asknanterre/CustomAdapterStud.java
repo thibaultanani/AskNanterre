@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
@@ -56,19 +58,21 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
 
         //Handle TextView and display string from your list
         TextView listItemText = (TextView)view.findViewById(R.id.textView_name);
-        String formatedText="Nombre d'upvote: " + list3.get(position);
+        String formatedText=" " + list3.get(position);
         TextView listItemTextUpvote= (TextView) view.findViewById(R.id.textView_upvote);
-        TextView listItemTextRepondu= (TextView) view.findViewById(R.id.textView_repondu);
+        ImageView listItemTextRepondu= (ImageView) view.findViewById(R.id.textView_repondu);
 
         if ( list4.get(position).equals("true"))
             {
                  String formatedText2=" Répondu";
-                 listItemTextRepondu.setText(formatedText2);
+                 //listItemTextRepondu.setText(formatedText2);
+                listItemTextRepondu.setVisibility(View.VISIBLE);
             }
         else
             {
                  String formatedText2=" Non Répondu";
-                listItemTextRepondu.setText(formatedText2);
+                //listItemTextRepondu.setText(formatedText2);
+                listItemTextRepondu.setVisibility(View.INVISIBLE);
             }
 
         listItemTextUpvote.setText(formatedText);
@@ -78,7 +82,7 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
 
         //Button addBtn = (Button)view.findViewById(R.id.add_btn);
 
-       Button likeBtn= (Button ) view.findViewById(R.id.like);
+       ImageButton likeBtn= (ImageButton ) view.findViewById(R.id.like);
 
         likeBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">AskNanterre</string>
-    <string name="upvote_prefix">"Nombre d'Upvote: %s"</string>
+    <string name="upvote_prefix">"%s"</string>
     <string name="bottom_navigation_menu_home">Home</string>
     <string name="bottom_navigation_menu_etudiant">Vers l\'interface étudiant</string>
     <string name="bottom_navigation_menu_prof">Vers l\'interface professeur</string>
