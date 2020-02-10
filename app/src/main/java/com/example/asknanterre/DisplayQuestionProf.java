@@ -167,11 +167,28 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 // add to menu
                 menu.addMenuItem(validateItem);
 
+                // create "upvote" item
+                SwipeMenuItem upvoteProfItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                upvoteProfItem.setBackground(new ColorDrawable(Color.rgb(0xF9,
+                        0x3F, 0x25)));
+                // set item width
+                upvoteProfItem.setWidth(170);
+                // set a icon
+                upvoteProfItem.setIcon(R.drawable.ic_validate);
+                // add to menu
+                menu.addMenuItem(upvoteProfItem);
+
+
+
 
             }
         };
 
         myListView2.setMenuCreator(creator2);
+
+
 
         myListView2.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
@@ -186,6 +203,18 @@ public class DisplayQuestionProf extends AppCompatActivity {
                         adapt.notifyDataSetChanged();
                         updateList();
                         break;
+
+                    case 1:
+                        // open
+                        question = Question.findById(Question.class, Integer.parseInt(list5.get(position)));
+                        question.upvoteProf = true;
+                        question.save();
+                        Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été mise en Upvote", Toast.LENGTH_LONG).show();
+                        adapt.notifyDataSetChanged();
+                        updateList();
+                        break;
+
+
 
                 }
                 // false : close the menu; true : not close the menu

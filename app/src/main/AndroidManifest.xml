@@ -29,7 +29,7 @@
         <activity android:name=".SendFeedBack"/>
         <meta-data
             android:name="VERSION"
-            android:value="8"/>
+            android:value="10"/>
         <activity android:name=".AnswerQuestion"/>
         <activity android:name=".DisplayAnswerQuestion"/>
         <activity android:name=".ProfessorUI"/>
