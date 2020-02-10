@@ -58,7 +58,7 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
         TextView listItemText = (TextView)view.findViewById(R.id.textView_name2);
         String formatedText="" + list3.get(position);
         TextView listItemTextUpvote= (TextView) view.findViewById(R.id.textView_upvote2);
-        String formatedText2="Nombre down: " + list4.get(position);
+        String formatedText2="" + list4.get(position);
         TextView listItemTextDownvote= (TextView) view.findViewById(R.id.textView_downvote2);
         listItemTextUpvote.setText(formatedText);
         listItemTextDownvote.setText(formatedText2);

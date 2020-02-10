@@ -63,7 +63,7 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
         String formatedText=" " + list3.get(position);
         TextView listItemTextUpvote= (TextView) view.findViewById(R.id.textView_upvote);
         ImageView listItemTextRepondu= (ImageView) view.findViewById(R.id.textView_repondu);
-        String formatedText3="Dislike: " + list5.get(position);
+        String formatedText3="" + list5.get(position);
         TextView listItemTextDownvote= (TextView) view.findViewById(R.id.textView_downvote);
 
         if ( list4.get(position).equals("true"))
@@ -104,7 +104,7 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
         });
 
 
-        Button dislikeBtn= (Button ) view.findViewById(R.id.dislike);
+        ImageButton dislikeBtn= (ImageButton ) view.findViewById(R.id.dislike);
 
         dislikeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
