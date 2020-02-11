@@ -8,7 +8,7 @@ public class Question extends SugarRecord  {
     boolean valide = false;
     int type = 1;
     boolean repondu= false;
-    boolean upvoteProf = false;
+    int upvoteProf = 0;
 
     public Question() {
 

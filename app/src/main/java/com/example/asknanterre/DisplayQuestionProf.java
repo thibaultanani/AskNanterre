@@ -171,14 +171,26 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 SwipeMenuItem upvoteProfItem = new SwipeMenuItem(
                         getApplicationContext());
                 // set item background
-                upvoteProfItem.setBackground(new ColorDrawable(Color.rgb(0xF9,
-                        0x3F, 0x25)));
+                upvoteProfItem.setBackground(new ColorDrawable(Color.rgb(44, 34, 240)));
                 // set item width
                 upvoteProfItem.setWidth(170);
                 // set a icon
                 upvoteProfItem.setIcon(R.drawable.ic_validate);
                 // add to menu
                 menu.addMenuItem(upvoteProfItem);
+
+                // create "downvote" item
+                SwipeMenuItem downvoteProfItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                downvoteProfItem.setBackground(new ColorDrawable(Color.rgb(0xF9,
+                        0x3F, 0x25)));
+                // set item width
+                downvoteProfItem.setWidth(170);
+                // set a icon
+                downvoteProfItem.setIcon(R.drawable.ic_validate);
+                // add to menu
+                menu.addMenuItem(downvoteProfItem);
 
 
 
@@ -207,9 +219,19 @@ public class DisplayQuestionProf extends AppCompatActivity {
                     case 1:
                         // open
                         question = Question.findById(Question.class, Integer.parseInt(list5.get(position)));
-                        question.upvoteProf = true;
+                        question.upvoteProf = 1;
                         question.save();
-                        Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été mise en Upvote", Toast.LENGTH_LONG).show();
+                        Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été Upvote", Toast.LENGTH_LONG).show();
+                        adapt.notifyDataSetChanged();
+                        updateList();
+                        break;
+
+                    case 2:
+                        // open
+                        question = Question.findById(Question.class, Integer.parseInt(list5.get(position)));
+                        question.upvoteProf = -1;
+                        question.save();
+                        Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été Downvote", Toast.LENGTH_LONG).show();
                         adapt.notifyDataSetChanged();
                         updateList();
                         break;
