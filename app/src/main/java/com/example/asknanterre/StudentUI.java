@@ -97,8 +97,4 @@ public class StudentUI extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToProfUIActivity(View v){
-        Intent intent = new Intent(this, ProfessorUI.class);
-        startActivity(intent);
-    }
 }
