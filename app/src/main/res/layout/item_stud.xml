@@ -35,6 +35,15 @@
             android:text="Repondu"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
+        <TextView
+                android:id="@+id/textView_upvoteProf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.46"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="upvoteProf"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
         <Button
         android:id="@+id/like"
         android:layout_width="100dp"

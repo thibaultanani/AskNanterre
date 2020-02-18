@@ -219,22 +219,45 @@ public class DisplayQuestionProf extends AppCompatActivity {
                     case 1:
                         // open
                         question = Question.findById(Question.class, Integer.parseInt(list5.get(position)));
-                        question.upvoteProf = 1;
-                        question.save();
-                        Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été Upvote", Toast.LENGTH_LONG).show();
-                        adapt.notifyDataSetChanged();
-                        updateList();
-                        break;
+                        //Si  upvotePrif il vaut déja 1 on la remet à 0
+                        if(question.upvoteProf==1) {
+                            question.upvoteProf = 0;
+                            question.save();
+                            Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été remis en neutre", Toast.LENGTH_LONG).show();
+                            adapt.notifyDataSetChanged();
+                            updateList();
+                            break;
+                        }
+                        else {
+                            question.upvoteProf = 1;
+                            question.save();
+                            Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été Upvote", Toast.LENGTH_LONG).show();
+                            adapt.notifyDataSetChanged();
+                            updateList();
+                            break;
+                        }
 
                     case 2:
                         // open
                         question = Question.findById(Question.class, Integer.parseInt(list5.get(position)));
-                        question.upvoteProf = -1;
-                        question.save();
-                        Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été Downvote", Toast.LENGTH_LONG).show();
-                        adapt.notifyDataSetChanged();
-                        updateList();
-                        break;
+                        //Idem si déjà -1 on remet à 0
+                        if (question.upvoteProf==-1) {
+                            question.upvoteProf = 0;
+                            question.save();
+                            Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été remis en neutre", Toast.LENGTH_LONG).show();
+                            adapt.notifyDataSetChanged();
+                            updateList();
+                            break;
+                        }
+
+                        else {
+                            question.upvoteProf = -1;
+                            question.save();
+                            Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été Downvote", Toast.LENGTH_LONG).show();
+                            adapt.notifyDataSetChanged();
+                            updateList();
+                            break;
+                        }
 
 
 

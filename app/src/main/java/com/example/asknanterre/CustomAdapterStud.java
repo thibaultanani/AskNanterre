@@ -17,16 +17,19 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
     private ArrayList<String> list2 = new ArrayList<String>();
     private ArrayList<String> list3 = new ArrayList<String>();
     private ArrayList<String> list4 = new ArrayList<String>();
+    private ArrayList<Integer> list5 = new ArrayList<Integer>();
 
     private Context context;
+    Question question;
 
 
 
-    public CustomAdapterStud(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,ArrayList<String> list4,Context context) {
+    public CustomAdapterStud(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,ArrayList<String> list4,ArrayList<Integer> list5,Context context) {
         this.list1 = list1;
         this.list2 = list2;
         this.list3 = list3;
         this.list4 = list4;
+        this.list5 = list5;
         this.context = context;
     }
 
@@ -60,6 +63,7 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
         TextView listItemTextUpvote= (TextView) view.findViewById(R.id.textView_upvote);
         TextView listItemTextRepondu= (TextView) view.findViewById(R.id.textView_repondu);
 
+
         if ( list4.get(position).equals("true"))
             {
                  String formatedText2=" Répondu";
@@ -71,7 +75,26 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
                 listItemTextRepondu.setText(formatedText2);
             }
 
-        listItemTextUpvote.setText(formatedText);
+        TextView listItemTextupvoteProf= (TextView) view.findViewById(R.id.textView_upvoteProf);
+
+
+        if (list5.get(position)==0)
+        {
+            String formatedText2=" Pas de vote";
+            listItemTextupvoteProf.setText(formatedText2);
+        }
+         if (list5.get(position)==1)
+        {
+            String formatedText2=" Upvoté par le prof";
+            listItemTextupvoteProf.setText(formatedText2);
+        }
+
+         if ( list5.get(position)==-1 )
+        {
+            String formatedText2=" Downvoté par le prof";
+            listItemTextupvoteProf.setText(formatedText2);
+        }
+
         listItemText.setText(list1.get(position));
 
         //Handle buttons and add onClickListeners
