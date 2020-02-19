@@ -80,157 +80,164 @@
 
         </RelativeLayout>
 
-        <GridLayout
-            android:id="@+id/mainGrid"
+        <LinearLayout
+            android:id="@+id/mainGrid2"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="210dp"
             android:layout_gravity="center"
-            android:layout_weight="9"
-            android:columnCount="2"
-            android:rowCount="1">
+            android:layout_weight="9">
 
             <androidx.cardview.widget.CardView
-                android:layout_columnWeight="0"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:layout_weight="1"
                 app:cardCornerRadius="12dp"
-                android:layout_width="180dp"
-                android:layout_margin="12dp">
+                app:cardElevation="6dp">
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center_horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
                     <ImageView
-                        android:src="@drawable/send"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
                         android:id="@+id/Add"
-                        android:onClick="addQuestion"/>
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:onClick="addQuestion"
+                        android:src="@drawable/send" />
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"
+                        android:gravity="center_horizontal"
                         android:text="Ajouter une question ouverte"
-                        android:gravity="center_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textColor="#6f6f6f"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_columnWeight="0"
-                android:layout_width="180dp"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:layout_weight="1"
                 app:cardCornerRadius="12dp"
-                android:layout_margin="12dp">
+                app:cardElevation="6dp">
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
                     <ImageView
-                        android:src="@drawable/send"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
                         android:id="@+id/AddQCM"
-                        android:onClick="addQuestionQCM"/>
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:onClick="addQuestionQCM"
+                        android:src="@drawable/send" />
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"
+                        android:gravity="center_horizontal"
                         android:text="Ajouter une question fermée"
-                        android:gravity="center_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textColor="#6f6f6f"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mainGrid3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="9">
 
             <androidx.cardview.widget.CardView
-                android:layout_columnWeight="0"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:layout_weight="1"
                 app:cardCornerRadius="12dp"
-                android:layout_width="180dp"
-                android:layout_margin="12dp">
+                app:cardElevation="6dp">
 
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center_horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
                     <ImageView
-                        android:src="@drawable/display"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
                         android:id="@+id/Display"
-                        android:onClick="displayQuestionStud"/>
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:onClick="displayQuestionStud"
+                        android:src="@drawable/display" />
 
                     <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"
-                        android:text="Liste des questions"
-                        android:gravity="center_horizontal"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_horizontal"
+                        android:text="Liste des questions"
+                        android:textColor="#6f6f6f"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_columnWeight="0"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:layout_weight="1"
                 app:cardCornerRadius="12dp"
-                android:layout_width="180dp"
-                android:layout_margin="12dp">
+                app:cardElevation="6dp">
 
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center_horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
                     <ImageView
-                        android:src="@drawable/home"
+                        android:id="@+id/action_home"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:id="@+id/action_home"
-                        android:onClick="goToMainActivity"/>
+                        android:onClick="goToMainActivity"
+                        android:src="@drawable/home" />
 
                     <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"
-                        android:text="Menu principal"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_horizontal"
+                        android:text="Menu principal\n"
+                        android:textColor="#6f6f6f"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
-        </GridLayout>
+        </LinearLayout>
 
         <!--<TableLayout
             android:columnCount="2"
