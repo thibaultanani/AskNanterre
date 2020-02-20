@@ -20,17 +20,19 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
     private ArrayList<String> list3 = new ArrayList<String>();
     private ArrayList<String> list4 = new ArrayList<String>();
     private ArrayList<String> list5 = new ArrayList<String>();
+    private ArrayList<Integer> list6 = new ArrayList<Integer>();
 
     private Context context;
 
 
 
-    public CustomAdapterStud(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,ArrayList<String> list4,ArrayList<String> list5,Context context) {
+    public CustomAdapterStud(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,ArrayList<String> list4,ArrayList<String> list5,ArrayList<Integer> list6,Context context) {
         this.list1 = list1;
         this.list2 = list2;
         this.list3 = list3;
         this.list4 = list4;
         this.list5=list5;
+        this.list6 = list6;
         this.context = context;
     }
 
@@ -81,6 +83,26 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
 
         listItemTextUpvote.setText(formatedText);
         listItemTextDownvote.setText(formatedText3);
+        TextView listItemTextupvoteProf= (TextView) view.findViewById(R.id.textView_upvoteProf);
+
+
+        if (list6.get(position)==0)
+        {
+            String formatedText4=" Pas de vote";
+            listItemTextupvoteProf.setText(formatedText4);
+        }
+         if (list6.get(position)==1)
+        {
+            String formatedText4=" Upvoté par le prof";
+            listItemTextupvoteProf.setText(formatedText4);
+        }
+
+         if ( list6.get(position)==-1 )
+        {
+            String formatedText4=" Downvoté par le prof";
+            listItemTextupvoteProf.setText(formatedText4);
+        }
+
         listItemText.setText(list1.get(position));
 
         //Handle buttons and add onClickListeners

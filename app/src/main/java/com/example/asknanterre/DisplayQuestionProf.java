@@ -169,11 +169,40 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 // add to menu
                 menu.addMenuItem(validateItem);
 
+                // create "upvote" item
+                SwipeMenuItem upvoteProfItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                upvoteProfItem.setBackground(new ColorDrawable(Color.rgb(44, 34, 240)));
+                // set item width
+                upvoteProfItem.setWidth(170);
+                // set a icon
+                upvoteProfItem.setIcon(R.drawable.ic_validate);
+                // add to menu
+                menu.addMenuItem(upvoteProfItem);
+
+                // create "downvote" item
+                SwipeMenuItem downvoteProfItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                downvoteProfItem.setBackground(new ColorDrawable(Color.rgb(0xF9,
+                        0x3F, 0x25)));
+                // set item width
+                downvoteProfItem.setWidth(170);
+                // set a icon
+                downvoteProfItem.setIcon(R.drawable.ic_validate);
+                // add to menu
+                menu.addMenuItem(downvoteProfItem);
+
+
+
 
             }
         };
 
         myListView2.setMenuCreator(creator2);
+
+
 
         myListView2.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
@@ -188,6 +217,51 @@ public class DisplayQuestionProf extends AppCompatActivity {
                         adapt.notifyDataSetChanged();
                         updateList();
                         break;
+
+                    case 1:
+                        // open
+                        question = Question.findById(Question.class, Integer.parseInt(list5.get(position)));
+                        //Si  upvotePrif il vaut déja 1 on la remet à 0
+                        if(question.upvoteProf==1) {
+                            question.upvoteProf = 0;
+                            question.save();
+                            Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été remis en neutre", Toast.LENGTH_LONG).show();
+                            adapt.notifyDataSetChanged();
+                            updateList();
+                            break;
+                        }
+                        else {
+                            question.upvoteProf = 1;
+                            question.save();
+                            Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été Upvote", Toast.LENGTH_LONG).show();
+                            adapt.notifyDataSetChanged();
+                            updateList();
+                            break;
+                        }
+
+                    case 2:
+                        // open
+                        question = Question.findById(Question.class, Integer.parseInt(list5.get(position)));
+                        //Idem si déjà -1 on remet à 0
+                        if (question.upvoteProf==-1) {
+                            question.upvoteProf = 0;
+                            question.save();
+                            Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été remis en neutre", Toast.LENGTH_LONG).show();
+                            adapt.notifyDataSetChanged();
+                            updateList();
+                            break;
+                        }
+
+                        else {
+                            question.upvoteProf = -1;
+                            question.save();
+                            Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été Downvote", Toast.LENGTH_LONG).show();
+                            adapt.notifyDataSetChanged();
+                            updateList();
+                            break;
+                        }
+
+
 
                 }
                 // false : close the menu; true : not close the menu
