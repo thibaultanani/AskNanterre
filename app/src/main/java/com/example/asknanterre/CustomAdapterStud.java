@@ -11,7 +11,12 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
 
@@ -22,6 +27,7 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
     private ArrayList<String> list5 = new ArrayList<String>();
 
     private Context context;
+    DatabaseReference ref;
 
 
 
@@ -92,10 +98,14 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
         likeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Question question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
+                /*Question question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
                 question.upvote= question.upvote+1;
 
-                question.save();
+                question.save();*/
+                ref = FirebaseDatabase.getInstance().getReference().child("question").child(list2.get(position));
+                Map<String,Object> questionMap = new HashMap<String,Object>();
+                questionMap.put("upvote", 1);
+                ref.updateChildren(questionMap);
                 //Modifier list3
                 notifyDataSetChanged();
 

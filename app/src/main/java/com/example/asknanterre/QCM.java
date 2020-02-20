@@ -4,9 +4,9 @@ import com.orm.SugarRecord;
 
 public class QCM extends SugarRecord {
     String rep;
-    long questionId;
+    String questionId;
 
-    public QCM(String rep, long questionId) {
+    public QCM(String rep, String questionId) {
         this.rep = rep;
         this.questionId = questionId;
     }
@@ -19,11 +19,11 @@ public class QCM extends SugarRecord {
         this.rep = rep;
     }
 
-    public long getQuestionId() {
+    public String getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(int questionId) {
+    public void setQuestionId(String questionId) {
         this.questionId = questionId;
     }
 }

@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.w3c.dom.Text;
 
 public class AddQCM extends AppCompatActivity {
@@ -67,15 +70,23 @@ public class AddQCM extends AppCompatActivity {
 
         Question q = new Question(name.getText().toString());
         q.type = 2;
-        long id = q.save();
-        Log.d("l'id de la question", id+"");
+        /*long id = q.save();
+        Log.d("l'id de la question", id+"");*/
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        Log.v("Exemple", database.toString());
+
+
+        //database.getReference("question").push().setValue(q);
+        String id = database.getReference("question").push().getKey();
+        database.getReference("question").child(id).setValue(q);
 
         final int childCount = ll.getChildCount();
         for (int i = 0; i < childCount; i++) {
             EditText v1 = (EditText) ll.getChildAt(i);
             QCM qcm = new QCM(v1.getText().toString(), id);
-            Log.d("l'id de la rep", id+"");
-            qcm.save();
+            database.getReference("qcm").push().setValue(qcm);
+            Log.d("l'id de la rep", id);
+            //qcm.save();
         }
 
         Toast.makeText(this, "la Question: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();

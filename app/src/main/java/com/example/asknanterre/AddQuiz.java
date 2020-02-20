@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,20 +87,30 @@ public class AddQuiz extends AppCompatActivity {
         text2 = spinner2.getSelectedItem().toString();
 
         QuestionProf q = new QuestionProf(name.getText().toString());
-        long id = q.save();
-        Log.d("l'id de la question", id+"");
+        /*long id = q.save();
+        Log.d("l'id de la question", id+"");*/
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        Log.v("Exemple", database.toString());
+
+
+        //database.getReference("question").push().setValue(q);
+        String id = database.getReference("questionProf").push().getKey();
+        database.getReference("questionProf").child(id).setValue(q);
 
         final int childCount = ll.getChildCount();
         for (int i = 0; i < childCount; i++) {
             EditText v1 = (EditText) ll.getChildAt(i);
             if(Integer.parseInt(text2)!=(i+1)){
                 Quiz quiz = new Quiz(v1.getText().toString(), id, false);
-                quiz.save();
+                database.getReference("quiz").push().setValue(quiz);
+                //quiz.save();
                 Log.d("valeur de la rep", "fausse");
             }
             else {
                 Quiz quiz = new Quiz(v1.getText().toString(), id, true);
-                quiz.save();
+                database.getReference("quiz").push().setValue(quiz);
+                //quiz.save();
                 Log.d("valeur de la rep", "vraie");
             }
             Log.d("l'id de la rep", id+"");

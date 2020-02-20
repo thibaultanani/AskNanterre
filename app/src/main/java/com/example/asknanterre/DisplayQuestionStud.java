@@ -1,9 +1,14 @@
 package com.example.asknanterre;
 
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.asknanterre.CustomAdapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,12 +32,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DisplayQuestionStud extends AppCompatActivity {
 
@@ -41,13 +53,21 @@ public class DisplayQuestionStud extends AppCompatActivity {
     List<Question> questions;
     SimpleAdapter adapter;
     ArrayList<HashMap<String, String>> data;
-    List<Question> quest = Question.find(Question.class, "valide = 1");
-    String[] q1 = new String[quest.size()];
+    //List<Question> quest = Question.find(Question.class, "valide = 1");
+    List<Question> quest;
+    List<String> questID;
+    /*String[] q1 = new String[quest.size()];
     String[] q2 = new String[quest.size()];
     String[] q3 = new String[quest.size()];
     String[] q4 = new String[quest.size()];
-    String[] q5 = new String[quest.size()];
+    String[] q5 = new String[quest.size()];*/
+    String[] q1;
+    String[] q2;
+    String[] q3;
+    String[] q4;
+    String[] q5;
     BottomNavigationView bottomNavigationView;
+    private DatabaseReference mQuestionReference;
     Menu itemToHide;
 
     @Override
@@ -55,7 +75,9 @@ public class DisplayQuestionStud extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_displayquestion);
 
-        myListView = (ListView) findViewById(R.id.myListView);
+        mQuestionReference = FirebaseDatabase.getInstance().getReference()
+                .child("question");
+        updateList();
 
         /*Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorDarkRed));
@@ -64,33 +86,6 @@ public class DisplayQuestionStud extends AppCompatActivity {
         bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorRed)));*/
 
         //Collections.sort(quest, new UpvoteSorter());
-        for (Question q : quest) {
-            Log.d("gfgfgfgf", q.toString() + "" + q.getNom() + "" + q.getUpvote());
-        }
-
-        for (int i = 0; i < quest.size(); i++) {
-            q1[i] = quest.get(i).nom;
-            q2[i] = quest.get(i).getId().toString();
-            q3[i] = "" + quest.get(i).upvote;
-            q4[i] = "" + quest.get(i).repondu;
-            q5[i] = "" + quest.get(i).downvote;
-        }
-
-        for (int i = 0; i < q2.length; i++) {
-            Log.d("valeur de la liste " + i + ":", q2[i]);
-        }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, q1);
-        ArrayList<String> list1 = new ArrayList(Arrays.asList(q1));
-        ArrayList<String> list2 = new ArrayList(Arrays.asList(q2));
-        ArrayList<String> list3 = new ArrayList(Arrays.asList(q3));
-        ArrayList<String> list4 = new ArrayList(Arrays.asList(q4));
-        ArrayList<String> list5 = new ArrayList(Arrays.asList(q5));
-
-        CustomAdapterStud adapt = new CustomAdapterStud(list1, list2, list3,list4 ,list5, this);
-        myListView.setAdapter(adapt);
-        Button triBtn = (Button) findViewById(R.id.triupvote);
-        adapt.notifyDataSetChanged();
 
         /*bottomNavigationView = (BottomNavigationView) findViewById(R.id.activity_main_bottom_navigation);
         itemToHide = bottomNavigationView.getMenu();
@@ -124,7 +119,7 @@ public class DisplayQuestionStud extends AppCompatActivity {
         //show();
     }
 
-    public void trier(View v) {
+    /*public void trier(View v) {
         myListView = (ListView) findViewById(R.id.myListView);
 
         Collections.sort(quest, new UpvoteSorter());
@@ -149,6 +144,64 @@ public class DisplayQuestionStud extends AppCompatActivity {
         CustomAdapterStud adapt = new CustomAdapterStud(list1, list2, list3,list4, list5, this);
         myListView.setAdapter(adapt);
 
+    }*/
+
+    public void updateList() {
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference questionRef = rootRef.child("question");
+        quest = new ArrayList<Question>();
+        questID = new ArrayList<String>();
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                quest.clear();
+                questID.clear();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String product = ds.getKey();
+                    if (ds.getValue(Question.class).valide) {
+                        quest.add(ds.getValue(Question.class));
+                        questID.add(ds.getKey());
+                    }
+                    Log.d("TAG", product);
+                }
+
+                q1 = new String[quest.size()];
+                q2 = new String[quest.size()];
+                q3 = new String[quest.size()];
+
+                q4 = new String[quest.size()];
+                q5 = new String[quest.size()];
+
+                myListView = (ListView) findViewById(R.id.myListView);
+
+                for (int i = 0; i < quest.size(); i++) {
+                    q1[i] = quest.get(i).nom;
+                    q3[i] = "" + quest.get(i).upvote;
+                    q4[i]= "" + quest.get(i).repondu;
+                    q4[i]= "" + quest.get(i).downvote;
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayQuestionStud.this, android.R.layout.simple_list_item_1, q1);
+                ArrayList<String> list1 = new ArrayList(Arrays.asList(q1));
+                ArrayList<String> list2 = new ArrayList(questID);
+                ArrayList<String> list3 = new ArrayList(Arrays.asList(q3));
+                ArrayList<String> list4 = new ArrayList(Arrays.asList(q4));
+                ArrayList<String> list5 = new ArrayList(Arrays.asList(q5));
+
+                CustomAdapterStud adapt = new CustomAdapterStud(list1, list2, list3,list4 ,list5, DisplayQuestionStud.this);
+                myListView.setAdapter(adapt);
+                adapt.notifyDataSetChanged();
+
+
+                Button triBtn = (Button) findViewById(R.id.triupvote);
+
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        };
+        questionRef.addListenerForSingleValueEvent(eventListener);
     }
 
     public void repondre(View v){
