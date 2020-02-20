@@ -3,6 +3,7 @@ package com.example.asknanterre;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,11 +17,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Logger;
+import com.google.firebase.database.ValueEventListener;
 
 public class AddQuestion extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     Menu itemToHide;
+    private DatabaseReference mDatabase;
+    private static final String TAG = "AddQuestion";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +74,40 @@ public class AddQuestion extends AppCompatActivity {
 
         Question q = new Question(name.getText().toString());
         q.type = 1;
-        q.save();
+        //q.save();
+        /*mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("question").push().setValue(q, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference mDatabase) {
+                Toast.makeText(AddQuestion.this, "User added.", Toast.LENGTH_SHORT).show();
+
+            }
+        });*/
+        /*FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        FirebaseDatabase.getInstance().setLogLevel(Logger.Level.DEBUG);
+        DatabaseReference connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
+        connectedRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                boolean connected = snapshot.getValue(Boolean.class);
+                if (connected) {
+                    Log.d(TAG, "connected");
+                } else {
+                    Log.d(TAG, "not connected");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w(TAG, "Listener was cancelled");
+            }
+        });*/
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        Log.v("Exemple", database.toString());
+
+        database.getReference("question").push().setValue(q);
+
 
         Toast.makeText(this, "la Question: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
 

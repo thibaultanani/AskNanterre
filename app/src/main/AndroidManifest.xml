@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.asknanterre">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name="com.orm.SugarApp"
         android:allowBackup="true"
@@ -40,5 +42,4 @@
         <activity android:name=".AddQuiz"/>
 
     </application>
-
 </manifest>
