@@ -80,13 +80,19 @@
 
                 <ImageView
                     android:id="@+id/textView_repondu"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
                     android:src="@drawable/ic_validate"
                     android:tint="@color/colorAccentDark"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
 
+                <TextView
+                    android:id="@+id/textView_upvoteProf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="upvoteProf"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>
 
         </RelativeLayout>
@@ -122,14 +128,7 @@
                 android:text="Repondu"
                 android:textAppearance="?android:attr/textAppearanceLarge" />-->
 
-        <TextView
-                android:id="@+id/textView_upvoteProf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.46"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="upvoteProf"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+
 
 
     </androidx.cardview.widget.CardView>
