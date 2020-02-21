@@ -178,7 +178,7 @@ public class DisplayQuestionStud extends AppCompatActivity {
                     q1[i] = quest.get(i).nom;
                     q3[i] = "" + quest.get(i).upvote;
                     q4[i]= "" + quest.get(i).repondu;
-                    q4[i]= "" + quest.get(i).downvote;
+                    q5[i]= "" + quest.get(i).downvote;
                 }
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayQuestionStud.this, android.R.layout.simple_list_item_1, q1);
