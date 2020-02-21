@@ -1,6 +1,7 @@
 package com.example.asknanterre;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,16 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
 
@@ -23,6 +33,8 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
     private ArrayList<String> list6 = new ArrayList<String>();
 
     private Context context;
+    DatabaseReference ref;
+    int upvote;
 
 
 
@@ -114,12 +126,34 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
         likeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Question question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
+                /*Question question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
                 question.upvote= question.upvote+1;
 
-                question.save();
-                //Modifier list3
-                notifyDataSetChanged();
+                question.save();*/
+                ref = FirebaseDatabase.getInstance().getReference().child("question").child(list2.get(position));
+                final String key = ref.getKey();
+                Log.d("key originel", key);
+                final Map<String,Object> questionMap = new HashMap<String,Object>();
+                ValueEventListener valueEventListener = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                            Log.d("key recu", ds.getKey());
+                            if(ds.getKey().equals("upvote")) {
+                                questionMap.put("upvote", ds.getValue(Integer.class) + 1);
+                                ref.updateChildren(questionMap);
+                                if (context instanceof DisplayQuestionStud) {
+                                    ((DisplayQuestionStud)context).updateList();
+                                }
+                            }
+                            Log.d("TAG", "tour de boucle");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {}
+                };
+                ref.addListenerForSingleValueEvent(valueEventListener);
 
 
             }
@@ -131,12 +165,36 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
         dislikeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Question question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
+                /*Question question = Question.findById(Question.class, Integer.parseInt(list2.get(position)));
                 question.downvote= question.downvote+1;
 
                 question.save();
                 //Modifier list3
-                notifyDataSetChanged();
+                notifyDataSetChanged();*/
+                ref = FirebaseDatabase.getInstance().getReference().child("question").child(list2.get(position));
+                final String key = ref.getKey();
+                Log.d("key originel", key);
+                final Map<String,Object> questionMap = new HashMap<String,Object>();
+                ValueEventListener valueEventListener = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                            Log.d("key recu", ds.getKey());
+                            if(ds.getKey().equals("downvote")) {
+                                questionMap.put("downvote", ds.getValue(Integer.class) + 1);
+                                ref.updateChildren(questionMap);
+                                if (context instanceof DisplayQuestionStud) {
+                                    ((DisplayQuestionStud)context).updateList();
+                                }
+                            }
+                            Log.d("TAG", "tour de boucle");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {}
+                };
+                ref.addListenerForSingleValueEvent(valueEventListener);
 
 
             }

@@ -4,10 +4,10 @@ import com.orm.SugarRecord;
 
 public class Quiz extends SugarRecord {
     String rep;
-    long questionId;
+    String questionId;
     boolean correct;
 
-    public Quiz(String rep, long questionId, boolean correct) {
+    public Quiz(String rep, String questionId, boolean correct) {
         this.rep = rep;
         this.questionId = questionId;
         this.correct = correct;
@@ -21,11 +21,11 @@ public class Quiz extends SugarRecord {
         this.rep = rep;
     }
 
-    public long getQuestionId() {
+    public String getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(long questionId) {
+    public void setQuestionId(String questionId) {
         this.questionId = questionId;
     }
 
