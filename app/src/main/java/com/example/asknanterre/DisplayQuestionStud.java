@@ -22,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -72,6 +73,7 @@ public class DisplayQuestionStud extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     private DatabaseReference mQuestionReference;
     Menu itemToHide;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,6 +154,10 @@ public class DisplayQuestionStud extends AppCompatActivity {
     }*/
 
     public void updateList() {
+
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference questionRef = rootRef.child("question");
         quest = new ArrayList<Question>();
@@ -210,6 +216,8 @@ public class DisplayQuestionStud extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         };
         questionRef.addListenerForSingleValueEvent(eventListener);
+
+        progressBar.setVisibility(View.GONE);
     }
 
     public void repondre(View v){

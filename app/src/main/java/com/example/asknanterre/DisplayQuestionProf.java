@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -86,6 +87,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
     int cpt = 0;
     DatabaseReference ref;
     private Context context;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,6 +173,9 @@ public class DisplayQuestionProf extends AppCompatActivity {
     }*/
 
     public void updateList() {
+
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference questionRef = rootRef.child("question");
@@ -495,7 +500,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
         };
         questionRef.addListenerForSingleValueEvent(eventListener);
 
-
+        progressBar.setVisibility(View.GONE);
     }
 
     public void goToMainActivity(){
