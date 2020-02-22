@@ -1,6 +1,9 @@
 package com.example.asknanterre;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +12,10 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -35,6 +40,9 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
     private Context context;
     DatabaseReference ref;
     int upvote;
+    private boolean checkExists = false;
+    private Answer tmp;
+    private String tmpKey;
 
 
 
@@ -79,6 +87,7 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
         ImageView listItemTextRepondu= (ImageView) view.findViewById(R.id.textView_repondu);
         String formatedText3="" + list5.get(position);
         TextView listItemTextDownvote= (TextView) view.findViewById(R.id.textView_downvote);
+        LinearLayout myLinearLayout = (LinearLayout) view.findViewById(R.id.mylinearLayoutx);
 
         if ( list4.get(position).equals("true"))
             {
@@ -100,19 +109,22 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
 
         if (list6.get(position).equals("0"))
         {
-            String formatedText4=" Pas de vote";
-            listItemTextupvoteProf.setText(formatedText4);
+            //String formatedText4=" Pas de vote";
+            //listItemTextupvoteProf.setText(formatedText4);
+            myLinearLayout.setBackgroundColor(context.getResources().getColor(R.color.colorLightBlue));
         }
          if (list6.get(position).equals("1"))
         {
-            String formatedText4=" Upvoté par le prof";
-            listItemTextupvoteProf.setText(formatedText4);
+            //String formatedText4=" Upvoté par le prof";
+            //listItemTextupvoteProf.setText(formatedText4);
+            myLinearLayout.setBackgroundColor(context.getResources().getColor(R.color.colorAccentDark));
         }
 
          if ( list6.get(position).equals("-1"))
         {
-            String formatedText4=" Downvoté par le prof";
-            listItemTextupvoteProf.setText(formatedText4);
+            //String formatedText4=" Downvoté par le prof";
+            //listItemTextupvoteProf.setText(formatedText4);
+            myLinearLayout.setBackgroundColor(context.getResources().getColor(R.color.colorRed));
         }
 
         listItemText.setText(list1.get(position));
@@ -197,6 +209,49 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
                 ref.addListenerForSingleValueEvent(valueEventListener);
 
 
+            }
+        });
+
+        listItemText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference postRef = FirebaseDatabase.getInstance().getReference().child("answer");
+                Log.v("postRef", list2.get(position));
+                postRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Iterable<DataSnapshot> answerChildren = dataSnapshot.getChildren();
+
+                        for (DataSnapshot answer: answerChildren) {
+                            Answer a = answer.getValue(Answer.class);      //make a model User with necessary fields
+                            Log.v("questId", a.questionId);
+                            if(a.questionId.equals(list2.get(position))){
+                                checkExists = true;
+                                tmp = a;
+                                tmpKey = answer.getKey();
+                            }
+                        }
+                        if(checkExists) {
+                            checkExists = false;
+                            Intent intent = new Intent(context, DisplayAnswer.class);
+                            Bundle b = new Bundle();
+                            b.putString("key", list2.get(position)); //Your id
+                            b.putString("name", list1.get(position));
+                            b.putString("keyAnswer", tmpKey);
+                            b.putString("nameAnswer", tmp.nom);
+                            intent.putExtras(b); //Put your id to your next Intent
+                            context.startActivity(intent);
+                        }
+                        else {
+                            Toast.makeText(context, "Le professeur n'a pas encore répondu à cette question", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 

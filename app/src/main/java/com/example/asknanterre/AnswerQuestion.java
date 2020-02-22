@@ -29,7 +29,7 @@ public class AnswerQuestion extends AppCompatActivity {
     }
 
 
-    public void answerQuestion2(View v) {
+    /*public void answerQuestion2(View v) {
 
         EditText name = (EditText) findViewById((R.id.lname));
 
@@ -39,5 +39,5 @@ public class AnswerQuestion extends AppCompatActivity {
         Toast.makeText(this, "la reponse: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
 
         name.setText("");
-    }
+    }*/
 }

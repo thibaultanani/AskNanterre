@@ -4,12 +4,13 @@ import com.orm.SugarRecord;
 
 public class Answer extends SugarRecord {
     String nom;
-    //int upvote = 0
+    String questionId;
 
     public Answer(){}
 
-    public Answer(String nom){
+    public Answer(String nom, String questionId){
         this.nom = nom;
+        this.questionId = questionId;
     }
 
 
@@ -22,5 +23,13 @@ public class Answer extends SugarRecord {
     }
 
     //public void setUpvote (int upvote) {this.upvote = upvote;}
+
+    public String getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(String questionId) {
+        this.questionId = questionId;
+    }
 
 }

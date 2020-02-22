@@ -40,6 +40,10 @@
         <activity android:name=".DisplayQuestionStud"/>
         <activity android:name=".AddQCM"/>
         <activity android:name=".AddQuiz"/>
+        <activity android:name=".AddAnswer"/>
+        <activity android:name=".ModifyAnswer"/>
+        <activity android:name=".AddAnswer2"/>
+        <activity android:name=".DisplayAnswer"/>
 
     </application>
 </manifest>

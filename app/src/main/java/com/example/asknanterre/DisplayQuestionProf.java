@@ -61,6 +61,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
     String[] q5;
     String[] q6;
     String[] q7;
+    String[] q8;
     ArrayList<String> list1;
     ArrayList<String> list2;
     ArrayList<String> list3;
@@ -68,6 +69,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
     ArrayList<String> list5;
     ArrayList<String> list6;
     ArrayList<String> list7;
+    ArrayList<String> list8;
     ArrayAdapter<String> adapter;
     ArrayAdapter<String> adapter2;
     CustomAdapterProf adapt;
@@ -204,6 +206,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 q5 = new String[quest2.size()];
                 q6 = new String[quest2.size()];
                 q7 = new String[quest2.size()];
+                q8 = new String[quest2.size()];
 
                 myListView = (SwipeMenuListView) findViewById(R.id.myListView);
                 myListView2 = (SwipeMenuListView) findViewById(R.id.myListView2);
@@ -230,6 +233,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                     q4[i] = quest2.get(i).nom;
                     q6[i] = "" + quest2.get(i).upvote;
                     q7[i] = "" + quest2.get(i).downvote;
+                    q8[i] = "" + quest2.get(i).type;
                 }
 
                 adapter = new ArrayAdapter<String>(DisplayQuestionProf.this, android.R.layout.simple_list_item_1, q1);
@@ -246,7 +250,8 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 list5 = new ArrayList(quest2ID);
                 list6 = new ArrayList( Arrays.asList(q6));
                 list7 = new ArrayList( Arrays.asList(q7));
-                adapt2 = new CustomAdapterProf2(list4, list5, list6,list7,DisplayQuestionProf.this);
+                list8 = new ArrayList( Arrays.asList(q8));
+                adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, DisplayQuestionProf.this);
                 myListView2.setAdapter(adapt2);
 
                 Button triBtn=(Button) findViewById(R.id.triupvote);

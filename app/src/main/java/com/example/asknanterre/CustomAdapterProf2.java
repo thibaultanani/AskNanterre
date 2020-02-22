@@ -1,6 +1,9 @@
 package com.example.asknanterre;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +11,13 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+
+import com.google.firebase.FirebaseError;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -17,15 +27,19 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
     private ArrayList<String> list2 = new ArrayList<String>();
     private ArrayList<String> list3 = new ArrayList<String>();
     private ArrayList<String> list4 = new ArrayList<String>();
+    private ArrayList<String> list5 = new ArrayList<String>();
     private Context context;
+    private boolean checkExists = false;
+    private Answer tmp;
+    private String tmpKey;
 
 
-
-    public CustomAdapterProf2(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3, ArrayList<String> list4,Context context) {
+    public CustomAdapterProf2(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3, ArrayList<String> list4, ArrayList<String> list5, Context context) {
         this.list1 = list1;
         this.list2 = list2;
         this.list3 = list3;
-        this.list4=list4;
+        this.list4 = list4;
+        this.list5 = list5;
         this.context = context;
     }
 
@@ -89,6 +103,90 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
                 question.save();
             }
         });*/
+
+        listItemText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                /*DatabaseReference postRef = FirebaseDatabase.getInstance().getReference().child("reponse").child(list2.get(position));
+                Log.v("postRef", list2.get(position));
+                postRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(!dataSnapshot.exists()) {
+                            Intent intent = new Intent(context, AddAnswer.class);
+                            Bundle b = new Bundle();
+                            b.putString("key", list2.get(position)); //Your id
+                            b.putString("name", list1.get(position));
+                            intent.putExtras(b); //Put your id to your next Intent
+                            context.startActivity(intent);
+                        }
+                        else {
+                            Intent intent = new Intent(context, AddAnswer.class);
+                            Bundle b = new Bundle();
+                            b.putString("key", list2.get(position)); //Your id
+                            b.putString("name", list1.get(position));
+                            b.putString("keyAnswer", dataSnapshot.getKey());
+                            b.putString("nameAnswer", dataSnapshot.getValue(Answer.class).nom);
+                            intent.putExtras(b); //Put your id to your next Intent
+                            context.startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });*/
+                DatabaseReference postRef = FirebaseDatabase.getInstance().getReference().child("answer");
+                Log.v("postRef", list2.get(position));
+                postRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Iterable<DataSnapshot> answerChildren = dataSnapshot.getChildren();
+
+                        for (DataSnapshot answer: answerChildren) {
+                            Answer a = answer.getValue(Answer.class);      //make a model User with necessary fields
+                            Log.v("questId", a.questionId);
+                            if(a.questionId.equals(list2.get(position))){
+                                checkExists = true;
+                                tmp = a;
+                                tmpKey = answer.getKey();
+                            }
+                        }
+                        if(!checkExists) {
+                            Intent intent;
+                            if(Integer.parseInt(list5.get(position))==1) {
+                                intent = new Intent(context, AddAnswer.class);
+                            }
+                            else {
+                                intent = new Intent(context, AddAnswer2.class);
+                            }
+                            Bundle b = new Bundle();
+                            b.putString("key", list2.get(position)); //Your id
+                            b.putString("name", list1.get(position));
+                            intent.putExtras(b); //Put your id to your next Intent
+                            context.startActivity(intent);
+                        }
+                        else {
+                            Intent intent = new Intent(context, ModifyAnswer.class);
+                            Bundle b = new Bundle();
+                            b.putString("key", list2.get(position)); //Your id
+                            b.putString("name", list1.get(position));
+                            b.putString("keyAnswer", tmpKey);
+                            b.putString("nameAnswer", tmp.nom);
+                            intent.putExtras(b); //Put your id to your next Intent
+                            context.startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
 
 
         return view;

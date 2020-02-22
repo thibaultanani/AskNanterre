@@ -6,6 +6,8 @@ public class QCM extends SugarRecord {
     String rep;
     String questionId;
 
+    public QCM() {}
+
     public QCM(String rep, String questionId) {
         this.rep = rep;
         this.questionId = questionId;

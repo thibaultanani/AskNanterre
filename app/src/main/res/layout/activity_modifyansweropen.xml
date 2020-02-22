@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Modifier la réponse qui sera envoyée aux étudiants"/>
+
+    <EditText
+        android:id="@+id/lname"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="top"
+        android:background="@drawable/edittext_bg"
+        android:hint="Votre réponse"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right">
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Modifier"
+        android:id="@+id/button"
+        android:onClick="modifier"
+        android:background="@drawable/mybutton2"
+        android:textColor="#ffffff"
+        android:drawableStart="@drawable/ic_arrow"/>
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/button"
+        android:text="Supprimer"
+        android:id="@+id/button2"
+        android:onClick="supprimer"
+        android:background="@drawable/mybutton2"
+        android:textColor="#ffffff"
+        android:drawableStart="@drawable/ic_arrow"/>
+    </RelativeLayout>
+
+</LinearLayout>
