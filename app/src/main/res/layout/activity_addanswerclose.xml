@@ -8,6 +8,15 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="60px"
+        android:text="LA QUESTION"
+        android:gravity="center"/>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

@@ -34,6 +34,7 @@ public class AddAnswer2 extends AppCompatActivity {
     EditText edit;
     EditText editText;
     TextView textView;
+    TextView question;
     String text;
     DatabaseReference ref;
 
@@ -48,6 +49,9 @@ public class AddAnswer2 extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         final String questionId;
         questionId = b.getString("key");
+
+        question = (TextView) findViewById(R.id.question);
+        question.setText(b.getString("name"));
 
         editText = (EditText) findViewById(R.id.lname);
         textView = (TextView) findViewById(R.id.ltext);

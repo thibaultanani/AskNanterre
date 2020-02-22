@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,11 +21,16 @@ public class AddAnswer extends AppCompatActivity {
     Menu itemToHide;
     private DatabaseReference mDatabase;
     private static final String TAG = "AddAnswer";
+    TextView question;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addansweropen);
+
+        Bundle b = getIntent().getExtras();
+        question = (TextView) findViewById(R.id.question);
+        question.setText(b.getString("name"));
     }
 
     public void valider(View v) {

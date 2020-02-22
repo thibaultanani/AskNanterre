@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +25,7 @@ public class ModifyAnswer extends AppCompatActivity {
     private static final String TAG = "AddAnswer";
     DatabaseReference ref;
     EditText name;
+    TextView question;
     Bundle b;
     String questionId;
     String AnswerId;
@@ -37,6 +39,9 @@ public class ModifyAnswer extends AppCompatActivity {
         b = getIntent().getExtras();
         name = (EditText) findViewById(R.id.lname);
         name.setText(b.getString("nameAnswer"));
+
+        question = (TextView) findViewById(R.id.question);
+        question.setText(b.getString("name"));
     }
 
     public void modifier(View v) {
