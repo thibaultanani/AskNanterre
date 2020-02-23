@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
+    <!--<Button
         android:id="@+id/triupvote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +20,37 @@
         android:background="@drawable/mybutton2"
         android:textColor="#ffffff"
         android:drawableStart="@drawable/ic_arrow"
-        android:onClick="trier"/>
+        android:onClick="trier"/>-->
+
+    <EditText
+        android:id="@+id/EditText01"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:hint="Rechercher"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mylinearlayout2"
+        android:layout_below="@+id/EditText01"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:hint="Option de tri"/>
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/number_arrays"
+            android:layout_marginTop="10dp"
+            android:prompt="@string/number_prompt" />
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/myListView"
@@ -29,7 +59,7 @@
         android:layout_below="@+id/tableLayout1"
         android:layout_alignParentStart="true"
         android:divider="@android:color/transparent"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="140dp" />
 
     <!--<com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/activity_main_bottom_navigation"

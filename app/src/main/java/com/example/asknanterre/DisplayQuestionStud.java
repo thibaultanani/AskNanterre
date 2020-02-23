@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,12 +20,14 @@ import android.view.ViewGroup;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,6 +78,8 @@ public class DisplayQuestionStud extends AppCompatActivity {
     private DatabaseReference mQuestionReference;
     Menu itemToHide;
     ProgressBar progressBar;
+    Spinner spinner;
+    EditText edit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +89,36 @@ public class DisplayQuestionStud extends AppCompatActivity {
         mQuestionReference = FirebaseDatabase.getInstance().getReference()
                 .child("question");
         updateList();
+
+        spinner = (Spinner) findViewById(R.id.spinner1);
+
+        myListView = (ListView) findViewById(R.id.myListView);
+
+        final List<String> spinnerArray =  new ArrayList<String>();
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, spinnerArray);
+
+        spinnerArray.add("Trier par date");
+        spinnerArray.add("Trier par upvote");
+        spinnerArray.add("Trier par downvote");
+        spinnerArray.add("Trier par upvote du prof");
+        spinnerArray.add("Trier par downvote du prof");
+
+        adapter.notifyDataSetChanged();
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // your code here
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
 
         /*Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorDarkRed));
@@ -206,8 +242,7 @@ public class DisplayQuestionStud extends AppCompatActivity {
                 myListView.setAdapter(adapt);
                 adapt.notifyDataSetChanged();
 
-
-                Button triBtn = (Button) findViewById(R.id.triupvote);
+                //Button triBtn = (Button) findViewById(R.id.triupvote);
 
             }
 

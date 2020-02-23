@@ -10,12 +10,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -88,6 +91,8 @@ public class DisplayQuestionProf extends AppCompatActivity {
     DatabaseReference ref;
     private Context context;
     ProgressBar progressBar;
+    Spinner spinner;
+    Spinner spinner2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +103,69 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 .child("question");
         updateList();
 
+        spinner = (Spinner) findViewById(R.id.spinner1);
+        spinner2 = (Spinner) findViewById(R.id.spinner2);
+
+        myListView = (SwipeMenuListView) findViewById(R.id.myListView);
+        myListView2 = (SwipeMenuListView) findViewById(R.id.myListView2);
+
+        final List<String> spinnerArray =  new ArrayList<String>();
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, spinnerArray);
+
+        final List<String> spinnerArray2 =  new ArrayList<String>();
+        final ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, spinnerArray2);
+
+        spinnerArray.add("Trier par date");
+        spinnerArray.add("Trier par upvote");
+        spinnerArray.add("Trier par downvote");
+        spinnerArray.add("Trier par upvote du prof");
+        spinnerArray.add("Trier par downvote du prof");
+
+        spinnerArray2.add("non validées");
+        spinnerArray2.add("validées");
+
+        adapter.notifyDataSetChanged();
+        spinner.setAdapter(adapter);
+
+        adapter2.notifyDataSetChanged();
+        spinner2.setAdapter(adapter2);
+
+        myListView2.setVisibility(View.INVISIBLE);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // your code here
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(position!=(spinnerArray2.size()-1)){
+                    myListView.setVisibility(View.VISIBLE);
+                    myListView2.setVisibility(View.INVISIBLE);
+                }
+                else {
+                    myListView.setVisibility(View.INVISIBLE);
+                    myListView2.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
         /*Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorDarkBlue));
 
@@ -146,7 +214,8 @@ public class DisplayQuestionProf extends AppCompatActivity {
         }
 
     }
-    /*public void trier(View v) {
+
+    /*public void trier(View v, int type) {
         myListView2 = (SwipeMenuListView) findViewById(R.id.myListView2);
 
         Collections.sort(quest2, new UpvoteSorter());
@@ -156,10 +225,10 @@ public class DisplayQuestionProf extends AppCompatActivity {
 
         for(int i=0; i<quest2.size(); i++) {
             q4[i] = quest2.get(i).nom;
-            q5[i] = quest2.get(i).getId().toString();
+            q5[i] = quest2.get(i).getId().toString(); // changer cette ligne
             q6[i] = "" + quest2.get(i).upvote;
             q7[i] = "" + quest2.get(i).downvote;
-
+            q8[i] = "" + quest2.get(i).type;
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, q1);
@@ -167,6 +236,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
         ArrayList<String> list2 = new ArrayList( Arrays.asList(q5));
         ArrayList<String> list3 = new ArrayList( Arrays.asList(q6));
         ArrayList<String> list4 = new ArrayList( Arrays.asList(q7));
+        ArrayList<String> list5 = new ArrayList( Arrays.asList(q8));
         CustomAdapterProf2 adapt = new CustomAdapterProf2(list1, list2, list3,list4, this);
         myListView2.setAdapter(adapt);
 
@@ -259,7 +329,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, DisplayQuestionProf.this);
                 myListView2.setAdapter(adapt2);
 
-                Button triBtn=(Button) findViewById(R.id.triupvote);
+               // Button triBtn=(Button) findViewById(R.id.triupvote);
 
                 SwipeMenuCreator creator = new SwipeMenuCreator() {
 

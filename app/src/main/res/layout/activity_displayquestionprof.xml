@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
+    <!--<Button
         android:id="@+id/triupvote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,22 +20,75 @@
         android:background="@drawable/mybutton2"
         android:textColor="#ffffff"
         android:drawableStart="@drawable/ic_arrow"
-        android:onClick="trier"/>
+        android:onClick="trier"/>-->
 
+    <EditText
+        android:id="@+id/EditText01"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:hint="Rechercher"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mylinearlayout"
+        android:layout_below="@+id/EditText01"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:hint="Liste des questions"/>
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/number_arrays"
+            android:layout_marginTop="10dp"
+            android:prompt="@string/number_prompt" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mylinearlayout"
+        android:id="@+id/mylinearlayout2"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:hint="Option de tri"/>
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/number_arrays"
+            android:layout_marginTop="10dp"
+            android:prompt="@string/number_prompt" />
+
+    </LinearLayout>
 
      <com.baoyz.swipemenulistview.SwipeMenuListView
         android:id="@+id/myListView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/triupvote"
-        android:layout_marginTop="100dp" />
+        android:layout_below="@+id/mylinearlayout2"
+        android:layout_marginTop="20dp" />
 
     <com.baoyz.swipemenulistview.SwipeMenuListView
         android:id="@+id/myListView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/myListView"
-        android:layout_marginTop="100dp"/>
+        android:layout_below="@+id/mylinearlayout2"
+        android:layout_marginTop="20dp"/>
 
     <!--<com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/activity_main_bottom_navigation"

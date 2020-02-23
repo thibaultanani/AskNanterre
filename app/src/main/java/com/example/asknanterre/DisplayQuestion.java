@@ -83,7 +83,7 @@ public class DisplayQuestion extends AppCompatActivity {
         ArrayList<String> list3 = new ArrayList( Arrays.asList(q3));
         CustomAdapter adapt = new CustomAdapter(list1, list2, list3, this);
         myListView.setAdapter(adapt);
-        Button triBtn=(Button) findViewById(R.id.triupvote);
+        //Button triBtn=(Button) findViewById(R.id.triupvote);
 
 
 
