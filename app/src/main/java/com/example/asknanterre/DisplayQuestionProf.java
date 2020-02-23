@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -58,6 +60,10 @@ public class DisplayQuestionProf extends AppCompatActivity {
     List<Question> quest2;
     List<String> questID;
     List<String> quest2ID;
+    List<Question> questtmp;
+    List<String> questIDtmp;
+    List<Question> quest2tmp;
+    List<String> quest2IDtmp;
     String[] q1;
     String[] q2;
     String[] q3;
@@ -93,6 +99,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
     ProgressBar progressBar;
     Spinner spinner;
     Spinner spinner2;
+    EditText edit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -253,6 +260,10 @@ public class DisplayQuestionProf extends AppCompatActivity {
         quest2 = new ArrayList<Question>();
         questID = new ArrayList<String>();
         quest2ID = new ArrayList<String>();
+        questtmp = new ArrayList<Question>();
+        questIDtmp = new ArrayList<String>();
+        quest2tmp = new ArrayList<Question>();
+        quest2IDtmp = new ArrayList<String>();
 
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
@@ -310,6 +321,97 @@ public class DisplayQuestionProf extends AppCompatActivity {
                     q7[i] = "" + quest2.get(i).downvote;
                     q8[i] = "" + quest2.get(i).type;
                 }
+
+                edit = (EditText) findViewById(R.id.EditText01);
+
+                edit.addTextChangedListener(new TextWatcher() {
+
+                    public void afterTextChanged(Editable s) {}
+
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        questtmp.clear();
+                        questIDtmp.clear();
+                        quest2tmp.clear();
+                        quest2IDtmp.clear();
+                        final int size = quest.size();
+                        final int size2 = quest2.size();
+                        if(s.length()!=0){
+                            for(int i=0; i<size; i++) {
+                                if(quest.get(i).nom.toLowerCase().contains(s.toString().toLowerCase())) {
+                                    questtmp.add(quest.get(i));
+                                    questIDtmp.add(questID.get(i));
+                                }
+                            }
+                            for(int j=0; j<size2; j++) {
+                                if(quest2.get(j).nom.toLowerCase().contains(s.toString().toLowerCase())) {
+                                    quest2tmp.add(quest2.get(j));
+                                    quest2IDtmp.add(quest2ID.get(j));
+                                }
+                            }
+                        }
+
+                        if(questtmp.size()!=0) {
+                            quest.clear();
+                            questID.clear();
+                            quest.addAll(questtmp);
+                            questID.addAll(questIDtmp);
+
+                            q1 = new String[quest.size()];
+                            q2 = new String[quest.size()];
+                            q3 = new String[quest.size()];
+
+                            for(int i=0; i<quest.size(); i++) {
+                                q1[i] = quest.get(i).nom;
+                                q3[i] = "" + quest.get(i).upvote;
+                            }
+
+
+                            adapter = new ArrayAdapter<String>(DisplayQuestionProf.this, android.R.layout.simple_list_item_1, q1);
+                            list1 = new ArrayList( Arrays.asList(q1));
+                            //list2 = new ArrayList( Arrays.asList(q2));
+                            list2 = new ArrayList(questID);
+                            list3 = new ArrayList( Arrays.asList(q3));
+                            adapt = new CustomAdapterProf(list1, list2, list3,DisplayQuestionProf.this);
+                            myListView.setAdapter(adapt);
+                        }
+
+                        if(quest2tmp.size()!=0) {
+                            quest2.clear();
+                            quest2ID.clear();
+                            quest2.addAll(quest2tmp);
+                            quest2ID.addAll(quest2IDtmp);
+
+                            q4 = new String[quest2.size()];
+                            q5 = new String[quest2.size()];
+                            q6 = new String[quest2.size()];
+                            q7 = new String[quest2.size()];
+                            q8 = new String[quest2.size()];
+
+                            for(int i=0; i<quest2.size(); i++) {
+                                q4[i] = quest2.get(i).nom;
+                                q6[i] = "" + quest2.get(i).upvote;
+                                q7[i] = "" + quest2.get(i).downvote;
+                                q8[i] = "" + quest2.get(i).type;
+                            }
+
+                            adapter2 = new ArrayAdapter<String>(DisplayQuestionProf.this, android.R.layout.simple_list_item_1, q4);
+                            list4 = new ArrayList( Arrays.asList(q4));
+                            //list5 = new ArrayList( Arrays.asList(q5));
+                            list5 = new ArrayList(quest2ID);
+                            list6 = new ArrayList( Arrays.asList(q6));
+                            list7 = new ArrayList( Arrays.asList(q7));
+                            list8 = new ArrayList( Arrays.asList(q8));
+                            adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, DisplayQuestionProf.this);
+                            myListView2.setAdapter(adapt2);
+                        }
+
+                        else if (quest2tmp.size()==0 && questtmp.size()==0){
+                            updateList();
+                        }
+                    }
+                });
 
                 adapter = new ArrayAdapter<String>(DisplayQuestionProf.this, android.R.layout.simple_list_item_1, q1);
                 list1 = new ArrayList( Arrays.asList(q1));
