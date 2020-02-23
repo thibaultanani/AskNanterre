@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.asknanterre">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.orm.SugarApp"
         android:allowBackup="true"
@@ -12,51 +13,51 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--<activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="android.intent.action.SEND"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="message/rfc822"/>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>-->
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".SplashScreen"
+        <activity android:name=".DisplayQuizz"/>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".SplashScreen"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-                <action android:name="android.intent.action.SEND"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="message/rfc822"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="message/rfc822" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddQuestion"/>
-        <activity android:name=".DisplayQuestion"/>
-        <activity android:name=".AddUser"/>
-        <activity android:name=".HomeActivity"/>
-        <activity android:name=".ConnectionActivity"/>
-        <activity android:name=".SendFeedBack"/>
+        <activity android:name=".AddQuestion" />
+        <activity android:name=".DisplayQuestion" />
+        <activity android:name=".AddUser" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".ConnectionActivity" />
+        <activity android:name=".SendFeedBack" />
+
         <meta-data
             android:name="VERSION"
-            android:value="12"/>
-        <activity android:name=".AnswerQuestion"/>
-        <activity android:name=".DisplayAnswerQuestion"/>
-        <activity android:name=".ProfessorUI"/>
-        <activity android:name=".StudentUI"/>
-        <activity android:name=".DisplayQuestionProf"/>
-        <activity android:name=".DisplayQuestionStud"/>
-        <activity android:name=".AddQCM"/>
-        <activity android:name=".AddQuiz"/>
-        <activity android:name=".AddAnswer"/>
-        <activity android:name=".ModifyAnswer"/>
-        <activity android:name=".AddAnswer2"/>
-        <activity android:name=".DisplayAnswer"/>
+            android:value="12" />
+
+        <activity android:name=".AnswerQuestion" />
+        <activity android:name=".DisplayAnswerQuestion" />
+        <activity android:name=".ProfessorUI" />
+        <activity android:name=".StudentUI" />
+        <activity android:name=".DisplayQuestionProf" />
+        <activity android:name=".DisplayQuestionStud" />
+        <activity android:name=".AddQCM" />
+        <activity android:name=".AddQuiz" />
+        <activity android:name=".AddAnswer" />
+        <activity android:name=".ModifyAnswer" />
+        <activity android:name=".AddAnswer2" />
+        <activity android:name=".DisplayAnswer" />
+        <activity android:name=".DisplayAnswerQuiz"/>
     </application>
+
 </manifest>

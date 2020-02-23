@@ -7,6 +7,8 @@ public class Quiz extends SugarRecord {
     String questionId;
     boolean correct;
 
+    public Quiz(){}
+
     public Quiz(String rep, String questionId, boolean correct) {
         this.rep = rep;
         this.questionId = questionId;
