@@ -96,5 +96,10 @@ public class StudentUI extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+    public void displayQuizz(View v) {
+        Intent intent = new Intent(this, DisplayQuizz.class);
+        startActivity(intent);
+    }
+
 
 }
