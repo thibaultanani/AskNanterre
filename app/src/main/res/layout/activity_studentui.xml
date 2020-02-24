@@ -209,7 +209,6 @@
                 app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -218,18 +217,18 @@
                     android:padding="16dp">
 
                     <ImageView
-                        android:id="@+id/action_home"
+                        android:id="@+id/DisplayQuizz"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:onClick="goToMainActivity"
-                        android:src="@drawable/home" />
+                        android:onClick="displayQuizz"
+                        android:src="@drawable/quiz" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Menu principal\n"
+                        android:text="Liste des\nquizz"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
@@ -264,18 +263,18 @@
                     android:padding="16dp">
 
                     <ImageView
-                        android:id="@+id/DisplayQuizz"
+                        android:id="@+id/action_home"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:onClick="displayQuizz"
-                        android:src="@drawable/display" />
+                        android:onClick="goToMainActivity"
+                        android:src="@drawable/home" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Liste des quizz"
+                        android:text="Menu principal\n"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 

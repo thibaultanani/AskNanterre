@@ -70,7 +70,7 @@
 
         <LinearLayout
             android:id="@+id/mainGrid4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="197dp"
             android:layout_gravity="center"
             android:layout_weight="9">
@@ -146,7 +146,7 @@
         </LinearLayout>
     <LinearLayout
         android:id="@+id/mainGrid5"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_weight="9">

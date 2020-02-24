@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -27,7 +28,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
@@ -528,7 +531,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                         // set item width
                         upvoteProfItem.setWidth(170);
                         // set a icon
-                        upvoteProfItem.setIcon(R.drawable.ic_validate);
+                        upvoteProfItem.setIcon(R.drawable.ic_up_w);
                         // add to menu
                         menu.addMenuItem(upvoteProfItem);
 
@@ -536,12 +539,12 @@ public class DisplayQuestionProf extends AppCompatActivity {
                         SwipeMenuItem downvoteProfItem = new SwipeMenuItem(
                                 getApplicationContext());
                         // set item background
-                        downvoteProfItem.setBackground(new ColorDrawable(Color.rgb(0xF9,
-                                0x3F, 0x25)));
+                        downvoteProfItem.setBackground(new ColorDrawable(Color.rgb(255,
+                                165, 0)));
                         // set item width
                         downvoteProfItem.setWidth(170);
                         // set a icon
-                        downvoteProfItem.setIcon(R.drawable.ic_validate);
+                        downvoteProfItem.setIcon(R.drawable.ic_down_w);
                         // add to menu
                         menu.addMenuItem(downvoteProfItem);
 
