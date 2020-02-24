@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -34,6 +36,8 @@ public class DisplayQuizz extends AppCompatActivity {
     EditText name;
     List<QuestionProf> quiz;
     List<String> quizID;
+    List<QuestionProf> quiztmp;
+    List<String> quizIDtmp;
     String[] q1;
     String[] q2;
     String[] q3;
@@ -43,6 +47,7 @@ public class DisplayQuizz extends AppCompatActivity {
     private DatabaseReference mQuestionReference;
     ProgressBar progressBar;
     Spinner spinner;
+    EditText edit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +57,34 @@ public class DisplayQuizz extends AppCompatActivity {
         mQuestionReference = FirebaseDatabase.getInstance().getReference()
                 .child("questionProf");
         updateList();
+
+        spinner = (Spinner) findViewById(R.id.spinner1);
+
+        final List<String> spinnerArray =  new ArrayList<String>();
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, spinnerArray);
+
+        spinnerArray.add("Trier par date");
+        spinnerArray.add("Trier par upvote");
+        spinnerArray.add("Trier par downvote");
+        spinnerArray.add("Trier par upvote du prof");
+        spinnerArray.add("Trier par downvote du prof");
+
+        adapter.notifyDataSetChanged();
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // your code here
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
 
     }
 
@@ -64,12 +97,15 @@ public class DisplayQuizz extends AppCompatActivity {
 
     public void updateList() {
 
-
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference questionRef = rootRef.child("questionProf");
         quiz = new ArrayList<QuestionProf>();
         quizID = new ArrayList<String>();
+        quiztmp = new ArrayList<QuestionProf>();
+        quizIDtmp = new ArrayList<String>();
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -92,6 +128,53 @@ public class DisplayQuizz extends AppCompatActivity {
 
                 }
 
+                edit = (EditText) findViewById(R.id.EditText01);
+
+                edit.addTextChangedListener(new TextWatcher() {
+
+                    public void afterTextChanged(Editable s) {}
+
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        quiztmp.clear();
+                        quizIDtmp.clear();
+                        final int size = quiz.size();
+                        if(s.length()!=0){
+                            for(int i=0; i<size; i++) {
+                                if(quiz.get(i).nom.toLowerCase().contains(s.toString().toLowerCase())) {
+                                    quiztmp.add(quiz.get(i));
+                                    quizIDtmp.add(quizID.get(i));
+                                }
+                            }
+                        }
+
+                        if(quiztmp.size()!=0) {
+                            quiz.clear();
+                            quizID.clear();
+                            quiz.addAll(quiztmp);
+                            quizID.addAll(quizIDtmp);
+                            q1 = new String[quiz.size()];
+
+                            for (int i = 0; i < quiz.size(); i++) {
+                                q1[i] = quiz.get(i).nom;
+                            }
+
+                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayQuizz.this, android.R.layout.simple_list_item_1, q1);
+                            ArrayList<String> list1 = new ArrayList(Arrays.asList(q1));
+                            ArrayList<String> list2 = new ArrayList(quizID);
+
+
+                            CustomAdapterQuiz adapt = new CustomAdapterQuiz(list1, list2, DisplayQuizz.this);
+                            myListView.setAdapter(adapt);
+                            adapt.notifyDataSetChanged();
+                        }
+                        else {
+                            updateList();
+                        }
+                    }
+                });
+
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayQuizz.this, android.R.layout.simple_list_item_1, q1);
                 ArrayList<String> list1 = new ArrayList(Arrays.asList(q1));
                 ArrayList<String> list2 = new ArrayList(quizID);
@@ -111,7 +194,7 @@ public class DisplayQuizz extends AppCompatActivity {
         };
         questionRef.addListenerForSingleValueEvent(eventListener);
 
-
+        progressBar.setVisibility(View.GONE);
     }
 
 
