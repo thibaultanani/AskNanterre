@@ -215,6 +215,7 @@ public class DisplayQuestionStud extends AppCompatActivity {
                     }
                     Log.d("TAG", product);
                 }
+                progressBar.setVisibility(View.GONE);
 
                 q1 = new String[quest.size()];
                 q2 = new String[quest.size()];
@@ -320,8 +321,6 @@ public class DisplayQuestionStud extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         };
         questionRef.addListenerForSingleValueEvent(eventListener);
-
-        progressBar.setVisibility(View.GONE);
     }
 
     public void repondre(View v){

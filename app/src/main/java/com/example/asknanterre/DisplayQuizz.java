@@ -117,6 +117,7 @@ public class DisplayQuizz extends AppCompatActivity {
                         quiz.add(ds.getValue(QuestionProf.class));
                         quizID.add(ds.getKey());
                 }
+                progressBar.setVisibility(View.GONE);
 
                 q1 = new String[quiz.size()];
 
@@ -194,7 +195,6 @@ public class DisplayQuizz extends AppCompatActivity {
         };
         questionRef.addListenerForSingleValueEvent(eventListener);
 
-        progressBar.setVisibility(View.GONE);
     }
 
 
