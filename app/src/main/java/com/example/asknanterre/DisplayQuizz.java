@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -30,6 +31,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import io.opencensus.internal.Utils;
+
 public class DisplayQuizz extends AppCompatActivity {
 
     ListView myListView;
@@ -43,7 +46,8 @@ public class DisplayQuizz extends AppCompatActivity {
     String[] q3;
     String[] q4;
     String[] q5;
-    String[] q6;
+    Integer[] q6;
+    Integer[] q7;
     private DatabaseReference mQuestionReference;
     ProgressBar progressBar;
     Spinner spinner;
@@ -120,13 +124,22 @@ public class DisplayQuizz extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
 
                 q1 = new String[quiz.size()];
+                q3 = new String[quiz.size()];
+                q4 = new String[quiz.size()];
+                q5 = new String[quiz.size()];
+                q6 = new Integer[quiz.size()];
+                q7 = new Integer[quiz.size()];
 
 
                 myListView = (ListView) findViewById(R.id.myListView);
 
                 for (int i = 0; i < quiz.size(); i++) {
                     q1[i] = quiz.get(i).nom;
-
+                    q3[i] = quiz.get(i).titre;
+                    q4[i] = quiz.get(i).date;
+                    q5[i] = "" + quiz.get(i).difficulte;
+                    q6[i] = quiz.get(i).Ncorrects;
+                    q7[i] = quiz.get(i).Nfalses;
                 }
 
                 edit = (EditText) findViewById(R.id.EditText01);
@@ -156,17 +169,31 @@ public class DisplayQuizz extends AppCompatActivity {
                             quiz.addAll(quiztmp);
                             quizID.addAll(quizIDtmp);
                             q1 = new String[quiz.size()];
+                            q3 = new String[quiz.size()];
+                            q4 = new String[quiz.size()];
+                            q5 = new String[quiz.size()];
+                            q6 = new Integer[quiz.size()];
+                            q7 = new Integer[quiz.size()];
 
                             for (int i = 0; i < quiz.size(); i++) {
                                 q1[i] = quiz.get(i).nom;
+                                q3[i] = quiz.get(i).titre;
+                                q4[i] = quiz.get(i).date;
+                                q5[i] = "" + quiz.get(i).difficulte;
+                                q6[i] = quiz.get(i).Ncorrects;
+                                q7[i] = quiz.get(i).Nfalses;
                             }
 
                             ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayQuizz.this, android.R.layout.simple_list_item_1, q1);
                             ArrayList<String> list1 = new ArrayList(Arrays.asList(q1));
                             ArrayList<String> list2 = new ArrayList(quizID);
+                            ArrayList<String> list3 = new ArrayList(Arrays.asList(q3));
+                            ArrayList<String> list4 = new ArrayList(Arrays.asList(q4));
+                            ArrayList<String> list5 = new ArrayList(Arrays.asList(q5));
+                            ArrayList<Integer> list6 = new ArrayList(Arrays.asList(q6));
+                            ArrayList<Integer> list7 = new ArrayList(Arrays.asList(q7));
 
-
-                            CustomAdapterQuiz adapt = new CustomAdapterQuiz(list1, list2, DisplayQuizz.this);
+                            CustomAdapterQuiz adapt = new CustomAdapterQuiz(list1, list2, list3, list4, list5, list6, list7, DisplayQuizz.this);
                             myListView.setAdapter(adapt);
                             adapt.notifyDataSetChanged();
                         }
@@ -179,9 +206,13 @@ public class DisplayQuizz extends AppCompatActivity {
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayQuizz.this, android.R.layout.simple_list_item_1, q1);
                 ArrayList<String> list1 = new ArrayList(Arrays.asList(q1));
                 ArrayList<String> list2 = new ArrayList(quizID);
+                ArrayList<String> list3 = new ArrayList(Arrays.asList(q3));
+                ArrayList<String> list4 = new ArrayList(Arrays.asList(q4));
+                ArrayList<String> list5 = new ArrayList(Arrays.asList(q5));
+                ArrayList<Integer> list6 = new ArrayList(Arrays.asList(q6));
+                ArrayList<Integer> list7 = new ArrayList(Arrays.asList(q7));
 
-
-                CustomAdapterQuiz adapt = new CustomAdapterQuiz(list1, list2, DisplayQuizz.this);
+                CustomAdapterQuiz adapt = new CustomAdapterQuiz(list1, list2, list3, list4, list5, list6, list7, DisplayQuizz.this);
                 myListView.setAdapter(adapt);
                 adapt.notifyDataSetChanged();
 
@@ -197,9 +228,9 @@ public class DisplayQuizz extends AppCompatActivity {
 
     }
 
-
-
-
-
-
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        updateList();
+    }
 }

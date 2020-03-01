@@ -40,6 +40,8 @@ public class AddUser extends AppCompatActivity {
             Toast.makeText(this, "l'email: " + email.getText() +
                     " est déjà prit", Toast.LENGTH_LONG).show();
         }
+
+        finish();
     }
 
     public boolean checkEmailUnique(EditText email) {
@@ -63,5 +65,9 @@ public class AddUser extends AppCompatActivity {
         else {
             return true;
         }
+    }
+
+    public void annuler(View v) {
+        finish();
     }
 }

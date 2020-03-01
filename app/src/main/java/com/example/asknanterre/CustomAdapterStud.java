@@ -39,6 +39,9 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
     private ArrayList<String> list4 = new ArrayList<String>();
     private ArrayList<String> list5 = new ArrayList<String>();
     private ArrayList<String> list6 = new ArrayList<String>();
+    private ArrayList<String> list7 = new ArrayList<String>();
+    private ArrayList<String> list8 = new ArrayList<String>();
+    private ArrayList<String> list9 = new ArrayList<String>();
 
     private Context context;
     DatabaseReference ref;
@@ -50,13 +53,16 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
 
 
 
-    public CustomAdapterStud(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,ArrayList<String> list4,ArrayList<String> list5,ArrayList<String> list6,Context context) {
+    public CustomAdapterStud(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,ArrayList<String> list4,ArrayList<String> list5,ArrayList<String> list6,ArrayList<String> list7,ArrayList<String> list8,ArrayList<String> list9,Context context) {
         this.list1 = list1;
         this.list2 = list2;
         this.list3 = list3;
         this.list4 = list4;
-        this.list5=list5;
+        this.list5 = list5;
         this.list6 = list6;
+        this.list7 = list7;
+        this.list8 = list8;
+        this.list9 = list9;
         this.context = context;
     }
 
@@ -85,15 +91,22 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
         }
 
         //Handle TextView and display string from your list
-        TextView listItemText = (TextView)view.findViewById(R.id.textView_name);
+        TextView listItemText = (TextView)view.findViewById(R.id.textView_nom2);
         String formatedText=" " + list3.get(position);
-        TextView listItemTextUpvote= (TextView) view.findViewById(R.id.textView_upvote);
-        ImageView listItemTextRepondu= (ImageView) view.findViewById(R.id.textView_repondu);
+        TextView listItemTextUpvote= (TextView) view.findViewById(R.id.textView_upvote2);
+        //ImageView listItemTextRepondu= (ImageView) view.findViewById(R.id.lock);
         String formatedText3="" + list5.get(position);
-        TextView listItemTextDownvote= (TextView) view.findViewById(R.id.textView_downvote);
-        LinearLayout myLinearLayout = (LinearLayout) view.findViewById(R.id.mylinearLayoutx);
+        TextView listItemTextDownvote= (TextView) view.findViewById(R.id.textView_downvote2);
+        listItemTextUpvote.setText(formatedText);
+        listItemTextDownvote.setText(formatedText3);
+        TextView listItemTextTitre= (TextView) view.findViewById(R.id.textView_titre);
+        String formatedText4="" + list7.get(position);
+        listItemTextTitre.setText(formatedText4);
+        TextView listItemTextDate= (TextView) view.findViewById(R.id.textView_date);
+        String formatedText5="" + list8.get(position);
+        listItemTextDate.setText(formatedText5);
 
-        if ( list4.get(position).equals("true"))
+        /*if ( list4.get(position).equals("true"))
             {
                  String formatedText2=" Répondu";
                  //listItemTextRepondu.setText(formatedText2);
@@ -104,14 +117,12 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
                  String formatedText2=" Non Répondu";
                 //listItemTextRepondu.setText(formatedText2);
                 listItemTextRepondu.setVisibility(View.INVISIBLE);
-            }
+            }*/
 
-        listItemTextUpvote.setText(formatedText);
-        listItemTextDownvote.setText(formatedText3);
-        TextView listItemTextupvoteProf= (TextView) view.findViewById(R.id.textView_upvoteProf);
+        //TextView listItemTextupvoteProf= (TextView) view.findViewById(R.id.textView_upvoteProf);
 
 
-        if (list6.get(position).equals("0"))
+        /*if (list6.get(position).equals("0"))
         {
             //String formatedText4=" Pas de vote";
             //listItemTextupvoteProf.setText(formatedText4);
@@ -129,10 +140,36 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
             //String formatedText4=" Downvoté par le prof";
             //listItemTextupvoteProf.setText(formatedText4);
             myLinearLayout.setBackgroundColor(context.getResources().getColor(R.color.colorRed));
+        }*/
+
+        LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.mylinearLayoutx);
+        if(!Boolean.parseBoolean(list4.get(position))) {
+            linearLayout.setBackgroundColor(context.getResources().getColor(R.color.colorBlue2));
+        }
+        else {
+            linearLayout.setBackgroundColor(context.getResources().getColor(R.color.colorAccentDark));
         }
 
         listItemText.setText(list1.get(position));
 
+        ImageView imageview = (ImageView) view.findViewById(R.id.lock);
+        if(Integer.parseInt(list6.get(position))==1) {
+            imageview.setImageResource(R.drawable.ic_up_w);
+        }
+        else if(Integer.parseInt(list6.get(position))==-1) {
+            imageview.setImageResource(R.drawable.ic_down_w);
+        }
+        else {
+            imageview.setImageResource(android.R.color.transparent);
+        }
+
+        ImageView imageview2 = (ImageView) view.findViewById(R.id.lock2);
+        if(Integer.parseInt(list9.get(position))!=1) {
+            imageview2.setImageResource(R.drawable.ic_lock);
+        }
+        else {
+            imageview2.setImageResource(R.drawable.ic_unlock);
+        }
         //Handle buttons and add onClickListeners
 
         //Button addBtn = (Button)view.findViewById(R.id.add_btn);

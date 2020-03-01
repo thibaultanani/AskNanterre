@@ -76,6 +76,9 @@ public class DisplayQuestionStud extends AppCompatActivity {
     String[] q4;
     String[] q5;
     String[] q6;
+    String[] q7;
+    String[] q8;
+    String[] q9;
     BottomNavigationView bottomNavigationView;
     private DatabaseReference mQuestionReference;
     Menu itemToHide;
@@ -225,6 +228,10 @@ public class DisplayQuestionStud extends AppCompatActivity {
                 q5 = new String[quest.size()];
                 q6 = new String[quest.size()];
 
+                q7 = new String[quest.size()];
+                q8 = new String[quest.size()];
+                q9 = new String[quest.size()];
+
                 myListView = (ListView) findViewById(R.id.myListView);
 
                 for (int i = 0; i < quest.size(); i++) {
@@ -233,6 +240,9 @@ public class DisplayQuestionStud extends AppCompatActivity {
                     q4[i]= "" + quest.get(i).repondu;
                     q5[i]= "" + quest.get(i).downvote;
                     q6[i] = "" + quest.get(i).upvoteProf;
+                    q7[i] = quest.get(i).titre;
+                    q8[i] = quest.get(i).date;
+                    q9[i] = "" + quest.get(i).type;
                 }
 
                 edit = (EditText) findViewById(R.id.EditText01);
@@ -275,12 +285,20 @@ public class DisplayQuestionStud extends AppCompatActivity {
                             q4 = new String[quest.size()];
                             q5 = new String[quest.size()];
                             q6 = new String[quest.size()];
+
+                            q7 = new String[quest.size()];
+                            q8 = new String[quest.size()];
+                            q9 = new String[quest.size()];
+
                             for (int i = 0; i < quest.size(); i++) {
                                 q1[i] = quest.get(i).nom;
                                 q3[i] = "" + quest.get(i).upvote;
                                 q4[i]= "" + quest.get(i).repondu;
                                 q5[i]= "" + quest.get(i).downvote;
                                 q6[i] = "" + quest.get(i).upvoteProf;
+                                q7[i] = quest.get(i).titre;
+                                q8[i] = quest.get(i).date;
+                                q9[i] = "" + quest.get(i).type;
                             }
                             ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayQuestionStud.this, android.R.layout.simple_list_item_1, q1);
                             ArrayList<String> list1 = new ArrayList(Arrays.asList(q1));
@@ -289,8 +307,11 @@ public class DisplayQuestionStud extends AppCompatActivity {
                             ArrayList<String> list4 = new ArrayList(Arrays.asList(q4));
                             ArrayList<String> list5 = new ArrayList(Arrays.asList(q5));
                             ArrayList<String> list6 = new ArrayList(Arrays.asList(q6));
+                            ArrayList<String> list7 = new ArrayList(Arrays.asList(q7));
+                            ArrayList<String> list8 = new ArrayList(Arrays.asList(q8));
+                            ArrayList<String> list9 = new ArrayList(Arrays.asList(q9));
 
-                            CustomAdapterStud adapt = new CustomAdapterStud(list1, list2, list3,list4 ,list5, list6,DisplayQuestionStud.this);
+                            CustomAdapterStud adapt = new CustomAdapterStud(list1, list2, list3,list4 ,list5, list6, list7, list8, list9, DisplayQuestionStud.this);
                             myListView.setAdapter(adapt);
                             adapt.notifyDataSetChanged();
                         }
@@ -307,8 +328,11 @@ public class DisplayQuestionStud extends AppCompatActivity {
                 ArrayList<String> list4 = new ArrayList(Arrays.asList(q4));
                 ArrayList<String> list5 = new ArrayList(Arrays.asList(q5));
                 ArrayList<String> list6 = new ArrayList(Arrays.asList(q6));
+                ArrayList<String> list7 = new ArrayList(Arrays.asList(q7));
+                ArrayList<String> list8 = new ArrayList(Arrays.asList(q8));
+                ArrayList<String> list9 = new ArrayList(Arrays.asList(q9));
 
-                CustomAdapterStud adapt = new CustomAdapterStud(list1, list2, list3,list4 ,list5, list6,DisplayQuestionStud.this);
+                CustomAdapterStud adapt = new CustomAdapterStud(list1, list2, list3,list4 ,list5, list6, list7, list8, list9, DisplayQuestionStud.this);
                 myListView.setAdapter(adapt);
                 adapt.notifyDataSetChanged();
 

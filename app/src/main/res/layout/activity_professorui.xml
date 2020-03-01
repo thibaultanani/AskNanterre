@@ -84,27 +84,26 @@
                 android:layout_weight="1">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/Display"
+                        android:src="@drawable/home"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:onClick="displayQuestionProf"
-                        android:src="@drawable/displayquestion" />
+                        android:id="@+id/action_home"
+                        android:onClick="goToMainActivity"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:gravity="center_horizontal"
-                        android:text="Listes des questions"
                         android:textColor="#6f6f6f"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:text="Menu principal\n"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
@@ -137,7 +136,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Créer un quiz\n"
+                        android:text="Faire un quiz\n"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
@@ -151,39 +150,40 @@
         android:layout_gravity="center"
         android:layout_weight="9">
 
-            <androidx.cardview.widget.CardView
-                app:cardElevation="6dp"
-                app:cardCornerRadius="12dp"
-                android:layout_width="0px"
-                android:layout_margin="12dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+        <androidx.cardview.widget.CardView
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            android:layout_width="0px"
+            android:layout_margin="12dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="16dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/Display"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:onClick="displayQuestionProf"
+                    android:src="@drawable/displayquestion" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
                     android:gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:text="Listes des questions"
+                    android:textColor="#6f6f6f"
+                    android:textSize="18sp" />
 
-                    <ImageView
-                        android:src="@drawable/home"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:id="@+id/action_home"
-                        android:onClick="goToMainActivity"/>
+            </LinearLayout>
 
-                    <TextView
-                        android:layout_marginTop="12dp"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp"
-                        android:text="Menu principal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
 
         <androidx.cardview.widget.CardView

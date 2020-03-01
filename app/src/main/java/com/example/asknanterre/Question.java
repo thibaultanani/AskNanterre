@@ -4,8 +4,12 @@ import com.orm.SugarRecord;
 
 public class Question extends SugarRecord  {
     String nom;
+    String titre;
     int upvote = 0;
     int downvote = 0;
+    boolean valide = false;
+    int type = 1;
+    String date;
 
     public int getDownvote() {
         return downvote;
@@ -14,9 +18,6 @@ public class Question extends SugarRecord  {
     public void setDownvote(int downvote) {
         this.downvote = downvote;
     }
-
-    boolean valide = false;
-    int type = 1;
 
     public int getType() {
         return type;
@@ -71,5 +72,21 @@ public class Question extends SugarRecord  {
 
     public void setRepondu(boolean repondu) {
         this.repondu = repondu;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

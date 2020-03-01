@@ -15,6 +15,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AddAnswer extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
@@ -48,6 +51,11 @@ public class AddAnswer extends AppCompatActivity {
 
         database.getReference("answer").push().setValue(a);
 
+        DatabaseReference ref;
+        ref=FirebaseDatabase.getInstance().getReference().child("question").child(questionId);
+        Map<String,Object> questionMap = new HashMap<String,Object>();
+        questionMap.put("repondu", true);
+        ref.updateChildren(questionMap);
 
         Toast.makeText(this, "la Réponse: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
 
@@ -65,5 +73,9 @@ public class AddAnswer extends AppCompatActivity {
     public void goToProfUIActivity(){
         Intent intent = new Intent(this, ProfessorUI.class);
         startActivity(intent);
+    }
+
+    public void annuler(View v) {
+        finish();
     }
 }

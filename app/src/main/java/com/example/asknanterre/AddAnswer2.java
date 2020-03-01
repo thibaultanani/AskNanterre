@@ -153,4 +153,8 @@ public class AddAnswer2 extends AppCompatActivity {
         Intent intent = new Intent(this, ProfessorUI.class);
         startActivity(intent);
     }
+
+    public void annuler(View v) {
+        finish();
+    }
 }

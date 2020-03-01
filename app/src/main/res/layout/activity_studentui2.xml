@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:text="Interface Etudiant"
+                android:text="Interface Etudiant: Poser une question"
                 android:textSize="14sp"
                 android:textColor="#FFFFFF"
                 android:layout_marginTop="6dp"
@@ -82,7 +82,7 @@
 
         <LinearLayout
             android:id="@+id/mainGrid2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="210dp"
             android:layout_gravity="center"
             android:layout_weight="9">
@@ -103,18 +103,18 @@
                     android:padding="16dp">
 
                     <ImageView
-                        android:id="@+id/action_home"
+                        android:id="@+id/Add"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:onClick="goToMainActivity"
-                        android:src="@drawable/home" />
+                        android:onClick="addQuestion"
+                        android:src="@drawable/send" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Menu principal\n"
+                        android:text="Poser une question ouverte"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
@@ -138,10 +138,10 @@
                     android:padding="16dp">
 
                     <ImageView
-                        android:id="@+id/Add"
+                        android:id="@+id/AddQCM"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:onClick="studentUI2"
+                        android:onClick="addQuestionQCM"
                         android:src="@drawable/send" />
 
                     <TextView
@@ -149,93 +149,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Poser une question"
+                        android:text="Poser une question fermée"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/mainGrid3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="9">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0px"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:id="@+id/Display"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:onClick="displayQuestionStud"
-                        android:src="@drawable/displayquestion" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:gravity="center_horizontal"
-                        android:text="Liste des questions"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0px"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:id="@+id/DisplayQuizz"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:onClick="displayQuizz"
-                        android:src="@drawable/displayquiz" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:gravity="center_horizontal"
-                        android:text="Liste des\nquizz"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
         </LinearLayout>
 
     </LinearLayout>
