@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="41dp"
-        android:id="@+id/Search"
+        android:id="@+id/Display"
         android:layout_below="@+id/ADD"
         android:layout_centerHorizontal="true"
         android:onClick="displayQuestion"/>
@@ -43,5 +43,15 @@
         android:layout_centerHorizontal="true"
         android:onClick="displayCours"/>
 
+
+    <Button
+        android:text="Envoyer un FeebdBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:id="@+id/FeedBack"
+        android:layout_below="@+id/Display"
+        android:layout_centerHorizontal="true"
+        android:onClick="sendFeedBack"/>
 
 </RelativeLayout>

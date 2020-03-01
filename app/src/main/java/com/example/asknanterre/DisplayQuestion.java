@@ -2,9 +2,11 @@ package com.example.asknanterre;
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,7 +16,9 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,6 +40,13 @@ public class DisplayQuestion extends AppCompatActivity {
     String[] q2 = new String[quest.size()];
     String[] q3 = new String[quest.size()];
 
+    List <Answer> answers;
+    List <Answer> answ = Answer.listAll(Answer.class);
+    String [] r1 = new String [answ.size()];
+    String [] r2 = new String[answ.size()];
+    String [] r3 = new String[answ.size()];
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +54,13 @@ public class DisplayQuestion extends AppCompatActivity {
         setContentView(R.layout.activity_displayquestion);
 
         myListView = (ListView) findViewById(R.id.myListView);
+
+        /*Window window = this.getWindow();
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorDarkRed));
+
+        ActionBar bar = getSupportActionBar();
+        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorRed)));
+        bar.setTitle("AskNanterre : Etudiant");*/
 
         //Collections.sort(quest, new UpvoteSorter());
         for (Question q: quest) {
@@ -65,7 +83,7 @@ public class DisplayQuestion extends AppCompatActivity {
         ArrayList<String> list3 = new ArrayList( Arrays.asList(q3));
         CustomAdapter adapt = new CustomAdapter(list1, list2, list3, this);
         myListView.setAdapter(adapt);
-        Button triBtn=(Button) findViewById(R.id.triupvote);
+        //Button triBtn=(Button) findViewById(R.id.triupvote);
 
 
 
@@ -124,10 +142,20 @@ public class DisplayQuestion extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void displayAnswerQuestion (View v) {
+    public void afficherReponse (View v) {
         Intent intent = new Intent (this, DisplayAnswerQuestion.class);
         startActivity(intent);
     }
+/*
+    public void answerQuestion2 (View v){
+        EditText name = (EditText) findViewById(R.id.lname);
+
+        Answer r = new Answer(name.getText().toString());
+        r.save();
+
+        Toast.makeText(this, "la reponse: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
+
+        name.setText("");    } */
 
 }
 

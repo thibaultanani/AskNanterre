@@ -1,7 +1,9 @@
 package com.example.asknanterre;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,8 +56,13 @@ public class DisplayAnswerQuestion extends AppCompatActivity {
         ArrayList <String> list3 = new ArrayList<>(Arrays.asList(r3));
         //CustomAdapter adapt = new CustomAdapter(list1, list2, list3, this);
         //myListView.setAdapter(adapt);
+       // Button showanswBtn = (Button) findViewById(R.id.showansw);
 
     }
+
+
+
+
 
     @Override
     protected void onStart(){
