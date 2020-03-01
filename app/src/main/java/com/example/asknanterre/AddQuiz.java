@@ -142,7 +142,7 @@ public class AddQuiz extends AppCompatActivity {
             Log.d("l'id de la rep", id+"");
         }
 
-        Toast.makeText(this, "la Question: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Le quiz: \"" + name.getText() + "\" a été ajouté", Toast.LENGTH_LONG).show();
 
         name.setText("");
 

@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Les réponses prédéfinis"/>
+        android:hint="Les réponses prédéfinies"/>
 
     <Spinner
         android:id="@+id/spinner1"

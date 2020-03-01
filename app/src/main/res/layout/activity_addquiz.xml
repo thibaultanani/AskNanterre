@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:hint="Posez une question qui sera envoyée aux étudiants avec des réponses prédéfinis"/>
+        android:hint="Posez une question qui sera envoyée aux étudiants avec des réponses prédéfinies"/>
 
 
     <EditText
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:hint="Le nombre de réponses prédéfinis"/>
+        android:hint="Le nombre de réponses prédéfinies"/>
 
     <Spinner
         android:id="@+id/spinner1"

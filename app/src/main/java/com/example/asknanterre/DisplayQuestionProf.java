@@ -540,7 +540,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                                 Map<String,Object> questionMap = new HashMap<String,Object>();
                                 questionMap.put("valide", true);
                                 ref.updateChildren(questionMap);
-                                Toast.makeText(DisplayQuestionProf.this, "la question: " + list1.get(position) + " a été validée", Toast.LENGTH_LONG).show();
+                                Toast.makeText(DisplayQuestionProf.this, "La question: \"" + list1.get(position) + "\" a été validée", Toast.LENGTH_LONG).show();
                                 list1.remove(position);
                                 adapt.notifyDataSetChanged();
                                 updateList();
@@ -549,7 +549,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                                 // delete
                                 ref=FirebaseDatabase.getInstance().getReference().child("question").child(list2.get(position));
                                 ref.removeValue();
-                                Toast.makeText(DisplayQuestionProf.this, "la question: " + list1.get(position) + " a été supprimée", Toast.LENGTH_LONG).show();
+                                Toast.makeText(DisplayQuestionProf.this, "La question: \"" + list1.get(position) + "\" a été supprimée", Toast.LENGTH_LONG).show();
                                 list1.remove(position); //or some other task
                                 adapt.notifyDataSetChanged();
                                 updateList();
@@ -654,14 +654,14 @@ public class DisplayQuestionProf extends AppCompatActivity {
                                                 if(ds.getValue(Integer.class) == 1){
                                                     questionMap1.put("upvoteProf", 0);
                                                     ref.updateChildren(questionMap1);
-                                                    Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été remis en neutre", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(DisplayQuestionProf.this, "La question: \"" + list4.get(position) + "\" a été remise en neutre", Toast.LENGTH_LONG).show();
                                                     adapt.notifyDataSetChanged();
                                                     updateList();
                                                 }
                                                 else {
                                                     questionMap1.put("upvoteProf", 1);
                                                     ref.updateChildren(questionMap1);
-                                                    Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été Upvote", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(DisplayQuestionProf.this, "La question: \"" + list4.get(position) + "\" a été Upvote", Toast.LENGTH_LONG).show();
                                                     adapt.notifyDataSetChanged();
                                                     updateList();
                                                 }
@@ -691,14 +691,14 @@ public class DisplayQuestionProf extends AppCompatActivity {
                                                 if(ds.getValue(Integer.class) == -1){
                                                     questionMap2.put("upvoteProf", 0);
                                                     ref.updateChildren(questionMap2);
-                                                    Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été remis en neutre", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(DisplayQuestionProf.this, "La question: \"" + list4.get(position) + "\" a été remise en neutre", Toast.LENGTH_LONG).show();
                                                     adapt.notifyDataSetChanged();
                                                     updateList();
                                                 }
                                                 else {
                                                     questionMap2.put("upvoteProf", -1);
                                                     ref.updateChildren(questionMap2);
-                                                    Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été Downvote", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(DisplayQuestionProf.this, "La question: \"" + list4.get(position) + "\" a été Downvote", Toast.LENGTH_LONG).show();
                                                     adapt.notifyDataSetChanged();
                                                     updateList();
                                                 }
@@ -715,7 +715,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                             case 2:
                                 ref=FirebaseDatabase.getInstance().getReference().child("question").child(list5.get(position));
                                 ref.removeValue();
-                                Toast.makeText(DisplayQuestionProf.this, "la question: " + list4.get(position) + " a été supprimée", Toast.LENGTH_LONG).show();
+                                Toast.makeText(DisplayQuestionProf.this, "La question: \"" + list4.get(position) + "\" a été supprimée", Toast.LENGTH_LONG).show();
                                 list5.remove(position); //or some other task
                                 adapt.notifyDataSetChanged();
                                 updateList();

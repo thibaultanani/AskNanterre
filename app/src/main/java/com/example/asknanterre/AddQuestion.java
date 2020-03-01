@@ -118,7 +118,7 @@ public class AddQuestion extends AppCompatActivity {
         database.getReference("question").push().setValue(q);
 
 
-        Toast.makeText(this, "la Question: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "La question: \"" + name.getText() + "\" a été ajoutée", Toast.LENGTH_LONG).show();
 
         name.setText("");
 

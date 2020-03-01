@@ -191,7 +191,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:layout_weight="1"
-            android:visibility="invisible"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp">
 
@@ -202,12 +201,18 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
+                <ImageView
+                    android:id="@+id/DisplayQuiz"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:onClick="displayQuizProf"
+                    android:src="@drawable/displayquiz" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Menu principal"
+                    android:text="Liste des quizs\n"
                     android:textColor="#6f6f6f"
                     android:textSize="18sp" />
 

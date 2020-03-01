@@ -97,7 +97,7 @@ public class AddQCM extends AppCompatActivity {
             //qcm.save();
         }
 
-        Toast.makeText(this, "la Question: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "La question: \"" + name.getText() + "\" a été ajoutée", Toast.LENGTH_LONG).show();
 
         name.setText("");
 

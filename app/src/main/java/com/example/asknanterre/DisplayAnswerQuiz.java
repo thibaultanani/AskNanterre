@@ -208,12 +208,14 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
                         if (ds.getKey().equals("ncorrects")) {
                             questionProfMap.put("ncorrects", ds.getValue(Integer.class) + 1);
                             ref.updateChildren(questionProfMap);
+                            Toast.makeText(DisplayAnswerQuiz.this, "La réponse: \"" + spinner.getSelectedItem().toString() + "\" est correcte", Toast.LENGTH_LONG).show();
                         }
                     }
                     else {
                         if (ds.getKey().equals("nfalses")) {
                             questionProfMap.put("nfalses", ds.getValue(Integer.class) + 1);
                             ref.updateChildren(questionProfMap);
+                            Toast.makeText(DisplayAnswerQuiz.this, "Le réponse: \"" + spinner.getSelectedItem().toString() + "\" est fausse", Toast.LENGTH_LONG).show();
                         }
                     }
                     Log.d("TAG", "tour de boucle");

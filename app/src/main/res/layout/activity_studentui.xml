@@ -228,7 +228,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Liste des\nquizz"
+                        android:text="Liste des\nquizs"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 

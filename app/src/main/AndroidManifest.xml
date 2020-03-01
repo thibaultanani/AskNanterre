@@ -59,6 +59,7 @@
         <activity android:name=".DisplayAnswer" />
         <activity android:name=".DisplayAnswerQuiz" />
         <activity android:name=".StudentUI2" />
+        <activity android:name=".DisplayQuizProf" />
     </application>
 
 </manifest>
