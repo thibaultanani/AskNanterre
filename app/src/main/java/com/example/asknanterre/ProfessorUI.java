@@ -87,4 +87,14 @@ public class ProfessorUI extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void addCours(View v) {
+        Intent intent = new Intent(this, AddCours.class);
+        startActivity(intent);
+    }
+
+    public void displayCours(View v) {
+        Intent intent = new Intent(this, DisplayCours.class);
+        startActivity(intent);
+    }
+
 }
