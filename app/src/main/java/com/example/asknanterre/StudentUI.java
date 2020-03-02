@@ -1,19 +1,12 @@
 package com.example.asknanterre;
 
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -98,7 +91,7 @@ public class StudentUI extends AppCompatActivity {
     }
 
     public void displayQuizz(View v) {
-        Intent intent = new Intent(this, DisplayQuizz.class);
+        Intent intent = new Intent(this, DisplayQuiz.class);
         startActivity(intent);
     }
 

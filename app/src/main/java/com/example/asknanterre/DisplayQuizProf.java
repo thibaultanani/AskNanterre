@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
@@ -25,10 +26,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,10 +82,9 @@ public class DisplayQuizProf extends AppCompatActivity {
                 this, android.R.layout.simple_spinner_item, spinnerArray);
 
         spinnerArray.add("Trier par date");
-        spinnerArray.add("Trier par upvote");
-        spinnerArray.add("Trier par downvote");
-        spinnerArray.add("Trier par upvote du prof");
-        spinnerArray.add("Trier par downvote du prof");
+        spinnerArray.add("Trier par bonne réponse");
+        spinnerArray.add("Trier par mauvaise réponse");
+        spinnerArray.add("Trier par difficulté");
 
         adapter.notifyDataSetChanged();
         spinner.setAdapter(adapter);
@@ -108,6 +110,99 @@ public class DisplayQuizProf extends AppCompatActivity {
         //show();
     }
 
+    public void trier(View v, final int position) {
+        myListView = (SwipeMenuListView) findViewById(R.id.myListView);
+
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference questionProfRef = rootRef.child("questionProf");
+        quiz = new ArrayList<QuestionProf>();
+        quizID = new ArrayList<String>();
+        quiztmp = new ArrayList<QuestionProf>();
+        quizIDtmp = new ArrayList<String>();
+
+        String s;
+        if(position == 1) {
+            s = "ncorrects";
+        }
+        else if(position == 2) {
+            s = "nfalses";
+        }
+        else if (position == 3) {
+            s = "difficulte";
+        }
+        else {
+            s = "";
+        }
+
+        Query q;
+        if(!s.isEmpty()) {
+            q = questionProfRef.orderByChild(s);
+        }
+        else {
+            q = questionProfRef;
+        }
+
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                quiz.clear();
+                quizID.clear();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String product = ds.getKey();
+                    quiz.add(ds.getValue(QuestionProf.class));
+                    quizID.add(ds.getKey());
+                    Log.d("TAG", product);
+                }
+                progressBar.setVisibility(View.GONE);
+
+                if(position != 0) {
+                    Collections.reverse(quiz);
+                    Collections.reverse(quizID);
+                }
+
+                q1 = new String[quiz.size()];
+                q3 = new String[quiz.size()];
+                q4 = new String[quiz.size()];
+                q5 = new String[quiz.size()];
+                q6 = new Integer[quiz.size()];
+                q7 = new Integer[quiz.size()];
+
+
+                myListView = (SwipeMenuListView) findViewById(R.id.myListView);
+
+                for (int i = 0; i < quiz.size(); i++) {
+                    q1[i] = quiz.get(i).nom;
+                    q3[i] = quiz.get(i).titre;
+                    q4[i] = quiz.get(i).date;
+                    q5[i] = "" + quiz.get(i).difficulte;
+                    q6[i] = quiz.get(i).Ncorrects;
+                    q7[i] = quiz.get(i).Nfalses;
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayQuizProf.this, android.R.layout.simple_list_item_1, q1);
+                list1 = new ArrayList(Arrays.asList(q1));
+                list2 = new ArrayList(quizID);
+                list3 = new ArrayList(Arrays.asList(q3));
+                list4 = new ArrayList(Arrays.asList(q4));
+                list5 = new ArrayList(Arrays.asList(q5));
+                list6 = new ArrayList(Arrays.asList(q6));
+                list7 = new ArrayList(Arrays.asList(q7));
+
+                adapt = new CustomAdapterQuizProf(list1, list2, list3, list4, list5, list6, list7, DisplayQuizProf.this);
+                myListView.setAdapter(adapt);
+                adapt.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
 
     public void updateList() {
 
@@ -151,6 +246,20 @@ public class DisplayQuizProf extends AppCompatActivity {
                     q6[i] = quiz.get(i).Ncorrects;
                     q7[i] = quiz.get(i).Nfalses;
                 }
+
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        // your code here
+                        trier(selectedItemView, position);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {
+                        // your code here
+                    }
+
+                });
 
                 edit = (EditText) findViewById(R.id.EditText01);
 

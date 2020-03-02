@@ -42,6 +42,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -145,6 +146,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
         spinnerArray.add("Trier par downvote");
         spinnerArray.add("Trier par upvote du prof");
         spinnerArray.add("Trier par downvote du prof");
+        spinnerArray.add("Trier par réponse du prof");
 
         spinnerArray2.add("non validées");
         spinnerArray2.add("validées");
@@ -238,32 +240,111 @@ public class DisplayQuestionProf extends AppCompatActivity {
 
     }
 
-    /*public void trier(View v, int type) {
+    public void trier(View v, final int position) {
         myListView2 = (SwipeMenuListView) findViewById(R.id.myListView2);
 
-        Collections.sort(quest2, new UpvoteSorter());
-        for (Question q: quest2) {
-            Log.d("gfgfgfgf", q.toString() + "" + q.getNom() + "" + q.getUpvote());
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference questionRef = rootRef.child("question");
+        quest2 = new ArrayList<Question>();
+        quest2ID = new ArrayList<String>();
+        quest2tmp = new ArrayList<Question>();
+        quest2IDtmp = new ArrayList<String>();
+
+        String s;
+        if(position == 1) {
+            s = "upvote";
+        }
+        else if(position == 2) {
+            s = "downvote";
+        }
+        else if (position == 3 || position == 4) {
+            s = "upvoteProf";
+        }
+        else if (position == 5) {
+            s = "repondu";
+        }
+        else {
+            s = "";
         }
 
-        for(int i=0; i<quest2.size(); i++) {
-            q4[i] = quest2.get(i).nom;
-            q5[i] = quest2.get(i).getId().toString(); // changer cette ligne
-            q6[i] = "" + quest2.get(i).upvote;
-            q7[i] = "" + quest2.get(i).downvote;
-            q8[i] = "" + quest2.get(i).type;
+        Query q;
+        if(!s.isEmpty()) {
+            q = questionRef.orderByChild(s);
+        }
+        else {
+            q = questionRef;
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, q1);
-        ArrayList<String> list1 = new ArrayList( Arrays.asList(q4));
-        ArrayList<String> list2 = new ArrayList( Arrays.asList(q5));
-        ArrayList<String> list3 = new ArrayList( Arrays.asList(q6));
-        ArrayList<String> list4 = new ArrayList( Arrays.asList(q7));
-        ArrayList<String> list5 = new ArrayList( Arrays.asList(q8));
-        CustomAdapterProf2 adapt = new CustomAdapterProf2(list1, list2, list3,list4, this);
-        myListView2.setAdapter(adapt);
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                quest2.clear();
+                quest2ID.clear();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String product = ds.getKey();
+                    if (ds.getValue(Question.class).valide) {
+                        quest2.add(ds.getValue(Question.class));
+                        quest2ID.add(ds.getKey());
+                    }
+                    Log.d("TAG", product);
+                }
+                progressBar.setVisibility(View.GONE);
 
-    }*/
+                if(position != 4 && position != 0) {
+                    Collections.reverse(quest2);
+                    Collections.reverse(quest2ID);
+                }
+
+                q4 = new String[quest2.size()];
+                q5 = new String[quest2.size()];
+                q6 = new String[quest2.size()];
+                q7 = new String[quest2.size()];
+                q8 = new String[quest2.size()];
+
+                q9 = new String[quest.size()];
+                q10 = new String[quest.size()];
+                q11 = new String[quest2.size()];
+                q12 = new String[quest2.size()];
+                q13 = new String[quest2.size()];
+                q14 = new String[quest2.size()];
+
+                for (int i = 0; i < quest2.size(); i++) {
+                    q4[i] = quest2.get(i).nom;
+                    q6[i] = "" + quest2.get(i).upvote;
+                    q7[i] = "" + quest2.get(i).downvote;
+                    q8[i] = "" + quest2.get(i).type;
+                    q11[i] = "" + quest2.get(i).titre;
+                    q12[i] = "" + quest2.get(i).date;
+                    q13[i] = "" + quest2.get(i).repondu;
+                    q14[i] = "" + quest2.get(i).upvoteProf;
+                }
+
+                adapter2 = new ArrayAdapter<String>(DisplayQuestionProf.this, android.R.layout.simple_list_item_1, q4);
+                list4 = new ArrayList( Arrays.asList(q4));
+                //list5 = new ArrayList( Arrays.asList(q5));
+                list5 = new ArrayList(quest2ID);
+                list6 = new ArrayList( Arrays.asList(q6));
+                list7 = new ArrayList( Arrays.asList(q7));
+                list8 = new ArrayList( Arrays.asList(q8));
+                list11 = new ArrayList( Arrays.asList(q11));
+                list12 = new ArrayList( Arrays.asList(q12));
+                list13 = new ArrayList( Arrays.asList(q13));
+                list14 = new ArrayList( Arrays.asList(q14));
+                adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14, DisplayQuestionProf.this);
+                myListView2.setAdapter(adapt2);
+                adapt.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
 
     public void updateList() {
 
@@ -359,6 +440,20 @@ public class DisplayQuestionProf extends AppCompatActivity {
                     q13[i] = "" + quest2.get(i).repondu;
                     q14[i] = "" + quest2.get(i).upvoteProf;
                 }
+
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        // your code here
+                        trier(selectedItemView, position);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {
+                        // your code here
+                    }
+
+                });
 
                 edit = (EditText) findViewById(R.id.EditText01);
 
