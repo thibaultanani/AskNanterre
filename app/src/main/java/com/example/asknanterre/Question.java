@@ -10,6 +10,7 @@ public class Question extends SugarRecord  {
     boolean valide = false;
     int type = 1;
     String date;
+    String coursId;
 
     public int getDownvote() {
         return downvote;
@@ -89,4 +90,13 @@ public class Question extends SugarRecord  {
     public void setDate(String date) {
         this.date = date;
     }
+
+    public String getCoursId() {
+        return coursId;
+    }
+
+    public void setCoursId(String coursId) {
+        this.coursId = coursId;
+    }
+
 }

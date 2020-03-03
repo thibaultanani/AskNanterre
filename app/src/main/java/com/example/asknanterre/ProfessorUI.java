@@ -22,6 +22,8 @@ public class ProfessorUI extends AppCompatActivity {
     Button btn;
     BottomNavigationView bottomNavigationView;
     Menu itemToHide;
+    Bundle b;
+    String coursId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,20 +72,31 @@ public class ProfessorUI extends AppCompatActivity {
                 return true;
             }
         });*/
+        b = getIntent().getExtras();
+        coursId = b.getString("key");
     }
 
     public void addQuiz(View v){
         Intent intent = new Intent(this, AddQuiz.class);
+        Bundle b2 = new Bundle();
+        b2.putString("key", coursId);
+        intent.putExtras(b2);
         startActivity(intent);
     }
 
     public void displayQuestionProf(View v){
         Intent intent = new Intent(this, DisplayQuestionProf.class);
+        Bundle b2 = new Bundle();
+        b2.putString("key", coursId);
+        intent.putExtras(b2);
         startActivity(intent);
     }
 
     public void displayQuizProf(View v){
         Intent intent = new Intent(this, DisplayQuizProf.class);
+        Bundle b2 = new Bundle();
+        b2.putString("key", coursId);
+        intent.putExtras(b2);
         startActivity(intent);
     }
 

@@ -86,11 +86,16 @@ public class DisplayQuestionStud extends AppCompatActivity {
     ProgressBar progressBar;
     Spinner spinner;
     EditText edit;
+    Bundle b;
+    String coursId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_displayquestion);
+
+        b = getIntent().getExtras();
+        coursId = b.getString("key");
 
         mQuestionReference = FirebaseDatabase.getInstance().getReference()
                 .child("question");
@@ -174,6 +179,9 @@ public class DisplayQuestionStud extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
+        b = getIntent().getExtras();
+        coursId = b.getString("key");
+
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference questionRef = rootRef.child("question");
         quest = new ArrayList<Question>();
@@ -213,7 +221,7 @@ public class DisplayQuestionStud extends AppCompatActivity {
                 questID.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     String product = ds.getKey();
-                    if (ds.getValue(Question.class).valide) {
+                    if (ds.getValue(Question.class).valide && (ds.getValue(Question.class).coursId.equals(coursId))) {
                         quest.add(ds.getValue(Question.class));
                         questID.add(ds.getKey());
                     }
@@ -278,6 +286,9 @@ public class DisplayQuestionStud extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
+        b = getIntent().getExtras();
+        coursId = b.getString("key");
+
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference questionRef = rootRef.child("question");
         quest = new ArrayList<Question>();
@@ -291,7 +302,7 @@ public class DisplayQuestionStud extends AppCompatActivity {
                 questID.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     String product = ds.getKey();
-                    if (ds.getValue(Question.class).valide) {
+                    if (ds.getValue(Question.class).valide && (ds.getValue(Question.class).coursId.equals(coursId))) {
                         quest.add(ds.getValue(Question.class));
                         questID.add(ds.getKey());
                     }

@@ -71,6 +71,9 @@ public class AddQCM extends AppCompatActivity {
 
         EditText name = (EditText) findViewById(R.id.lname);
 
+        final Bundle b = getIntent().getExtras();
+        final String coursId = b.getString("key");
+
         Normalizer n = new Normalizer();
         Question q = new Question(n.normalizeNom(name.getText().toString()));
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -78,6 +81,7 @@ public class AddQCM extends AppCompatActivity {
         q.date = formatter.format(date);
         q.titre = n.normalizeTitre(name.getText().toString());
         q.type = 2;
+        q.coursId = coursId;
         /*long id = q.save();
         Log.d("l'id de la question", id+"");*/
         FirebaseDatabase database = FirebaseDatabase.getInstance();

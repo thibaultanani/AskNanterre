@@ -3,6 +3,7 @@ package com.example.asknanterre;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +26,7 @@ public class StudentUI extends AppCompatActivity {
     Menu itemToHide;
     TextView cours;
     Bundle b;
+    String coursId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +79,9 @@ public class StudentUI extends AppCompatActivity {
                 return true;
             }
         });*/
+        b = getIntent().getExtras();
+        coursId = b.getString("key");
+        Log.v("hfhfhfhf", coursId);
     }
 
     /*public void displayQuestion(View v){
@@ -86,16 +91,25 @@ public class StudentUI extends AppCompatActivity {
 
     public void addQuestion(View v){
         Intent intent = new Intent(this, AddQuestion.class);
+        Bundle b2 = new Bundle();
+        b2.putString("key", coursId);
+        intent.putExtras(b2);
         startActivity(intent);
     }
 
     public void addQuestionQCM(View v){
         Intent intent = new Intent(this, AddQCM.class);
+        Bundle b2 = new Bundle();
+        b2.putString("key", coursId);
+        intent.putExtras(b2);
         startActivity(intent);
     }
 
     public void displayQuestionStud(View v){
         Intent intent = new Intent(this, DisplayQuestionStud.class);
+        Bundle b2 = new Bundle();
+        b2.putString("key", coursId);
+        intent.putExtras(b2);
         startActivity(intent);
     }
 
@@ -106,11 +120,17 @@ public class StudentUI extends AppCompatActivity {
 
     public void displayQuizz(View v) {
         Intent intent = new Intent(this, DisplayQuiz.class);
+        Bundle b2 = new Bundle();
+        b2.putString("key", coursId);
+        intent.putExtras(b2);
         startActivity(intent);
     }
 
     public void studentUI2(View v) {
         Intent intent = new Intent(this, StudentUI2.class);
+        Bundle b2 = new Bundle();
+        b2.putString("key", coursId);
+        intent.putExtras(b2);
         startActivity(intent);
     }
 

@@ -101,7 +101,7 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:onClick="addCours"
-                        android:src="@drawable/quiz" />
+                        android:src="@drawable/cours" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -142,14 +142,14 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:onClick="displayCours"
-                        android:src="@drawable/displayquestion" />
+                        android:src="@drawable/displaycours" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Listes des questions"
+                        android:text="Listes des cours"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 

@@ -30,8 +30,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data android:mimeType="message/rfc822" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".AddQuestion"/>
