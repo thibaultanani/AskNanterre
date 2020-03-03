@@ -63,6 +63,8 @@
         <activity android:name=".StudentUI3"/>
         <activity android:name=".StudentUI2" />
         <activity android:name=".DisplayQuizProf" />
+        <activity android:name=".DisplayCoursProf"/>
+        <activity android:name=".ProfessorUI2"/>
     </application>
 
 </manifest>
