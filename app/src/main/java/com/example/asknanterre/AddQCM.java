@@ -19,6 +19,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class AddQCM extends AppCompatActivity {
 
     Spinner spinner;
@@ -68,7 +71,12 @@ public class AddQCM extends AppCompatActivity {
 
         EditText name = (EditText) findViewById(R.id.lname);
 
-        Question q = new Question(name.getText().toString());
+        Normalizer n = new Normalizer();
+        Question q = new Question(n.normalizeNom(name.getText().toString()));
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        q.date = formatter.format(date);
+        q.titre = n.normalizeTitre(name.getText().toString());
         q.type = 2;
         /*long id = q.save();
         Log.d("l'id de la question", id+"");*/
@@ -89,8 +97,14 @@ public class AddQCM extends AppCompatActivity {
             //qcm.save();
         }
 
-        Toast.makeText(this, "la Question: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "La question: \"" + name.getText() + "\" a été ajoutée", Toast.LENGTH_LONG).show();
 
         name.setText("");
+
+        finish();
+    }
+
+    public void annuler(View v) {
+        finish();
     }
 }

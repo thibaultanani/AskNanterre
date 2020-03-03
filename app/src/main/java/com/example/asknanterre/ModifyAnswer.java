@@ -59,7 +59,7 @@ public class ModifyAnswer extends AppCompatActivity {
         Map<String,Object> answerMap = new HashMap<String,Object>();
         answerMap.put("nom", name.getText().toString());
         ref.updateChildren(answerMap);
-        Toast.makeText(this, "la réponse: " + name.getText() + " a été mise à jour", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "La réponse: \"" + name.getText() + "\" a été mise à jour", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, DisplayQuestionProf.class);
         startActivity(intent);
         //name.setText("");
@@ -77,7 +77,14 @@ public class ModifyAnswer extends AppCompatActivity {
 
         ref=FirebaseDatabase.getInstance().getReference().child("answer").child(AnswerId);
         ref.removeValue();
-        Toast.makeText(this, "la réponse: " + name.getText() + " a été supprimée", Toast.LENGTH_LONG).show();
+
+        DatabaseReference ref2;
+        ref2=FirebaseDatabase.getInstance().getReference().child("question").child(questionId);
+        Map<String,Object> questionMap = new HashMap<String,Object>();
+        questionMap.put("repondu", false);
+        ref2.updateChildren(questionMap);
+
+        Toast.makeText(this, "La réponse: \"" + name.getText() + "\" a été supprimée", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, DisplayQuestionProf.class);
         startActivity(intent);
     }
@@ -90,5 +97,9 @@ public class ModifyAnswer extends AppCompatActivity {
     public void goToProfUIActivity(){
         Intent intent = new Intent(this, ProfessorUI.class);
         startActivity(intent);
+    }
+
+    public void annuler(View v) {
+        finish();
     }
 }

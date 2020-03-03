@@ -136,7 +136,7 @@ public class AddAnswer2 extends AppCompatActivity {
         database.getReference("answer").push().setValue(a);
 
 
-        Toast.makeText(this, "la Réponse: " + s + " a été ajoutée", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "La réponse: \"" + s + "\" a été ajoutée", Toast.LENGTH_LONG).show();
 
         name.setText("");
 
@@ -152,5 +152,9 @@ public class AddAnswer2 extends AppCompatActivity {
     public void goToProfUIActivity(){
         Intent intent = new Intent(this, ProfessorUI.class);
         startActivity(intent);
+    }
+
+    public void annuler(View v) {
+        finish();
     }
 }

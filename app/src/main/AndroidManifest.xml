@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DisplayQuizz"/>
+        <activity android:name=".DisplayQuiz"/>
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashScreen"
@@ -61,6 +61,8 @@
         <activity android:name=".DisplayAnswer" />
         <activity android:name=".DisplayAnswerQuiz"/>
         <activity android:name=".StudentUI3"/>
+        <activity android:name=".StudentUI2" />
+        <activity android:name=".DisplayQuizProf" />
     </application>
 
 </manifest>

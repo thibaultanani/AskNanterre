@@ -1,21 +1,19 @@
 package com.example.asknanterre;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +21,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DisplayAnswerQuiz extends AppCompatActivity {
     private DatabaseReference mDatabase;
@@ -35,6 +35,9 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
     TextView question;
     String text;
     DatabaseReference ref;
+    DatabaseReference ref2;
+    private boolean correct;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +88,7 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
 
         spinner.setAdapter(adapter);
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+       /* spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // your code here
@@ -104,7 +107,7 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
                 // your code here
             }
 
-        });
+        });*/
     }
 
     public void valider(View v) {
@@ -139,6 +142,102 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
 
         Intent intent = new Intent(this, DisplayQuestionProf.class);
         startActivity(intent);*/
+
+        EditText name = (EditText) findViewById(R.id.lname);
+        TextView text = (TextView) findViewById(R.id.ltext);
+        String s;
+        final int position;
+
+        Bundle b = getIntent().getExtras();
+        final String questionId;
+        questionId = b.getString("key");
+        Log.v("questID", questionId);
+
+        //s = spinner.getSelectedItem().toString();
+        spinner = (Spinner) findViewById(R.id.spinner1);
+        position = spinner.getSelectedItemPosition();
+        Log.v("Pos", ""+position);
+        ref2 = FirebaseDatabase.getInstance().getReference().child("quiz");
+        final String key2 = ref2.getKey();
+        ValueEventListener valueEventListener2 = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int i = 0;
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Log.d("key recu2", ds.getKey());
+                    Quiz q = ds.getValue(Quiz.class);
+                    if(q.questionId.equals(questionId)){
+                        Log.d("key recu2.1", "tour de boucle" + i);
+                        Log.d("key recu2.2", "bon id");
+                        if(position == i) {
+                            Log.d("ok et correct =", ""+q.correct);
+                            if(q.correct) {
+                                correct = true;
+                            }
+                            else {
+                                correct = false;
+                            }
+                            i++;
+                        }
+                        else {
+                            i++;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        };
+        ref2.addListenerForSingleValueEvent(valueEventListener2);
+
+        ref = FirebaseDatabase.getInstance().getReference().child("questionProf").child(questionId);
+        final String key = ref.getKey();
+        Log.d("key originel", key);
+        final Map<String,Object> questionProfMap = new HashMap<String,Object>();
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Log.d("key recu", ds.getKey());
+                    if(correct) {
+                        if (ds.getKey().equals("ncorrects")) {
+                            questionProfMap.put("ncorrects", ds.getValue(Integer.class) + 1);
+                            ref.updateChildren(questionProfMap);
+                            Toast.makeText(DisplayAnswerQuiz.this, "La réponse: \"" + spinner.getSelectedItem().toString() + "\" est correcte", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    else {
+                        if (ds.getKey().equals("nfalses")) {
+                            questionProfMap.put("nfalses", ds.getValue(Integer.class) + 1);
+                            ref.updateChildren(questionProfMap);
+                            Toast.makeText(DisplayAnswerQuiz.this, "Le réponse: \"" + spinner.getSelectedItem().toString() + "\" est fausse", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    Log.d("TAG", "tour de boucle");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        };
+        ref.addListenerForSingleValueEvent(valueEventListener);
+
+        if (context instanceof DisplayQuiz) {
+            ((DisplayQuiz)context).updateList();
+        }
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                // Actions to do after 5 seconds
+                finish();
+            }
+        }, 1000);
+    }
+
+    public void annuler(View v) {
+        finish();
     }
 
     public void goToMainActivity(){

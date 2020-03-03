@@ -24,6 +24,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Logger;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class AddQuestion extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
@@ -72,8 +75,14 @@ public class AddQuestion extends AppCompatActivity {
 
         EditText name = (EditText) findViewById(R.id.lname);
 
-        Question q = new Question(name.getText().toString());
+        Normalizer n = new Normalizer();
+        Question q = new Question(n.normalizeNom(name.getText().toString()));
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        q.date = formatter.format(date);
+        q.titre = n.normalizeTitre(name.getText().toString());
         q.type = 1;
+
         //q.save();
         /*mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("question").push().setValue(q, new DatabaseReference.CompletionListener() {
@@ -109,9 +118,15 @@ public class AddQuestion extends AppCompatActivity {
         database.getReference("question").push().setValue(q);
 
 
-        Toast.makeText(this, "la Question: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "La question: \"" + name.getText() + "\" a été ajoutée", Toast.LENGTH_LONG).show();
 
         name.setText("");
+
+        finish();
+    }
+
+    public void annuler(View v) {
+        finish();
     }
 
     public void goToMainActivity(){

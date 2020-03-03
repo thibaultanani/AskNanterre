@@ -45,7 +45,14 @@
                     android:id="@+id/lock"
                     android:src="@drawable/ic_validate"/>
 
-
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#0000"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:id="@+id/lock2"
+                    android:src="@drawable/ic_lock"/>
 
             </LinearLayout>
 
@@ -139,6 +146,9 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:text="Name"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+
             <TextView
                 android:id="@+id/textView_upvote"
                 android:layout_width="match_parent"

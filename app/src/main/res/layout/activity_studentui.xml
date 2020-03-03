@@ -50,7 +50,7 @@
 
         <LinearLayout
             android:id="@+id/mainGrid2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="210dp"
             android:layout_gravity="center"
             android:layout_weight="9">
@@ -71,18 +71,18 @@
                     android:padding="16dp">
 
                     <ImageView
-                        android:id="@+id/Add"
+                        android:id="@+id/action_home"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:onClick="addQuestion"
-                        android:src="@drawable/send" />
+                        android:onClick="goToMainActivity"
+                        android:src="@drawable/home" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Ajouter une question ouverte"
+                        android:text="Menu principal\n"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
@@ -106,10 +106,10 @@
                     android:padding="16dp">
 
                     <ImageView
-                        android:id="@+id/AddQCM"
+                        android:id="@+id/Add"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:onClick="addQuestionQCM"
+                        android:onClick="studentUI2"
                         android:src="@drawable/send" />
 
                     <TextView
@@ -117,7 +117,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Ajouter une question fermée"
+                        android:text="Poser une question"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
@@ -154,7 +154,7 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:onClick="displayQuestionStud"
-                        android:src="@drawable/display" />
+                        android:src="@drawable/displayquestion" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -189,14 +189,14 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:onClick="displayQuizz"
-                        android:src="@drawable/quiz" />
+                        android:src="@drawable/displayquiz" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Liste des\nquizz"
+                        android:text="Liste des\nquizs"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
@@ -205,85 +205,6 @@
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/mainGrid4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="9">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0px"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:id="@+id/action_home"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:onClick="goToMainActivity"
-                        android:src="@drawable/home" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:gravity="center_horizontal"
-                        android:text="Menu principal\n"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0px"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:layout_weight="1"
-                android:visibility="invisible"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:gravity="center_horizontal"
-                        android:text="Menu principal\n"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-
-
 
     </LinearLayout>
 

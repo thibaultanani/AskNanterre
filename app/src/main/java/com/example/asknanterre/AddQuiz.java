@@ -14,15 +14,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AddQuiz extends AppCompatActivity {
 
     Spinner spinner;
     Spinner spinner2;
+    Spinner spinner3;
     String text;
     String text2;
+    String text3;
     EditText edit;
     LinearLayout ll;
     LinearLayout.LayoutParams lp;
@@ -78,15 +82,37 @@ public class AddQuiz extends AppCompatActivity {
             }
 
         });
+
+        spinner3 = (Spinner) findViewById(R.id.spinner3);
+
+        final List<String> spinnerArray2 =  new ArrayList<String>();
+        spinnerArray2.add("1");
+        spinnerArray2.add("2");
+        spinnerArray2.add("3");
+
+        final ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, spinnerArray2);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner sItems = (Spinner) findViewById(R.id.spinner3);
+        sItems.setAdapter(adapter2);
     }
 
     public void valider(View v) {
 
         EditText name = (EditText) findViewById(R.id.lname);
         spinner2 = (Spinner) findViewById(R.id.spinner2);
+        spinner3 = (Spinner) findViewById(R.id.spinner3);
         text2 = spinner2.getSelectedItem().toString();
+        text3 = spinner3.getSelectedItem().toString();
 
-        QuestionProf q = new QuestionProf(name.getText().toString());
+        Normalizer n = new Normalizer();
+        QuestionProf q = new QuestionProf(n.normalizeNom(name.getText().toString()));
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        q.date = formatter.format(date);
+        q.titre = n.normalizeTitre(name.getText().toString());
+        q.difficulte = Integer.parseInt(text3);
+
         /*long id = q.save();
         Log.d("l'id de la question", id+"");*/
 
@@ -116,8 +142,14 @@ public class AddQuiz extends AppCompatActivity {
             Log.d("l'id de la rep", id+"");
         }
 
-        Toast.makeText(this, "la Question: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Le quiz: \"" + name.getText() + "\" a été ajouté", Toast.LENGTH_LONG).show();
 
         name.setText("");
+
+        finish();
+    }
+
+    public void annuler(View v) {
+        finish();
     }
 }

@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Les réponses prédéfinis"/>
+        android:hint="Les réponses prédéfinies"/>
 
     <Spinner
         android:id="@+id/spinner1"
@@ -46,17 +46,39 @@
         android:background="@drawable/edittext_bg"
         android:hint="Votre réponse"/>
 
-    <Button
-        android:layout_width="100dp"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Valider"
-        android:id="@+id/button"
-        android:onClick="valider"
-        android:background="@drawable/mybutton2"
-        android:textColor="#ffffff"
-        android:drawableStart="@drawable/ic_arrow"/>
+        android:layout_gravity="right">
+
+        <Button
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Annuler"
+            android:id="@+id/button2"
+            android:onClick="annuler"
+            android:background="@drawable/mybutton2"
+            android:textColor="#ffffff"
+            android:drawableStart="@drawable/ic_arrow"/>
+
+        <Button
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/button2"
+            android:text="Valider"
+            android:id="@+id/button"
+            android:onClick="valider"
+            android:background="@drawable/mybutton2"
+            android:textColor="#ffffff"
+            android:drawableStart="@drawable/ic_arrow"/>
+
+    </RelativeLayout>
 
 </LinearLayout>

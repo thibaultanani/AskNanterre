@@ -9,7 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.FirebaseError;
@@ -28,18 +31,26 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
     private ArrayList<String> list3 = new ArrayList<String>();
     private ArrayList<String> list4 = new ArrayList<String>();
     private ArrayList<String> list5 = new ArrayList<String>();
+    private ArrayList<String> list6 = new ArrayList<String>();
+    private ArrayList<String> list7 = new ArrayList<String>();
+    private ArrayList<String> list8 = new ArrayList<String>();
+    private ArrayList<String> list9 = new ArrayList<String>();
     private Context context;
     private boolean checkExists = false;
     private Answer tmp;
     private String tmpKey;
 
 
-    public CustomAdapterProf2(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3, ArrayList<String> list4, ArrayList<String> list5, Context context) {
+    public CustomAdapterProf2(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3, ArrayList<String> list4, ArrayList<String> list5, ArrayList<String> list6, ArrayList<String> list7, ArrayList<String> list8, ArrayList<String> list9, Context context) {
         this.list1 = list1;
         this.list2 = list2;
         this.list3 = list3;
         this.list4 = list4;
         this.list5 = list5;
+        this.list6 = list6;
+        this.list7 = list7;
+        this.list8 = list8;
+        this.list9 = list9;
         this.context = context;
     }
 
@@ -69,7 +80,7 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
 
 
         //Handle TextView and display string from your list
-        TextView listItemText = (TextView)view.findViewById(R.id.textView_name2);
+        TextView listItemText = (TextView)view.findViewById(R.id.textView_nom2);
         String formatedText="" + list3.get(position);
         TextView listItemTextUpvote= (TextView) view.findViewById(R.id.textView_upvote2);
         String formatedText2="" + list4.get(position);
@@ -77,7 +88,39 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
         listItemTextUpvote.setText(formatedText);
         listItemTextDownvote.setText(formatedText2);
         listItemText.setText(list1.get(position));
+        TextView listItemTextTitre= (TextView) view.findViewById(R.id.textView_titre);
+        String formatedText3="" + list6.get(position);
+        listItemTextTitre.setText(formatedText3);
+        TextView listItemTextDate= (TextView) view.findViewById(R.id.textView_date);
+        String formatedText4="" + list7.get(position);
+        listItemTextDate.setText(formatedText4);
 
+        LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.mylinearLayoutx);
+        if(!Boolean.parseBoolean(list8.get(position))) {
+            linearLayout.setBackgroundColor(context.getResources().getColor(R.color.colorBlue2));
+        }
+        else {
+            linearLayout.setBackgroundColor(context.getResources().getColor(R.color.colorAccentDark));
+        }
+
+        ImageView imageview = (ImageView) view.findViewById(R.id.lock);
+        if(Integer.parseInt(list9.get(position))==1) {
+            imageview.setImageResource(R.drawable.ic_up_w);
+        }
+        else if(Integer.parseInt(list9.get(position))==-1) {
+            imageview.setImageResource(R.drawable.ic_down_w);
+        }
+        else {
+            imageview.setImageResource(android.R.color.transparent);
+        }
+
+        ImageView imageview2 = (ImageView) view.findViewById(R.id.lock2);
+        if(Integer.parseInt(list5.get(position))!=1) {
+            imageview2.setImageResource(R.drawable.ic_lock);
+        }
+        else {
+            imageview2.setImageResource(R.drawable.ic_unlock);
+        }
         /*
         //Handle buttons and add onClickListeners
         Button deleteBtn = (Button)view.findViewById(R.id.del);
