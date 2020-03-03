@@ -88,27 +88,10 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
         TextView listItemText = (TextView)view.findViewById(R.id.textView_name);
         String formatedText=" " + list3.get(position);
         TextView listItemTextUpvote= (TextView) view.findViewById(R.id.textView_upvote);
-        ImageView listItemTextRepondu= (ImageView) view.findViewById(R.id.textView_repondu);
-        String formatedText3="" + list5.get(position);
-        TextView listItemTextDownvote= (TextView) view.findViewById(R.id.textView_downvote);
         LinearLayout myLinearLayout = (LinearLayout) view.findViewById(R.id.mylinearLayoutx);
 
-        if ( list4.get(position).equals("true"))
-            {
-                 String formatedText2=" Répondu";
-                 //listItemTextRepondu.setText(formatedText2);
-                listItemTextRepondu.setVisibility(View.VISIBLE);
-            }
-        else
-            {
-                 String formatedText2=" Non Répondu";
-                //listItemTextRepondu.setText(formatedText2);
-                listItemTextRepondu.setVisibility(View.INVISIBLE);
-            }
 
-        listItemTextUpvote.setText(formatedText);
-        listItemTextDownvote.setText(formatedText3);
-        TextView listItemTextupvoteProf= (TextView) view.findViewById(R.id.textView_upvoteProf);
+
 
 
         if (list6.get(position).equals("0"))

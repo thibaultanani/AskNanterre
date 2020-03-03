@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void studentUI(View v){
-        Intent intent = new Intent(this, StudentUI.class);
+        Intent intent = new Intent(this, StudentUI3.class);
         startActivity(intent);
     }
 

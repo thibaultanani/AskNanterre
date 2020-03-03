@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,12 +23,18 @@ public class StudentUI extends AppCompatActivity {
     Button btn;
     BottomNavigationView bottomNavigationView;
     Menu itemToHide;
+    TextView cours;
+    Bundle b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studentui);
 
+        b = getIntent().getExtras();
+
+        cours = (TextView) findViewById(R.id.idcours);
+        cours.setText(b.getString("name"));
         /*Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorDarkRed));
 
