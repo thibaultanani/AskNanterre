@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="41dp"
         android:id="@+id/add_cours"
-        android:layout_below="@+id/Search"
+        android:layout_below="@+id/Display"
         android:layout_centerHorizontal="true"
         android:onClick="addCours"/>
 
