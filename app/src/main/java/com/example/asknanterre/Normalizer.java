@@ -13,7 +13,7 @@ public class Normalizer {
             titre = titre + "?";
         }
         if(titre.length()>15) {
-            titre = titre.substring(0, Math.min(titre.length(), 25));
+            titre = titre.substring(0, Math.min(titre.length(), 15));
             titre = titre.substring(0, titre.length() - 4);
             titre = titre + " ...";
         }
