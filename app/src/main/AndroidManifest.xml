@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.asknanterre">
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="com.orm.SugarApp"
@@ -13,6 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+            tools:replace="android:launchMode"
+            android:launchMode="standard" />
         <activity android:name=".DisplayQuiz"/>
         <activity android:name=".MainActivity" />
         <activity
@@ -25,11 +27,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
 
-                <action android:name="android.intent.action.SEND" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data android:mimeType="message/rfc822" />
             </intent-filter>
         </activity>
         <activity android:name=".AddQuestion"/>
@@ -40,10 +37,6 @@
         <activity android:name=".HomeActivity"/>
         <activity android:name=".ConnectionActivity"/>
         <activity android:name=".SendFeedBack" />
-
-        <meta-data
-            android:name="VERSION"
-            android:value="12" />
 
         <activity android:name=".AnswerQuestion" />
         <activity android:name=".DisplayAnswerQuestion" />
