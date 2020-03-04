@@ -3,6 +3,7 @@ package com.example.asknanterre;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +11,8 @@ public class StudentUI2 extends AppCompatActivity {
 
     Bundle b;
     String coursId;
+    TextView cours;
+    String s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +21,9 @@ public class StudentUI2 extends AppCompatActivity {
 
         b = getIntent().getExtras();
         coursId = b.getString("key");
+        cours = (TextView) findViewById(R.id.txtdashboard2);
+        s = cours.getText().toString();
+        cours.setText(s + " (" + b.getString("name") + ") ");
     }
 
     public void addQuestion(View v){

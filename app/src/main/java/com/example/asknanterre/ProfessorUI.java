@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,8 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.w3c.dom.Text;
+
 public class ProfessorUI extends AppCompatActivity {
 
     Button btn;
@@ -24,6 +27,8 @@ public class ProfessorUI extends AppCompatActivity {
     Menu itemToHide;
     Bundle b;
     String coursId;
+    TextView cours;
+    String s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +79,9 @@ public class ProfessorUI extends AppCompatActivity {
         });*/
         b = getIntent().getExtras();
         coursId = b.getString("key");
+        cours = (TextView) findViewById(R.id.txtdashboard2);
+        s = cours.getText().toString();
+        cours.setText(s + " (" + b.getString("name") + ") ");
     }
 
     public void addQuiz(View v){

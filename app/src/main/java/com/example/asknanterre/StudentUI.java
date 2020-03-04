@@ -27,6 +27,7 @@ public class StudentUI extends AppCompatActivity {
     TextView cours;
     Bundle b;
     String coursId;
+    String s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +36,9 @@ public class StudentUI extends AppCompatActivity {
 
         b = getIntent().getExtras();
 
-        cours = (TextView) findViewById(R.id.idcours);
-        cours.setText(b.getString("name"));
+        cours = (TextView) findViewById(R.id.txtdashboard2);
+        s = cours.getText().toString();
+        cours.setText(s + " (" + b.getString("name") + ") ");
         /*Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorDarkRed));
 
@@ -130,6 +132,7 @@ public class StudentUI extends AppCompatActivity {
         Intent intent = new Intent(this, StudentUI2.class);
         Bundle b2 = new Bundle();
         b2.putString("key", coursId);
+        b2.putString("name", b.getString("name"));
         intent.putExtras(b2);
         startActivity(intent);
     }
