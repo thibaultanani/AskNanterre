@@ -12,7 +12,7 @@ public class Normalizer {
         if(titre.charAt(titre.length()-1)!='?') {
             titre = titre + "?";
         }
-        if(titre.length()>25) {
+        if(titre.length()>15) {
             titre = titre.substring(0, Math.min(titre.length(), 25));
             titre = titre.substring(0, titre.length() - 4);
             titre = titre + " ...";
