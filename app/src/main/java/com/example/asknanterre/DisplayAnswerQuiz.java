@@ -67,7 +67,7 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
 
         final List<String> spinnerArray =  new ArrayList<String>();
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, spinnerArray);
+                this, R.layout.spinner_item,R.id.textdropdown, spinnerArray);
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

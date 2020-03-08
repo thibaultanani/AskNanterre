@@ -7,35 +7,6 @@
     android:background="@drawable/bgapps"
     tools:context=".ProfessorUI">
 
-    <!--<Button
-        android:text="Liste des questions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:id="@+id/Display"
-        android:layout_centerHorizontal="true"
-        android:onClick="displayQuestionProf"/>-->
-
-    <!--<Button
-        android:text="Aller vers l'interface étudiant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:id="@+id/prof_btn"
-        android:layout_below="@+id/Display"
-        android:layout_centerHorizontal="true"
-        android:onClick="studentUI"/>-->
-
-    <!--<com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/activity_main_bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/colorBlue"
-        app:itemIconTint="@drawable/bottom_navigation_colors"
-        app:itemTextColor="@drawable/bottom_navigation_colors"
-        app:menu="@menu/bottom_navigation_menu"
-        android:layout_alignParentBottom="true" />-->
 
     <LinearLayout
         android:orientation="vertical"
@@ -59,6 +30,7 @@
 
             <TextView
                 android:text="Interface Professeur"
+                android:id="@+id/txtdashboard2"
                 android:textSize="14sp"
                 android:textColor="#FFFFFF"
                 android:layout_marginTop="6dp"
@@ -99,6 +71,7 @@
 
                     <TextView
                         android:layout_marginTop="12dp"
+                        android:gravity="center_horizontal"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp"
                         android:text="Menu principal\n"

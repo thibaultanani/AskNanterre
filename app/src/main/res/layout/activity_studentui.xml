@@ -8,46 +8,7 @@
     android:background="@drawable/bgapps"
     tools:context=".StudentUI">
 
-    <!--<Button
-        android:text="Ajouter une queston"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ADD"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="105dp"
-        android:onClick="addQuestion"
-        />
 
-    <Button
-        android:text="Liste des questions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:id="@+id/Display"
-        android:layout_below="@+id/ADD"
-        android:layout_centerHorizontal="true"
-        android:onClick="displayQuestionStud"/>-->
-
-    <!--<Button
-        android:text="Aller vers l'interface professeur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:id="@+id/stud_btn"
-        android:layout_below="@+id/Display"
-        android:layout_centerHorizontal="true"
-        android:onClick="professorUI"/>-->
-
-    <!--<com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/activity_main_bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/colorRed"
-        app:itemIconTint="@drawable/bottom_navigation_colors"
-        app:itemTextColor="@drawable/bottom_navigation_colors"
-        app:menu="@menu/bottom_navigation_menu"
-        android:layout_alignParentBottom="true" />-->
 
     <LinearLayout
         android:orientation="vertical"
@@ -71,6 +32,7 @@
 
             <TextView
                 android:text="Interface Etudiant"
+                android:id="@+id/txtdashboard2"
                 android:textSize="14sp"
                 android:textColor="#FFFFFF"
                 android:layout_marginTop="6dp"

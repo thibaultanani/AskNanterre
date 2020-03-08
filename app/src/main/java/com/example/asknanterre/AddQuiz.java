@@ -105,6 +105,9 @@ public class AddQuiz extends AppCompatActivity {
         text2 = spinner2.getSelectedItem().toString();
         text3 = spinner3.getSelectedItem().toString();
 
+        final Bundle b = getIntent().getExtras();
+        final String coursId = b.getString("key");
+
         Normalizer n = new Normalizer();
         QuestionProf q = new QuestionProf(n.normalizeNom(name.getText().toString()));
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -112,6 +115,7 @@ public class AddQuiz extends AppCompatActivity {
         q.date = formatter.format(date);
         q.titre = n.normalizeTitre(name.getText().toString());
         q.difficulte = Integer.parseInt(text3);
+        q.coursId = coursId;
 
         /*long id = q.save();
         Log.d("l'id de la question", id+"");*/

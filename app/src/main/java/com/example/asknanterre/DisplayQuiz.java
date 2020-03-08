@@ -47,11 +47,16 @@ public class DisplayQuiz extends AppCompatActivity {
     ProgressBar progressBar;
     Spinner spinner;
     EditText edit;
+    Bundle b;
+    String coursId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_displayquizz);
+
+        b = getIntent().getExtras();
+        coursId = b.getString("key");
 
         mQuestionReference = FirebaseDatabase.getInstance().getReference()
                 .child("questionProf");
@@ -98,6 +103,9 @@ public class DisplayQuiz extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
+        b = getIntent().getExtras();
+        coursId = b.getString("key");
+
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference questionProfRef = rootRef.child("questionProf");
         quiz = new ArrayList<QuestionProf>();
@@ -129,10 +137,12 @@ public class DisplayQuiz extends AppCompatActivity {
                 quiz.clear();
                 quizID.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    String product = ds.getKey();
-                    quiz.add(ds.getValue(QuestionProf.class));
-                    quizID.add(ds.getKey());
-                    Log.d("TAG", product);
+                    if(ds.getValue(QuestionProf.class).coursId.equals(coursId)) {
+                        String product = ds.getKey();
+                        quiz.add(ds.getValue(QuestionProf.class));
+                        quizID.add(ds.getKey());
+                        Log.d("TAG", product);
+                    }
                 }
                 progressBar.setVisibility(View.GONE);
 
@@ -186,6 +196,9 @@ public class DisplayQuiz extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
+        b = getIntent().getExtras();
+        coursId = b.getString("key");
+
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference questionRef = rootRef.child("questionProf");
         quiz = new ArrayList<QuestionProf>();
@@ -198,10 +211,11 @@ public class DisplayQuiz extends AppCompatActivity {
                 quiz.clear();
                 quizID.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    String product = ds.getKey();
-
+                    if(ds.getValue(QuestionProf.class).coursId.equals(coursId)) {
+                        String product = ds.getKey();
                         quiz.add(ds.getValue(QuestionProf.class));
                         quizID.add(ds.getKey());
+                    }
                 }
                 progressBar.setVisibility(View.GONE);
 

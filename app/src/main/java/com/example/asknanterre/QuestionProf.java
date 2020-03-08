@@ -10,6 +10,7 @@ public class QuestionProf extends SugarRecord {
     int difficulte;
     int Ncorrects;
     int Nfalses;
+    String coursId;
 
     public QuestionProf() {}
 
@@ -71,5 +72,13 @@ public class QuestionProf extends SugarRecord {
 
     public void setNfalses(int nfalses) {
         Nfalses = nfalses;
+    }
+
+    public String getCoursId() {
+        return coursId;
+    }
+
+    public void setCoursId(String coursId) {
+        this.coursId = coursId;
     }
 }

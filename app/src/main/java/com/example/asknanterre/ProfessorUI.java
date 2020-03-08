@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,11 +18,17 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.w3c.dom.Text;
+
 public class ProfessorUI extends AppCompatActivity {
 
     Button btn;
     BottomNavigationView bottomNavigationView;
     Menu itemToHide;
+    Bundle b;
+    String coursId;
+    TextView cours;
+    String s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,20 +77,34 @@ public class ProfessorUI extends AppCompatActivity {
                 return true;
             }
         });*/
+        b = getIntent().getExtras();
+        coursId = b.getString("key");
+        cours = (TextView) findViewById(R.id.txtdashboard2);
+        s = cours.getText().toString();
+        cours.setText(s + " (" + b.getString("name") + ") ");
     }
 
     public void addQuiz(View v){
         Intent intent = new Intent(this, AddQuiz.class);
+        Bundle b2 = new Bundle();
+        b2.putString("key", coursId);
+        intent.putExtras(b2);
         startActivity(intent);
     }
 
     public void displayQuestionProf(View v){
         Intent intent = new Intent(this, DisplayQuestionProf.class);
+        Bundle b2 = new Bundle();
+        b2.putString("key", coursId);
+        intent.putExtras(b2);
         startActivity(intent);
     }
 
     public void displayQuizProf(View v){
         Intent intent = new Intent(this, DisplayQuizProf.class);
+        Bundle b2 = new Bundle();
+        b2.putString("key", coursId);
+        intent.putExtras(b2);
         startActivity(intent);
     }
 

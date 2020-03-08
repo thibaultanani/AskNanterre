@@ -20,6 +20,11 @@ public class CustomAdapter extends BaseAdapter implements ListAdapter {
 
 
 
+    public CustomAdapter(ArrayList<String> list1,Context context) {
+        this.list1 = list1;
+        this.context = context;
+    }
+
     public CustomAdapter(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3,Context context) {
         this.list1 = list1;
         this.list2 = list2;

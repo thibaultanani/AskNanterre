@@ -26,9 +26,10 @@
         android:id="@+id/spinner1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/number_arrays"
         android:layout_marginTop="10dp"
-        android:prompt="@string/number_prompt" />
+        android:entries="@array/number_arrays"
+        android:prompt="@string/number_prompt"
+        android:spinnerMode="dropdown" />
 
     <TextView
         android:id="@+id/ltext"

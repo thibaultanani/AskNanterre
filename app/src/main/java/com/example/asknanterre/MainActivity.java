@@ -37,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
     }*/
 
     public void professorUI(View v){
-        Intent intent = new Intent(this, ProfessorUI.class);
+        Intent intent = new Intent(this, ProfessorUI2.class);
         startActivity(intent);
     }
 
     public void studentUI(View v){
-        Intent intent = new Intent(this, StudentUI.class);
+        Intent intent = new Intent(this, StudentUI3.class);
         startActivity(intent);
     }
 
