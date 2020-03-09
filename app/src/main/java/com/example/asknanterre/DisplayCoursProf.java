@@ -40,6 +40,8 @@ public class DisplayCoursProf extends AppCompatActivity {
     List<Cours> courstmp;
     List<String> coursIDtmp;
     String[] q1;
+    String[] q2;
+    String[] q3;
     private DatabaseReference mCoursReference;
     ProgressBar progressBar;
     Spinner spinner;
@@ -100,12 +102,15 @@ public class DisplayCoursProf extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
 
                 q1 = new String[cours.size()];
+                q2 = new String[cours.size()];
+                q3 = new String[cours.size()];
 
                 myListView = (ListView) findViewById(R.id.myListView);
 
                 for (int i = 0; i < cours.size(); i++) {
                     q1[i] = cours.get(i).nom;
-
+                    q2[i] = cours.get(i).titre;
+                    q3[i] = cours.get(i).date;
                 }
 
                 edit = (EditText) findViewById(R.id.EditText01);
@@ -142,16 +147,21 @@ public class DisplayCoursProf extends AppCompatActivity {
                             cours.addAll(courstmp);
                             coursID.addAll(coursIDtmp);
                             q1 = new String[cours.size()];
+                            q2 = new String[cours.size()];
+                            q3 = new String[cours.size()];
 
                             for (int i = 0; i < cours.size(); i++) {
                                 q1[i] = cours.get(i).nom;
-
+                                q2[i] = cours.get(i).titre;
+                                q3[i] = cours.get(i).date;
                             }
                             ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayCoursProf.this, android.R.layout.simple_list_item_1, q1);
                             ArrayList<String> list1 = new ArrayList(Arrays.asList(q1));
                             ArrayList<String> list2 = new ArrayList(coursID);
+                            ArrayList<String> list3 = new ArrayList(Arrays.asList(q2));
+                            ArrayList<String> list4 = new ArrayList(Arrays.asList(q3));
 
-                            CustomAdapterCoursProf adapt = new CustomAdapterCoursProf(list1, list2, DisplayCoursProf.this);
+                            CustomAdapterCoursProf adapt = new CustomAdapterCoursProf(list1, list2, list3, list4, DisplayCoursProf.this);
                             myListView.setAdapter(adapt);
                             adapt.notifyDataSetChanged();
                         }
@@ -164,8 +174,10 @@ public class DisplayCoursProf extends AppCompatActivity {
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayCoursProf.this, android.R.layout.simple_list_item_1, q1);
                 ArrayList<String> list1 = new ArrayList(Arrays.asList(q1));
                 ArrayList<String> list2 = new ArrayList(coursID);
+                ArrayList<String> list3 = new ArrayList(Arrays.asList(q2));
+                ArrayList<String> list4 = new ArrayList(Arrays.asList(q3));
 
-                CustomAdapterCoursProf adapt = new CustomAdapterCoursProf(list1, list2, DisplayCoursProf.this);
+                CustomAdapterCoursProf adapt = new CustomAdapterCoursProf(list1, list2, list3, list4,DisplayCoursProf.this);
                 myListView.setAdapter(adapt);
                 adapt.notifyDataSetChanged();
             }

@@ -38,6 +38,8 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
     DatabaseReference ref2;
     private boolean correct;
     private Context context;
+    int nbRep;
+    String key3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,9 +175,13 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
                             Log.d("ok et correct =", ""+q.correct);
                             if(q.correct) {
                                 correct = true;
+                                nbRep = q.nbRep;
+                                key3 = ds.getKey();
                             }
                             else {
                                 correct = false;
+                                nbRep = q.nbRep;
+                                key3 = ds.getKey();
                             }
                             i++;
                         }
@@ -195,6 +201,7 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
         final String key = ref.getKey();
         Log.d("key originel", key);
         final Map<String,Object> questionProfMap = new HashMap<String,Object>();
+        final Map<String,Object> quizMap = new HashMap<String,Object>();
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -204,6 +211,8 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
                         if (ds.getKey().equals("ncorrects")) {
                             questionProfMap.put("ncorrects", ds.getValue(Integer.class) + 1);
                             ref.updateChildren(questionProfMap);
+                            quizMap.put("nbRep", nbRep + 1);
+                            ref2.child(key3).updateChildren(quizMap);
                             Toast.makeText(DisplayAnswerQuiz.this, "La réponse: \"" + spinner.getSelectedItem().toString() + "\" est correcte", Toast.LENGTH_LONG).show();
                         }
                     }
@@ -211,6 +220,8 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
                         if (ds.getKey().equals("nfalses")) {
                             questionProfMap.put("nfalses", ds.getValue(Integer.class) + 1);
                             ref.updateChildren(questionProfMap);
+                            quizMap.put("nbRep", nbRep + 1);
+                            ref2.child(key3).updateChildren(quizMap);
                             Toast.makeText(DisplayAnswerQuiz.this, "Le réponse: \"" + spinner.getSelectedItem().toString() + "\" est fausse", Toast.LENGTH_LONG).show();
                         }
                     }

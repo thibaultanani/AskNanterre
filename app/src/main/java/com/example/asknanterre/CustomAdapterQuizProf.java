@@ -1,6 +1,9 @@
 package com.example.asknanterre;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +11,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -92,6 +101,46 @@ public class CustomAdapterQuizProf extends BaseAdapter implements ListAdapter {
             imageview2.setVisibility(View.INVISIBLE);
             imageview3.setVisibility(View.VISIBLE);
         }
+
+        listItemText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            DatabaseReference postRef = FirebaseDatabase.getInstance().getReference().child("quiz");
+
+
+            postRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Iterable<DataSnapshot> answerChildren = dataSnapshot.getChildren();
+
+                    for (DataSnapshot answer: answerChildren) {
+                        Quiz q = answer.getValue(Quiz.class);      //make a model User with necessary fields
+                        Log.v("questId", q.questionId);
+                        if(q.questionId.equals(list2.get(position))){
+                            checkExists = true;
+                            tmp = q;
+                            tmpKey = answer.getKey();
+                        }
+                    }
+                    Intent intent;
+                    intent = new Intent(context,DisplayAnswerQuizProf.class);
+                    Bundle b = new Bundle();
+                    b.putString("key", list2.get(position)); //Your id
+                    b.putString("name", list1.get(position));
+                    b.putBoolean("rep", tmp.correct);
+                    intent.putExtras(b); //Put your id to your next Intent
+                    context.startActivity(intent);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            }
+        });
+
         return view;
     }
 }

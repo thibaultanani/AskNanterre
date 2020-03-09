@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class AddCours extends AppCompatActivity {
 
     @Override
@@ -22,7 +25,13 @@ public class AddCours extends AppCompatActivity {
 
         EditText name = (EditText) findViewById(R.id.lname);
 
-        Cours c = new Cours(name.getText().toString());
+        Normalizer n = new Normalizer();
+        Cours c = new Cours(n.normalizeNom(name.getText().toString()));
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        c.date = formatter.format(date);
+        c.titre = n.normalizeTitre(name.getText().toString());
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         Log.v("Exemple", database.toString());
 
@@ -32,5 +41,9 @@ public class AddCours extends AppCompatActivity {
         Toast.makeText(this, "le cours: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
 
         name.setText("");
+    }
+
+    public void annuler(View v) {
+        finish();
     }
 }
