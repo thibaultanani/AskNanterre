@@ -1,0 +1,304 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.asknanterre"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml
+10
+11    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+12    <!-- <uses-sdk android:minSdkVersion="14"/> -->
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\6e272b55fe956a2ad4aba81014e99a46\firebase-database-19.2.1\AndroidManifest.xml:25:5-79
+13-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\6e272b55fe956a2ad4aba81014e99a46\firebase-database-19.2.1\AndroidManifest.xml:25:22-76
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\6e272b55fe956a2ad4aba81014e99a46\firebase-database-19.2.1\AndroidManifest.xml:26:5-67
+14-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\6e272b55fe956a2ad4aba81014e99a46\firebase-database-19.2.1\AndroidManifest.xml:26:22-64
+15    <uses-permission android:name="android.permission.WAKE_LOCK" />
+15-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:25:5-68
+15-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:25:22-65
+16    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+16-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:26:5-110
+16-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:26:22-107
+17    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+17-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\f2d9725722338ef6fa18779adcf4b044\firebase-iid-20.0.2\AndroidManifest.xml:26:5-82
+17-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\f2d9725722338ef6fa18779adcf4b044\firebase-iid-20.0.2\AndroidManifest.xml:26:22-79
+18
+19    <application
+19-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:6:5-59:19
+20        android:name="com.orm.SugarApp"
+20-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:7:9-40
+21        android:allowBackup="true"
+21-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:8:9-35
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.1.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\659bf9c4d2262486e86d7f829f66e834\core-1.1.0\AndroidManifest.xml:24:18-86
+23        android:debuggable="true"
+24        android:icon="@mipmap/ic_launcher"
+24-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:9:9-43
+25        android:label="@string/app_name"
+25-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:10:9-41
+26        android:roundIcon="@mipmap/ic_launcher_round"
+26-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:11:9-54
+27        android:supportsRtl="true"
+27-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:12:9-35
+28        android:testOnly="true"
+29        android:theme="@style/AppTheme" >
+29-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:13:9-40
+30        <activity
+30-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:14:9-17:45
+31            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+31-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:15:13-85
+32            android:excludeFromRecents="true"
+32-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\2120a4c8955fe7512f7b224571313f7d\firebase-auth-19.2.0\AndroidManifest.xml:26:13-46
+33            android:exported="true"
+33-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\2120a4c8955fe7512f7b224571313f7d\firebase-auth-19.2.0\AndroidManifest.xml:27:13-36
+34            android:launchMode="standard"
+34-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:17:13-42
+35            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+35-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\2120a4c8955fe7512f7b224571313f7d\firebase-auth-19.2.0\AndroidManifest.xml:29:13-102
+36            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+36-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\2120a4c8955fe7512f7b224571313f7d\firebase-auth-19.2.0\AndroidManifest.xml:30:13-72
+37        <activity android:name="com.example.asknanterre.DisplayQuiz" />
+37-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:18:9-48
+37-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:18:19-46
+38        <activity android:name="com.example.asknanterre.MainActivity" />
+38-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:19:9-50
+38-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:19:19-47
+39        <activity
+39-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:20:9-30:20
+40            android:name="com.example.asknanterre.SplashScreen"
+40-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:21:13-41
+41            android:label="@string/app_name"
+41-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:22:13-45
+42            android:screenOrientation="portrait"
+42-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:23:13-49
+43            android:theme="@android:style/Theme.Black.NoTitleBar" >
+43-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:24:13-66
+44            <intent-filter>
+44-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:25:13-29:29
+45                <action android:name="android.intent.action.MAIN" />
+45-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:26:17-69
+45-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:26:25-66
+46
+47                <category android:name="android.intent.category.LAUNCHER" />
+47-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:28:17-77
+47-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:28:27-74
+48            </intent-filter>
+49        </activity>
+50        <activity android:name="com.example.asknanterre.AddQuestion" />
+50-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:31:9-48
+50-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:31:19-46
+51        <activity android:name="com.example.asknanterre.DisplayQuestion" />
+51-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:32:9-52
+51-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:32:19-50
+52        <activity android:name="com.example.asknanterre.AddCours" />
+52-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:33:9-45
+52-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:33:19-43
+53        <activity android:name="com.example.asknanterre.DisplayCours" />
+53-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:34:9-49
+53-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:34:19-47
+54        <activity android:name="com.example.asknanterre.AddUser" />
+54-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:35:9-44
+54-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:35:19-42
+55        <activity android:name="com.example.asknanterre.HomeActivity" />
+55-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:36:9-49
+55-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:36:19-47
+56        <activity android:name="com.example.asknanterre.ConnectionActivity" />
+56-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:37:9-55
+56-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:37:19-53
+57        <activity android:name="com.example.asknanterre.SendFeedBack" />
+57-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:38:9-50
+57-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:38:19-47
+58        <activity android:name="com.example.asknanterre.AnswerQuestion" />
+58-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:40:9-52
+58-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:40:19-49
+59        <activity android:name="com.example.asknanterre.DisplayAnswerQuestion" />
+59-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:41:9-59
+59-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:41:19-56
+60        <activity android:name="com.example.asknanterre.ProfessorUI" />
+60-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:42:9-49
+60-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:42:19-46
+61        <activity android:name="com.example.asknanterre.StudentUI" />
+61-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:43:9-47
+61-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:43:19-44
+62        <activity android:name="com.example.asknanterre.DisplayQuestionProf" />
+62-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:44:9-57
+62-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:44:19-54
+63        <activity android:name="com.example.asknanterre.DisplayQuestionStud" />
+63-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:45:9-57
+63-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:45:19-54
+64        <activity android:name="com.example.asknanterre.AddQCM" />
+64-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:46:9-44
+64-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:46:19-41
+65        <activity android:name="com.example.asknanterre.AddQuiz" />
+65-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:47:9-45
+65-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:47:19-42
+66        <activity android:name="com.example.asknanterre.AddAnswer" />
+66-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:48:9-47
+66-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:48:19-44
+67        <activity android:name="com.example.asknanterre.ModifyAnswer" />
+67-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:49:9-50
+67-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:49:19-47
+68        <activity android:name="com.example.asknanterre.AddAnswer2" />
+68-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:50:9-48
+68-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:50:19-45
+69        <activity android:name="com.example.asknanterre.DisplayAnswer" />
+69-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:51:9-51
+69-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:51:19-48
+70        <activity android:name="com.example.asknanterre.DisplayAnswerQuiz" />
+70-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:52:9-54
+70-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:52:19-52
+71        <activity android:name="com.example.asknanterre.StudentUI3" />
+71-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:53:9-47
+71-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:53:19-45
+72        <activity android:name="com.example.asknanterre.StudentUI2" />
+72-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:54:9-48
+72-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:54:19-45
+73        <activity android:name="com.example.asknanterre.DisplayQuizProf" />
+73-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:55:9-53
+73-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:55:19-50
+74        <activity android:name="com.example.asknanterre.DisplayCoursProf" />
+74-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:56:9-53
+74-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:56:19-51
+75        <activity android:name="com.example.asknanterre.ProfessorUI2" />
+75-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:57:9-49
+75-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:57:19-47
+76        <activity android:name="com.example.asknanterre.DisplayAnswerQuizProf" />
+76-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:58:9-58
+76-->C:\Users\Thuny\AndroidStudioProjects\AskNanterre\app\src\main\AndroidManifest.xml:58:19-56
+77
+78        <service
+78-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\6e272b55fe956a2ad4aba81014e99a46\firebase-database-19.2.1\AndroidManifest.xml:29:9-35:19
+79            android:name="com.google.firebase.components.ComponentDiscoveryService"
+79-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\6e272b55fe956a2ad4aba81014e99a46\firebase-database-19.2.1\AndroidManifest.xml:30:13-84
+80            android:directBootAware="true"
+80-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\c0c7252706486bdee670b32cc60ae6f1\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
+81            android:exported="false" >
+81-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\6e272b55fe956a2ad4aba81014e99a46\firebase-database-19.2.1\AndroidManifest.xml:31:13-37
+82            <meta-data
+82-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\6e272b55fe956a2ad4aba81014e99a46\firebase-database-19.2.1\AndroidManifest.xml:32:13-34:85
+83                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+83-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\6e272b55fe956a2ad4aba81014e99a46\firebase-database-19.2.1\AndroidManifest.xml:33:17-109
+84                android:value="com.google.firebase.components.ComponentRegistrar" />
+84-->[com.google.firebase:firebase-database:19.2.1] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\6e272b55fe956a2ad4aba81014e99a46\firebase-database-19.2.1\AndroidManifest.xml:34:17-82
+85            <meta-data
+85-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\2120a4c8955fe7512f7b224571313f7d\firebase-auth-19.2.0\AndroidManifest.xml:36:13-38:85
+86                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+86-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\2120a4c8955fe7512f7b224571313f7d\firebase-auth-19.2.0\AndroidManifest.xml:37:17-109
+87                android:value="com.google.firebase.components.ComponentRegistrar" />
+87-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\2120a4c8955fe7512f7b224571313f7d\firebase-auth-19.2.0\AndroidManifest.xml:38:17-82
+88            <meta-data
+88-->[com.google.firebase:firebase-firestore:21.4.1] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\2cdce855541b9f2fff961069050e099e\jetified-firebase-firestore-21.4.1\AndroidManifest.xml:20:13-22:85
+89                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+89-->[com.google.firebase:firebase-firestore:21.4.1] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\2cdce855541b9f2fff961069050e099e\jetified-firebase-firestore-21.4.1\AndroidManifest.xml:21:17-111
+90                android:value="com.google.firebase.components.ComponentRegistrar" />
+90-->[com.google.firebase:firebase-firestore:21.4.1] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\2cdce855541b9f2fff961069050e099e\jetified-firebase-firestore-21.4.1\AndroidManifest.xml:22:17-82
+91            <meta-data
+91-->[com.google.android.gms:play-services-measurement-api:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\fdbc4c4e2e2a6da64da8d015847a0e37\play-services-measurement-api-17.2.3\AndroidManifest.xml:30:13-32:85
+92                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+92-->[com.google.android.gms:play-services-measurement-api:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\fdbc4c4e2e2a6da64da8d015847a0e37\play-services-measurement-api-17.2.3\AndroidManifest.xml:31:17-139
+93                android:value="com.google.firebase.components.ComponentRegistrar" />
+93-->[com.google.android.gms:play-services-measurement-api:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\fdbc4c4e2e2a6da64da8d015847a0e37\play-services-measurement-api-17.2.3\AndroidManifest.xml:32:17-82
+94            <meta-data
+94-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\f2d9725722338ef6fa18779adcf4b044\firebase-iid-20.0.2\AndroidManifest.xml:32:13-34:85
+95                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+95-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\f2d9725722338ef6fa18779adcf4b044\firebase-iid-20.0.2\AndroidManifest.xml:33:17-96
+96                android:value="com.google.firebase.components.ComponentRegistrar" />
+96-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\f2d9725722338ef6fa18779adcf4b044\firebase-iid-20.0.2\AndroidManifest.xml:34:17-82
+97        </service>
+98
+99        <receiver
+99-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:29:9-33:20
+100            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+100-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:30:13-85
+101            android:enabled="true"
+101-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:31:13-35
+102            android:exported="false" >
+102-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:32:13-37
+103        </receiver>
+104        <receiver
+104-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:34:9-42:20
+105            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+105-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:35:13-100
+106            android:enabled="true"
+106-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:36:13-35
+107            android:exported="true"
+107-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:37:13-36
+108            android:permission="android.permission.INSTALL_PACKAGES" >
+108-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:38:13-69
+109            <intent-filter>
+109-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:39:13-41:29
+110                <action android:name="com.android.vending.INSTALL_REFERRER" />
+110-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:40:17-79
+110-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:40:25-76
+111            </intent-filter>
+112        </receiver>
+113
+114        <service
+114-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:44:9-47:40
+115            android:name="com.google.android.gms.measurement.AppMeasurementService"
+115-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:45:13-84
+116            android:enabled="true"
+116-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:46:13-35
+117            android:exported="false" />
+117-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:47:13-37
+118        <service
+118-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:48:9-52:72
+119            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+119-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:49:13-87
+120            android:enabled="true"
+120-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:50:13-35
+121            android:exported="false"
+121-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:51:13-37
+122            android:permission="android.permission.BIND_JOB_SERVICE" />
+122-->[com.google.android.gms:play-services-measurement:17.2.3] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\d87eb2a5d7ec44e1951dc8971ab52863\play-services-measurement-17.2.3\AndroidManifest.xml:52:13-69
+123
+124        <receiver
+124-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\f2d9725722338ef6fa18779adcf4b044\firebase-iid-20.0.2\AndroidManifest.xml:37:9-44:20
+125            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+125-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\f2d9725722338ef6fa18779adcf4b044\firebase-iid-20.0.2\AndroidManifest.xml:38:13-78
+126            android:exported="true"
+126-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\f2d9725722338ef6fa18779adcf4b044\firebase-iid-20.0.2\AndroidManifest.xml:39:13-36
+127            android:permission="com.google.android.c2dm.permission.SEND" >
+127-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\f2d9725722338ef6fa18779adcf4b044\firebase-iid-20.0.2\AndroidManifest.xml:40:13-73
+128            <intent-filter>
+128-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\f2d9725722338ef6fa18779adcf4b044\firebase-iid-20.0.2\AndroidManifest.xml:41:13-43:29
+129                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+129-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\f2d9725722338ef6fa18779adcf4b044\firebase-iid-20.0.2\AndroidManifest.xml:42:17-81
+129-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\f2d9725722338ef6fa18779adcf4b044\firebase-iid-20.0.2\AndroidManifest.xml:42:25-78
+130            </intent-filter>
+131        </receiver>
+132
+133        <provider
+133-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\c0c7252706486bdee670b32cc60ae6f1\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
+134            android:name="com.google.firebase.provider.FirebaseInitProvider"
+134-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\c0c7252706486bdee670b32cc60ae6f1\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
+135            android:authorities="com.example.asknanterre.firebaseinitprovider"
+135-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\c0c7252706486bdee670b32cc60ae6f1\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
+136            android:exported="false"
+136-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\c0c7252706486bdee670b32cc60ae6f1\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
+137            android:initOrder="100" />
+137-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\c0c7252706486bdee670b32cc60ae6f1\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
+138
+139        <activity
+139-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\19e84965baddbec02200fe7fcdef9b7e\play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+140            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+140-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\19e84965baddbec02200fe7fcdef9b7e\play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+141            android:exported="false"
+141-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\19e84965baddbec02200fe7fcdef9b7e\play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+142            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+142-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\19e84965baddbec02200fe7fcdef9b7e\play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+143
+144        <meta-data
+144-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\bdb7692cb5821e3f6004accbc72da8e8\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+145            android:name="com.google.android.gms.version"
+145-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\bdb7692cb5821e3f6004accbc72da8e8\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+146            android:value="@integer/google_play_services_version" />
+146-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Thuny\.gradle\caches\transforms-2\files-2.1\bdb7692cb5821e3f6004accbc72da8e8\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+147    </application>
+148
+149</manifest>
