@@ -1,5 +1,7 @@
 package com.example.asknanterre;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +17,8 @@ import java.util.Date;
 
 public class AddCours extends AppCompatActivity {
 
+    Bundle b;
+    private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +36,16 @@ public class AddCours extends AppCompatActivity {
         c.date = formatter.format(date);
         c.titre = n.normalizeTitre(name.getText().toString());
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        Log.v("Exemple", database.toString());
+        Bundle b=new Bundle();
+        b.putString("nom",c.nom);
+        b.putString("titre",c.titre);
+        b.putString("date",c.date);
+        Intent intent = new Intent(context, AddCoursApercu.class);
+        intent.putExtras(b); //Put your id to your next Intent
+        context.startActivity(intent);
 
-        database.getReference("cours").push().setValue(c);
 
 
-        Toast.makeText(this, "le cours: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
-
-        name.setText("");
     }
 
     public void annuler(View v) {
