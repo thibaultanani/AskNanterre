@@ -40,9 +40,9 @@ public class AddCours extends AppCompatActivity {
         b.putString("nom",c.nom);
         b.putString("titre",c.titre);
         b.putString("date",c.date);
-        Intent intent = new Intent(context, AddCoursApercu.class);
+        Intent intent = new Intent(this, AddCoursApercu.class);
         intent.putExtras(b); //Put your id to your next Intent
-        context.startActivity(intent);
+        startActivity(intent);
 
 
 

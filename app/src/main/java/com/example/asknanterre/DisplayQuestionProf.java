@@ -341,7 +341,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 list12 = new ArrayList( Arrays.asList(q12));
                 list13 = new ArrayList( Arrays.asList(q13));
                 list14 = new ArrayList( Arrays.asList(q14));
-                adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14, DisplayQuestionProf.this);
+                adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14,coursId, DisplayQuestionProf.this);
                 myListView2.setAdapter(adapt2);
                 adapt.notifyDataSetChanged();
             }
@@ -569,7 +569,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                             list12 = new ArrayList( Arrays.asList(q12));
                             list13 = new ArrayList( Arrays.asList(q13));
                             list14 = new ArrayList( Arrays.asList(q14));
-                            adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14,DisplayQuestionProf.this);
+                            adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14,coursId,DisplayQuestionProf.this);
                             myListView2.setAdapter(adapt2);
                         }
 
@@ -600,7 +600,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 list12 = new ArrayList( Arrays.asList(q12));
                 list13 = new ArrayList( Arrays.asList(q13));
                 list14 = new ArrayList( Arrays.asList(q14));
-                adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14, DisplayQuestionProf.this);
+                adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14, coursId, DisplayQuestionProf.this);
                 myListView2.setAdapter(adapt2);
 
                // Button triBtn=(Button) findViewById(R.id.triupvote);

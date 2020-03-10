@@ -30,6 +30,7 @@ public class ModifyAnswer extends AppCompatActivity {
     String questionId;
     String AnswerId;
     String nameAnswer;
+    String coursId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class ModifyAnswer extends AppCompatActivity {
 
         question = (TextView) findViewById(R.id.question);
         question.setText(b.getString("name"));
+        coursId= b.getString("idcours");
     }
 
     public void modifier(View v) {
@@ -60,7 +62,10 @@ public class ModifyAnswer extends AppCompatActivity {
         answerMap.put("nom", name.getText().toString());
         ref.updateChildren(answerMap);
         Toast.makeText(this, "La réponse: \"" + name.getText() + "\" a été mise à jour", Toast.LENGTH_LONG).show();
+        Bundle b2= new Bundle();
+        b2.putString("key",coursId);
         Intent intent = new Intent(this, DisplayQuestionProf.class);
+        intent.putExtras(b2);
         startActivity(intent);
         //name.setText("");
     }

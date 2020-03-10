@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -38,18 +39,22 @@ public class AddCoursApercu extends AppCompatActivity {
 
     public void valider_cours(View v) {
 
-        EditText name = (EditText) findViewById(R.id.lname);
+        TextView name =  findViewById(R.id.name_cours);
+        TextView titre= findViewById(R.id.titre_cours);
+
 
         Normalizer n = new Normalizer();
-        Cours c = new Cours(n.normalizeNom(nom.toString()));
+        Cours c = new Cours(n.normalizeNom(name.getText().toString()));
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
         c.date =formatter.format(date);
-        c.titre = n.normalizeTitre(titre.toString());
+        c.titre = n.normalizeTitre(titre.getText().toString());
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         Log.v("Exemple", database.toString());
 
         database.getReference("cours").push().setValue(c);
 
-
+        Intent intent = new Intent(this,  ProfessorUI2.class);
+        startActivity(intent);
     }
 }

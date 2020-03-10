@@ -23,7 +23,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AddAnswer2 extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
@@ -37,6 +39,7 @@ public class AddAnswer2 extends AppCompatActivity {
     TextView question;
     String text;
     DatabaseReference ref;
+    String coursId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,7 @@ public class AddAnswer2 extends AppCompatActivity {
 
         editText = (EditText) findViewById(R.id.lname);
         textView = (TextView) findViewById(R.id.ltext);
+        coursId= b.getString("idcours");
 
         textView.setVisibility(View.GONE);
         editText.setVisibility(View.GONE);
@@ -135,12 +139,20 @@ public class AddAnswer2 extends AppCompatActivity {
 
         database.getReference("answer").push().setValue(a);
 
+        DatabaseReference ref;
+        ref=FirebaseDatabase.getInstance().getReference().child("question").child(questionId);
+        Map<String,Object> questionMap = new HashMap<String,Object>();
+        questionMap.put("repondu", true);
+        ref.updateChildren(questionMap);
 
         Toast.makeText(this, "La réponse: \"" + s + "\" a été ajoutée", Toast.LENGTH_LONG).show();
 
         name.setText("");
 
+        Bundle b2= new Bundle();
+        b2.putString("key",coursId);
         Intent intent = new Intent(this, DisplayQuestionProf.class);
+        intent.putExtras(b2);
         startActivity(intent);
     }
 
