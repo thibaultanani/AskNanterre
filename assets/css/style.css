@@ -399,7 +399,7 @@ a:hover {
 
 
 #gallery{
-    background: url(../img/gallery-bg.png) no-repeat;
+    background: url(../img/amphi2.png) no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -625,7 +625,7 @@ p.client-name {
     height: 640px;
 }
 .mailbox {
-    width: 70%;
+    width: 100%;
     float: left;
     background-image: url(../img/map-image.png);
     background-color: #222;
