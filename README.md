@@ -10,9 +10,10 @@
 
 # AskNanterre
 
-## What is it ?
+## What is AskNanterre ?
 
-An application in order to help students and professors of Nanterrre university. This application is developped on mobile on the Android platform.
+AskNanterre is a mobile application designed to build educational interactions between teachers and students during a class.
+It is available on Android.
 AskNanterre is an application which will allow you to :
 * Ask questions directly on the application without disturbing a presentation or a lesson
 * Know if the different lesson points have been understood correctly by asking the question on the application
@@ -20,25 +21,18 @@ AskNanterre is an application which will allow you to :
 
 ## Set up
 
-### Requirement
+### Requirements
 
 You have to install some tools before being able to use our project
 
-#### Install the SDK
+#### Install Android SDK
 
 * Download and install the SDK : http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
-#### Install Git
-
-* Git, version handler - [Download git](https://git-scm.com/downloads)
-
-#### Installer AndroidStudio
-
-* Download and install AndroidStudio : [Download AndroidStudio](https://developer.android.com/studio/install)
 
 ## How to run the application
 
-### By using Android Studio emulator
+### Use Android Studio emulator
 
 Follow this tutorial : [Download AVD Manager](https://vogella.developpez.com/tutoriels/android/installation-outils-developpement/#L5)
 
@@ -46,7 +40,7 @@ Follow this tutorial : [Download AVD Manager](https://vogella.developpez.com/tut
 
 Once Git is installed, you have to do : git clone https://github.com/thibaultanani/AskNanterre.git
 
-## Auteurs
+## Developpers
 
 * #### ANANI AGONDJA Thibault - [Github](https://github.com/thibaultanani)
 * #### LOURME Matthieu - [Github](https://github.com/matthieulourme)
