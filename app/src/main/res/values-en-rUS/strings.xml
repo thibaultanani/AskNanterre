@@ -11,6 +11,7 @@
     <string name="liste_des_nquizs">Quizs list</string>
     <string name="liste_des_questions">Questions list</string>
     <string name="liste_des_quizs_n">Quizs list</string>
+    <string name="liste_des_nquizsn">Quizs list</string>
     <string name="listes_des_questions">Questions lists</string>
     <string name="menu_principal">Main Menu</string>
     <string name="menu_principal_n">Main Menu</string>
@@ -19,11 +20,11 @@
     <string name="poser_une_question">Ask a question</string>
     <string name="upvote_prefix">%s</string>
     <string name="ajouter_un_cours_n">Add a class</string>
-    <string name="listes_des_cours">Classes list</string>
+    <string name="liste_des_cours">Classes list</string>
     <string name="menu_principal_n2">Main Menu</string>
     <string name="interface_etudiant_poser_une_question">Student Interface: Ask a question</string>
-    <string name="poser_une_question_ferm_e">Ask close question</string>
-    <string name="poser_une_question_ouverte">Ask open\nquestion</string>
+    <string name="poser_une_question_ferm_e">Ask a close question</string>
+    <string name="poser_une_question_ouverte">Ask an open question</string>
     <string name="liste_des_cours_n">Classes list</string>
     <string name="annuler">Cancel</string>
     <string name="modifier">Modify</string>

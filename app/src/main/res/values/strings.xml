@@ -17,9 +17,10 @@
     <string name="poser_une_question">Poser une question</string>
     <string name="liste_des_questions">Liste des questions</string>
     <string name="liste_des_nquizs">Liste des quizs</string>
+    <string name="liste_des_nquizsn">Liste des quizs\n</string>
     <string name="menu_principal_n2">Menu principal\n</string>
     <string name="ajouter_un_cours_n">Ajouter un cours\n</string>
-    <string name="listes_des_cours">Listes des cours</string>
+    <string name="liste_des_cours">Liste des cours</string>
     <string name="interface_etudiant_poser_une_question">Interface Etudiant: Poser une question</string>
     <string name="poser_une_question_ouverte">Poser une question ouverte</string>
     <string name="poser_une_question_ferm_e">Poser une question fermée</string>
