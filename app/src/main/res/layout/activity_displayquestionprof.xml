@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:layout_marginLeft="25dp"
-            android:hint="Rechercher"/>
+            android:hint="@string/rechercher"/>
 
     </RelativeLayout>
 
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"
-            android:hint="Liste des questions"/>
+            android:hint="@string/liste_des_questions_p"/>
 
         <Spinner
             android:id="@+id/spinner2"
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="5dp"
-            android:hint="Option de tri"/>
+            android:hint="@string/option_de_tri"/>
 
         <Spinner
             android:id="@+id/spinner1"

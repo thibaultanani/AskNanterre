@@ -61,7 +61,7 @@ public class ModifyAnswer extends AppCompatActivity {
         Map<String,Object> answerMap = new HashMap<String,Object>();
         answerMap.put("nom", name.getText().toString());
         ref.updateChildren(answerMap);
-        Toast.makeText(this, "La réponse: \"" + name.getText() + "\" a été mise à jour", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.la_reponse) + name.getText() + getString(R.string.a_ete_mise_a_jour), Toast.LENGTH_LONG).show();
         Bundle b2= new Bundle();
         b2.putString("key",coursId);
         Intent intent = new Intent(this, DisplayQuestionProf.class);
@@ -89,7 +89,7 @@ public class ModifyAnswer extends AppCompatActivity {
         questionMap.put("repondu", false);
         ref2.updateChildren(questionMap);
 
-        Toast.makeText(this, "La réponse: \"" + name.getText() + "\" a été supprimée", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.la_reponse) + name.getText() + getString(R.string.a_ete_supprimee), Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, DisplayQuestionProf.class);
         startActivity(intent);
     }

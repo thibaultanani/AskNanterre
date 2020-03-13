@@ -68,10 +68,10 @@ public class DisplayQuiz extends AppCompatActivity {
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, spinnerArray);
 
-        spinnerArray.add("Trier par date");
-        spinnerArray.add("Trier par bonne réponse");
-        spinnerArray.add("Trier par mauvaise réponse");
-        spinnerArray.add("Trier par difficulté");
+        spinnerArray.add(getString(R.string.trier_par_date));
+        spinnerArray.add(getString(R.string.trier_par_bonne_reponse));
+        spinnerArray.add(getString(R.string.trier_par_mauvaise_reponse));
+        spinnerArray.add(getString(R.string.trier_par_difficulte));
 
         adapter.notifyDataSetChanged();
         spinner.setAdapter(adapter);

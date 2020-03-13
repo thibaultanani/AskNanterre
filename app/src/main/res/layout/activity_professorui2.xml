@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:text="Interface Professeur"
+                android:text="@string/interface_professeur"
                 android:textSize="14sp"
                 android:textColor="#FFFFFF"
                 android:layout_marginTop="6dp"
@@ -73,7 +73,7 @@
                         android:gravity="center_horizontal"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp"
-                        android:text="Menu principal\n"
+                        android:text="@string/menu_principal_n2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -108,7 +108,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Ajouter un cours\n"
+                        android:text="@string/ajouter_un_cours_n"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
@@ -149,7 +149,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Listes des cours"
+                        android:text="@string/listes_des_cours"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 

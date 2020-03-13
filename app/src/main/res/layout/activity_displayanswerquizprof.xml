@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
-            android:hint="Diagramme circulaire" />
+            android:hint="@string/diagramme_circulaire" />
 
     </LinearLayout>
 
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
-            android:hint="Diagramme circulaire détaillé" />
+            android:hint="@string/diagramme_circulaire_d_taill" />
 
     </LinearLayout>
 

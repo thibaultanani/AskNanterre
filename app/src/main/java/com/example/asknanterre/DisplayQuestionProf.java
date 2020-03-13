@@ -146,15 +146,15 @@ public class DisplayQuestionProf extends AppCompatActivity {
         final ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, spinnerArray2);
 
-        spinnerArray.add("Trier par date");
-        spinnerArray.add("Trier par upvote");
-        spinnerArray.add("Trier par downvote");
-        spinnerArray.add("Trier par upvote du prof");
-        spinnerArray.add("Trier par downvote du prof");
-        spinnerArray.add("Trier par réponse du prof");
+        spinnerArray.add(getString(R.string.trier_par_date));
+        spinnerArray.add(getString(R.string.trier_par_upvote));
+        spinnerArray.add(getString(R.string.trier_par_downvote));
+        spinnerArray.add(getString(R.string.trier_par_upvote_du_prof));
+        spinnerArray.add(getString(R.string.trier_par_downvote_du_prof));
+        spinnerArray.add(getString(R.string.trier_par_reponse_du_prof));
 
-        spinnerArray2.add("non validées");
-        spinnerArray2.add("validées");
+        spinnerArray2.add(getString(R.string.non_validees));
+        spinnerArray2.add(getString(R.string.validees));
 
         adapter.notifyDataSetChanged();
         spinner.setAdapter(adapter);
@@ -422,14 +422,14 @@ public class DisplayQuestionProf extends AppCompatActivity {
                     params.setMargins(15, 0,0,0);
 
                     textView = new TextView(DisplayQuestionProf.this);
-                    textView.setText("Liste des questions non validées");
+                    textView.setText(R.string.liste_des_questions_non_validees);
 
                     LinearLayout header1 = new LinearLayout(DisplayQuestionProf.this);
                     header1.addView(textView,params);
                     myListView.addHeaderView(header1);
 
                     textView2 = new TextView(DisplayQuestionProf.this);
-                    textView2.setText("Liste des questions validées");
+                    textView2.setText(R.string.liste_des_questions_validees);
 
                     LinearLayout header2 = new LinearLayout(DisplayQuestionProf.this);
                     header2.addView(textView2,params);
@@ -650,7 +650,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                                 Map<String,Object> questionMap = new HashMap<String,Object>();
                                 questionMap.put("valide", true);
                                 ref.updateChildren(questionMap);
-                                Toast.makeText(DisplayQuestionProf.this, "La question: \"" + list1.get(position) + "\" a été validée", Toast.LENGTH_LONG).show();
+                                Toast.makeText(DisplayQuestionProf.this, getString(R.string.la_question) + list1.get(position) + getString(R.string.a_ete_validee), Toast.LENGTH_LONG).show();
                                 list1.remove(position);
                                 adapt.notifyDataSetChanged();
                                 updateList();
@@ -659,7 +659,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                                 // delete
                                 ref=FirebaseDatabase.getInstance().getReference().child("question").child(list2.get(position));
                                 ref.removeValue();
-                                Toast.makeText(DisplayQuestionProf.this, "La question: \"" + list1.get(position) + "\" a été supprimée", Toast.LENGTH_LONG).show();
+                                Toast.makeText(DisplayQuestionProf.this, getString(R.string.la_question) + list1.get(position) + getString(R.string.a_ete_supprimee), Toast.LENGTH_LONG).show();
                                 list1.remove(position); //or some other task
                                 adapt.notifyDataSetChanged();
                                 updateList();
@@ -764,14 +764,14 @@ public class DisplayQuestionProf extends AppCompatActivity {
                                                 if(ds.getValue(Integer.class) == 1){
                                                     questionMap1.put("upvoteProf", 0);
                                                     ref.updateChildren(questionMap1);
-                                                    Toast.makeText(DisplayQuestionProf.this, "La question: \"" + list4.get(position) + "\" a été remise en neutre", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(DisplayQuestionProf.this, getString(R.string.la_question) + list4.get(position) + getString(R.string.a_ete_remise_en_neutre), Toast.LENGTH_LONG).show();
                                                     adapt.notifyDataSetChanged();
                                                     updateList();
                                                 }
                                                 else {
                                                     questionMap1.put("upvoteProf", 1);
                                                     ref.updateChildren(questionMap1);
-                                                    Toast.makeText(DisplayQuestionProf.this, "La question: \"" + list4.get(position) + "\" a été Upvote", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(DisplayQuestionProf.this, getString(R.string.la_question) + list4.get(position) + getString(R.string.a_ete_upvote), Toast.LENGTH_LONG).show();
                                                     adapt.notifyDataSetChanged();
                                                     updateList();
                                                 }
@@ -801,14 +801,14 @@ public class DisplayQuestionProf extends AppCompatActivity {
                                                 if(ds.getValue(Integer.class) == -1){
                                                     questionMap2.put("upvoteProf", 0);
                                                     ref.updateChildren(questionMap2);
-                                                    Toast.makeText(DisplayQuestionProf.this, "La question: \"" + list4.get(position) + "\" a été remise en neutre", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(DisplayQuestionProf.this, getString(R.string.la_question) + list4.get(position) + getString(R.string.a_ete_remise_en_neutre), Toast.LENGTH_LONG).show();
                                                     adapt.notifyDataSetChanged();
                                                     updateList();
                                                 }
                                                 else {
                                                     questionMap2.put("upvoteProf", -1);
                                                     ref.updateChildren(questionMap2);
-                                                    Toast.makeText(DisplayQuestionProf.this, "La question: \"" + list4.get(position) + "\" a été Downvote", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(DisplayQuestionProf.this, getString(R.string.la_question) + list4.get(position) + getString(R.string.a_ete_downvote), Toast.LENGTH_LONG).show();
                                                     adapt.notifyDataSetChanged();
                                                     updateList();
                                                 }
@@ -825,7 +825,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                             case 2:
                                 ref=FirebaseDatabase.getInstance().getReference().child("question").child(list5.get(position));
                                 ref.removeValue();
-                                Toast.makeText(DisplayQuestionProf.this, "La question: \"" + list4.get(position) + "\" a été supprimée", Toast.LENGTH_LONG).show();
+                                Toast.makeText(DisplayQuestionProf.this, getString(R.string.la_question) + list4.get(position) + getString(R.string.a_ete_supprimee), Toast.LENGTH_LONG).show();
                                 list5.remove(position); //or some other task
                                 adapt.notifyDataSetChanged();
                                 updateList();

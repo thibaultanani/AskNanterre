@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:text="Interface Etudiant: Poser une question"
+                android:text="@string/interface_etudiant_poser_une_question"
                 android:id="@+id/txtdashboard2"
                 android:textSize="14sp"
                 android:textColor="#FFFFFF"
@@ -115,7 +115,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Poser une question ouverte"
+                        android:text="@string/poser_une_question_ouverte"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
@@ -150,7 +150,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Poser une question fermée"
+                        android:text="@string/poser_une_question_ferm_e"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 

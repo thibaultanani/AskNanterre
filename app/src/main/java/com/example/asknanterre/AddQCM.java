@@ -1,5 +1,6 @@
 package com.example.asknanterre;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -101,7 +102,7 @@ public class AddQCM extends AppCompatActivity {
             //qcm.save();
         }
 
-        Toast.makeText(this, "La question: \"" + name.getText() + "\" a été ajoutée", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.la_question) + name.getText() + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
 
         name.setText("");
 

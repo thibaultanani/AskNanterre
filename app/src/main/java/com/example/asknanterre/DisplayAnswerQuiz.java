@@ -213,7 +213,7 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
                             ref.updateChildren(questionProfMap);
                             quizMap.put("nbRep", nbRep + 1);
                             ref2.child(key3).updateChildren(quizMap);
-                            Toast.makeText(DisplayAnswerQuiz.this, "La réponse: \"" + spinner.getSelectedItem().toString() + "\" est correcte", Toast.LENGTH_LONG).show();
+                            Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.la_reponse) + spinner.getSelectedItem().toString() + getString(R.string.est_correcte), Toast.LENGTH_LONG).show();
                         }
                     }
                     else {
@@ -222,7 +222,7 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
                             ref.updateChildren(questionProfMap);
                             quizMap.put("nbRep", nbRep + 1);
                             ref2.child(key3).updateChildren(quizMap);
-                            Toast.makeText(DisplayAnswerQuiz.this, "Le réponse: \"" + spinner.getSelectedItem().toString() + "\" est fausse", Toast.LENGTH_LONG).show();
+                            Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.la_reponse) + spinner.getSelectedItem().toString() + getString(R.string.est_fausse), Toast.LENGTH_LONG).show();
                         }
                     }
                     Log.d("TAG", "tour de boucle");

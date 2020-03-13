@@ -109,12 +109,12 @@ public class DisplayQuestionStud extends AppCompatActivity {
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, spinnerArray);
 
-        spinnerArray.add("Trier par date");
-        spinnerArray.add("Trier par upvote");
-        spinnerArray.add("Trier par downvote");
-        spinnerArray.add("Trier par upvote du prof");
-        spinnerArray.add("Trier par downvote du prof");
-        spinnerArray.add("Trier par réponse du prof");
+        spinnerArray.add(getString(R.string.trier_par_date));
+        spinnerArray.add(getString(R.string.trier_par_upvote));
+        spinnerArray.add(getString(R.string.trier_par_downvote));
+        spinnerArray.add(getString(R.string.trier_par_upvote_du_prof));
+        spinnerArray.add(getString(R.string.trier_par_downvote_du_prof));
+        spinnerArray.add(getString(R.string.trier_par_reponse_du_prof));
 
         adapter.notifyDataSetChanged();
         spinner.setAdapter(adapter);

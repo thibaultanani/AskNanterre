@@ -59,7 +59,7 @@ public class AddAnswer extends AppCompatActivity {
         questionMap.put("repondu", true);
         ref.updateChildren(questionMap);
 
-        Toast.makeText(this, "La réponse: \"" + name.getText() + "\" a été ajoutée", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.la_reponse) + name.getText() + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
 
         name.setText("");
         Bundle b2= new Bundle();

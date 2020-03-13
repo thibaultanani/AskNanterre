@@ -1,5 +1,6 @@
 package com.example.asknanterre;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -146,7 +147,7 @@ public class AddQuiz extends AppCompatActivity {
             Log.d("l'id de la rep", id+"");
         }
 
-        Toast.makeText(this, "Le quiz: \"" + name.getText() + "\" a été ajouté", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.le_quiz) + name.getText() + getString(R.string.a_ete_ajoute), Toast.LENGTH_LONG).show();
 
         name.setText("");
 
