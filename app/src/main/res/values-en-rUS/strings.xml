@@ -75,7 +75,9 @@
     <string name="trier_par_upvote">Sort by upvote</string>
     <string name="trier_par_upvote_du_prof">Sort by professor\'s upvote</string>
     <string name="non_validees">non approved</string>
-    <string name="trier_par_bonne_reponse">Sort by good answer</string>
+    <string name="trier_par_bonne_reponse">Sort by number of good answer</string>
     <string name="trier_par_difficulte">Sort by difficulty</string>
-    <string name="trier_par_mauvaise_reponse">Sort by wrong answer</string>
+    <string name="trier_par_mauvaise_reponse">Sort by number of wrong answer</string>
+    <string name="trier_par_date_asc">Sort by date asc</string>
+    <string name="trier_par_date_des">Sort by date des</string>
 </resources>

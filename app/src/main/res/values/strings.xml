@@ -67,6 +67,8 @@
     <string name="est_correcte">\" est correcte</string>
     <string name="est_fausse">\" est fausse</string>
     <string name="trier_par_date">Trier par date</string>
+    <string name="trier_par_date_asc">Trier par date asc</string>
+    <string name="trier_par_date_des">Trier par date des</string>
     <string name="trier_par_upvote">Trier par upvote</string>
     <string name="trier_par_downvote">Trier par downvote</string>
     <string name="trier_par_upvote_du_prof">Trier par upvote du prof</string>
@@ -74,8 +76,8 @@
     <string name="trier_par_reponse_du_prof">Trier par réponse du prof</string>
     <string name="non_validees">non validées</string>
     <string name="validees">validées</string>
-    <string name="trier_par_bonne_reponse">Trier par bonne réponse</string>
-    <string name="trier_par_mauvaise_reponse">Trier par mauvaise réponse</string>
+    <string name="trier_par_bonne_reponse">Trier par nombre de bonne réponse</string>
+    <string name="trier_par_mauvaise_reponse">Trier par nombre de mauvaise réponse</string>
     <string name="trier_par_difficulte">Trier par difficulté</string>
     <string-array name="number_arrays">
         <item>2</item>

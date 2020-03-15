@@ -86,7 +86,8 @@ public class DisplayQuizProf extends AppCompatActivity {
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, spinnerArray);
 
-        spinnerArray.add(getString(R.string.trier_par_date));
+        spinnerArray.add(getString(R.string.trier_par_date_asc));
+        spinnerArray.add(getString(R.string.trier_par_date_des));
         spinnerArray.add(getString(R.string.trier_par_bonne_reponse));
         spinnerArray.add(getString(R.string.trier_par_mauvaise_reponse));
         spinnerArray.add(getString(R.string.trier_par_difficulte));
@@ -132,16 +133,13 @@ public class DisplayQuizProf extends AppCompatActivity {
         quizIDtmp = new ArrayList<String>();
 
         String s;
-        if(position == 1) {
+        if (position == 2) {
             s = "ncorrects";
-        }
-        else if(position == 2) {
+        } else if (position == 3) {
             s = "nfalses";
-        }
-        else if (position == 3) {
+        } else if (position == 4) {
             s = "difficulte";
-        }
-        else {
+        } else {
             s = "";
         }
 

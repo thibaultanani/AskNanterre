@@ -146,7 +146,8 @@ public class DisplayQuestionProf extends AppCompatActivity {
         final ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, spinnerArray2);
 
-        spinnerArray.add(getString(R.string.trier_par_date));
+        spinnerArray.add(getString(R.string.trier_par_date_asc));
+        spinnerArray.add(getString(R.string.trier_par_date_des));
         spinnerArray.add(getString(R.string.trier_par_upvote));
         spinnerArray.add(getString(R.string.trier_par_downvote));
         spinnerArray.add(getString(R.string.trier_par_upvote_du_prof));
@@ -262,16 +263,16 @@ public class DisplayQuestionProf extends AppCompatActivity {
         quest2IDtmp = new ArrayList<String>();
 
         String s;
-        if(position == 1) {
+        if(position == 2) {
             s = "upvote";
         }
-        else if(position == 2) {
+        else if(position == 3) {
             s = "downvote";
         }
-        else if (position == 3 || position == 4) {
+        else if (position == 4 || position == 5) {
             s = "upvoteProf";
         }
-        else if (position == 5) {
+        else if (position == 6) {
             s = "repondu";
         }
         else {
@@ -301,7 +302,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 }
                 progressBar.setVisibility(View.GONE);
 
-                if(position != 4 && position != 0) {
+                if(position != 5 && position != 0) {
                     Collections.reverse(quest2);
                     Collections.reverse(quest2ID);
                 }
