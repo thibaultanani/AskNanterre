@@ -285,7 +285,7 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
                             context.startActivity(intent);
                         }
                         else {
-                            Toast.makeText(context, Resources.getSystem().getString(R.string.le_professeur_na_pas_encore_repondu_a_cette_question), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, context.getString(R.string.le_professeur_na_pas_repondu), Toast.LENGTH_SHORT).show();
                         }
                     }
 

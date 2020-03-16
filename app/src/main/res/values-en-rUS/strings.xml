@@ -63,7 +63,7 @@
     <string name="a_ete_validee">\" is approved</string>
     <string name="liste_des_questions_non_validees">Non approved questions list</string>
     <string name="liste_des_questions_validees">Approved questions list</string>
-    <string name="le_professeur_na_pas_encore_repondu_a_cette_question">The professor didn\'t answered to this question yet</string>
+    <string name="le_professeur_na_pas_repondu">The professor didn\'t answered to this question yet</string>
     <string name="a_ete_supprime">\" is deleted</string>
     <string name="est_correcte">is correct</string>
     <string name="est_fausse">is false</string>

@@ -62,7 +62,7 @@
     <string name="a_ete_upvote">\" a été Upvote</string>
     <string name="a_ete_downvote">\" a été downvote</string>
     <string name="a_ete_remise_en_neutre">\" a été remise en neutre</string>
-    <string name="le_professeur_na_pas_encore_repondu_a_cette_question">Le professeur n\'a pas encore répondu à cette question</string>
+    <string name="le_professeur_na_pas_repondu">Le professeur n\'a pas encore répondu à cette question</string>
     <string name="a_ete_supprime">\" a été supprimé</string>
     <string name="est_correcte">\" est correcte</string>
     <string name="est_fausse">\" est fausse</string>
