@@ -176,7 +176,7 @@ public class DisplayAnswerQuizProf extends AppCompatActivity {
                 legend.setCustom(list);
                 legend.setWordWrapEnabled(true);
                 barChart.setUsePercentValues(true);
-                barChart.setCenterText("Total:\n" + total1);
+                barChart.setCenterText(getString(R.string.total) + total1);
                 barChart.setCenterTextSize(20f);
                 barChart.setData(barData);
                 //barChart.setFitBars(true);
@@ -207,8 +207,8 @@ public class DisplayAnswerQuizProf extends AppCompatActivity {
                         barEntries2.add(new PieEntry(q.getNfalses(), q.getNfalses()));
                         total2 = q.getNcorrects() + q.getNfalses();
                         barNumber2.add(q.getNcorrects()+q.getNcorrects());
-                        barNames2.add("Bonne réponses");
-                        barNames2.add("Mauvaise réponses");
+                        barNames2.add(getString(R.string.nombre_de_bonne_reponse));
+                        barNames2.add(getString(R.string.nombre_de_mauvaise_reponse));
                         barColors2.add(getApplicationContext().getResources().getColor(R.color.colorAccentDark));
                         barColors2.add(getApplicationContext().getResources().getColor(R.color.colorRed));
                         Log.d("HEY", product);

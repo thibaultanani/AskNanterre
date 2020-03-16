@@ -79,6 +79,9 @@
     <string name="trier_par_bonne_reponse">Trier par nombre de bonne réponse</string>
     <string name="trier_par_mauvaise_reponse">Trier par nombre de mauvaise réponse</string>
     <string name="trier_par_difficulte">Trier par difficulté</string>
+    <string name="nombre_de_bonne_reponse">Bonne réponses</string>
+    <string name="nombre_de_mauvaise_reponse">Mauvaises réponses</string>
+    <string name="total">Total:\n</string>
     <string-array name="number_arrays">
         <item>2</item>
         <item>3</item>

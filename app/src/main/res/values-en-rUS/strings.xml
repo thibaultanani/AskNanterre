@@ -80,4 +80,7 @@
     <string name="trier_par_mauvaise_reponse">Sort by number of wrong answer</string>
     <string name="trier_par_date_asc">Sort by date asc</string>
     <string name="trier_par_date_des">Sort by date des</string>
+    <string name="nombre_de_bonne_reponse">Correct answers</string>
+    <string name="nombre_de_mauvaise_reponse">Wrong answers</string>
+    <string name="total">Total:\n</string>
 </resources>
