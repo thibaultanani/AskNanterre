@@ -1,6 +1,7 @@
 package com.example.asknanterre;
 
 import android.content.res.Resources;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,9 +29,12 @@ public class AddQuiz extends AppCompatActivity {
     String text;
     String text2;
     String text3;
+    String bonnerep;
     EditText edit;
     LinearLayout ll;
     LinearLayout.LayoutParams lp;
+    ArrayList<String> list;
+    ArrayList<String> list2;
     int tmp = 0;
 
     @Override
@@ -136,40 +140,39 @@ public class AddQuiz extends AppCompatActivity {
         q.difficulte = Star2Number(text3);
         q.coursId = coursId;
 
-        /*long id = q.save();
-        Log.d("l'id de la question", id+"");*/
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        Log.v("Exemple", database.toString());
-
-
-        //database.getReference("question").push().setValue(q);
-        String id = database.getReference("questionProf").push().getKey();
-        database.getReference("questionProf").child(id).setValue(q);
-
+        ArrayList<String> list= new ArrayList<>();
+        ArrayList<String> list2= new ArrayList<>();
         final int childCount = ll.getChildCount();
         for (int i = 0; i < childCount; i++) {
-            EditText v1 = (EditText) ll.getChildAt(i);
-            if(Integer.parseInt(text2)!=(i+1)){
-                Quiz quiz = new Quiz(v1.getText().toString(), id, false);
-                database.getReference("quiz").push().setValue(quiz);
-                //quiz.save();
-                Log.d("valeur de la rep", "fausse");
+            if(Integer.parseInt(text2)!=(i+1)) {
+                EditText v1 = (EditText) ll.getChildAt(i);
+                list.add(v1.getText().toString());
+                list2.add(v1.getText().toString()+"(Réponse fausse)");
             }
             else {
-                Quiz quiz = new Quiz(v1.getText().toString(), id, true);
-                database.getReference("quiz").push().setValue(quiz);
-                //quiz.save();
-                Log.d("valeur de la rep", "vraie");
+                EditText v1 = (EditText) ll.getChildAt(i);
+                list.add(v1.getText().toString());
+                 bonnerep= v1.getText().toString();
+                list2.add(v1.getText().toString()+"(Réponse bonne)");
             }
-            Log.d("l'id de la rep", id+"");
+
         }
 
-        Toast.makeText(this, getString(R.string.le_quiz) + name.getText() + getString(R.string.a_ete_ajoute), Toast.LENGTH_LONG).show();
 
-        name.setText("");
+        Bundle b2= new Bundle();
+        b2.putString("nom",q.nom);
+        b2.putString("titre",q.titre);
+        b2.putString("date",q.date);
+        b2.putStringArrayList("rep",list);
+        b2.putStringArrayList("rep2",list2);
+        b2.putString("key",coursId);
+        b2.putString("bonnerep",bonnerep);
+        b2.putInt("dif",Integer.parseInt(text3));
 
-        finish();
+
+        Intent intent = new Intent(this, AddQuizApercu.class);
+        intent.putExtras(b2); //Put your id to your next Intent
+        startActivity(intent);
     }
 
     public void annuler(View v) {
