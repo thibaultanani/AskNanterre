@@ -63,7 +63,7 @@ public class AddQuestionApercu extends AppCompatActivity {
 
         Bundle b2= new Bundle();
         b2.putString("key",coursId);
-        Intent intent = new Intent(this,  StudentUI2.class);
+        Intent intent = new Intent(this,  StudentUI.class);
         intent.putExtras(b2);
         startActivity(intent);
     }
