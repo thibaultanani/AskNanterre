@@ -25,6 +25,7 @@ public class AddAnswer extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private static final String TAG = "AddAnswer";
     TextView question;
+    String coursId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class AddAnswer extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         question = (TextView) findViewById(R.id.question);
         question.setText(b.getString("name"));
+        coursId= b.getString("idcours");
     }
 
     public void valider(View v) {
@@ -57,11 +59,13 @@ public class AddAnswer extends AppCompatActivity {
         questionMap.put("repondu", true);
         ref.updateChildren(questionMap);
 
-        Toast.makeText(this, "La réponse: \"" + name.getText() + "\" a été ajoutée", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.la_reponse) + name.getText() + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
 
         name.setText("");
-
+        Bundle b2= new Bundle();
+        b2.putString("key",coursId);
         Intent intent = new Intent(this, DisplayQuestionProf.class);
+        intent.putExtras(b2);
         startActivity(intent);
     }
 

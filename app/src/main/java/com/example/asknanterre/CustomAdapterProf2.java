@@ -39,9 +39,10 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
     private boolean checkExists = false;
     private Answer tmp;
     private String tmpKey;
+    private String coursId;
 
 
-    public CustomAdapterProf2(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3, ArrayList<String> list4, ArrayList<String> list5, ArrayList<String> list6, ArrayList<String> list7, ArrayList<String> list8, ArrayList<String> list9, Context context) {
+    public CustomAdapterProf2(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3, ArrayList<String> list4, ArrayList<String> list5, ArrayList<String> list6, ArrayList<String> list7, ArrayList<String> list8, ArrayList<String> list9, String coursId, Context context) {
         this.list1 = list1;
         this.list2 = list2;
         this.list3 = list3;
@@ -52,6 +53,7 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
         this.list8 = list8;
         this.list9 = list9;
         this.context = context;
+        this.coursId=coursId;
     }
 
     @Override
@@ -199,6 +201,7 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
                         }
                         if(!checkExists) {
                             Intent intent;
+
                             if(Integer.parseInt(list5.get(position))==1) {
                                 intent = new Intent(context, AddAnswer.class);
                             }
@@ -208,6 +211,7 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
                             Bundle b = new Bundle();
                             b.putString("key", list2.get(position)); //Your id
                             b.putString("name", list1.get(position));
+                            b.putString("idcours",coursId);
                             intent.putExtras(b); //Put your id to your next Intent
                             context.startActivity(intent);
                         }

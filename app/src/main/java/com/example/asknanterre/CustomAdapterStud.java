@@ -2,6 +2,7 @@ package com.example.asknanterre;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -284,7 +285,7 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
                             context.startActivity(intent);
                         }
                         else {
-                            Toast.makeText(context, "Le professeur n'a pas encore répondu à cette question", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, context.getString(R.string.le_professeur_na_pas_repondu), Toast.LENGTH_SHORT).show();
                         }
                     }
 

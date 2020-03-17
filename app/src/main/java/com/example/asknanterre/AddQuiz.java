@@ -1,5 +1,6 @@
 package com.example.asknanterre;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +31,7 @@ public class AddQuiz extends AppCompatActivity {
     EditText edit;
     LinearLayout ll;
     LinearLayout.LayoutParams lp;
+    int tmp = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +42,6 @@ public class AddQuiz extends AppCompatActivity {
         text = spinner.getSelectedItem().toString();
 
         final List<String> spinnerArray =  new ArrayList<String>();
-        spinnerArray.add("1");
-        spinnerArray.add("2");
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, spinnerArray);
@@ -55,20 +55,28 @@ public class AddQuiz extends AppCompatActivity {
 
                 Log.d("Nombre actuel", spinner.getSelectedItem().toString() );
 
-                ll.removeAllViewsInLayout();
-                spinnerArray.clear();
+                //ll.removeAllViewsInLayout();
+                //spinnerArray.clear();
 
 
                 Log.d("Nombre actuel", spinner.getSelectedItem() + "" );
-                for(int i=0; i<Integer.parseInt(spinner.getSelectedItem().toString()); i++){
-                    edit = new EditText(AddQuiz.this);
-                    edit.setBackgroundResource(R.drawable.edittext_bg);
-                    lp.setMargins(0, 0, 0, 20);
-                    ll.addView(edit, lp);
-                    spinnerArray.add(""+(i+1));
-
+                int i = 0;
+                if(tmp < Integer.parseInt(spinner.getSelectedItem().toString())) {
+                    for(i=tmp; i<Integer.parseInt(spinner.getSelectedItem().toString()); i++){
+                        edit = new EditText(AddQuiz.this);
+                        edit.setBackgroundResource(R.drawable.edittext_bg);
+                        lp.setMargins(0, 0, 0, 20);
+                        ll.addView(edit, lp);
+                        spinnerArray.add(""+(i+1));
+                    }
                 }
-
+                else {
+                    for(i=tmp; i>Integer.parseInt(spinner.getSelectedItem().toString()); i--) {
+                        ll.removeViewAt(i-1);
+                        spinnerArray.remove(i-1);
+                    }
+                }
+                tmp = i;
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 final Spinner sItems = (Spinner) findViewById(R.id.spinner2);
                 sItems.setAdapter(adapter);
@@ -86,15 +94,26 @@ public class AddQuiz extends AppCompatActivity {
         spinner3 = (Spinner) findViewById(R.id.spinner3);
 
         final List<String> spinnerArray2 =  new ArrayList<String>();
-        spinnerArray2.add("1");
-        spinnerArray2.add("2");
-        spinnerArray2.add("3");
+        spinnerArray2.add("*");
+        spinnerArray2.add("**");
+        spinnerArray2.add("***");
 
         final ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, spinnerArray2);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner sItems = (Spinner) findViewById(R.id.spinner3);
         sItems.setAdapter(adapter2);
+    }
+
+    public int Star2Number(String star) {
+        int difficulte = 1;
+        if(star.equals("**")) {
+            difficulte = 2;
+        }
+        else if(star.equals("***")) {
+            difficulte = 3;
+        }
+        return difficulte;
     }
 
     public void valider(View v) {
@@ -114,7 +133,7 @@ public class AddQuiz extends AppCompatActivity {
         Date date = new Date();
         q.date = formatter.format(date);
         q.titre = n.normalizeTitre(name.getText().toString());
-        q.difficulte = Integer.parseInt(text3);
+        q.difficulte = Star2Number(text3);
         q.coursId = coursId;
 
         /*long id = q.save();
@@ -146,7 +165,7 @@ public class AddQuiz extends AppCompatActivity {
             Log.d("l'id de la rep", id+"");
         }
 
-        Toast.makeText(this, "Le quiz: \"" + name.getText() + "\" a été ajouté", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.le_quiz) + name.getText() + getString(R.string.a_ete_ajoute), Toast.LENGTH_LONG).show();
 
         name.setText("");
 

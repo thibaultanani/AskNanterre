@@ -6,6 +6,7 @@ public class Quiz extends SugarRecord {
     String rep;
     String questionId;
     boolean correct;
+    int nbRep;
 
     public Quiz(){}
 
@@ -37,5 +38,13 @@ public class Quiz extends SugarRecord {
 
     public void setCorrect(boolean correct) {
         this.correct = correct;
+    }
+
+    public int getNbRep() {
+        return nbRep;
+    }
+
+    public void setNbRep(int nbRep) {
+        this.nbRep = nbRep;
     }
 }

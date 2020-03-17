@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:text="Interface Etudiant"
+                android:text="@string/interface_etudiant"
                 android:id="@+id/txtdashboard2"
                 android:textSize="14sp"
                 android:textColor="#FFFFFF"
@@ -65,18 +65,18 @@
                     android:padding="16dp">
 
                     <ImageView
-                        android:id="@+id/action_home"
+                        android:id="@+id/Display"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:onClick="goToMainActivity"
-                        android:src="@drawable/home" />
+                        android:onClick="displayQuestionStud"
+                        android:src="@drawable/displayquestion" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Menu principal\n"
+                        android:text="@string/liste_des_questions"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
@@ -111,7 +111,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Poser une question"
+                        android:text="@string/poser_une_question"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
@@ -144,18 +144,18 @@
                     android:padding="16dp">
 
                     <ImageView
-                        android:id="@+id/Display"
+                        android:id="@+id/DisplayQuizz"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:onClick="displayQuestionStud"
-                        android:src="@drawable/displayquestion" />
+                        android:onClick="displayQuizz"
+                        android:src="@drawable/displayquiz" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Liste des questions"
+                        android:text="@string/liste_des_nquizsn"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
@@ -179,18 +179,18 @@
                     android:padding="16dp">
 
                     <ImageView
-                        android:id="@+id/DisplayQuizz"
+                        android:id="@+id/action_home"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:onClick="displayQuizz"
-                        android:src="@drawable/displayquiz" />
+                        android:onClick="goToMainActivity"
+                        android:src="@drawable/home" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Liste des\nquizs"
+                        android:text="@string/menu_principal_n2"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 

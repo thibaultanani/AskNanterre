@@ -86,10 +86,11 @@ public class DisplayQuizProf extends AppCompatActivity {
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, spinnerArray);
 
-        spinnerArray.add("Trier par date");
-        spinnerArray.add("Trier par bonne réponse");
-        spinnerArray.add("Trier par mauvaise réponse");
-        spinnerArray.add("Trier par difficulté");
+        spinnerArray.add(getString(R.string.trier_par_date_asc));
+        spinnerArray.add(getString(R.string.trier_par_date_des));
+        spinnerArray.add(getString(R.string.trier_par_bonne_reponse));
+        spinnerArray.add(getString(R.string.trier_par_mauvaise_reponse));
+        spinnerArray.add(getString(R.string.trier_par_difficulte));
 
         adapter.notifyDataSetChanged();
         spinner.setAdapter(adapter);
@@ -132,16 +133,13 @@ public class DisplayQuizProf extends AppCompatActivity {
         quizIDtmp = new ArrayList<String>();
 
         String s;
-        if(position == 1) {
+        if (position == 2) {
             s = "ncorrects";
-        }
-        else if(position == 2) {
+        } else if (position == 3) {
             s = "nfalses";
-        }
-        else if (position == 3) {
+        } else if (position == 4) {
             s = "difficulte";
-        }
-        else {
+        } else {
             s = "";
         }
 
@@ -378,7 +376,7 @@ public class DisplayQuizProf extends AppCompatActivity {
                             case 0:
                                 ref=FirebaseDatabase.getInstance().getReference().child("questionProf").child(list2.get(position));
                                 ref.removeValue();
-                                Toast.makeText(DisplayQuizProf.this, "Le quiz: \"" + list1.get(position) + "\" a été supprimé", Toast.LENGTH_LONG).show();
+                                Toast.makeText(DisplayQuizProf.this, getString(R.string.le_quiz) + list1.get(position) + getString(R.string.a_ete_supprime), Toast.LENGTH_LONG).show();
                                 list2.remove(position); //or some other task
                                 adapt.notifyDataSetChanged();
                                 updateList();

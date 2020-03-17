@@ -1,5 +1,7 @@
 package com.example.asknanterre;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,8 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class AddCours extends AppCompatActivity {
 
+    Bundle b;
+    private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,15 +29,26 @@ public class AddCours extends AppCompatActivity {
 
         EditText name = (EditText) findViewById(R.id.lname);
 
-        Cours c = new Cours(name.getText().toString());
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        Log.v("Exemple", database.toString());
+        Normalizer n = new Normalizer();
+        Cours c = new Cours(n.normalizeNom(name.getText().toString()));
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        c.date = formatter.format(date);
+        c.titre = n.normalizeTitre(name.getText().toString());
 
-        database.getReference("cours").push().setValue(c);
+        Bundle b=new Bundle();
+        b.putString("nom",c.nom);
+        b.putString("titre",c.titre);
+        b.putString("date",c.date);
+        Intent intent = new Intent(this, AddCoursApercu.class);
+        intent.putExtras(b); //Put your id to your next Intent
+        startActivity(intent);
 
 
-        Toast.makeText(this, "le cours: " + name.getText() + " a été ajoutée", Toast.LENGTH_LONG).show();
 
-        name.setText("");
+    }
+
+    public void annuler(View v) {
+        finish();
     }
 }

@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:text="Interface Etudiant"
+                android:text="@string/interface_etudiant"
                 android:textSize="14sp"
                 android:textColor="#FFFFFF"
                 android:layout_marginTop="6dp"
@@ -121,7 +121,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Liste des cours\n"
+                        android:text="@string/liste_des_cours_n"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
@@ -157,7 +157,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center_horizontal"
-                        android:text="Menu principal\n"
+                        android:text="@string/menu_principal_n"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 

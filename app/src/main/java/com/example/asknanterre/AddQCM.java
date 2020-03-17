@@ -1,5 +1,6 @@
 package com.example.asknanterre;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -29,6 +30,7 @@ public class AddQCM extends AppCompatActivity {
     EditText edit;
     LinearLayout ll;
     LinearLayout.LayoutParams lp;
+    int tmp = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +48,25 @@ public class AddQCM extends AppCompatActivity {
 
                 Log.d("Nombre actuel", spinner.getSelectedItem().toString() );
 
-                ll.removeAllViewsInLayout();
+                //ll.removeAllViewsInLayout();
 
                 Log.d("Nombre actuel", spinner.getSelectedItem() + "" );
-                for(int i=0; i<Integer.parseInt(spinner.getSelectedItem().toString()); i++){
-                    edit = new EditText(AddQCM.this);
-                    edit.setBackgroundResource(R.drawable.edittext_bg);
-                    lp.setMargins(0, 0, 0, 20);
-                    ll.addView(edit, lp);
+                int i = 0;
+                if(tmp < Integer.parseInt(spinner.getSelectedItem().toString())) {
+                    for(i=tmp; i<Integer.parseInt(spinner.getSelectedItem().toString()); i++){
+                        edit = new EditText(AddQCM.this);
+                        edit.setBackgroundResource(R.drawable.edittext_bg);
+                        lp.setMargins(0, 0, 0, 20);
+                        ll.addView(edit, lp);
+                    }
                 }
-
+                else {
+                    for(i=tmp; i>Integer.parseInt(spinner.getSelectedItem().toString()); i--) {
+                        ll.removeViewAt(i-1);
+                    }
+                }
+                tmp = i;
+                Log.d("Nombre à la sortie", i + "" );
                 Log.d("Nombre d'enfants", ll.getChildCount()+"");
             }
 
@@ -101,7 +112,7 @@ public class AddQCM extends AppCompatActivity {
             //qcm.save();
         }
 
-        Toast.makeText(this, "La question: \"" + name.getText() + "\" a été ajoutée", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.la_question) + name.getText() + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
 
         name.setText("");
 

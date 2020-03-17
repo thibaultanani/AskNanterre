@@ -7,7 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/mylinearlayout3"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:focusableInTouchMode="true">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -15,14 +16,15 @@
             android:background="#0000"
             android:layout_marginTop="13dp"
             android:id="@+id/search"
-            android:src="@drawable/ic_search"/>
+            android:src="@drawable/ic_search" />
 
         <EditText
             android:id="@+id/EditText01"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:layout_marginLeft="25dp"
-            android:hint="Rechercher"/>
+            android:hint="@string/rechercher"
+            />
 
     </RelativeLayout>
 
@@ -38,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="5dp"
-            android:hint="Option de tri"/>
+            android:hint="@string/option_de_tri"/>
 
         <Spinner
             android:id="@+id/spinner1"

@@ -26,11 +26,15 @@ public class CustomAdapterCoursProf extends BaseAdapter implements ListAdapter {
 
     private ArrayList<String> list1 = new ArrayList<String>();
     private ArrayList<String> list2 = new ArrayList<String>();
+    private ArrayList<String> list3 = new ArrayList<String>();
+    private ArrayList<String> list4 = new ArrayList<String>();
     private Context context;
 
-    public CustomAdapterCoursProf(ArrayList<String> list1, ArrayList<String> list2, Context context) {
+    public CustomAdapterCoursProf(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3, ArrayList<String> list4, Context context) {
         this.list1 = list1;
-        this.list2=list2;
+        this.list2 = list2;
+        this.list3 = list3;
+        this.list4 = list4;
         this.context = context;
     }
 
@@ -60,14 +64,18 @@ public class CustomAdapterCoursProf extends BaseAdapter implements ListAdapter {
         }
 
         //Handle TextView and display string from your list
-        TextView listItemText = (TextView)view.findViewById(R.id.textView_titre);
+        TextView listItemText1 = (TextView)view.findViewById(R.id.textView_nom);
+        TextView listItemText2 = (TextView)view.findViewById(R.id.textView_titre);
+        TextView listItemText3 = (TextView)view.findViewById(R.id.textView_date);
         LinearLayout myLinearLayout = (LinearLayout) view.findViewById(R.id.mylinearLayoutx);
         Log.v("test",list1.get(position));
-        listItemText.setText(list1.get(position));
+        listItemText1.setText(list1.get(position));
+        listItemText2.setText(list3.get(position));
+        listItemText3.setText(list4.get(position));
 
         //Handle buttons and add onClickListeners
 
-        listItemText.setOnClickListener(new View.OnClickListener() {
+        listItemText1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ProfessorUI.class);

@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Les réponses prédéfinies"/>
+        android:hint="@string/les_r_ponses_pr_d_finies"/>
 
     <Spinner
         android:id="@+id/spinner1"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:hint="Ecrivez une réponse qui sera envoyée aux étudiants"/>
+        android:hint="@string/ecrivez_une_r_ponse_qui_sera_envoy_e_aux_tudiants"/>
 
     <EditText
         android:id="@+id/lname"
@@ -44,7 +44,7 @@
         android:layout_height="100dp"
         android:gravity="top"
         android:background="@drawable/edittext_bg"
-        android:hint="Votre réponse"/>
+        android:hint="@string/votre_r_ponse"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
             android:layout_gravity="right"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:text="Annuler"
+            android:text="@string/annuler"
             android:id="@+id/button2"
             android:onClick="annuler"
             android:background="@drawable/mybutton2"
@@ -72,7 +72,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/button2"
-            android:text="Valider"
+            android:text="@string/valider"
             android:id="@+id/button"
             android:onClick="valider"
             android:background="@drawable/mybutton2"

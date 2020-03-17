@@ -11,11 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AddCoursApercu"></activity>
         <activity
             android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
-            tools:replace="android:launchMode"
-            android:launchMode="standard" />
-        <activity android:name=".DisplayQuiz"/>
+            android:launchMode="standard"
+            tools:replace="android:launchMode" />
+        <activity android:name=".DisplayQuiz" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashScreen"
@@ -28,15 +29,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddQuestion"/>
-        <activity android:name=".DisplayQuestion"/>
-        <activity android:name=".AddCours"/>
-        <activity android:name=".DisplayCours"/>
-        <activity android:name=".AddUser"/>
-        <activity android:name=".HomeActivity"/>
-        <activity android:name=".ConnectionActivity"/>
+        <activity android:name=".AddQuestion" />
+        <activity android:name=".DisplayQuestion" />
+        <activity android:name=".AddCours" />
+        <activity android:name=".DisplayCours" />
+        <activity android:name=".AddUser" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".ConnectionActivity" />
         <activity android:name=".SendFeedBack" />
-
         <activity android:name=".AnswerQuestion" />
         <activity android:name=".DisplayAnswerQuestion" />
         <activity android:name=".ProfessorUI" />
@@ -49,12 +49,13 @@
         <activity android:name=".ModifyAnswer" />
         <activity android:name=".AddAnswer2" />
         <activity android:name=".DisplayAnswer" />
-        <activity android:name=".DisplayAnswerQuiz"/>
-        <activity android:name=".StudentUI3"/>
+        <activity android:name=".DisplayAnswerQuiz" />
+        <activity android:name=".StudentUI3" />
         <activity android:name=".StudentUI2" />
         <activity android:name=".DisplayQuizProf" />
-        <activity android:name=".DisplayCoursProf"/>
-        <activity android:name=".ProfessorUI2"/>
+        <activity android:name=".DisplayCoursProf" />
+        <activity android:name=".ProfessorUI2" />
+        <activity android:name=".DisplayAnswerQuizProf" />
     </application>
 
 </manifest>
