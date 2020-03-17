@@ -1,5 +1,6 @@
 package com.example.asknanterre;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -20,7 +21,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class AddQCM extends AppCompatActivity {
 
@@ -29,6 +32,8 @@ public class AddQCM extends AppCompatActivity {
     EditText edit;
     LinearLayout ll;
     LinearLayout.LayoutParams lp;
+    Bundle b;
+    ArrayList list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,30 +87,28 @@ public class AddQCM extends AppCompatActivity {
         q.titre = n.normalizeTitre(name.getText().toString());
         q.type = 2;
         q.coursId = coursId;
-        /*long id = q.save();
-        Log.d("l'id de la question", id+"");*/
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        Log.v("Exemple", database.toString());
 
-
-        //database.getReference("question").push().setValue(q);
-        String id = database.getReference("question").push().getKey();
-        database.getReference("question").child(id).setValue(q);
-
+        ArrayList<String> list= new ArrayList<>();
         final int childCount = ll.getChildCount();
         for (int i = 0; i < childCount; i++) {
             EditText v1 = (EditText) ll.getChildAt(i);
-            QCM qcm = new QCM(v1.getText().toString(), id);
-            database.getReference("qcm").push().setValue(qcm);
-            Log.d("l'id de la rep", id);
-            //qcm.save();
+            list.add(v1.getText().toString());
+
         }
+        Bundle b2= new Bundle();
+        b2.putString("nom",q.nom);
+        b2.putString("titre",q.titre);
+        b2.putString("date",q.date);
+        b2.putStringArrayList("rep",list);
+        b2.putString("key",coursId);
 
-        Toast.makeText(this, "La question: \"" + name.getText() + "\" a été ajoutée", Toast.LENGTH_LONG).show();
 
-        name.setText("");
 
-        finish();
+
+        Intent intent = new Intent(this, AddQCMApercu.class);
+        intent.putExtras(b2); //Put your id to your next Intent
+        startActivity(intent);
+
     }
 
     public void annuler(View v) {

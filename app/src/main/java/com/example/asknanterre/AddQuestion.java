@@ -59,17 +59,14 @@ public class AddQuestion extends AppCompatActivity {
         q.coursId = coursId;
 
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        Log.v("Exemple", database.toString());
-
-        database.getReference("question").push().setValue(q);
-
-
-        Toast.makeText(this, "La question: \"" + name.getText() + "\" a été ajoutée", Toast.LENGTH_LONG).show();
-
-        name.setText("");
-
-        finish();
+        Bundle b2=new Bundle();
+        b2.putString("nom",q.nom);
+        b2.putString("titre",q.titre);
+        b2.putString("date",q.date);
+        b2.putString("coursid",coursId);
+        Intent intent = new Intent(this, AddQuestionApercu.class);
+        intent.putExtras(b2); //Put your id to your next Intent
+        startActivity(intent);
     }
 
     public void annuler(View v) {

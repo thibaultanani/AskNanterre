@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:id="@+id/name_quiz"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="top"
+        android:background="@drawable/edittext_bg"
+        android:hint="Nom du cours"/>
+    <TextView
+        android:id="@+id/titre_quiz"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="top"
+        android:background="@drawable/edittext_bg"
+        android:hint="Nom du cours"/>
+    <TextView
+        android:id="@+id/date_quiz"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="top"
+        android:background="@drawable/edittext_bg"
+        android:hint="Nom du cours"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/mylinearlayout"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Valider"
+        android:id="@+id/button"
+        android:onClick="valider_quiz"
+        android:background="@drawable/mybutton2"
+        android:textColor="#ffffff"
+        android:drawableStart="@drawable/ic_arrow"/>
+
+</LinearLayout>
