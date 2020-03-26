@@ -65,8 +65,8 @@
     <string name="liste_des_questions_validees">Approved questions list</string>
     <string name="le_professeur_na_pas_repondu">The professor didn\'t answered to this question yet</string>
     <string name="a_ete_supprime">\" is deleted</string>
-    <string name="est_correcte">is correct</string>
-    <string name="est_fausse">is false</string>
+    <string name="est_correcte">\" is correct</string>
+    <string name="est_fausse">\" is false</string>
     <string name="validees">approved</string>
     <string name="trier_par_date">Sort by date</string>
     <string name="trier_par_downvote">Sort by downvote</string>
@@ -83,4 +83,5 @@
     <string name="nombre_de_bonne_reponse">Correct answers</string>
     <string name="nombre_de_mauvaise_reponse">Wrong answers</string>
     <string name="total">Total:\n</string>
+    <string name="reponse_personalisee">Custom answer</string>
 </resources>

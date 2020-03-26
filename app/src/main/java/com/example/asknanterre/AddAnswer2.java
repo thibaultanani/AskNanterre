@@ -7,8 +7,10 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,14 +43,22 @@ public class AddAnswer2 extends AppCompatActivity {
     String text;
     DatabaseReference ref;
     String coursId;
+    ListView myListView;
+    ArrayList<String> list;
+    String[] c1;
+    String[] c2;
+    boolean[] c3;
+    String currentVal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addanswerclose);
 
-        spinner = (Spinner) findViewById(R.id.spinner1);
-        text = spinner.getSelectedItem().toString();
+        //spinner = (Spinner) findViewById(R.id.spinner1);
+        //text = spinner.getSelectedItem().toString();
+        myListView = (ListView) findViewById(R.id.myListView);
+        myListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         Bundle b = getIntent().getExtras();
         final String questionId;
@@ -68,31 +79,53 @@ public class AddAnswer2 extends AppCompatActivity {
 
         ref=FirebaseDatabase.getInstance().getReference().child("qcm");
 
-        final List<String> spinnerArray =  new ArrayList<String>();
+        final List<String> list_ = new ArrayList<String>();
+        /*final List<String> spinnerArray =  new ArrayList<String>();
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, spinnerArray);
+                this, android.R.layout.simple_spinner_item, spinnerArray);*/
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     String product = ds.getKey();
                     if(ds.getValue(QCM.class).questionId.equals(questionId)) {
-                        spinnerArray.add(ds.getValue(QCM.class).rep);
+                        //spinnerArray.add(ds.getValue(QCM.class).rep);
+                        list_.add(ds.getValue(QCM.class).rep);
                         Log.d("HEY", product);
                     }
                     Log.d("TAG", product);
                 }
-                spinnerArray.add("Réponse personalisée");
-                adapter.notifyDataSetChanged();
+                //spinnerArray.add("Réponse personalisée");
+                list_.add(getString(R.string.reponse_personalisee));
+                //adapter.notifyDataSetChanged();
+                c1 = new String[list_.size()];
+                c2 = new String[list_.size()];
+                c3 = new boolean[list_.size()];
+
+                for(int i=0; i<list_.size(); i++) {
+                    c1[i] = list_.get(i);
+                    c2[i] = "" + i;
+                    c3[i] = false;
+                    Log.d("Je suis ici", "lalalalalaal");
+                }
+
+                ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(AddAnswer2.this, android.R.layout.simple_list_item_1, c1);
+                ArrayList<String> list1 = new ArrayList(Arrays.asList(c1));
+                ArrayList<String> list2 = new ArrayList(Arrays.asList(c2));
+                ArrayList<Boolean> list3 = new ArrayList(Arrays.asList(c3));
+
+                CustomAdapterAddAnswer2 adapt = new CustomAdapterAddAnswer2(list1, list2, list3,  AddAnswer2.this);
+                myListView.setAdapter(adapt);
+                adapt.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         };
         ref.addListenerForSingleValueEvent(eventListener);
 
-        spinner.setAdapter(adapter);
+        //spinner.setAdapter(adapter);
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        /*spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // your code here
@@ -111,7 +144,32 @@ public class AddAnswer2 extends AppCompatActivity {
                 // your code here
             }
 
-        });
+        });*/
+    }
+
+    public String getCheckBoxValue() {
+        CheckBox cb;
+        TextView txt;
+        for (int x = 0; x<myListView.getChildCount();x++){
+            cb = (CheckBox)myListView.getChildAt(x).findViewById(R.id.list_view_item_checkbox);
+            txt = (TextView) myListView.getChildAt(x).findViewById(R.id.list_view_item_text);
+            if(cb.isChecked()){
+                currentVal = txt.getText().toString();
+                return txt.getText().toString();
+            }
+        }
+        return "";
+    }
+
+    public void textVisibility(int position, boolean checked) {
+        if((position == (myListView.getAdapter().getCount()-1))&& checked) {
+            textView.setVisibility(View.VISIBLE);
+            editText.setVisibility(View.VISIBLE);
+        }
+        else {
+            textView.setVisibility(View.GONE);
+            editText.setVisibility(View.GONE);
+        }
     }
 
     public void valider(View v) {
@@ -126,8 +184,8 @@ public class AddAnswer2 extends AppCompatActivity {
 
         Answer a;
         if(editText.getVisibility() != View.VISIBLE) {
-            a = new Answer(spinner.getSelectedItem().toString(), questionId);
-            s = spinner.getSelectedItem().toString();
+            a = new Answer(getCheckBoxValue(), questionId);
+            s = getCheckBoxValue();
         }
         else {
             a = new Answer(name.getText().toString(), questionId);

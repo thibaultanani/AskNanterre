@@ -82,6 +82,7 @@
     <string name="nombre_de_bonne_reponse">Bonne réponses</string>
     <string name="nombre_de_mauvaise_reponse">Mauvaises réponses</string>
     <string name="total">Total:\n</string>
+    <string name="reponse_personalisee">Réponse personalisée</string>
     <string-array name="number_arrays">
         <item>2</item>
         <item>3</item>
