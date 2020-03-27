@@ -84,4 +84,5 @@
     <string name="nombre_de_mauvaise_reponse">Wrong answers</string>
     <string name="total">Total:\n</string>
     <string name="reponse_personalisee">Custom answer</string>
+    <string name="Il_faut_au_moins_choisir_une_reponse">You have to at least choose an answer</string>
 </resources>

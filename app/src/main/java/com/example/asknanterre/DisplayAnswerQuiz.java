@@ -57,6 +57,7 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
     String[] c2;
     boolean[] c3;
     String currentVal;
+    CustomAdapterAnswerQuiz adapt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,7 +132,7 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
                 ArrayList<String> list2 = new ArrayList(Arrays.asList(c2));
                 ArrayList<Boolean> list3 = new ArrayList(Arrays.asList(c3));
 
-                CustomAdapterAnswerQuiz adapt = new CustomAdapterAnswerQuiz(list1, list2, list3,  DisplayAnswerQuiz.this);
+                adapt = new CustomAdapterAnswerQuiz(list1, list2, list3,  DisplayAnswerQuiz.this);
                 myListView.setAdapter(adapt);
                 adapt.notifyDataSetChanged();
             }
@@ -156,6 +157,23 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
             }
         }
         return -1;
+    }
+
+    public boolean allUnchecked() {
+        int cpt = 0;
+        CheckBox cb;
+        for (int x = 0; x<myListView.getChildCount();x++){
+            cb = (CheckBox)myListView.getChildAt(x).findViewById(R.id.list_view_item_checkbox);
+            if(cb.isChecked()) {
+                cpt++;
+            }
+        }
+        if(cpt>0) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     public void valider(View v) {
@@ -201,101 +219,105 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
         questionId = b.getString("key");
         Log.v("questID", questionId);
 
-        //s = spinner.getSelectedItem().toString();
-        //spinner = (Spinner) findViewById(R.id.spinner1);
-        //position = spinner.getSelectedItemPosition();
-        position = getCheckBoxPos();
-        //Log.d("position1", ""+spinner.getSelectedItemPosition());
-        Log.d("position2", ""+getCheckBoxPos());
-        Log.v("Pos", ""+position);
-        ref2 = FirebaseDatabase.getInstance().getReference().child("quiz");
-        final String key2 = ref2.getKey();
-        ValueEventListener valueEventListener2 = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                int i = 0;
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    Log.d("key recu2", ds.getKey());
-                    Quiz q = ds.getValue(Quiz.class);
-                    if(q.questionId.equals(questionId)){
-                        Log.d("key recu2.1", "tour de boucle" + i);
-                        Log.d("key recu2.2", "bon id");
-                        if(position == i) {
-                            Log.d("ok et correct =", ""+q.correct);
-                            if(q.correct) {
-                                correct = true;
-                                nbRep = q.nbRep;
-                                key3 = ds.getKey();
-                            }
-                            else {
-                                correct = false;
-                                nbRep = q.nbRep;
-                                key3 = ds.getKey();
-                            }
-                            i++;
-                        }
-                        else {
-                            i++;
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        };
-        ref2.addListenerForSingleValueEvent(valueEventListener2);
-
-        ref = FirebaseDatabase.getInstance().getReference().child("questionProf").child(questionId);
-        final String key = ref.getKey();
-        Log.d("key originel", key);
-        final Map<String,Object> questionProfMap = new HashMap<String,Object>();
-        final Map<String,Object> quizMap = new HashMap<String,Object>();
-        ValueEventListener valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    Log.d("key recu", ds.getKey());
-                    if(correct) {
-                        if (ds.getKey().equals("ncorrects")) {
-                            questionProfMap.put("ncorrects", ds.getValue(Integer.class) + 1);
-                            ref.updateChildren(questionProfMap);
-                            quizMap.put("nbRep", nbRep + 1);
-                            ref2.child(key3).updateChildren(quizMap);
-                            //Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.la_reponse) + spinner.getSelectedItem().toString() + getString(R.string.est_correcte), Toast.LENGTH_LONG).show();
-                            Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.la_reponse)  + currentVal + getString(R.string.est_correcte), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                    else {
-                        if (ds.getKey().equals("nfalses")) {
-                            questionProfMap.put("nfalses", ds.getValue(Integer.class) + 1);
-                            ref.updateChildren(questionProfMap);
-                            quizMap.put("nbRep", nbRep + 1);
-                            ref2.child(key3).updateChildren(quizMap);
-                            //Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.la_reponse) + spinner.getSelectedItem().toString() + getString(R.string.est_fausse), Toast.LENGTH_LONG).show();
-                            Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.la_reponse)  + currentVal + getString(R.string.est_fausse), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                    Log.d("TAG", "tour de boucle");
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        };
-        ref.addListenerForSingleValueEvent(valueEventListener);
-
-        if (context instanceof DisplayQuiz) {
-            ((DisplayQuiz)context).updateList();
+        if (allUnchecked()) {
+            Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.Il_faut_au_moins_choisir_une_reponse), Toast.LENGTH_LONG).show();
         }
+        else {
+            //s = spinner.getSelectedItem().toString();
+            //spinner = (Spinner) findViewById(R.id.spinner1);
+            //position = spinner.getSelectedItemPosition();
+            position = getCheckBoxPos();
+            //Log.d("position1", ""+spinner.getSelectedItemPosition());
+            Log.d("position2", "" + getCheckBoxPos());
+            Log.v("Pos", "" + position);
+            ref2 = FirebaseDatabase.getInstance().getReference().child("quiz");
+            final String key2 = ref2.getKey();
+            ValueEventListener valueEventListener2 = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    int i = 0;
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        Log.d("key recu2", ds.getKey());
+                        Quiz q = ds.getValue(Quiz.class);
+                        if (q.questionId.equals(questionId)) {
+                            Log.d("key recu2.1", "tour de boucle" + i);
+                            Log.d("key recu2.2", "bon id");
+                            if (position == i) {
+                                Log.d("ok et correct =", "" + q.correct);
+                                if (q.correct) {
+                                    correct = true;
+                                    nbRep = q.nbRep;
+                                    key3 = ds.getKey();
+                                } else {
+                                    correct = false;
+                                    nbRep = q.nbRep;
+                                    key3 = ds.getKey();
+                                }
+                                i++;
+                            } else {
+                                i++;
+                            }
+                        }
+                    }
+                }
 
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                // Actions to do after 5 seconds
-                finish();
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            };
+            ref2.addListenerForSingleValueEvent(valueEventListener2);
+
+            ref = FirebaseDatabase.getInstance().getReference().child("questionProf").child(questionId);
+            final String key = ref.getKey();
+            Log.d("key originel", key);
+            final Map<String, Object> questionProfMap = new HashMap<String, Object>();
+            final Map<String, Object> quizMap = new HashMap<String, Object>();
+            ValueEventListener valueEventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        Log.d("key recu", ds.getKey());
+                        if (correct) {
+                            if (ds.getKey().equals("ncorrects")) {
+                                questionProfMap.put("ncorrects", ds.getValue(Integer.class) + 1);
+                                ref.updateChildren(questionProfMap);
+                                quizMap.put("nbRep", nbRep + 1);
+                                ref2.child(key3).updateChildren(quizMap);
+                                //Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.la_reponse) + spinner.getSelectedItem().toString() + getString(R.string.est_correcte), Toast.LENGTH_LONG).show();
+                                Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.la_reponse) + currentVal + getString(R.string.est_correcte), Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            if (ds.getKey().equals("nfalses")) {
+                                questionProfMap.put("nfalses", ds.getValue(Integer.class) + 1);
+                                ref.updateChildren(questionProfMap);
+                                quizMap.put("nbRep", nbRep + 1);
+                                ref2.child(key3).updateChildren(quizMap);
+                                //Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.la_reponse) + spinner.getSelectedItem().toString() + getString(R.string.est_fausse), Toast.LENGTH_LONG).show();
+                                Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.la_reponse) + currentVal + getString(R.string.est_fausse), Toast.LENGTH_LONG).show();
+                            }
+                        }
+                        Log.d("TAG", "tour de boucle");
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            };
+            ref.addListenerForSingleValueEvent(valueEventListener);
+
+            if (context instanceof DisplayQuiz) {
+                ((DisplayQuiz) context).updateList();
             }
-        }, 1000);
+
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    // Actions to do after 5 seconds
+                    finish();
+                }
+            }, 1000);
+        }
     }
 
     public void annuler(View v) {

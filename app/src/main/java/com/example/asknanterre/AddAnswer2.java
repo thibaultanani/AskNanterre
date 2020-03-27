@@ -161,6 +161,23 @@ public class AddAnswer2 extends AppCompatActivity {
         return "";
     }
 
+    public boolean allUnchecked() {
+        int cpt = 0;
+        CheckBox cb;
+        for (int x = 0; x<myListView.getChildCount();x++){
+            cb = (CheckBox)myListView.getChildAt(x).findViewById(R.id.list_view_item_checkbox);
+            if(cb.isChecked()) {
+                cpt++;
+            }
+        }
+        if(cpt>0) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
     public void textVisibility(int position, boolean checked) {
         if((position == (myListView.getAdapter().getCount()-1))&& checked) {
             textView.setVisibility(View.VISIBLE);
@@ -182,36 +199,40 @@ public class AddAnswer2 extends AppCompatActivity {
         String questionId;
         questionId = b.getString("key");
 
-        Answer a;
-        if(editText.getVisibility() != View.VISIBLE) {
-            a = new Answer(getCheckBoxValue(), questionId);
-            s = getCheckBoxValue();
+        if (allUnchecked()) {
+            Toast.makeText(AddAnswer2.this, getString(R.string.Il_faut_au_moins_choisir_une_reponse), Toast.LENGTH_LONG).show();
         }
         else {
-            a = new Answer(name.getText().toString(), questionId);
-            s = name.getText().toString();
+            Answer a;
+            if (editText.getVisibility() != View.VISIBLE) {
+                a = new Answer(getCheckBoxValue(), questionId);
+                s = getCheckBoxValue();
+            } else {
+                a = new Answer(name.getText().toString(), questionId);
+                s = name.getText().toString();
+            }
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            Log.v("Exemple", database.toString());
+
+            database.getReference("answer").push().setValue(a);
+
+            DatabaseReference ref;
+            ref = FirebaseDatabase.getInstance().getReference().child("question").child(questionId);
+            Map<String, Object> questionMap = new HashMap<String, Object>();
+            questionMap.put("repondu", true);
+            ref.updateChildren(questionMap);
+
+            Toast.makeText(this, getString(R.string.la_reponse) + s + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
+
+            name.setText("");
+
+            Bundle b2 = new Bundle();
+            b2.putString("key", coursId);
+            Intent intent = new Intent(this, DisplayQuestionProf.class);
+            intent.putExtras(b2);
+            startActivity(intent);
         }
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        Log.v("Exemple", database.toString());
-
-        database.getReference("answer").push().setValue(a);
-
-        DatabaseReference ref;
-        ref=FirebaseDatabase.getInstance().getReference().child("question").child(questionId);
-        Map<String,Object> questionMap = new HashMap<String,Object>();
-        questionMap.put("repondu", true);
-        ref.updateChildren(questionMap);
-
-        Toast.makeText(this, getString(R.string.la_reponse) + s + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
-
-        name.setText("");
-
-        Bundle b2= new Bundle();
-        b2.putString("key",coursId);
-        Intent intent = new Intent(this, DisplayQuestionProf.class);
-        intent.putExtras(b2);
-        startActivity(intent);
     }
 
     public void goToMainActivity(){
