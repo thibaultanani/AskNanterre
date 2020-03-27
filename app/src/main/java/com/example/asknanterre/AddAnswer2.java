@@ -229,6 +229,7 @@ public class AddAnswer2 extends AppCompatActivity {
 
             Bundle b2 = new Bundle();
             b2.putString("key", coursId);
+            Log.v("valeur du cours Id", coursId);
             Intent intent = new Intent(this, DisplayQuestionProf.class);
             intent.putExtras(b2);
             startActivity(intent);

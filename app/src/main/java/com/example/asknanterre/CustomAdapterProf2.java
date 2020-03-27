@@ -222,6 +222,7 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
                             b.putString("name", list1.get(position));
                             b.putString("keyAnswer", tmpKey);
                             b.putString("nameAnswer", tmp.nom);
+                            b.putString("idcours",coursId);
                             intent.putExtras(b); //Put your id to your next Intent
                             context.startActivity(intent);
                         }

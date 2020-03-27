@@ -90,7 +90,11 @@ public class ModifyAnswer extends AppCompatActivity {
         ref2.updateChildren(questionMap);
 
         Toast.makeText(this, getString(R.string.la_reponse) + name.getText() + getString(R.string.a_ete_supprimee), Toast.LENGTH_LONG).show();
+        Bundle b2= new Bundle();
+        b2.putString("key",coursId);
+        Log.v("valeur du cours Id", coursId);
         Intent intent = new Intent(this, DisplayQuestionProf.class);
+        intent.putExtras(b2);
         startActivity(intent);
     }
 
