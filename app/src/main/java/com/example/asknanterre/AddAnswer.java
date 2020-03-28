@@ -18,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
+
 public class AddAnswer extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
@@ -59,7 +61,7 @@ public class AddAnswer extends AppCompatActivity {
         questionMap.put("repondu", true);
         ref.updateChildren(questionMap);
 
-        Toast.makeText(this, getString(R.string.la_reponse) + name.getText() + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
+        Toasty.success(this, getString(R.string.la_reponse) + name.getText() + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
 
         name.setText("");
         Bundle b2= new Bundle();

@@ -216,6 +216,7 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
                             context.startActivity(intent);
                         }
                         else {
+                            checkExists = false;
                             Intent intent = new Intent(context, ModifyAnswer.class);
                             Bundle b = new Bundle();
                             b.putString("key", list2.get(position)); //Your id

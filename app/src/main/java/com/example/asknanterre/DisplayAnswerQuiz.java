@@ -36,6 +36,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
+
 public class DisplayAnswerQuiz extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private static final String TAG = "DisplayAnswerQuiz";
@@ -220,7 +222,7 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
         Log.v("questID", questionId);
 
         if (allUnchecked()) {
-            Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.Il_faut_au_moins_choisir_une_reponse), Toast.LENGTH_LONG).show();
+            Toasty.info(DisplayAnswerQuiz.this, getString(R.string.Il_faut_au_moins_choisir_une_reponse), Toast.LENGTH_LONG).show();
         }
         else {
             //s = spinner.getSelectedItem().toString();
@@ -284,7 +286,7 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
                                 quizMap.put("nbRep", nbRep + 1);
                                 ref2.child(key3).updateChildren(quizMap);
                                 //Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.la_reponse) + spinner.getSelectedItem().toString() + getString(R.string.est_correcte), Toast.LENGTH_LONG).show();
-                                Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.la_reponse) + currentVal + getString(R.string.est_correcte), Toast.LENGTH_LONG).show();
+                                Toasty.success(DisplayAnswerQuiz.this, getString(R.string.la_reponse) + currentVal + getString(R.string.est_correcte), Toast.LENGTH_LONG).show();
                             }
                         } else {
                             if (ds.getKey().equals("nfalses")) {
@@ -293,7 +295,7 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
                                 quizMap.put("nbRep", nbRep + 1);
                                 ref2.child(key3).updateChildren(quizMap);
                                 //Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.la_reponse) + spinner.getSelectedItem().toString() + getString(R.string.est_fausse), Toast.LENGTH_LONG).show();
-                                Toast.makeText(DisplayAnswerQuiz.this, getString(R.string.la_reponse) + currentVal + getString(R.string.est_fausse), Toast.LENGTH_LONG).show();
+                                Toasty.error(DisplayAnswerQuiz.this, getString(R.string.la_reponse) + currentVal + getString(R.string.est_fausse), Toast.LENGTH_LONG).show();
                             }
                         }
                         Log.d("TAG", "tour de boucle");

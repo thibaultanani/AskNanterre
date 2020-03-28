@@ -16,6 +16,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import es.dmoral.toasty.Toasty;
+
 public class AddCoursApercu extends AppCompatActivity {
     Bundle b;
     TextView nom;
@@ -55,7 +57,7 @@ public class AddCoursApercu extends AppCompatActivity {
 
         database.getReference("cours").push().setValue(c);
 
-        Toast.makeText(this, getString(R.string.le_cours) + name.getText() + getString(R.string.a_ete_ajoute), Toast.LENGTH_LONG).show();
+        Toasty.success(this, getString(R.string.le_cours) + name.getText() + getString(R.string.a_ete_ajoute), Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this,  ProfessorUI2.class);
         startActivity(intent);

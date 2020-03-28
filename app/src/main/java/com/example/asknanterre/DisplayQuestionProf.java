@@ -52,6 +52,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
+
 public class DisplayQuestionProf extends AppCompatActivity {
 
     SwipeMenuListView myListView;
@@ -651,7 +653,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                                 Map<String,Object> questionMap = new HashMap<String,Object>();
                                 questionMap.put("valide", true);
                                 ref.updateChildren(questionMap);
-                                Toast.makeText(DisplayQuestionProf.this, getString(R.string.la_question) + list1.get(position) + getString(R.string.a_ete_validee), Toast.LENGTH_LONG).show();
+                                Toasty.success(DisplayQuestionProf.this, getString(R.string.la_question) + list1.get(position) + getString(R.string.a_ete_validee), Toast.LENGTH_LONG).show();
                                 list1.remove(position);
                                 adapt.notifyDataSetChanged();
                                 updateList();
@@ -660,7 +662,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                                 // delete
                                 ref=FirebaseDatabase.getInstance().getReference().child("question").child(list2.get(position));
                                 ref.removeValue();
-                                Toast.makeText(DisplayQuestionProf.this, getString(R.string.la_question) + list1.get(position) + getString(R.string.a_ete_supprimee), Toast.LENGTH_LONG).show();
+                                Toasty.success(DisplayQuestionProf.this, getString(R.string.la_question) + list1.get(position) + getString(R.string.a_ete_supprimee), Toast.LENGTH_LONG).show();
                                 list1.remove(position); //or some other task
                                 adapt.notifyDataSetChanged();
                                 updateList();

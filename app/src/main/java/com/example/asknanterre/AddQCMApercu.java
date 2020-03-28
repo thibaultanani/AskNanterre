@@ -10,12 +10,15 @@ import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import es.dmoral.toasty.Toasty;
 
 public class AddQCMApercu extends AppCompatActivity {
     Bundle b;
@@ -92,7 +95,7 @@ public class AddQCMApercu extends AppCompatActivity {
             Log.d("l'id de la rep", id);
         }
 
-
+        Toasty.success(this, getString(R.string.la_question) + name.getText().toString() + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
 
         Bundle b2= new Bundle();
         b2.putString("key",coursId);

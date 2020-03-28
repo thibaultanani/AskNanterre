@@ -30,6 +30,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
+
 public class AddAnswer2 extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     Menu itemToHide;
@@ -200,7 +202,7 @@ public class AddAnswer2 extends AppCompatActivity {
         questionId = b.getString("key");
 
         if (allUnchecked()) {
-            Toast.makeText(AddAnswer2.this, getString(R.string.Il_faut_au_moins_choisir_une_reponse), Toast.LENGTH_LONG).show();
+            Toasty.warning(AddAnswer2.this, getString(R.string.Il_faut_au_moins_choisir_une_reponse), Toast.LENGTH_LONG).show();
         }
         else {
             Answer a;
@@ -223,7 +225,7 @@ public class AddAnswer2 extends AppCompatActivity {
             questionMap.put("repondu", true);
             ref.updateChildren(questionMap);
 
-            Toast.makeText(this, getString(R.string.la_reponse) + s + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
+            Toasty.success(this, getString(R.string.la_reponse) + s + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
 
             name.setText("");
 

@@ -36,6 +36,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
+
 public class DisplayQuizProf extends AppCompatActivity {
 
     SwipeMenuListView myListView;
@@ -376,7 +378,7 @@ public class DisplayQuizProf extends AppCompatActivity {
                             case 0:
                                 ref=FirebaseDatabase.getInstance().getReference().child("questionProf").child(list2.get(position));
                                 ref.removeValue();
-                                Toast.makeText(DisplayQuizProf.this, getString(R.string.le_quiz) + list1.get(position) + getString(R.string.a_ete_supprime), Toast.LENGTH_LONG).show();
+                                Toasty.success(DisplayQuizProf.this, getString(R.string.le_quiz) + list1.get(position) + getString(R.string.a_ete_supprime), Toast.LENGTH_LONG).show();
                                 list2.remove(position); //or some other task
                                 adapt.notifyDataSetChanged();
                                 updateList();

@@ -45,6 +45,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:19.2.0'
     implementation 'com.google.firebase:firebase-firestore:21.4.1'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    implementation 'com.github.GrenderG:Toasty:1.2.5'
 }
 
 apply plugin: 'com.google.gms.google-services'

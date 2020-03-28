@@ -18,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
+
 public class ModifyAnswer extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     Menu itemToHide;
@@ -89,7 +91,7 @@ public class ModifyAnswer extends AppCompatActivity {
         questionMap.put("repondu", false);
         ref2.updateChildren(questionMap);
 
-        Toast.makeText(this, getString(R.string.la_reponse) + name.getText() + getString(R.string.a_ete_supprimee), Toast.LENGTH_LONG).show();
+        Toasty.success(this, getString(R.string.la_reponse) + name.getText() + getString(R.string.a_ete_supprimee), Toast.LENGTH_LONG).show();
         Bundle b2= new Bundle();
         b2.putString("key",coursId);
         Log.v("valeur du cours Id", coursId);
