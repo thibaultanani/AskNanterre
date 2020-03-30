@@ -140,11 +140,12 @@ public class DisplayAnswerQuizProf extends AppCompatActivity {
                         barIndex.add(i);
                         barNumber.add(q.nbRep);
                         total1 = total1 + q.nbRep;
-                        barNames.add(q.rep);
                         if(q.correct) {
+                            barNames.add(q.rep + " " + getString(R.string.correcte));
                             barColors.add(getApplicationContext().getResources().getColor(R.color.colorAccentDark));
                         }
                         else {
+                            barNames.add(q.rep);
                             barColors.add(getApplicationContext().getResources().getColor(R.color.colorRed));
                         }
                         Log.d("HEY", product);
