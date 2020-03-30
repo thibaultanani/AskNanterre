@@ -52,6 +52,7 @@ public class AddCoursApercu extends AppCompatActivity {
         Date date = new Date();
         c.date =formatter.format(date);
         c.titre = n.normalizeTitre(titre.getText().toString());
+        c.visible = false;
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         Log.v("Exemple", database.toString());
 

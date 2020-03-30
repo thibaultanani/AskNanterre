@@ -35,11 +35,13 @@ public class AddCours extends AppCompatActivity {
         Date date = new Date();
         c.date = formatter.format(date);
         c.titre = n.normalizeTitre(name.getText().toString());
+        c.visible = false;
 
         Bundle b=new Bundle();
         b.putString("nom",c.nom);
         b.putString("titre",c.titre);
         b.putString("date",c.date);
+        b.putBoolean("visible",c.visible);
         Intent intent = new Intent(this, AddCoursApercu.class);
         intent.putExtras(b); //Put your id to your next Intent
         startActivity(intent);

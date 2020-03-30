@@ -6,6 +6,7 @@ public class Cours extends SugarRecord {
     String nom;
     String titre;
     String date;
+    boolean visible;
 
     public Cours() {}
 
@@ -35,5 +36,13 @@ public class Cours extends SugarRecord {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 }

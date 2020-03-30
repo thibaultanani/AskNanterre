@@ -85,4 +85,6 @@
     <string name="total">Total:\n</string>
     <string name="reponse_personalisee">Custom answer</string>
     <string name="Il_faut_au_moins_choisir_une_reponse">You have to at least choose an answer</string>
+    <string name="est_devenu_invisible">\" become visible</string>
+    <string name="est_devenu_visible">\" become invisible</string>
 </resources>

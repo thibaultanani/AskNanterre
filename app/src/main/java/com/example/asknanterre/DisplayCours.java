@@ -95,8 +95,10 @@ public class DisplayCours extends AppCompatActivity {
                 coursID.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     String product = ds.getKey();
-                    cours.add(ds.getValue(Cours.class));
-                    coursID.add(ds.getKey());
+                    if(ds.getValue(Cours.class).isVisible()) {
+                        cours.add(ds.getValue(Cours.class));
+                        coursID.add(ds.getKey());
+                    }
                     Log.d("TAG", product);
                 }
                 progressBar.setVisibility(View.GONE);

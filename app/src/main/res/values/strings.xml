@@ -84,6 +84,8 @@
     <string name="total">Total:\n</string>
     <string name="reponse_personalisee">Réponse personalisée</string>
     <string name="Il_faut_au_moins_choisir_une_reponse">Il faut au moins choisir une réponse</string>
+    <string name="est_devenu_visible">\" est devenu visible</string>
+    <string name="est_devenu_invisible">\" est devenu invisible</string>
     <string-array name="number_arrays">
         <item>2</item>
         <item>3</item>
