@@ -202,39 +202,65 @@ public class AddAnswer2 extends AppCompatActivity {
         questionId = b.getString("key");
 
         if (allUnchecked()) {
-            Toasty.warning(AddAnswer2.this, getString(R.string.Il_faut_au_moins_choisir_une_reponse), Toast.LENGTH_LONG).show();
+            Toasty.error(AddAnswer2.this, getString(R.string.Il_faut_au_moins_choisir_une_reponse), Toast.LENGTH_LONG).show();
         }
         else {
             Answer a;
             if (editText.getVisibility() != View.VISIBLE) {
                 a = new Answer(getCheckBoxValue(), questionId);
                 s = getCheckBoxValue();
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                Log.v("Exemple", database.toString());
+
+                database.getReference("answer").push().setValue(a);
+
+                DatabaseReference ref;
+                ref = FirebaseDatabase.getInstance().getReference().child("question").child(questionId);
+                Map<String, Object> questionMap = new HashMap<String, Object>();
+                questionMap.put("repondu", true);
+                ref.updateChildren(questionMap);
+
+                Toasty.success(this, getString(R.string.la_reponse) + s + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
+
+                name.setText("");
+
+                Bundle b2 = new Bundle();
+                b2.putString("key", coursId);
+                Log.v("valeur du cours Id", coursId);
+                Intent intent = new Intent(this, DisplayQuestionProf.class);
+                intent.putExtras(b2);
+                startActivity(intent);
             } else {
-                a = new Answer(name.getText().toString(), questionId);
-                s = name.getText().toString();
+                if (name.getText().toString().isEmpty()) {
+                    Toasty.error(this, getString(R.string.Le_nom_de_la_reponse), Toast.LENGTH_LONG).show();
+                }
+                else {
+                    a = new Answer(name.getText().toString(), questionId);
+                    s = name.getText().toString();
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    Log.v("Exemple", database.toString());
+
+                    database.getReference("answer").push().setValue(a);
+
+                    DatabaseReference ref;
+                    ref = FirebaseDatabase.getInstance().getReference().child("question").child(questionId);
+                    Map<String, Object> questionMap = new HashMap<String, Object>();
+                    questionMap.put("repondu", true);
+                    ref.updateChildren(questionMap);
+
+                    Toasty.success(this, getString(R.string.la_reponse) + s + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
+
+                    name.setText("");
+
+                    Bundle b2 = new Bundle();
+                    b2.putString("key", coursId);
+                    Log.v("valeur du cours Id", coursId);
+                    Intent intent = new Intent(this, DisplayQuestionProf.class);
+                    intent.putExtras(b2);
+                    startActivity(intent);
+                }
             }
 
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            Log.v("Exemple", database.toString());
-
-            database.getReference("answer").push().setValue(a);
-
-            DatabaseReference ref;
-            ref = FirebaseDatabase.getInstance().getReference().child("question").child(questionId);
-            Map<String, Object> questionMap = new HashMap<String, Object>();
-            questionMap.put("repondu", true);
-            ref.updateChildren(questionMap);
-
-            Toasty.success(this, getString(R.string.la_reponse) + s + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
-
-            name.setText("");
-
-            Bundle b2 = new Bundle();
-            b2.putString("key", coursId);
-            Log.v("valeur du cours Id", coursId);
-            Intent intent = new Intent(this, DisplayQuestionProf.class);
-            intent.putExtras(b2);
-            startActivity(intent);
         }
     }
 

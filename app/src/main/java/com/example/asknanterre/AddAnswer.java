@@ -44,31 +44,36 @@ public class AddAnswer extends AppCompatActivity {
 
         EditText name = (EditText) findViewById(R.id.lname);
 
-        Bundle b = getIntent().getExtras();
-        String questionId;
-        questionId = b.getString("key");
+        if (name.getText().toString().isEmpty()) {
+            Toasty.error(this, getString(R.string.Le_nom_de_la_reponse), Toast.LENGTH_LONG).show();
+        }
+        else {
+            Bundle b = getIntent().getExtras();
+            String questionId;
+            questionId = b.getString("key");
 
-        Answer a = new Answer(name.getText().toString(), questionId);
+            Answer a = new Answer(name.getText().toString(), questionId);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        Log.v("Exemple", database.toString());
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            Log.v("Exemple", database.toString());
 
-        database.getReference("answer").push().setValue(a);
+            database.getReference("answer").push().setValue(a);
 
-        DatabaseReference ref;
-        ref=FirebaseDatabase.getInstance().getReference().child("question").child(questionId);
-        Map<String,Object> questionMap = new HashMap<String,Object>();
-        questionMap.put("repondu", true);
-        ref.updateChildren(questionMap);
+            DatabaseReference ref;
+            ref = FirebaseDatabase.getInstance().getReference().child("question").child(questionId);
+            Map<String, Object> questionMap = new HashMap<String, Object>();
+            questionMap.put("repondu", true);
+            ref.updateChildren(questionMap);
 
-        Toasty.success(this, getString(R.string.la_reponse) + name.getText() + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
+            Toasty.success(this, getString(R.string.la_reponse) + name.getText() + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
 
-        name.setText("");
-        Bundle b2= new Bundle();
-        b2.putString("key",coursId);
-        Intent intent = new Intent(this, DisplayQuestionProf.class);
-        intent.putExtras(b2);
-        startActivity(intent);
+            name.setText("");
+            Bundle b2 = new Bundle();
+            b2.putString("key", coursId);
+            Intent intent = new Intent(this, DisplayQuestionProf.class);
+            intent.putExtras(b2);
+            startActivity(intent);
+        }
     }
 
     public void goToMainActivity(){

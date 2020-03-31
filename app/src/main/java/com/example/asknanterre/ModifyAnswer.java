@@ -52,24 +52,29 @@ public class ModifyAnswer extends AppCompatActivity {
 
         EditText name = (EditText) findViewById(R.id.lname);
 
-        Bundle b = getIntent().getExtras();
-        questionId = b.getString("key");
-        AnswerId = b.getString("keyAnswer");
+        if (name.getText().toString().isEmpty()) {
+            Toasty.error(this, getString(R.string.Le_nom_de_la_reponse), Toast.LENGTH_LONG).show();
+        }
+        else {
+            Bundle b = getIntent().getExtras();
+            questionId = b.getString("key");
+            AnswerId = b.getString("keyAnswer");
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        Log.v("Exemple", database.toString());
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            Log.v("Exemple", database.toString());
 
-        ref=FirebaseDatabase.getInstance().getReference().child("answer").child(AnswerId);
-        Map<String,Object> answerMap = new HashMap<String,Object>();
-        answerMap.put("nom", name.getText().toString());
-        ref.updateChildren(answerMap);
-        Toast.makeText(this, getString(R.string.la_reponse) + name.getText() + getString(R.string.a_ete_mise_a_jour), Toast.LENGTH_LONG).show();
-        Bundle b2= new Bundle();
-        b2.putString("key",coursId);
-        Intent intent = new Intent(this, DisplayQuestionProf.class);
-        intent.putExtras(b2);
-        startActivity(intent);
-        //name.setText("");
+            ref = FirebaseDatabase.getInstance().getReference().child("answer").child(AnswerId);
+            Map<String, Object> answerMap = new HashMap<String, Object>();
+            answerMap.put("nom", name.getText().toString());
+            ref.updateChildren(answerMap);
+            Toast.makeText(this, getString(R.string.la_reponse) + name.getText() + getString(R.string.a_ete_mise_a_jour), Toast.LENGTH_LONG).show();
+            Bundle b2 = new Bundle();
+            b2.putString("key", coursId);
+            Intent intent = new Intent(this, DisplayQuestionProf.class);
+            intent.putExtras(b2);
+            startActivity(intent);
+            //name.setText("");
+        }
     }
 
     public void supprimer(View v) {

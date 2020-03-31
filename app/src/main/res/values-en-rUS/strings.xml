@@ -88,4 +88,8 @@
     <string name="est_devenu_invisible">\" become visible</string>
     <string name="est_devenu_visible">\" become invisible</string>
     <string name="correcte"> (correct answer)</string>
+    <string name="Le_nom_de_la_question">The question must not be empty</string>
+    <string name="Le_nom_de_la_reponse">The answer must not be empty</string>
+    <string name="Le_nom_du_cours">The class name must be composed of letters and numbers</string>
+    <string name="Lune_des_reponses">At least one of your answers is empty</string>
 </resources>

@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+
 public class AddQuiz extends AppCompatActivity {
 
     Spinner spinner;
@@ -131,48 +133,65 @@ public class AddQuiz extends AppCompatActivity {
         final Bundle b = getIntent().getExtras();
         final String coursId = b.getString("key");
 
-        Normalizer n = new Normalizer();
-        QuestionProf q = new QuestionProf(n.normalizeNom(name.getText().toString()));
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        q.date = formatter.format(date);
-        q.titre = n.normalizeTitre(name.getText().toString());
-        q.difficulte = Star2Number(text3);
-        q.coursId = coursId;
-
-        ArrayList<String> list= new ArrayList<>();
-        ArrayList<String> list2= new ArrayList<>();
-        final int childCount = ll.getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            if(Integer.parseInt(text2)!=(i+1)) {
-                EditText v1 = (EditText) ll.getChildAt(i);
-                list.add(v1.getText().toString());
-                list2.add(v1.getText().toString()+"(Réponse fausse)");
-            }
-            else {
-                EditText v1 = (EditText) ll.getChildAt(i);
-                list.add(v1.getText().toString());
-                 bonnerep= v1.getText().toString();
-                list2.add(v1.getText().toString()+"(Réponse bonne)");
-            }
-
+        if (name.getText().toString().isEmpty()) {
+            Toasty.error(this, getString(R.string.Le_nom_de_la_question), Toast.LENGTH_LONG).show();
         }
+        else {
+
+            Normalizer n = new Normalizer();
+            QuestionProf q = new QuestionProf(n.normalizeNom(name.getText().toString()));
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date date = new Date();
+            q.date = formatter.format(date);
+            q.titre = n.normalizeTitre(name.getText().toString());
+            q.difficulte = Star2Number(text3);
+            q.coursId = coursId;
+
+            ArrayList<String> list = new ArrayList<>();
+            ArrayList<String> list2 = new ArrayList<>();
+            final int childCount = ll.getChildCount();
+            int cpt = 0;
+            for (int i = 0; i < childCount; i++) {
+                if (Integer.parseInt(text2) != (i + 1)) {
+                    EditText v1 = (EditText) ll.getChildAt(i);
+                    if(v1.getText().toString().isEmpty()) {
+                        Toasty.error(this, getString(R.string.Lune_des_reponses), Toast.LENGTH_LONG).show();
+                        cpt ++;
+                        break;
+                    }
+                    list.add(v1.getText().toString());
+                    list2.add(v1.getText().toString() + "(Réponse fausse)");
+                } else {
+                    EditText v1 = (EditText) ll.getChildAt(i);
+                    if(v1.getText().toString().isEmpty()) {
+                        Toasty.error(this, getString(R.string.Lune_des_reponses), Toast.LENGTH_LONG).show();
+                        cpt ++;
+                        break;
+                    }
+                    list.add(v1.getText().toString());
+                    bonnerep = v1.getText().toString();
+                    list2.add(v1.getText().toString() + "(Réponse bonne)");
+                }
+
+            }
+
+            if(cpt == 0) {
+                Bundle b2 = new Bundle();
+                b2.putString("nom", q.nom);
+                b2.putString("titre", q.titre);
+                b2.putString("date", q.date);
+                b2.putStringArrayList("rep", list);
+                b2.putStringArrayList("rep2", list2);
+                b2.putString("key", coursId);
+                b2.putString("bonnerep", bonnerep);
+                b2.putInt("dif", Star2Number(text3));
 
 
-        Bundle b2= new Bundle();
-        b2.putString("nom",q.nom);
-        b2.putString("titre",q.titre);
-        b2.putString("date",q.date);
-        b2.putStringArrayList("rep",list);
-        b2.putStringArrayList("rep2",list2);
-        b2.putString("key",coursId);
-        b2.putString("bonnerep",bonnerep);
-        b2.putInt("dif",Star2Number(text3));
-
-
-        Intent intent = new Intent(this, AddQuizApercu.class);
-        intent.putExtras(b2); //Put your id to your next Intent
-        startActivity(intent);
+                Intent intent = new Intent(this, AddQuizApercu.class);
+                intent.putExtras(b2); //Put your id to your next Intent
+                startActivity(intent);
+            }
+        }
     }
 
     public void annuler(View v) {

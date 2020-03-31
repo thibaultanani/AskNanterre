@@ -26,6 +26,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Pattern;
+
+import es.dmoral.toasty.Toasty;
 
 public class AddQuestion extends AppCompatActivity {
 
@@ -49,24 +52,29 @@ public class AddQuestion extends AppCompatActivity {
         final Bundle b = getIntent().getExtras();
         final String coursId = b.getString("key");
 
-        Normalizer n = new Normalizer();
-        Question q = new Question(n.normalizeNom(name.getText().toString()));
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        q.date = formatter.format(date);
-        q.titre = n.normalizeTitre(name.getText().toString());
-        q.type = 1;
-        q.coursId = coursId;
+        if (name.getText().toString().isEmpty()) {
+            Toasty.error(this, getString(R.string.Le_nom_de_la_question), Toast.LENGTH_LONG).show();
+        }
+        else {
+            Normalizer n = new Normalizer();
+            Question q = new Question(n.normalizeNom(name.getText().toString()));
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date date = new Date();
+            q.date = formatter.format(date);
+            q.titre = n.normalizeTitre(name.getText().toString());
+            q.type = 1;
+            q.coursId = coursId;
 
 
-        Bundle b2=new Bundle();
-        b2.putString("nom",q.nom);
-        b2.putString("titre",q.titre);
-        b2.putString("date",q.date);
-        b2.putString("coursid",coursId);
-        Intent intent = new Intent(this, AddQuestionApercu.class);
-        intent.putExtras(b2); //Put your id to your next Intent
-        startActivity(intent);
+            Bundle b2 = new Bundle();
+            b2.putString("nom", q.nom);
+            b2.putString("titre", q.titre);
+            b2.putString("date", q.date);
+            b2.putString("coursid", coursId);
+            Intent intent = new Intent(this, AddQuestionApercu.class);
+            intent.putExtras(b2); //Put your id to your next Intent
+            startActivity(intent);
+        }
     }
 
     public void annuler(View v) {

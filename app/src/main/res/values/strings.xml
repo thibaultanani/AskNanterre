@@ -87,6 +87,10 @@
     <string name="est_devenu_visible">\" est devenu visible</string>
     <string name="est_devenu_invisible">\" est devenu invisible</string>
     <string name="correcte"> (réponse correcte)</string>
+    <string name="Le_nom_du_cours">Le nom du cours doit être composé de lettres et de numéros</string>
+    <string name="Le_nom_de_la_reponse">La réponse ne doit pas être vide</string>
+    <string name="Le_nom_de_la_question">La question ne doit pas être vide</string>
+    <string name="Lune_des_reponses">Au moins l\'une de vos réponses est vide</string>
     <string-array name="number_arrays">
         <item>2</item>
         <item>3</item>
