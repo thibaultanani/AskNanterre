@@ -41,4 +41,8 @@ public class StudentUI2 extends AppCompatActivity {
         intent.putExtras(b2);
         startActivity(intent);
     }
+
+    public void annuler(View v) {
+        finish();
+    }
 }

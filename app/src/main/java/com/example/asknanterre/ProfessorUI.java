@@ -112,4 +112,8 @@ public class ProfessorUI extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void annuler(View v) {
+        finish();
+    }
 }

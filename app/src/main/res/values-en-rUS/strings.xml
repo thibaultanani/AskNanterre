@@ -94,4 +94,8 @@
     <string name="Lune_des_reponses">At least one of your answers is empty</string>
     <string name="trier_par_visibilite_asc">Sort by visibility asc</string>
     <string name="trier_par_visibilite_des">Sort by visibility des</string>
+    <string name="menu_main_home">Main Menu</string>
+    <string name="menu_main_return">Back</string>
+    <string name="ajouter_un_cours">Add a class</string>
+    <string name="apercu">" (Preview)"</string>
 </resources>

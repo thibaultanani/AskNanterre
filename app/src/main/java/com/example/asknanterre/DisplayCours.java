@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.AdapterView;
@@ -17,6 +18,8 @@ import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import androidx.annotation.NonNull;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.baoyz.swipemenulistview.SwipeMenuListView;
@@ -72,7 +75,29 @@ public class DisplayCours extends AppCompatActivity {
         adapter.notifyDataSetChanged();
         spinner.setAdapter(adapter);
 
+        ActionBar ab = getSupportActionBar();
+        ab.setSubtitle(getString(R.string.liste_des_cours));
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.action_back:
+            //add the function to perform here
+            annuler();
+            return(true);
+        case R.id.action_home:
+            //add the function to perform here
+            goToMainActivity();
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
     }
 
     @Override
@@ -288,7 +313,9 @@ public class DisplayCours extends AppCompatActivity {
         coursRef.addListenerForSingleValueEvent(eventListener);
     }
 
-
+    public void annuler() {
+        finish();
+    }
 
     public void goToMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);

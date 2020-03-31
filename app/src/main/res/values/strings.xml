@@ -20,6 +20,7 @@
     <string name="liste_des_nquizsn">Liste des quizs\n</string>
     <string name="menu_principal_n2">Menu principal\n</string>
     <string name="ajouter_un_cours_n">Ajouter un cours\n</string>
+    <string name="ajouter_un_cours">Ajouter un cours</string>
     <string name="liste_des_cours">Liste des cours</string>
     <string name="interface_etudiant_poser_une_question">Interface Etudiant: Poser une question</string>
     <string name="poser_une_question_ouverte">Poser une question ouverte</string>
@@ -93,6 +94,9 @@
     <string name="Lune_des_reponses">Au moins l\'une de vos réponses est vide</string>
     <string name="trier_par_visibilite_asc">Trier par visibilité asc</string>
     <string name="trier_par_visibilite_des">Trier par visibilité des</string>
+    <string name="menu_main_return">Retour</string>
+    <string name="menu_main_home">Menu Principal</string>
+    <string name="apercu"> (Aperçu)</string>
     <string-array name="number_arrays">
         <item>2</item>
         <item>3</item>

@@ -1,12 +1,16 @@
 package com.example.asknanterre;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -90,7 +94,31 @@ public class DisplayQuiz extends AppCompatActivity {
 
         });
 
+        ActionBar ab = getSupportActionBar();
+        ab.setSubtitle(getString(R.string.liste_des_nquizs));
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.action_back:
+            //add the function to perform here
+            annuler();
+            return(true);
+        case R.id.action_home:
+            //add the function to perform here
+            goToMainActivity();
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
+    }
+
 
     @Override
     protected void onStart() {
@@ -343,5 +371,14 @@ public class DisplayQuiz extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         updateList();
+    }
+
+    public void annuler() {
+        finish();
+    }
+
+    public void goToMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

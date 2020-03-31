@@ -166,7 +166,31 @@ public class DisplayQuestionStud extends AppCompatActivity {
             }
         });*/
 
+        ActionBar ab = getSupportActionBar();
+        ab.setSubtitle(getString(R.string.liste_des_questions));
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.action_back:
+            //add the function to perform here
+            annuler();
+            return(true);
+        case R.id.action_home:
+            //add the function to perform here
+            goToMainActivity();
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
+    }
+
 
     @Override
     protected void onStart() {
@@ -457,24 +481,9 @@ public class DisplayQuestionStud extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    private ArrayList<String> list1 = new ArrayList<String>();
-    private ArrayList<String> list2 = new ArrayList<String>();
-    private ArrayList<String> list3 = new ArrayList<String>();
-    private ArrayList<String> list4 = new ArrayList<String>();
-    private ArrayList<String> list5 = new ArrayList<String>();
-    private ArrayList<Integer> list6 = new ArrayList<Integer>();
-    private Context context;
-
-
-
-
-   public void liker(View v) {
-
-
-                }
-
-
+    public void annuler() {
+        finish();
+    }
 
     public void goToMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);

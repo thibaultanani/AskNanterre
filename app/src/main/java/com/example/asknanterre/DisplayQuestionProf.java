@@ -229,6 +229,29 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 return true;
             }
         });*/
+        ActionBar ab = getSupportActionBar();
+        ab.setSubtitle(getString(R.string.liste_des_questions));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.action_back:
+            //add the function to perform here
+            annuler();
+            return(true);
+        case R.id.action_home:
+            //add the function to perform here
+            goToMainActivity();
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
     }
 
     @Override
@@ -846,6 +869,10 @@ public class DisplayQuestionProf extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         };
         questionRef.addListenerForSingleValueEvent(eventListener);
+    }
+
+    public void annuler() {
+        finish();
     }
 
     public void goToMainActivity(){

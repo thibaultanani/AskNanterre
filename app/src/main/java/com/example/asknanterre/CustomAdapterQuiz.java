@@ -131,6 +131,7 @@ public class CustomAdapterQuiz extends BaseAdapter implements ListAdapter {
                         Bundle b = new Bundle();
                         b.putString("key", list2.get(position)); //Your id
                         b.putString("name", list1.get(position));
+                        b.putString("titre", list3.get(position));
                         b.putBoolean("rep", tmp.correct);
                         intent.putExtras(b); //Put your id to your next Intent
                         context.startActivity(intent);

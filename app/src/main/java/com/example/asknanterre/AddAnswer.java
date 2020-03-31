@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -38,6 +40,31 @@ public class AddAnswer extends AppCompatActivity {
         question = (TextView) findViewById(R.id.question);
         question.setText(b.getString("name"));
         coursId= b.getString("idcours");
+
+        ActionBar ab = getSupportActionBar();
+        Normalizer n = new Normalizer();
+        ab.setSubtitle(n.normalizeTitre(b.getString("name")));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.action_back:
+            //add the function to perform here
+            annuler();
+            return(true);
+        case R.id.action_home:
+            //add the function to perform here
+            goToMainActivity();
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
     }
 
     public void valider(View v) {
@@ -89,4 +116,9 @@ public class AddAnswer extends AppCompatActivity {
     public void annuler(View v) {
         finish();
     }
+
+    public void annuler() {
+        finish();
+    }
+
 }

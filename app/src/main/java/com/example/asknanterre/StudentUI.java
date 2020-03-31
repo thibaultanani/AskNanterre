@@ -137,5 +137,7 @@ public class StudentUI extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    public void annuler(View v) {
+        finish();
+    }
 }
