@@ -92,4 +92,6 @@
     <string name="Le_nom_de_la_reponse">The answer must not be empty</string>
     <string name="Le_nom_du_cours">The class name must be composed of letters and numbers</string>
     <string name="Lune_des_reponses">At least one of your answers is empty</string>
+    <string name="trier_par_visibilite_asc">Sort by visibility asc</string>
+    <string name="trier_par_visibilite_des">Sort by visibility des</string>
 </resources>

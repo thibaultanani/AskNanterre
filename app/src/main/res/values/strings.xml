@@ -91,6 +91,8 @@
     <string name="Le_nom_de_la_reponse">La réponse ne doit pas être vide</string>
     <string name="Le_nom_de_la_question">La question ne doit pas être vide</string>
     <string name="Lune_des_reponses">Au moins l\'une de vos réponses est vide</string>
+    <string name="trier_par_visibilite_asc">Trier par visibilité asc</string>
+    <string name="trier_par_visibilite_des">Trier par visibilité des</string>
     <string-array name="number_arrays">
         <item>2</item>
         <item>3</item>

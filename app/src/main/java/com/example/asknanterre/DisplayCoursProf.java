@@ -79,6 +79,10 @@ public class DisplayCoursProf extends AppCompatActivity {
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, spinnerArray);
 
+        spinnerArray.add(getString(R.string.trier_par_date_asc));
+        spinnerArray.add(getString(R.string.trier_par_date_des));
+        spinnerArray.add(getString(R.string.trier_par_visibilite_asc));
+        spinnerArray.add(getString(R.string.trier_par_visibilite_des));
 
         adapter.notifyDataSetChanged();
         spinner.setAdapter(adapter);
@@ -91,6 +95,85 @@ public class DisplayCoursProf extends AppCompatActivity {
         super.onStart();
     }
 
+    public void trier(View v, final int position) {
+        myListView = (SwipeMenuListView) findViewById(R.id.myListView);
+
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference coursRef = rootRef.child("cours");
+        cours = new ArrayList<Cours>();
+        coursID = new ArrayList<String>();
+        courstmp= new ArrayList<Cours>();
+        coursIDtmp = new ArrayList<String>();
+
+        String s;
+        if(position == 2 || position == 3) {
+            s = "visible";
+        }
+        else {
+            s = "";
+        }
+
+        Query q;
+        if(!s.isEmpty()) {
+            q = coursRef.orderByChild(s);
+        }
+        else {
+            q = coursRef;
+        }
+
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                cours.clear();
+                coursID.clear();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String product = ds.getKey();
+                    cours.add(ds.getValue(Cours.class));
+                    coursID.add(ds.getKey());
+                    Log.d("TAG", product);
+                }
+                progressBar.setVisibility(View.GONE);
+
+                if(position != 3 && position != 0) {
+                    Collections.reverse(cours);
+                    Collections.reverse(coursID);
+                }
+
+                q1 = new String[cours.size()];
+                q2 = new String[cours.size()];
+                q3 = new String[cours.size()];
+                q4 = new Boolean[cours.size()];
+
+
+                for (int i = 0; i < cours.size(); i++) {
+                    q1[i] = cours.get(i).nom;
+                    q2[i] = cours.get(i).titre;
+                    q3[i] = cours.get(i).date;
+                    q4[i] = cours.get(i).visible;
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayCoursProf.this, android.R.layout.simple_list_item_1, q1);
+                ArrayList<String> list1 = new ArrayList(Arrays.asList(q1));
+                ArrayList<String> list2 = new ArrayList(coursID);
+                ArrayList<String> list3 = new ArrayList(Arrays.asList(q2));
+                ArrayList<String> list4 = new ArrayList(Arrays.asList(q3));
+                ArrayList<Boolean> list5 = new ArrayList(Arrays.asList(q4));
+
+                adapt = new CustomAdapterCoursProf(list1, list2, list3, list4, list5, DisplayCoursProf.this);
+                myListView.setAdapter(adapt);
+                adapt.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
 
     public void updateList() {
 
@@ -129,6 +212,20 @@ public class DisplayCoursProf extends AppCompatActivity {
                     q3[i] = cours.get(i).date;
                     q4[i] = cours.get(i).visible;
                 }
+
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        // your code here
+                        trier(selectedItemView, position);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {
+                        // your code here
+                    }
+
+                });
 
                 edit = (EditText) findViewById(R.id.EditText01);
 
