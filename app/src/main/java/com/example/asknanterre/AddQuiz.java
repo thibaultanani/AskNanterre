@@ -62,6 +62,9 @@ public class AddQuiz extends AppCompatActivity {
                 ll = (LinearLayout)findViewById(R.id.mylinearlayout);
                 lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
+                final float scale = getResources().getDisplayMetrics().density;
+                int padding_in_px = (int) (5 * scale + 0.5f);
+
                 Log.d("Nombre actuel", spinner.getSelectedItem().toString() );
 
                 //ll.removeAllViewsInLayout();
@@ -74,6 +77,7 @@ public class AddQuiz extends AppCompatActivity {
                     for(i=tmp; i<Integer.parseInt(spinner.getSelectedItem().toString()); i++){
                         edit = new EditText(AddQuiz.this);
                         edit.setBackgroundResource(R.drawable.edittext_bg);
+                        edit.setPadding(padding_in_px, padding_in_px, padding_in_px, padding_in_px);
                         lp.setMargins(0, 0, 0, 20);
                         ll.addView(edit, lp);
                         spinnerArray.add(""+(i+1));
