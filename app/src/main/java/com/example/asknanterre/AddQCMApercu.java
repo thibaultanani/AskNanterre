@@ -32,7 +32,9 @@ public class AddQCMApercu extends AppCompatActivity {
     ArrayList rep;
     LinearLayout ll;
     LinearLayout.LayoutParams lp;
+    LinearLayout.LayoutParams lp2;
     TextView edit;
+    TextView edit2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,10 @@ public class AddQCMApercu extends AppCompatActivity {
         setContentView(R.layout.activity_add_qcmapercu);
         ll = (LinearLayout)findViewById(R.id.mylinearlayout);
         lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        lp2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        final float scale = getResources().getDisplayMetrics().density;
+        int padding_in_px = (int) (5 * scale + 0.5f);
 
         b=getIntent().getExtras();
         nom= findViewById(R.id.name_qcm);
@@ -55,9 +61,14 @@ public class AddQCMApercu extends AppCompatActivity {
         rep=b.getStringArrayList("rep");
 
         for(int i=0;i<rep.size();i++) {
+            edit2 = new TextView(AddQCMApercu.this);
+            edit2.setText(getString(R.string.choix_de_reponse) + "" + (i+1));
+            lp2.setMargins(0, 10, 0, 0);
+            ll.addView(edit2, lp2);
             edit = new TextView(AddQCMApercu.this);
             edit.setBackgroundResource(R.drawable.edittext_bg);
             edit.setText(rep.get(i).toString());
+            edit.setPadding(padding_in_px, padding_in_px, padding_in_px, padding_in_px);
             lp.setMargins(0, 0, 0, 20);
             ll.addView(edit, lp);
         }

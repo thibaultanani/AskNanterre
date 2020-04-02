@@ -33,8 +33,11 @@ public class AddQuizApercu extends AppCompatActivity {
     ArrayList rep2;
     LinearLayout ll;
     LinearLayout.LayoutParams lp;
+    LinearLayout.LayoutParams lp2;
     TextView edit;
+    TextView edit2;
     Integer dif;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,10 @@ public class AddQuizApercu extends AppCompatActivity {
 
         ll = (LinearLayout)findViewById(R.id.mylinearlayout);
         lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        lp2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        final float scale = getResources().getDisplayMetrics().density;
+        int padding_in_px = (int) (5 * scale + 0.5f);
 
         b=getIntent().getExtras();
         nom= findViewById(R.id.name_quiz);
@@ -60,17 +67,26 @@ public class AddQuizApercu extends AppCompatActivity {
         dif=b.getInt("dif");
 
         for(int i=0;i<rep2.size();i++) {
+            edit2 = new TextView(AddQuizApercu.this);
             if(rep2.get(i).toString().equals(bonnerep)) {
+                edit2.setText(getString(R.string.choix_de_reponse) + "" + (i+1) + getString(R.string.reponse_bonne));
+                lp2.setMargins(0, 10, 0, 0);
+                ll.addView(edit2, lp2);
                 edit = new TextView(AddQuizApercu.this);
                 edit.setBackgroundResource(R.drawable.edittext_bg);
                 edit.setText(rep2.get(i).toString());
+                edit.setPadding(padding_in_px, padding_in_px, padding_in_px, padding_in_px);
                 lp.setMargins(0, 0, 0, 20);
                 ll.addView(edit, lp);
             }
             else {
+                edit2.setText(getString(R.string.choix_de_reponse) + "" + (i+1) + getString(R.string.reponse_fausse));
+                lp2.setMargins(0, 10, 0, 0);
+                ll.addView(edit2, lp2);
                 edit = new TextView(AddQuizApercu.this);
                 edit.setBackgroundResource(R.drawable.edittext_bg);
                 edit.setText(rep2.get(i).toString());
+                edit.setPadding(padding_in_px, padding_in_px, padding_in_px, padding_in_px);
                 lp.setMargins(0, 0, 0, 20);
                 ll.addView(edit, lp);
             }

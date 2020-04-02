@@ -187,7 +187,7 @@ public class AddQuiz extends AppCompatActivity {
                         break;
                     }
                     list.add(v1.getText().toString());
-                    list2.add(v1.getText().toString() + "(Réponse fausse)");
+                    list2.add(v1.getText().toString());
                 } else {
                     EditText v1 = (EditText) ll.getChildAt(i);
                     if(v1.getText().toString().isEmpty()) {
@@ -197,7 +197,7 @@ public class AddQuiz extends AppCompatActivity {
                     }
                     list.add(v1.getText().toString());
                     bonnerep = v1.getText().toString();
-                    list2.add(v1.getText().toString() + "(Réponse bonne)");
+                    list2.add(v1.getText().toString());
                 }
 
             }

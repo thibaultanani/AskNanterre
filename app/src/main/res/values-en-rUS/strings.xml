@@ -98,4 +98,16 @@
     <string name="menu_main_return">Back</string>
     <string name="ajouter_un_cours">Add a class</string>
     <string name="apercu">" (Preview)"</string>
+    <string name="titre_du_cours">Class title</string>
+    <string name="date_de_la_cr_ation_du_cours">Date of class creation</string>
+    <string name="confirmez_vous">Do you confirm ?</string>
+    <string name="date_de_cr_ation_de_la_question">Date of question creation</string>
+    <string name="date_du_quiz">Date of quiz creation</string>
+    <string name="nom_de_la_question">Question name</string>
+    <string name="nom_du_quiz">Quiz name</string>
+    <string name="titre_de_la_question">Question title</string>
+    <string name="titre_du_quiz">Quiz title</string>
+    <string name="choix_de_reponse">"Answer choice: "</string>
+    <string name="reponse_bonne">" (Correct Answer)"</string>
+    <string name="reponse_fausse">" (Wrong Answer)"</string>
 </resources>
