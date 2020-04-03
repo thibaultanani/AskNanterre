@@ -104,6 +104,8 @@ public class DisplayQuestionStud extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spinner1);
 
         myListView = (ListView) findViewById(R.id.myListView);
+        TextView emptyText = (TextView)findViewById(android.R.id.empty);
+        myListView.setEmptyView(emptyText);
 
         final List<String> spinnerArray =  new ArrayList<String>();
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
@@ -200,6 +202,8 @@ public class DisplayQuestionStud extends AppCompatActivity {
 
     public void trier(View v, final int position) {
         myListView = (ListView) findViewById(R.id.myListView);
+        TextView emptyText = (TextView)findViewById(android.R.id.empty);
+        myListView.setEmptyView(emptyText);
 
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
@@ -348,6 +352,8 @@ public class DisplayQuestionStud extends AppCompatActivity {
                 q9 = new String[quest.size()];
 
                 myListView = (ListView) findViewById(R.id.myListView);
+                TextView emptyText = (TextView)findViewById(android.R.id.empty);
+                myListView.setEmptyView(emptyText);
 
                 for (int i = 0; i < quest.size(); i++) {
                     q1[i] = quest.get(i).nom;

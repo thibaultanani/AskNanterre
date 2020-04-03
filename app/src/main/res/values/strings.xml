@@ -109,6 +109,11 @@
     <string name="choix_de_reponse">Choix de réponse: </string>
     <string name="reponse_fausse"> (Réponse fausse)</string>
     <string name="reponse_bonne"> (Réponse bonne)</string>
+    <string name="empty_list"> La liste est vide</string>
+    <string name="empty_list_cours"> Aucun cours n\'est disponible</string>
+    <string name="empty_list_quiz">" Aucun quiz n'est disponible"</string>
+    <string name="empty_list_question"> Aucune question n\'est disponible</string>
+    <string name="empty_list_reponse"> Aucune réponse n\'est disponible</string>
     <string-array name="number_arrays">
         <item>2</item>
         <item>3</item>

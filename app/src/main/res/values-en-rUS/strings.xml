@@ -110,4 +110,9 @@
     <string name="choix_de_reponse">"Answer choice: "</string>
     <string name="reponse_bonne">" (Correct Answer)"</string>
     <string name="reponse_fausse">" (Wrong Answer)"</string>
+    <string name="empty_list">The list is empty</string>
+    <string name="empty_list_cours">No classes available</string>
+    <string name="empty_list_quiz">No quiz available</string>
+    <string name="empty_list_question">No question available</string>
+    <string name="empty_list_reponse">No answer available</string>
 </resources>

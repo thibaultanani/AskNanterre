@@ -17,6 +17,8 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.ActionBar;
@@ -64,6 +66,8 @@ public class DisplayCours extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spinner1);
 
         myListView = (ListView) findViewById(R.id.myListView);
+        TextView emptyText = (TextView)findViewById(android.R.id.empty);
+        myListView.setEmptyView(emptyText);
 
         final List<String> spinnerArray =  new ArrayList<String>();
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
@@ -108,6 +112,8 @@ public class DisplayCours extends AppCompatActivity {
 
     public void trier(View v, final int position) {
         myListView = (ListView) findViewById(R.id.myListView);
+        TextView emptyText = (TextView)findViewById(android.R.id.empty);
+        myListView.setEmptyView(emptyText);
 
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
@@ -216,6 +222,8 @@ public class DisplayCours extends AppCompatActivity {
                 q3 = new String[cours.size()];
 
                 myListView = (ListView) findViewById(R.id.myListView);
+                TextView emptyText = (TextView)findViewById(android.R.id.empty);
+                myListView.setEmptyView(emptyText);
 
                 for (int i = 0; i < cours.size(); i++) {
                     q1[i] = cours.get(i).nom;

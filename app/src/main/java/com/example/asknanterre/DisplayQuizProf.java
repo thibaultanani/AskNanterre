@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -86,6 +87,9 @@ public class DisplayQuizProf extends AppCompatActivity {
         updateList();
 
         myListView = (SwipeMenuListView) findViewById(R.id.myListView);
+        TextView emptyText = (TextView)findViewById(android.R.id.empty);
+        myListView.setEmptyView(emptyText);
+
         spinner = (Spinner) findViewById(R.id.spinner1);
 
         final List<String> spinnerArray =  new ArrayList<String>();
@@ -147,6 +151,8 @@ public class DisplayQuizProf extends AppCompatActivity {
 
     public void trier(View v, final int position) {
         myListView = (SwipeMenuListView) findViewById(R.id.myListView);
+        TextView emptyText = (TextView)findViewById(android.R.id.empty);
+        myListView.setEmptyView(emptyText);
 
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
@@ -279,6 +285,8 @@ public class DisplayQuizProf extends AppCompatActivity {
 
 
                 myListView = (SwipeMenuListView) findViewById(R.id.myListView);
+                TextView emptyText = (TextView)findViewById(android.R.id.empty);
+                myListView.setEmptyView(emptyText);
 
                 for (int i = 0; i < quiz.size(); i++) {
                     q1[i] = quiz.get(i).nom;
