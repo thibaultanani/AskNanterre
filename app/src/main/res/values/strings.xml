@@ -96,6 +96,7 @@
     <string name="trier_par_visibilite_des">Trier par visibilité des</string>
     <string name="menu_main_return">Retour</string>
     <string name="menu_main_home">Menu Principal</string>
+    <string name="menu_main_help">Aide</string>
     <string name="apercu"> (Aperçu)</string>
     <string name="titre_du_cours">Titre du cours</string>
     <string name="date_de_la_cr_ation_du_cours">Date de la création du cours</string>
@@ -114,6 +115,28 @@
     <string name="empty_list_quiz">" Aucun quiz n'est disponible"</string>
     <string name="empty_list_question"> Aucune question n\'est disponible</string>
     <string name="empty_list_reponse"> Aucune réponse n\'est disponible</string>
+    <string name="page_aide_question">Liste des questions (Aide)</string>
+    <string name="page_aide_quiz">Liste des quizs (Aide)</string>
+    <string name="page_aide_cours">Liste des cours (Aide)</string>
+    <string name="indique_qu_une_question_est_ferm_e">Indique qu\'une question est fermée</string>
+    <string name="indique_qu_une_question_est_ouverte">Indique qu\'une question est ouverte</string>
+    <string name="indique_qu_une_question_a_t_aim_e_par_le_professeur">Indique qu\'une question a été aimée par le professeur</string>
+    <string name="indique_qu_une_question_n_a_pas_t_aim_e_par_le_professeur">Indique qu\'une question n\'a pas été aimée par le professeur</string>
+    <string name="indique_le_nombre_d_tudiants_qui_ont_aim_la_question">Indique le nombre d\'étudiants qui ont aimé la question</string>
+    <string name="indique_le_nombre_d_tudiants_qui_n_ont_pas_aim_la_question">Indique le nombre d\'étudiants qui n\'ont pas aimé la question</string>
+    <string name="indique_que_le_professeur_a_r_pondu_la_question">Indique que le professeur a répondu à la question</string>
+    <string name="indique_que_le_professeur_n_a_pas_encore_r_pondu_la_question">Indique que le professeur n\'a pas encore répondu à la question</string>
+    <string name="indique_la_difficult_d_une_question_de_1_facile_3_difficile">Indique la difficulté d\'un quiz de 1 (facile) à 3 (difficile)</string>
+    <string name="indique_le_nombre_de_bonnes_r_ponses">Indique le nombre de bonnes réponses</string>
+    <string name="indique_le_nombre_de_mauvaises_r_ponses">Indique le nombre de mauvaises réponses</string>
+    <string name="changer_la_visibilit_du_cours">Changer la visibilité du cours (Swipe à gauche)</string>
+    <string name="supprimer_le_cours">Supprimer le cours (Swipe à gauche)</string>
+    <string name="supprimer_le_quiz">Supprimer le quiz (Swipe à gauche)</string>
+    <string name="supprimer_la_quetsion">Supprimer la question (Swipe à gauche)</string>
+    <string name="indique_que_le_cours_est_visible_par_l_tudiant">Indique que le cours est visible par les étudiants</string>
+    <string name="valider_la_question">Valider la question (Swipe à gauche si la question n\'a pas été validée)</string>
+    <string name="upvoter_la_question_swipe_gauche_si_la_question_est_valid_e">Upvoter la question (Swipe à gauche si la question est validée)</string>
+    <string name="downvoter_la_question_swipe_gauche_si_la_question_est_valid_e">Downvoter la question (Swipe à gauche si la question est validée)</string>
     <string-array name="number_arrays">
         <item>2</item>
         <item>3</item>

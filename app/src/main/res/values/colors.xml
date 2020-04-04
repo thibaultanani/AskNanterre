@@ -12,4 +12,9 @@
     <color name="colorDarkRed">#C62828</color>
     <color name="colorLightBlue">#52BAFF</color>
     <color name="colorBlue2">#3F9DF7</color>
+    <color name="colorGrey">#7F8C8D</color>
+    <color name="colorSwipeBlue">#2C22F0</color>
+    <color name="colorSwipeRed">#F93F25</color>
+    <color name="colorSwipeGreen">#33FF57</color>
+    <color name="colorSwipeOrange">#FFA500</color>
 </resources>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:tint="@color/colorGrey"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:id="@+id/lock"
+            android:src="@drawable/ic_lock"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/indique_qu_une_question_est_ferm_e"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:tint="@color/colorGrey"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:id="@+id/unlock"
+            android:src="@drawable/ic_unlock"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/indique_qu_une_question_est_ouverte"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:tint="@color/colorGrey"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:id="@+id/up"
+            android:src="@drawable/ic_up"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/indique_qu_une_question_a_t_aim_e_par_le_professeur"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:tint="@color/colorGrey"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:id="@+id/down"
+            android:src="@drawable/ic_down"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/indique_qu_une_question_n_a_pas_t_aim_e_par_le_professeur"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:id="@+id/up2"
+            android:src="@drawable/ic_up"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/indique_le_nombre_d_tudiants_qui_ont_aim_la_question"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:id="@+id/down2"
+            android:src="@drawable/ic_down"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/indique_le_nombre_d_tudiants_qui_n_ont_pas_aim_la_question"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:tint="@color/colorAccentDark"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:id="@+id/color2"
+            android:src="@drawable/ic_color"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/indique_que_le_professeur_a_r_pondu_la_question"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:tint="@color/colorBlue2"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:id="@+id/color"
+            android:src="@drawable/ic_color"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/indique_que_le_professeur_n_a_pas_encore_r_pondu_la_question"/>
+
+    </LinearLayout>
+
+</ScrollView>
