@@ -137,6 +137,7 @@
     <string name="valider_la_question">Valider la question (Swipe à gauche si la question n\'a pas été validée)</string>
     <string name="upvoter_la_question_swipe_gauche_si_la_question_est_valid_e">Upvoter la question (Swipe à gauche si la question est validée)</string>
     <string name="downvoter_la_question_swipe_gauche_si_la_question_est_valid_e">Downvoter la question (Swipe à gauche si la question est validée)</string>
+    <string name="toutes_vos_reponses">Toutes vos réponses doivent être différentes</string>
     <string-array name="number_arrays">
         <item>2</item>
         <item>3</item>

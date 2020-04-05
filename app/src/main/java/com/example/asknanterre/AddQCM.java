@@ -27,7 +27,9 @@ import org.w3c.dom.Text;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import es.dmoral.toasty.Toasty;
 
@@ -116,6 +118,17 @@ public class AddQCM extends AppCompatActivity {
         return(super.onOptionsItemSelected(item));
     }
 
+    public static <T> boolean areAllUnique(List<T> list){
+        Set<T> set = new HashSet<>();
+
+        for (T t: list){
+            if (!set.add(t))
+                return false;
+        }
+
+        return true;
+    }
+
     public void valider(View v) {
 
         EditText name = (EditText) findViewById(R.id.lname);
@@ -139,8 +152,10 @@ public class AddQCM extends AppCompatActivity {
                 }
                 list.add(v1.getText().toString());
             }
-
-            if(cpt == 0) {
+            if(!areAllUnique(list)) {
+                Toasty.error(this, getString(R.string.toutes_vos_reponses), Toast.LENGTH_LONG).show();
+            }
+            else if(cpt == 0) {
                 Normalizer n = new Normalizer();
                 Question q = new Question(n.normalizeNom(name.getText().toString()));
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

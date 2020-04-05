@@ -138,4 +138,5 @@
     <string name="downvoter_la_question_swipe_gauche_si_la_question_est_valid_e">Downvote the question (Swipe to the left if the question is approved)</string>
     <string name="upvoter_la_question_swipe_gauche_si_la_question_est_valid_e">Upvote the question (Swipe to the left if the question is approved)</string>
     <string name="valider_la_question">Approve the question (Swipe to the left if the question is not approved)</string>
+    <string name="toutes_vos_reponses">All your answers must be different</string>
 </resources>
