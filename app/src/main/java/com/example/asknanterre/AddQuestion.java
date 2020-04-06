@@ -73,6 +73,7 @@ public class AddQuestion extends AppCompatActivity {
 
         final Bundle b = getIntent().getExtras();
         final String coursId = b.getString("key");
+        final String nom = b.getString("name");
 
         if (name.getText().toString().isEmpty()) {
             Toasty.error(this, getString(R.string.Le_nom_de_la_question), Toast.LENGTH_LONG).show();
@@ -93,6 +94,7 @@ public class AddQuestion extends AppCompatActivity {
             b2.putString("titre", q.titre);
             b2.putString("date", q.date);
             b2.putString("coursid", coursId);
+            b2.putString("name", nom);
             Intent intent = new Intent(this, AddQuestionApercu.class);
             intent.putExtras(b2); //Put your id to your next Intent
             startActivity(intent);

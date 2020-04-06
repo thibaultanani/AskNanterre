@@ -35,6 +35,7 @@ public class AddQCMApercu extends AppCompatActivity {
     LinearLayout.LayoutParams lp2;
     TextView edit;
     TextView edit2;
+    String name2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class AddQCMApercu extends AppCompatActivity {
 
 
         coursId=b.getString("key");
+        name2=b.getString("name");
 
         nom.setText(b.getString("nom"));
         titre.setText(b.getString("titre"));
@@ -134,6 +136,7 @@ public class AddQCMApercu extends AppCompatActivity {
 
         Bundle b2= new Bundle();
         b2.putString("key",coursId);
+        b2.putString("name",name2);
         Intent intent = new Intent(this,  StudentUI.class);
         intent.putExtras(b2);
         startActivity(intent);

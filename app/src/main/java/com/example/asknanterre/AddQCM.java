@@ -135,6 +135,7 @@ public class AddQCM extends AppCompatActivity {
 
         final Bundle b = getIntent().getExtras();
         final String coursId = b.getString("key");
+        final String nom = b.getString("name");
 
         if (name.getText().toString().isEmpty()) {
             Toasty.error(this, getString(R.string.Le_nom_de_la_question), Toast.LENGTH_LONG).show();
@@ -175,6 +176,7 @@ public class AddQCM extends AppCompatActivity {
                 b2.putString("date", q.date);
                 b2.putStringArrayList("rep", list);
                 b2.putString("key", coursId);
+                b2.putString("name", nom);
 
 
                 Intent intent = new Intent(this, AddQCMApercu.class);

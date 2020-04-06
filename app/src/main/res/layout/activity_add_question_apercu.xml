@@ -95,7 +95,7 @@
             android:layout_toRightOf="@+id/button2"
             android:text="@string/valider"
             android:id="@+id/button"
-            android:onClick="valider_cours"
+            android:onClick="valider_question"
             android:background="@drawable/mybutton2"
             android:textColor="#ffffff"
             android:drawableStart="@drawable/ic_arrow"/>
