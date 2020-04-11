@@ -142,7 +142,7 @@ public class AddQuizApercu extends AppCompatActivity {
         database.getReference("questionProf").child(id).setValue(q);
 
         final int childCount = ll.getChildCount();
-        for (int i = 0; i < childCount; i++) {
+        for (int i = 0; i < rep.size(); i++) {
             TextView v1 = (TextView) ll.getChildAt(i);
             if(!rep.get(i).toString().equals(bonnerep)){
                 Quiz quiz = new Quiz(rep.get(i).toString(), id, false);

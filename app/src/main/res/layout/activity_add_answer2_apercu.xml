@@ -17,10 +17,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="@string/nom_du_quiz"/>
+        android:hint="@string/nom_de_la_question"/>
 
     <TextView
-        android:id="@+id/name_quiz"
+        android:id="@+id/question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top"
@@ -29,16 +29,18 @@
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:background="@drawable/edittext_bg"
-        android:hint="@string/nom_du_quiz"/>
+        android:hint="@string/nom_de_la_question"/>
+
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="@string/titre_du_quiz"/>
+        android:hint="Votre réponse"/>
 
     <TextView
-        android:id="@+id/titre_quiz"
+        android:id="@+id/reponse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top"
@@ -47,25 +49,9 @@
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:background="@drawable/edittext_bg"
-        android:hint="@string/titre_du_quiz"/>
+        android:hint="Votre réponse"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="@string/date_du_quiz"/>
 
-    <TextView
-        android:id="@+id/date_quiz"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:background="@drawable/edittext_bg"
-        android:hint="@string/date_du_quiz"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -102,7 +88,7 @@
             android:layout_toRightOf="@+id/button2"
             android:text="@string/valider"
             android:id="@+id/button"
-            android:onClick="valider_quiz"
+            android:onClick="valider_reponse"
             android:background="@drawable/mybutton2"
             android:textColor="#ffffff"
             android:drawableStart="@drawable/ic_arrow"/>

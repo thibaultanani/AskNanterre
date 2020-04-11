@@ -209,6 +209,7 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
                                 intent = new Intent(context, AddAnswer2.class);
                             }
                             Bundle b = new Bundle();
+                            Log.v("ghghghg",list2.get(position));
                             b.putString("key", list2.get(position)); //Your id
                             b.putString("name", list1.get(position));
                             b.putString("idcours",coursId);

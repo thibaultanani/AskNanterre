@@ -17,6 +17,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,6 +32,7 @@ public class AddAnswer extends AppCompatActivity {
     private static final String TAG = "AddAnswer";
     TextView question;
     String coursId;
+    String questionId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class AddAnswer extends AppCompatActivity {
         question = (TextView) findViewById(R.id.question);
         question.setText(b.getString("name"));
         coursId= b.getString("idcours");
+        questionId=b.getString("key");
+
 
         ActionBar ab = getSupportActionBar();
         Normalizer n = new Normalizer();
@@ -75,30 +80,13 @@ public class AddAnswer extends AppCompatActivity {
             Toasty.error(this, getString(R.string.Le_nom_de_la_reponse), Toast.LENGTH_LONG).show();
         }
         else {
-            Bundle b = getIntent().getExtras();
-            String questionId;
-            questionId = b.getString("key");
-
-            Answer a = new Answer(name.getText().toString(), questionId);
-
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            Log.v("Exemple", database.toString());
-
-            database.getReference("answer").push().setValue(a);
-
-            DatabaseReference ref;
-            ref = FirebaseDatabase.getInstance().getReference().child("question").child(questionId);
-            Map<String, Object> questionMap = new HashMap<String, Object>();
-            questionMap.put("repondu", true);
-            ref.updateChildren(questionMap);
-
-            Toasty.success(this, getString(R.string.la_reponse) + name.getText() + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
-
-            name.setText("");
             Bundle b2 = new Bundle();
+            b2.putString("nom", name.getText().toString());
+            b2.putString("question",question.getText().toString());
             b2.putString("key", coursId);
-            Intent intent = new Intent(this, DisplayQuestionProf.class);
-            intent.putExtras(b2);
+            b2.putString("questionID",questionId);
+            Intent intent = new Intent(this, AddAnswerApercu.class);
+            intent.putExtras(b2); //Put your id to your next Intent
             startActivity(intent);
         }
     }

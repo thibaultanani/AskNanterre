@@ -11,15 +11,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddQuizApercu" android:theme="@style/DetailTheme"></activity>
-        <activity android:name=".AddQuestionApercu" android:theme="@style/DetailTheme"/>
-        <activity android:name=".AddQCMApercu" android:theme="@style/DetailTheme"/>
-        <activity android:name=".AddCoursApercu" android:theme="@style/DetailTheme"/>
+        <activity android:name=".AddAnswer2Apercu"></activity>
+        <activity android:name=".AddAnswerApercu" />
+        <activity
+            android:name=".AddQuizApercu"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".AddQuestionApercu"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".AddQCMApercu"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".AddCoursApercu"
+            android:theme="@style/DetailTheme" />
         <activity
             android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
             android:launchMode="standard"
             tools:replace="android:launchMode" />
-        <activity android:name=".DisplayQuiz" android:theme="@style/DetailTheme"/>
+        <activity
+            android:name=".DisplayQuiz"
+            android:theme="@style/DetailTheme" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashScreen"
@@ -32,33 +44,71 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddQuestion" android:theme="@style/DetailTheme"/>
-        <activity android:name=".DisplayQuestion" android:theme="@style/DetailTheme"/>
-        <activity android:name=".AddCours" android:theme="@style/DetailTheme"/>
-        <activity android:name=".DisplayCours" android:theme="@style/DetailTheme" />
-        <activity android:name=".AddUser" android:theme="@style/DetailTheme"/>
-        <activity android:name=".HomeActivity" android:theme="@style/DetailTheme"/>
-        <activity android:name=".ConnectionActivity" android:theme="@style/DetailTheme"/>
+        <activity
+            android:name=".AddQuestion"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".DisplayQuestion"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".AddCours"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".DisplayCours"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".AddUser"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".HomeActivity"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".ConnectionActivity"
+            android:theme="@style/DetailTheme" />
         <activity android:name=".SendFeedBack" />
         <activity android:name=".AnswerQuestion" />
         <activity android:name=".DisplayAnswerQuestion" />
         <activity android:name=".ProfessorUI" />
         <activity android:name=".StudentUI" />
-        <activity android:name=".DisplayQuestionProf" android:theme="@style/DetailTheme"/>
-        <activity android:name=".DisplayQuestionStud" android:theme="@style/DetailTheme" />
-        <activity android:name=".AddQCM" android:theme="@style/DetailTheme"/>
-        <activity android:name=".AddQuiz" android:theme="@style/DetailTheme"/>
-        <activity android:name=".AddAnswer" android:theme="@style/DetailTheme"/>
-        <activity android:name=".ModifyAnswer" android:theme="@style/DetailTheme" />
-        <activity android:name=".AddAnswer2" android:theme="@style/DetailTheme"/>
-        <activity android:name=".DisplayAnswer" android:theme="@style/DetailTheme"/>
-        <activity android:name=".DisplayAnswerQuiz" android:theme="@style/DetailTheme"/>
+        <activity
+            android:name=".DisplayQuestionProf"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".DisplayQuestionStud"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".AddQCM"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".AddQuiz"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".AddAnswer"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".ModifyAnswer"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".AddAnswer2"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".DisplayAnswer"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".DisplayAnswerQuiz"
+            android:theme="@style/DetailTheme" />
         <activity android:name=".StudentUI3" />
         <activity android:name=".StudentUI2" />
-        <activity android:name=".DisplayQuizProf" android:theme="@style/DetailTheme"/>
-        <activity android:name=".DisplayCoursProf" android:theme="@style/DetailTheme"/>
+        <activity
+            android:name=".DisplayQuizProf"
+            android:theme="@style/DetailTheme" />
+        <activity
+            android:name=".DisplayCoursProf"
+            android:theme="@style/DetailTheme" />
         <activity android:name=".ProfessorUI2" />
-        <activity android:name=".DisplayAnswerQuizProf" android:theme="@style/DetailTheme"/>
+        <activity
+            android:name=".DisplayAnswerQuizProf"
+            android:theme="@style/DetailTheme" />
     </application>
 
 </manifest>

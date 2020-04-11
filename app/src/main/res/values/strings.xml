@@ -9,7 +9,7 @@
     <string name="menu_principal">Menu Principal</string>
     <string name="interface_professeur">Interface Professeur</string>
     <string name="interface_netudiant">Interface\nEtudiant</string>
-    <string name="menu_principal_n">Menu principal</string>
+    <string name="menu_principal_n">Menu principal\n</string>
     <string name="faire_un_quiz_n">Faire un quiz</string>
     <string name="listes_des_questions">Listes des questions</string>
     <string name="liste_des_quizs_n">Liste des quizs</string>
