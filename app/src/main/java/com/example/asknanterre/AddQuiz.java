@@ -230,6 +230,7 @@ public class AddQuiz extends AppCompatActivity {
                 b2.putStringArrayList("rep2", list2);
                 b2.putString("key", coursId);
                 b2.putString("bonnerep", bonnerep);
+                b2.putString("name",b.getString("name"));
                 b2.putInt("dif", Star2Number(text3));
 
 

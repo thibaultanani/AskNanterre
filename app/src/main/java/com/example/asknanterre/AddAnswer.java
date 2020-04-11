@@ -33,6 +33,8 @@ public class AddAnswer extends AppCompatActivity {
     TextView question;
     String coursId;
     String questionId;
+    String coursName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class AddAnswer extends AppCompatActivity {
         question.setText(b.getString("name"));
         coursId= b.getString("idcours");
         questionId=b.getString("key");
+        coursName=b.getString("namecours");
 
 
         ActionBar ab = getSupportActionBar();
@@ -85,6 +88,7 @@ public class AddAnswer extends AppCompatActivity {
             b2.putString("question",question.getText().toString());
             b2.putString("key", coursId);
             b2.putString("questionID",questionId);
+            b2.putString("name",coursName);
             Intent intent = new Intent(this, AddAnswerApercu.class);
             intent.putExtras(b2); //Put your id to your next Intent
             startActivity(intent);

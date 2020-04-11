@@ -164,7 +164,8 @@ public class AddQuizApercu extends AppCompatActivity {
 
         Bundle b2= new Bundle();
         b2.putString("key",coursId);
-        Intent intent = new Intent(this,  ProfessorUI2.class);
+        b2.putString("name",b.getString("name"));
+        Intent intent = new Intent(this,  ProfessorUI.class);
         intent.putExtras(b2);
         startActivity(intent);
     }

@@ -121,6 +121,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
     EditText edit;
     Bundle b;
     String coursId;
+    String coursName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +130,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
 
         b = getIntent().getExtras();
         coursId = b.getString("key");
+        coursName=b.getString("name");
 
         mQuestionReference = FirebaseDatabase.getInstance().getReference()
                 .child("question");
@@ -283,6 +285,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
 
         b = getIntent().getExtras();
         coursId = b.getString("key");
+        coursName=b.getString("name");
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference questionRef = rootRef.child("question");
@@ -371,7 +374,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 list12 = new ArrayList( Arrays.asList(q12));
                 list13 = new ArrayList( Arrays.asList(q13));
                 list14 = new ArrayList( Arrays.asList(q14));
-                adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14,coursId, DisplayQuestionProf.this);
+                adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14,coursId,coursName, DisplayQuestionProf.this);
                 myListView2.setAdapter(adapt2);
                 adapt.notifyDataSetChanged();
             }
@@ -391,6 +394,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
 
         b = getIntent().getExtras();
         coursId = b.getString("key");
+        coursName=b.getString("name");
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference questionRef = rootRef.child("question");
@@ -599,7 +603,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                             list12 = new ArrayList( Arrays.asList(q12));
                             list13 = new ArrayList( Arrays.asList(q13));
                             list14 = new ArrayList( Arrays.asList(q14));
-                            adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14,coursId,DisplayQuestionProf.this);
+                            adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14,coursId,coursName,DisplayQuestionProf.this);
                             myListView2.setAdapter(adapt2);
                         }
 
@@ -630,7 +634,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 list12 = new ArrayList( Arrays.asList(q12));
                 list13 = new ArrayList( Arrays.asList(q13));
                 list14 = new ArrayList( Arrays.asList(q14));
-                adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14, coursId, DisplayQuestionProf.this);
+                adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14, coursId,coursName, DisplayQuestionProf.this);
                 myListView2.setAdapter(adapt2);
 
                // Button triBtn=(Button) findViewById(R.id.triupvote);

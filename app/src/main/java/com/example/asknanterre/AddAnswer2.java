@@ -53,6 +53,7 @@ public class AddAnswer2 extends AppCompatActivity {
     String[] c2;
     boolean[] c3;
     String currentVal;
+    String coursName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,7 @@ public class AddAnswer2 extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         final String questionId;
         questionId = b.getString("key");
+        coursName=b.getString("namecours");
 
         question = (TextView) findViewById(R.id.question);
         question.setText(b.getString("name"));
@@ -239,6 +241,7 @@ public class AddAnswer2 extends AppCompatActivity {
                 b2.putString("rep",s);
                 b2.putString("questionID",questionId);
                 b2.putString("question",question.getText().toString());
+                b2.putString("name",coursName);
                 Intent intent = new Intent(this, AddAnswer2Apercu.class);
                 intent.putExtras(b2);
                 startActivity(intent);
@@ -254,6 +257,7 @@ public class AddAnswer2 extends AppCompatActivity {
                     b2.putString("rep",s);
                     b2.putString("questionID",questionId);
                     b2.putString("question",question.getText().toString());
+                    b2.putString("name",coursName);
                     Intent intent = new Intent(this, AddAnswer2Apercu.class);
                     intent.putExtras(b2);
                     startActivity(intent);

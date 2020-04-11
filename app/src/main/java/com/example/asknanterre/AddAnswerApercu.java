@@ -30,6 +30,7 @@ public class AddAnswerApercu extends AppCompatActivity {
     TextView question;
     String coursId;
     String questionId;
+    String coursName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class AddAnswerApercu extends AppCompatActivity {
         question.setText(b.getString("question"));
         coursId=b.getString("key");
         questionId=b.getString("questionID");
+        coursName=b.getString("name");
 
 
         //ActionBar ab = getSupportActionBar();
@@ -94,6 +96,7 @@ public class AddAnswerApercu extends AppCompatActivity {
         name.setText("");
         Bundle b2 = new Bundle();
         b2.putString("key", coursId);
+        b2.putString("name",coursName);
         Intent intent = new Intent(this, ProfessorUI.class);
         intent.putExtras(b2);
         startActivity(intent);
