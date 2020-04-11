@@ -22,7 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import es.dmoral.toasty.Toasty;
 
@@ -153,6 +155,17 @@ public class AddQuiz extends AppCompatActivity {
         return difficulte;
     }
 
+    public static <T> boolean areAllUnique(List<T> list){
+        Set<T> set = new HashSet<>();
+
+        for (T t: list){
+            if (!set.add(t))
+                return false;
+        }
+
+        return true;
+    }
+
     public void valider(View v) {
 
         EditText name = (EditText) findViewById(R.id.lname);
@@ -205,8 +218,10 @@ public class AddQuiz extends AppCompatActivity {
                 }
 
             }
-
-            if(cpt == 0) {
+            if(!areAllUnique(list) || !areAllUnique(list2)) {
+                Toasty.error(this, getString(R.string.toutes_vos_reponses), Toast.LENGTH_LONG).show();
+            }
+            else if(cpt == 0) {
                 Bundle b2 = new Bundle();
                 b2.putString("nom", q.nom);
                 b2.putString("titre", q.titre);

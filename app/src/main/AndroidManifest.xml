@@ -109,6 +109,11 @@
         <activity
             android:name=".DisplayAnswerQuizProf"
             android:theme="@style/DetailTheme" />
+        <activity android:name=".HelpQuestionStud" android:theme="@style/DetailTheme"/>
+        <activity android:name=".HelpQuizStud" android:theme="@style/DetailTheme"/>
+        <activity android:name=".HelpCoursProf" android:theme="@style/DetailTheme"/>
+        <activity android:name=".HelpQuizProf" android:theme="@style/DetailTheme"/>
+        <activity android:name=".HelpQuestionProf" android:theme="@style/DetailTheme"/>
     </application>
 
 </manifest>

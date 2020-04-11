@@ -58,6 +58,15 @@
         android:layout_below="@+id/mylinearlayout2"
         android:layout_marginTop="20dp" />
 
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_below="@+id/mylinearlayout2"
+        android:text="@string/empty_list_quiz" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

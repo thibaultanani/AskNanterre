@@ -27,7 +27,9 @@ import org.w3c.dom.Text;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import es.dmoral.toasty.Toasty;
 
@@ -116,12 +118,24 @@ public class AddQCM extends AppCompatActivity {
         return(super.onOptionsItemSelected(item));
     }
 
+    public static <T> boolean areAllUnique(List<T> list){
+        Set<T> set = new HashSet<>();
+
+        for (T t: list){
+            if (!set.add(t))
+                return false;
+        }
+
+        return true;
+    }
+
     public void valider(View v) {
 
         EditText name = (EditText) findViewById(R.id.lname);
 
         final Bundle b = getIntent().getExtras();
         final String coursId = b.getString("key");
+        final String nom = b.getString("name");
 
         if (name.getText().toString().isEmpty()) {
             Toasty.error(this, getString(R.string.Le_nom_de_la_question), Toast.LENGTH_LONG).show();
@@ -139,8 +153,10 @@ public class AddQCM extends AppCompatActivity {
                 }
                 list.add(v1.getText().toString());
             }
-
-            if(cpt == 0) {
+            if(!areAllUnique(list)) {
+                Toasty.error(this, getString(R.string.toutes_vos_reponses), Toast.LENGTH_LONG).show();
+            }
+            else if(cpt == 0) {
                 Normalizer n = new Normalizer();
                 Question q = new Question(n.normalizeNom(name.getText().toString()));
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -160,6 +176,7 @@ public class AddQCM extends AppCompatActivity {
                 b2.putString("date", q.date);
                 b2.putStringArrayList("rep", list);
                 b2.putString("key", coursId);
+                b2.putString("name", nom);
 
 
                 Intent intent = new Intent(this, AddQCMApercu.class);

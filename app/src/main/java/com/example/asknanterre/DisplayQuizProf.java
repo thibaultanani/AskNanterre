@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -86,6 +87,9 @@ public class DisplayQuizProf extends AppCompatActivity {
         updateList();
 
         myListView = (SwipeMenuListView) findViewById(R.id.myListView);
+        TextView emptyText = (TextView)findViewById(android.R.id.empty);
+        myListView.setEmptyView(emptyText);
+
         spinner = (Spinner) findViewById(R.id.spinner1);
 
         final List<String> spinnerArray =  new ArrayList<String>();
@@ -121,7 +125,7 @@ public class DisplayQuizProf extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main2, menu);
         return true;
     }
 
@@ -135,6 +139,10 @@ public class DisplayQuizProf extends AppCompatActivity {
             //add the function to perform here
             goToMainActivity();
             return(true);
+        case R.id.action_help:
+            //add the function to perform here
+            goToHelpActivity();
+            return(true);
     }
         return(super.onOptionsItemSelected(item));
     }
@@ -147,6 +155,8 @@ public class DisplayQuizProf extends AppCompatActivity {
 
     public void trier(View v, final int position) {
         myListView = (SwipeMenuListView) findViewById(R.id.myListView);
+        TextView emptyText = (TextView)findViewById(android.R.id.empty);
+        myListView.setEmptyView(emptyText);
 
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
@@ -279,6 +289,8 @@ public class DisplayQuizProf extends AppCompatActivity {
 
 
                 myListView = (SwipeMenuListView) findViewById(R.id.myListView);
+                TextView emptyText = (TextView)findViewById(android.R.id.empty);
+                myListView.setEmptyView(emptyText);
 
                 for (int i = 0; i < quiz.size(); i++) {
                     q1[i] = quiz.get(i).nom;
@@ -433,6 +445,11 @@ public class DisplayQuizProf extends AppCompatActivity {
 
     public void goToMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToHelpActivity(){
+        Intent intent = new Intent(this, HelpQuizProf.class);
         startActivity(intent);
     }
 }

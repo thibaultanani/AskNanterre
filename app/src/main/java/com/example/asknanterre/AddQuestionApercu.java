@@ -27,6 +27,7 @@ public class AddQuestionApercu extends AppCompatActivity {
     TextView date;
     TextView titre;
     String coursId;
+    String name2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class AddQuestionApercu extends AppCompatActivity {
         titre=findViewById(R.id.titre_question);
 
         coursId=b.getString("coursid");
-        Log.v("nommm",b.getString("nom"));
+        name2=b.getString("name");
         nom.setText(b.getString("nom"));
         titre.setText(b.getString("titre"));
         date.setText(b.getString("date"));
@@ -92,6 +93,7 @@ public class AddQuestionApercu extends AppCompatActivity {
 
         Bundle b2= new Bundle();
         b2.putString("key",coursId);
+        b2.putString("name",name2);
         Intent intent = new Intent(this,  StudentUI.class);
         intent.putExtras(b2);
         startActivity(intent);

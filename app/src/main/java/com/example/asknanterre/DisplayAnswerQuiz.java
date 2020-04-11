@@ -250,7 +250,7 @@ public class DisplayAnswerQuiz extends AppCompatActivity {
         Log.v("questID", questionId);
 
         if (allUnchecked()) {
-            Toasty.info(DisplayAnswerQuiz.this, getString(R.string.Il_faut_au_moins_choisir_une_reponse), Toast.LENGTH_LONG).show();
+            Toasty.error(DisplayAnswerQuiz.this, getString(R.string.Il_faut_au_moins_choisir_une_reponse), Toast.LENGTH_LONG).show();
         }
         else {
             //s = spinner.getSelectedItem().toString();

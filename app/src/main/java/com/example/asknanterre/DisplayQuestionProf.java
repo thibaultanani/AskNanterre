@@ -236,7 +236,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main2, menu);
         return true;
     }
 
@@ -249,6 +249,10 @@ public class DisplayQuestionProf extends AppCompatActivity {
         case R.id.action_home:
             //add the function to perform here
             goToMainActivity();
+            return(true);
+        case R.id.action_help:
+            //add the function to perform here
+            goToHelpActivity();
             return(true);
     }
         return(super.onOptionsItemSelected(item));
@@ -885,4 +889,8 @@ public class DisplayQuestionProf extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToHelpActivity(){
+        Intent intent = new Intent(this, HelpQuestionProf.class);
+        startActivity(intent);
+    }
 }

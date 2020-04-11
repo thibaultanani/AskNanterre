@@ -27,6 +27,7 @@ public class StudentUI extends AppCompatActivity {
     TextView cours;
     Bundle b;
     String coursId;
+    String nom;
     String s;
 
     @Override
@@ -81,9 +82,10 @@ public class StudentUI extends AppCompatActivity {
                 return true;
             }
         });*/
-        b = getIntent().getExtras();
         coursId = b.getString("key");
+        nom =  b.getString("name");
         Log.v("hfhfhfhf", coursId);
+        Log.v("hfhfhfhf", nom);
     }
 
     /*public void displayQuestion(View v){
@@ -95,6 +97,7 @@ public class StudentUI extends AppCompatActivity {
         Intent intent = new Intent(this, AddQuestion.class);
         Bundle b2 = new Bundle();
         b2.putString("key", coursId);
+        b2.putString("name", nom);
         intent.putExtras(b2);
         startActivity(intent);
     }
@@ -103,6 +106,7 @@ public class StudentUI extends AppCompatActivity {
         Intent intent = new Intent(this, AddQCM.class);
         Bundle b2 = new Bundle();
         b2.putString("key", coursId);
+        b2.putString("name", nom);
         intent.putExtras(b2);
         startActivity(intent);
     }
@@ -111,6 +115,7 @@ public class StudentUI extends AppCompatActivity {
         Intent intent = new Intent(this, DisplayQuestionStud.class);
         Bundle b2 = new Bundle();
         b2.putString("key", coursId);
+        b2.putString("name", nom);
         intent.putExtras(b2);
         startActivity(intent);
     }
@@ -124,6 +129,7 @@ public class StudentUI extends AppCompatActivity {
         Intent intent = new Intent(this, DisplayQuiz.class);
         Bundle b2 = new Bundle();
         b2.putString("key", coursId);
+        b2.putString("name", nom);
         intent.putExtras(b2);
         startActivity(intent);
     }
@@ -132,7 +138,7 @@ public class StudentUI extends AppCompatActivity {
         Intent intent = new Intent(this, StudentUI2.class);
         Bundle b2 = new Bundle();
         b2.putString("key", coursId);
-        b2.putString("name", b.getString("name"));
+        b2.putString("name", nom);
         intent.putExtras(b2);
         startActivity(intent);
     }
