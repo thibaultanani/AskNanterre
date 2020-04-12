@@ -26,7 +26,11 @@
     <EditText
         android:id="@+id/lname"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:gravity="top"
         android:background="@drawable/edittext_bg"
         android:hint="@string/votre_r_ponse"/>

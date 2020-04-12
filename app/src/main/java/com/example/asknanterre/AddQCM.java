@@ -5,6 +5,8 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewManager;
 import android.widget.AdapterView;
@@ -14,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +27,11 @@ import org.w3c.dom.Text;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import es.dmoral.toasty.Toasty;
 
 public class AddQCM extends AppCompatActivity {
 
@@ -51,6 +58,9 @@ public class AddQCM extends AppCompatActivity {
                 ll = (LinearLayout)findViewById(R.id.mylinearlayout);
                 lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
+                final float scale = getResources().getDisplayMetrics().density;
+                int padding_in_px = (int) (5 * scale + 0.5f);
+
                 Log.d("Nombre actuel", spinner.getSelectedItem().toString() );
 
                 //ll.removeAllViewsInLayout();
@@ -61,6 +71,7 @@ public class AddQCM extends AppCompatActivity {
                     for(i=tmp; i<Integer.parseInt(spinner.getSelectedItem().toString()); i++){
                         edit = new EditText(AddQCM.this);
                         edit.setBackgroundResource(R.drawable.edittext_bg);
+                        edit.setPadding(padding_in_px, padding_in_px, padding_in_px, padding_in_px);
                         lp.setMargins(0, 0, 0, 20);
                         ll.addView(edit, lp);
                     }
@@ -81,6 +92,41 @@ public class AddQCM extends AppCompatActivity {
             }
 
         });
+
+        ActionBar ab = getSupportActionBar();
+        ab.setSubtitle(getString(R.string.poser_une_question_ferm_e));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.action_back:
+            //add the function to perform here
+            annuler();
+            return(true);
+        case R.id.action_home:
+            //add the function to perform here
+            goToMainActivity();
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
+    }
+
+    public static <T> boolean areAllUnique(List<T> list){
+        Set<T> set = new HashSet<>();
+
+        for (T t: list){
+            if (!set.add(t))
+                return false;
+        }
+
+        return true;
     }
 
     public void valider(View v) {
@@ -89,45 +135,67 @@ public class AddQCM extends AppCompatActivity {
 
         final Bundle b = getIntent().getExtras();
         final String coursId = b.getString("key");
+        final String nom = b.getString("name");
 
-        Normalizer n = new Normalizer();
-        Question q = new Question(n.normalizeNom(name.getText().toString()));
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        q.date = formatter.format(date);
-        q.titre = n.normalizeTitre(name.getText().toString());
-        q.type = 2;
-        q.coursId = coursId;
-        /*long id = q.save();
-        Log.d("l'id de la question", id+"");*/
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        Log.v("Exemple", database.toString());
-
-
-        ArrayList<String> list= new ArrayList<>();
-        final int childCount = ll.getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            EditText v1 = (EditText) ll.getChildAt(i);
-            list.add(v1.getText().toString());
-
+        if (name.getText().toString().isEmpty()) {
+            Toasty.error(this, getString(R.string.Le_nom_de_la_question), Toast.LENGTH_LONG).show();
         }
-        Bundle b2= new Bundle();
-        b2.putString("nom",q.nom);
-        b2.putString("titre",q.titre);
-        b2.putString("date",q.date);
-        b2.putStringArrayList("rep",list);
-        b2.putString("key",coursId);
+        else {
+            ArrayList<String> list = new ArrayList<>();
+            final int childCount = ll.getChildCount();
+            int cpt = 0;
+            for (int i = 0; i < childCount; i++) {
+                EditText v1 = (EditText) ll.getChildAt(i);
+                if(v1.getText().toString().isEmpty()) {
+                    Toasty.error(this, getString(R.string.Lune_des_reponses), Toast.LENGTH_LONG).show();
+                    cpt ++;
+                    break;
+                }
+                list.add(v1.getText().toString());
+            }
+            if(!areAllUnique(list)) {
+                Toasty.error(this, getString(R.string.toutes_vos_reponses), Toast.LENGTH_LONG).show();
+            }
+            else if(cpt == 0) {
+                Normalizer n = new Normalizer();
+                Question q = new Question(n.normalizeNom(name.getText().toString()));
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                Date date = new Date();
+                q.date = formatter.format(date);
+                q.titre = n.normalizeTitre(name.getText().toString());
+                q.type = 2;
+                q.coursId = coursId;
+                /*long id = q.save();
+                Log.d("l'id de la question", id+"");*/
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                Log.v("Exemple", database.toString());
+
+                Bundle b2 = new Bundle();
+                b2.putString("nom", q.nom);
+                b2.putString("titre", q.titre);
+                b2.putString("date", q.date);
+                b2.putStringArrayList("rep", list);
+                b2.putString("key", coursId);
+                b2.putString("name", nom);
 
 
-
-
-        Intent intent = new Intent(this, AddQCMApercu.class);
-        intent.putExtras(b2); //Put your id to your next Intent
-        startActivity(intent);
-
+                Intent intent = new Intent(this, AddQCMApercu.class);
+                intent.putExtras(b2); //Put your id to your next Intent
+                startActivity(intent);
+            }
+        }
     }
 
     public void annuler(View v) {
         finish();
+    }
+
+    public void annuler() {
+        finish();
+    }
+
+    public void goToMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

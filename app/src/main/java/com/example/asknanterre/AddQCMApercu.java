@@ -1,21 +1,27 @@
 package com.example.asknanterre;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import es.dmoral.toasty.Toasty;
 
 public class AddQCMApercu extends AppCompatActivity {
     Bundle b;
@@ -26,7 +32,10 @@ public class AddQCMApercu extends AppCompatActivity {
     ArrayList rep;
     LinearLayout ll;
     LinearLayout.LayoutParams lp;
+    LinearLayout.LayoutParams lp2;
     TextView edit;
+    TextView edit2;
+    String name2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +43,10 @@ public class AddQCMApercu extends AppCompatActivity {
         setContentView(R.layout.activity_add_qcmapercu);
         ll = (LinearLayout)findViewById(R.id.mylinearlayout);
         lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        lp2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        final float scale = getResources().getDisplayMetrics().density;
+        int padding_in_px = (int) (5 * scale + 0.5f);
 
         b=getIntent().getExtras();
         nom= findViewById(R.id.name_qcm);
@@ -42,6 +55,7 @@ public class AddQCMApercu extends AppCompatActivity {
 
 
         coursId=b.getString("key");
+        name2=b.getString("name");
 
         nom.setText(b.getString("nom"));
         titre.setText(b.getString("titre"));
@@ -49,15 +63,41 @@ public class AddQCMApercu extends AppCompatActivity {
         rep=b.getStringArrayList("rep");
 
         for(int i=0;i<rep.size();i++) {
+            edit2 = new TextView(AddQCMApercu.this);
+            edit2.setText(getString(R.string.choix_de_reponse) + "" + (i+1));
+            lp2.setMargins(0, 10, 0, 0);
+            ll.addView(edit2, lp2);
             edit = new TextView(AddQCMApercu.this);
             edit.setBackgroundResource(R.drawable.edittext_bg);
             edit.setText(rep.get(i).toString());
+            edit.setPadding(padding_in_px, padding_in_px, padding_in_px, padding_in_px);
             lp.setMargins(0, 0, 0, 20);
             ll.addView(edit, lp);
         }
 
+        ActionBar ab = getSupportActionBar();
+        ab.setSubtitle(titre.getText().toString() + getString(R.string.apercu));
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.action_back:
+            //add the function to perform here
+            annuler();
+            return(true);
+        case R.id.action_home:
+            //add the function to perform here
+            goToMainActivity();
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
     }
 
     public void valider_question(View v) {
@@ -92,12 +132,26 @@ public class AddQCMApercu extends AppCompatActivity {
             Log.d("l'id de la rep", id);
         }
 
-
+        Toasty.success(this, getString(R.string.la_question) + name.getText().toString() + getString(R.string.a_ete_ajoutee), Toast.LENGTH_LONG).show();
 
         Bundle b2= new Bundle();
         b2.putString("key",coursId);
+        b2.putString("name",name2);
         Intent intent = new Intent(this,  StudentUI.class);
         intent.putExtras(b2);
+        startActivity(intent);
+    }
+
+    public void annuler(View v) {
+        finish();
+    }
+
+    public void annuler() {
+        finish();
+    }
+
+    public void goToMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

@@ -104,6 +104,8 @@ public class DisplayQuestionStud extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spinner1);
 
         myListView = (ListView) findViewById(R.id.myListView);
+        TextView emptyText = (TextView)findViewById(android.R.id.empty);
+        myListView.setEmptyView(emptyText);
 
         final List<String> spinnerArray =  new ArrayList<String>();
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
@@ -166,7 +168,35 @@ public class DisplayQuestionStud extends AppCompatActivity {
             }
         });*/
 
+        ActionBar ab = getSupportActionBar();
+        ab.setSubtitle(getString(R.string.liste_des_questions));
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main2, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.action_back:
+            //add the function to perform here
+            annuler();
+            return(true);
+        case R.id.action_home:
+            //add the function to perform here
+            goToMainActivity();
+            return(true);
+        case R.id.action_help:
+            //add the function to perform here
+            goToHelpActivity();
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
+    }
+
 
     @Override
     protected void onStart() {
@@ -176,6 +206,8 @@ public class DisplayQuestionStud extends AppCompatActivity {
 
     public void trier(View v, final int position) {
         myListView = (ListView) findViewById(R.id.myListView);
+        TextView emptyText = (TextView)findViewById(android.R.id.empty);
+        myListView.setEmptyView(emptyText);
 
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
@@ -324,6 +356,8 @@ public class DisplayQuestionStud extends AppCompatActivity {
                 q9 = new String[quest.size()];
 
                 myListView = (ListView) findViewById(R.id.myListView);
+                TextView emptyText = (TextView)findViewById(android.R.id.empty);
+                myListView.setEmptyView(emptyText);
 
                 for (int i = 0; i < quest.size(); i++) {
                     q1[i] = quest.get(i).nom;
@@ -457,24 +491,9 @@ public class DisplayQuestionStud extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    private ArrayList<String> list1 = new ArrayList<String>();
-    private ArrayList<String> list2 = new ArrayList<String>();
-    private ArrayList<String> list3 = new ArrayList<String>();
-    private ArrayList<String> list4 = new ArrayList<String>();
-    private ArrayList<String> list5 = new ArrayList<String>();
-    private ArrayList<Integer> list6 = new ArrayList<Integer>();
-    private Context context;
-
-
-
-
-   public void liker(View v) {
-
-
-                }
-
-
+    public void annuler() {
+        finish();
+    }
 
     public void goToMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);
@@ -483,6 +502,11 @@ public class DisplayQuestionStud extends AppCompatActivity {
 
     public void goToProfUIActivity(){
         Intent intent = new Intent(this, ProfessorUI.class);
+        startActivity(intent);
+    }
+
+    public void goToHelpActivity(){
+        Intent intent = new Intent(this, HelpQuestionStud.class);
         startActivity(intent);
     }
 }

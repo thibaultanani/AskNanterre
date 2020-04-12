@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
@@ -28,13 +29,15 @@ public class CustomAdapterCoursProf extends BaseAdapter implements ListAdapter {
     private ArrayList<String> list2 = new ArrayList<String>();
     private ArrayList<String> list3 = new ArrayList<String>();
     private ArrayList<String> list4 = new ArrayList<String>();
+    private ArrayList<Boolean> list5 = new ArrayList<Boolean>();
     private Context context;
 
-    public CustomAdapterCoursProf(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3, ArrayList<String> list4, Context context) {
+    public CustomAdapterCoursProf(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3, ArrayList<String> list4, ArrayList<Boolean> list5, Context context) {
         this.list1 = list1;
         this.list2 = list2;
         this.list3 = list3;
         this.list4 = list4;
+        this.list5 = list5;
         this.context = context;
     }
 
@@ -73,6 +76,13 @@ public class CustomAdapterCoursProf extends BaseAdapter implements ListAdapter {
         listItemText2.setText(list3.get(position));
         listItemText3.setText(list4.get(position));
 
+        ImageView imageview1 = (ImageView) view.findViewById(R.id.view);
+        if(list5.get(position)) {
+            imageview1.setVisibility(View.VISIBLE);
+        }
+        else {
+            imageview1.setVisibility(View.INVISIBLE);
+        }
         //Handle buttons and add onClickListeners
 
         listItemText1.setOnClickListener(new View.OnClickListener() {

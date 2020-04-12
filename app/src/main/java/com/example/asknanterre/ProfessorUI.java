@@ -3,6 +3,7 @@ package com.example.asknanterre;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -79,6 +80,7 @@ public class ProfessorUI extends AppCompatActivity {
         });*/
         b = getIntent().getExtras();
         coursId = b.getString("key");
+        Log.v("ddddd",b.getString("key"));
         cours = (TextView) findViewById(R.id.txtdashboard2);
         s = cours.getText().toString();
         cours.setText(s + " (" + b.getString("name") + ") ");
@@ -88,6 +90,7 @@ public class ProfessorUI extends AppCompatActivity {
         Intent intent = new Intent(this, AddQuiz.class);
         Bundle b2 = new Bundle();
         b2.putString("key", coursId);
+        b2.putString("name",b.getString("name"));
         intent.putExtras(b2);
         startActivity(intent);
     }
@@ -96,6 +99,7 @@ public class ProfessorUI extends AppCompatActivity {
         Intent intent = new Intent(this, DisplayQuestionProf.class);
         Bundle b2 = new Bundle();
         b2.putString("key", coursId);
+        b2.putString("name",b.getString("name"));
         intent.putExtras(b2);
         startActivity(intent);
     }
@@ -111,5 +115,9 @@ public class ProfessorUI extends AppCompatActivity {
     public void goToMainActivity(View v){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void annuler(View v) {
+        finish();
     }
 }

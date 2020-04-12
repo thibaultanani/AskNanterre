@@ -40,9 +40,10 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
     private Answer tmp;
     private String tmpKey;
     private String coursId;
+    private String coursName;
 
 
-    public CustomAdapterProf2(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3, ArrayList<String> list4, ArrayList<String> list5, ArrayList<String> list6, ArrayList<String> list7, ArrayList<String> list8, ArrayList<String> list9, String coursId, Context context) {
+    public CustomAdapterProf2(ArrayList<String> list1, ArrayList<String> list2, ArrayList<String> list3, ArrayList<String> list4, ArrayList<String> list5, ArrayList<String> list6, ArrayList<String> list7, ArrayList<String> list8, ArrayList<String> list9, String coursId,String coursName, Context context) {
         this.list1 = list1;
         this.list2 = list2;
         this.list3 = list3;
@@ -54,6 +55,7 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
         this.list9 = list9;
         this.context = context;
         this.coursId=coursId;
+        this.coursName=coursName;
     }
 
     @Override
@@ -209,19 +211,24 @@ public class CustomAdapterProf2 extends BaseAdapter implements ListAdapter {
                                 intent = new Intent(context, AddAnswer2.class);
                             }
                             Bundle b = new Bundle();
+                            Log.v("ghghghg",list2.get(position));
                             b.putString("key", list2.get(position)); //Your id
                             b.putString("name", list1.get(position));
                             b.putString("idcours",coursId);
+                            b.putString("namecours",coursName);
                             intent.putExtras(b); //Put your id to your next Intent
                             context.startActivity(intent);
                         }
                         else {
+                            checkExists = false;
                             Intent intent = new Intent(context, ModifyAnswer.class);
                             Bundle b = new Bundle();
                             b.putString("key", list2.get(position)); //Your id
                             b.putString("name", list1.get(position));
                             b.putString("keyAnswer", tmpKey);
                             b.putString("nameAnswer", tmp.nom);
+                            b.putString("idcours",coursId);
+                            b.putString("namecours",coursName);
                             intent.putExtras(b); //Put your id to your next Intent
                             context.startActivity(intent);
                         }

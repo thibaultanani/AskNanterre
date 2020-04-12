@@ -1,11 +1,14 @@
 package com.example.asknanterre;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,9 +16,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
@@ -35,6 +40,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import es.dmoral.toasty.Toasty;
 
 public class DisplayQuizProf extends AppCompatActivity {
 
@@ -80,6 +87,9 @@ public class DisplayQuizProf extends AppCompatActivity {
         updateList();
 
         myListView = (SwipeMenuListView) findViewById(R.id.myListView);
+        TextView emptyText = (TextView)findViewById(android.R.id.empty);
+        myListView.setEmptyView(emptyText);
+
         spinner = (Spinner) findViewById(R.id.spinner1);
 
         final List<String> spinnerArray =  new ArrayList<String>();
@@ -108,6 +118,33 @@ public class DisplayQuizProf extends AppCompatActivity {
 
         });
 
+        ActionBar ab = getSupportActionBar();
+        ab.setSubtitle(getString(R.string.liste_des_nquizs));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main2, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.action_back:
+            //add the function to perform here
+            annuler();
+            return(true);
+        case R.id.action_home:
+            //add the function to perform here
+            goToMainActivity();
+            return(true);
+        case R.id.action_help:
+            //add the function to perform here
+            goToHelpActivity();
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
     }
 
     @Override
@@ -118,6 +155,8 @@ public class DisplayQuizProf extends AppCompatActivity {
 
     public void trier(View v, final int position) {
         myListView = (SwipeMenuListView) findViewById(R.id.myListView);
+        TextView emptyText = (TextView)findViewById(android.R.id.empty);
+        myListView.setEmptyView(emptyText);
 
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
@@ -250,6 +289,8 @@ public class DisplayQuizProf extends AppCompatActivity {
 
 
                 myListView = (SwipeMenuListView) findViewById(R.id.myListView);
+                TextView emptyText = (TextView)findViewById(android.R.id.empty);
+                myListView.setEmptyView(emptyText);
 
                 for (int i = 0; i < quiz.size(); i++) {
                     q1[i] = quiz.get(i).nom;
@@ -376,7 +417,7 @@ public class DisplayQuizProf extends AppCompatActivity {
                             case 0:
                                 ref=FirebaseDatabase.getInstance().getReference().child("questionProf").child(list2.get(position));
                                 ref.removeValue();
-                                Toast.makeText(DisplayQuizProf.this, getString(R.string.le_quiz) + list1.get(position) + getString(R.string.a_ete_supprime), Toast.LENGTH_LONG).show();
+                                Toasty.success(DisplayQuizProf.this, getString(R.string.le_quiz) + list1.get(position) + getString(R.string.a_ete_supprime), Toast.LENGTH_LONG).show();
                                 list2.remove(position); //or some other task
                                 adapt.notifyDataSetChanged();
                                 updateList();
@@ -395,5 +436,20 @@ public class DisplayQuizProf extends AppCompatActivity {
         };
         questionRef.addListenerForSingleValueEvent(eventListener);
 
+    }
+
+
+    public void annuler() {
+        finish();
+    }
+
+    public void goToMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToHelpActivity(){
+        Intent intent = new Intent(this, HelpQuizProf.class);
+        startActivity(intent);
     }
 }

@@ -33,6 +33,8 @@ public class StudentUI3 extends AppCompatActivity {
     }
 
 
-
+    public void annuler(View v) {
+        finish();
+    }
 
 }

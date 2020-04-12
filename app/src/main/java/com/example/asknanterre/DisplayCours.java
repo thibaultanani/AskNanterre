@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.AdapterView;
@@ -16,8 +17,14 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -59,16 +66,42 @@ public class DisplayCours extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spinner1);
 
         myListView = (ListView) findViewById(R.id.myListView);
+        TextView emptyText = (TextView)findViewById(android.R.id.empty);
+        myListView.setEmptyView(emptyText);
 
         final List<String> spinnerArray =  new ArrayList<String>();
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, spinnerArray);
 
+        spinnerArray.add(getString(R.string.trier_par_date_asc));
+        spinnerArray.add(getString(R.string.trier_par_date_des));
 
         adapter.notifyDataSetChanged();
         spinner.setAdapter(adapter);
 
+        ActionBar ab = getSupportActionBar();
+        ab.setSubtitle(getString(R.string.liste_des_cours));
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.action_back:
+            //add the function to perform here
+            annuler();
+            return(true);
+        case R.id.action_home:
+            //add the function to perform here
+            goToMainActivity();
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
     }
 
     @Override
@@ -76,6 +109,87 @@ public class DisplayCours extends AppCompatActivity {
         super.onStart();
     }
 
+
+    public void trier(View v, final int position) {
+        myListView = (ListView) findViewById(R.id.myListView);
+        TextView emptyText = (TextView)findViewById(android.R.id.empty);
+        myListView.setEmptyView(emptyText);
+
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference coursRef = rootRef.child("cours");
+        cours = new ArrayList<Cours>();
+        coursID = new ArrayList<String>();
+        courstmp= new ArrayList<Cours>();
+        coursIDtmp = new ArrayList<String>();
+
+        String s;
+        if(position == 2 || position == 3) {
+            s = "visible";
+        }
+        else {
+            s = "";
+        }
+
+        Query q;
+        if(!s.isEmpty()) {
+            q = coursRef.orderByChild(s);
+        }
+        else {
+            q = coursRef;
+        }
+
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                cours.clear();
+                coursID.clear();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String product = ds.getKey();
+                    if(ds.getValue(Cours.class).isVisible()) {
+                        cours.add(ds.getValue(Cours.class));
+                        coursID.add(ds.getKey());
+                    }
+                    Log.d("TAG", product);
+                }
+                progressBar.setVisibility(View.GONE);
+
+                if(position != 3 && position != 0) {
+                    Collections.reverse(cours);
+                    Collections.reverse(coursID);
+                }
+
+                q1 = new String[cours.size()];
+                q2 = new String[cours.size()];
+                q3 = new String[cours.size()];
+
+
+                for (int i = 0; i < cours.size(); i++) {
+                    q1[i] = cours.get(i).nom;
+                    q2[i] = cours.get(i).titre;
+                    q3[i] = cours.get(i).date;
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(DisplayCours.this, android.R.layout.simple_list_item_1, q1);
+                ArrayList<String> list1 = new ArrayList(Arrays.asList(q1));
+                ArrayList<String> list2 = new ArrayList(coursID);
+                ArrayList<String> list3 = new ArrayList(Arrays.asList(q2));
+                ArrayList<String> list4 = new ArrayList(Arrays.asList(q3));
+
+                CustomAdapterCours adapt = new CustomAdapterCours(list1, list2, list3, list4, DisplayCours.this);
+                myListView.setAdapter(adapt);
+                adapt.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
 
     public void updateList() {
 
@@ -95,8 +209,10 @@ public class DisplayCours extends AppCompatActivity {
                 coursID.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     String product = ds.getKey();
-                    cours.add(ds.getValue(Cours.class));
-                    coursID.add(ds.getKey());
+                    if(ds.getValue(Cours.class).isVisible()) {
+                        cours.add(ds.getValue(Cours.class));
+                        coursID.add(ds.getKey());
+                    }
                     Log.d("TAG", product);
                 }
                 progressBar.setVisibility(View.GONE);
@@ -106,12 +222,28 @@ public class DisplayCours extends AppCompatActivity {
                 q3 = new String[cours.size()];
 
                 myListView = (ListView) findViewById(R.id.myListView);
+                TextView emptyText = (TextView)findViewById(android.R.id.empty);
+                myListView.setEmptyView(emptyText);
 
                 for (int i = 0; i < cours.size(); i++) {
                     q1[i] = cours.get(i).nom;
                     q2[i] = cours.get(i).titre;
                     q3[i] = cours.get(i).date;
                 }
+
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        // your code here
+                        trier(selectedItemView, position);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {
+                        // your code here
+                    }
+
+                });
 
                 edit = (EditText) findViewById(R.id.EditText01);
 
@@ -189,7 +321,9 @@ public class DisplayCours extends AppCompatActivity {
         coursRef.addListenerForSingleValueEvent(eventListener);
     }
 
-
+    public void annuler() {
+        finish();
+    }
 
     public void goToMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);

@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:id="@+id/mylinearlayout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:focusableInTouchMode="true">
 
     <TextView
         android:id="@+id/question"
@@ -22,13 +30,19 @@
         android:layout_marginTop="10dp"
         android:hint="@string/les_r_ponses_pr_d_finies"/>
 
-    <Spinner
+    <!--<Spinner
         android:id="@+id/spinner1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/number_arrays"
         android:layout_marginTop="10dp"
-        android:prompt="@string/number_prompt" />
+        android:prompt="@string/number_prompt" />-->
+
+    <ListView
+        android:id="@+id/myListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:id="@+id/ltext"
@@ -41,8 +55,12 @@
     <EditText
         android:id="@+id/lname"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:gravity="top"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:background="@drawable/edittext_bg"
         android:hint="@string/votre_r_ponse"/>
 
@@ -81,4 +99,6 @@
 
     </RelativeLayout>
 
-</LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -7,49 +7,106 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="@string/confirmez_vous"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="@string/nom_de_la_question"/>
 
     <TextView
         android:id="@+id/name_qcm"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:gravity="top"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:background="@drawable/edittext_bg"
-        android:hint="Nom du cours"/>
+        android:hint="@string/nom_de_la_question"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="@string/titre_de_la_question"/>
+
     <TextView
         android:id="@+id/titre_qcm"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:gravity="top"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:background="@drawable/edittext_bg"
-        android:hint="Nom du cours"/>
+        android:hint="@string/titre_de_la_question"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="@string/date_de_cr_ation_de_la_question"/>
+
     <TextView
         android:id="@+id/date_qcm"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:gravity="top"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:background="@drawable/edittext_bg"
-        android:hint="Nom du cours"/>
+        android:hint="@string/date_de_cr_ation_de_la_question"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:id="@+id/mylinearlayout"/>
 
-    <Button
-        android:layout_width="100dp"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Valider"
-        android:id="@+id/button"
-        android:onClick="valider_question"
-        android:background="@drawable/mybutton2"
-        android:textColor="#ffffff"
-        android:drawableStart="@drawable/ic_arrow"/>
+        android:layout_gravity="right">
+
+        <Button
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/annuler"
+            android:id="@+id/button2"
+            android:onClick="annuler"
+            android:background="@drawable/mybutton2"
+            android:textColor="#ffffff"
+            android:drawableStart="@drawable/ic_arrow"/>
+
+        <Button
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/button2"
+            android:text="@string/valider"
+            android:id="@+id/button"
+            android:onClick="valider_question"
+            android:background="@drawable/mybutton2"
+            android:textColor="#ffffff"
+            android:drawableStart="@drawable/ic_arrow"/>
+
+    </RelativeLayout>
 
 </LinearLayout>

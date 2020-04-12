@@ -32,6 +32,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
+
 public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
 
     private ArrayList<String> list1 = new ArrayList<String>();
@@ -285,7 +287,7 @@ public class CustomAdapterStud extends BaseAdapter implements ListAdapter {
                             context.startActivity(intent);
                         }
                         else {
-                            Toast.makeText(context, context.getString(R.string.le_professeur_na_pas_repondu), Toast.LENGTH_SHORT).show();
+                            Toasty.info(context, context.getString(R.string.le_professeur_na_pas_repondu), Toast.LENGTH_SHORT).show();
                         }
                     }
 

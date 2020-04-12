@@ -79,6 +79,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0000"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_alignParentRight="true"
+                android:id="@+id/action_back"
+                android:onClick="annuler"
+                android:src="@drawable/ic_return"/>
+
         </RelativeLayout>
 
         <LinearLayout

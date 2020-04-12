@@ -4,6 +4,8 @@ import android.content.res.Resources;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.FirebaseDatabase;
@@ -19,7 +22,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import es.dmoral.toasty.Toasty;
 
 public class AddQuiz extends AppCompatActivity {
 
@@ -57,6 +64,9 @@ public class AddQuiz extends AppCompatActivity {
                 ll = (LinearLayout)findViewById(R.id.mylinearlayout);
                 lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
+                final float scale = getResources().getDisplayMetrics().density;
+                int padding_in_px = (int) (5 * scale + 0.5f);
+
                 Log.d("Nombre actuel", spinner.getSelectedItem().toString() );
 
                 //ll.removeAllViewsInLayout();
@@ -69,6 +79,7 @@ public class AddQuiz extends AppCompatActivity {
                     for(i=tmp; i<Integer.parseInt(spinner.getSelectedItem().toString()); i++){
                         edit = new EditText(AddQuiz.this);
                         edit.setBackgroundResource(R.drawable.edittext_bg);
+                        edit.setPadding(padding_in_px, padding_in_px, padding_in_px, padding_in_px);
                         lp.setMargins(0, 0, 0, 20);
                         ll.addView(edit, lp);
                         spinnerArray.add(""+(i+1));
@@ -107,6 +118,30 @@ public class AddQuiz extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner sItems = (Spinner) findViewById(R.id.spinner3);
         sItems.setAdapter(adapter2);
+
+        ActionBar ab = getSupportActionBar();
+        ab.setSubtitle(getString(R.string.faire_un_quiz_n));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.action_back:
+            //add the function to perform here
+            annuler();
+            return(true);
+        case R.id.action_home:
+            //add the function to perform here
+            goToMainActivity();
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
     }
 
     public int Star2Number(String star) {
@@ -120,6 +155,17 @@ public class AddQuiz extends AppCompatActivity {
         return difficulte;
     }
 
+    public static <T> boolean areAllUnique(List<T> list){
+        Set<T> set = new HashSet<>();
+
+        for (T t: list){
+            if (!set.add(t))
+                return false;
+        }
+
+        return true;
+    }
+
     public void valider(View v) {
 
         EditText name = (EditText) findViewById(R.id.lname);
@@ -131,51 +177,80 @@ public class AddQuiz extends AppCompatActivity {
         final Bundle b = getIntent().getExtras();
         final String coursId = b.getString("key");
 
-        Normalizer n = new Normalizer();
-        QuestionProf q = new QuestionProf(n.normalizeNom(name.getText().toString()));
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        q.date = formatter.format(date);
-        q.titre = n.normalizeTitre(name.getText().toString());
-        q.difficulte = Star2Number(text3);
-        q.coursId = coursId;
-
-        ArrayList<String> list= new ArrayList<>();
-        ArrayList<String> list2= new ArrayList<>();
-        final int childCount = ll.getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            if(Integer.parseInt(text2)!=(i+1)) {
-                EditText v1 = (EditText) ll.getChildAt(i);
-                list.add(v1.getText().toString());
-                list2.add(v1.getText().toString()+"(Réponse fausse)");
-            }
-            else {
-                EditText v1 = (EditText) ll.getChildAt(i);
-                list.add(v1.getText().toString());
-                 bonnerep= v1.getText().toString();
-                list2.add(v1.getText().toString()+"(Réponse bonne)");
-            }
-
+        if (name.getText().toString().isEmpty()) {
+            Toasty.error(this, getString(R.string.Le_nom_de_la_question), Toast.LENGTH_LONG).show();
         }
+        else {
+
+            Normalizer n = new Normalizer();
+            QuestionProf q = new QuestionProf(n.normalizeNom(name.getText().toString()));
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date date = new Date();
+            q.date = formatter.format(date);
+            q.titre = n.normalizeTitre(name.getText().toString());
+            q.difficulte = Star2Number(text3);
+            q.coursId = coursId;
+
+            ArrayList<String> list = new ArrayList<>();
+            ArrayList<String> list2 = new ArrayList<>();
+            final int childCount = ll.getChildCount();
+            int cpt = 0;
+            for (int i = 0; i < childCount; i++) {
+                if (Integer.parseInt(text2) != (i + 1)) {
+                    EditText v1 = (EditText) ll.getChildAt(i);
+                    if(v1.getText().toString().isEmpty()) {
+                        Toasty.error(this, getString(R.string.Lune_des_reponses), Toast.LENGTH_LONG).show();
+                        cpt ++;
+                        break;
+                    }
+                    list.add(v1.getText().toString());
+                    list2.add(v1.getText().toString());
+                } else {
+                    EditText v1 = (EditText) ll.getChildAt(i);
+                    if(v1.getText().toString().isEmpty()) {
+                        Toasty.error(this, getString(R.string.Lune_des_reponses), Toast.LENGTH_LONG).show();
+                        cpt ++;
+                        break;
+                    }
+                    list.add(v1.getText().toString());
+                    bonnerep = v1.getText().toString();
+                    list2.add(v1.getText().toString());
+                }
+
+            }
+            if(!areAllUnique(list) || !areAllUnique(list2)) {
+                Toasty.error(this, getString(R.string.toutes_vos_reponses), Toast.LENGTH_LONG).show();
+            }
+            else if(cpt == 0) {
+                Bundle b2 = new Bundle();
+                b2.putString("nom", q.nom);
+                b2.putString("titre", q.titre);
+                b2.putString("date", q.date);
+                b2.putStringArrayList("rep", list);
+                b2.putStringArrayList("rep2", list2);
+                b2.putString("key", coursId);
+                b2.putString("bonnerep", bonnerep);
+                b2.putString("name",b.getString("name"));
+                b2.putInt("dif", Star2Number(text3));
 
 
-        Bundle b2= new Bundle();
-        b2.putString("nom",q.nom);
-        b2.putString("titre",q.titre);
-        b2.putString("date",q.date);
-        b2.putStringArrayList("rep",list);
-        b2.putStringArrayList("rep2",list2);
-        b2.putString("key",coursId);
-        b2.putString("bonnerep",bonnerep);
-        b2.putInt("dif",Star2Number(text3));
-
-
-        Intent intent = new Intent(this, AddQuizApercu.class);
-        intent.putExtras(b2); //Put your id to your next Intent
-        startActivity(intent);
+                Intent intent = new Intent(this, AddQuizApercu.class);
+                intent.putExtras(b2); //Put your id to your next Intent
+                startActivity(intent);
+            }
+        }
     }
 
     public void annuler(View v) {
         finish();
+    }
+
+    public void annuler() {
+        finish();
+    }
+
+    public void goToMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

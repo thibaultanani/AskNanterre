@@ -11,6 +11,7 @@ public class StudentUI2 extends AppCompatActivity {
 
     Bundle b;
     String coursId;
+    String nom;
     TextView cours;
     String s;
 
@@ -21,6 +22,7 @@ public class StudentUI2 extends AppCompatActivity {
 
         b = getIntent().getExtras();
         coursId = b.getString("key");
+        nom = b.getString("name");
         cours = (TextView) findViewById(R.id.txtdashboard2);
         s = cours.getText().toString();
         cours.setText(s + " (" + b.getString("name") + ") ");
@@ -30,6 +32,7 @@ public class StudentUI2 extends AppCompatActivity {
         Intent intent = new Intent(this, AddQuestion.class);
         Bundle b2 = new Bundle();
         b2.putString("key", coursId);
+        b2.putString("name", nom);
         intent.putExtras(b2);
         startActivity(intent);
     }
@@ -38,7 +41,12 @@ public class StudentUI2 extends AppCompatActivity {
         Intent intent = new Intent(this, AddQCM.class);
         Bundle b2 = new Bundle();
         b2.putString("key", coursId);
+        b2.putString("name", nom);
         intent.putExtras(b2);
         startActivity(intent);
+    }
+
+    public void annuler(View v) {
+        finish();
     }
 }

@@ -52,6 +52,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
+
 public class DisplayQuestionProf extends AppCompatActivity {
 
     SwipeMenuListView myListView;
@@ -119,6 +121,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
     EditText edit;
     Bundle b;
     String coursId;
+    String coursName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +130,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
 
         b = getIntent().getExtras();
         coursId = b.getString("key");
+        coursName=b.getString("name");
 
         mQuestionReference = FirebaseDatabase.getInstance().getReference()
                 .child("question");
@@ -227,6 +231,33 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 return true;
             }
         });*/
+        ActionBar ab = getSupportActionBar();
+        ab.setSubtitle(getString(R.string.liste_des_questions));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main2, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.action_back:
+            //add the function to perform here
+            annuler();
+            return(true);
+        case R.id.action_home:
+            //add the function to perform here
+            goToMainActivity();
+            return(true);
+        case R.id.action_help:
+            //add the function to perform here
+            goToHelpActivity();
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
     }
 
     @Override
@@ -254,6 +285,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
 
         b = getIntent().getExtras();
         coursId = b.getString("key");
+        coursName=b.getString("name");
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference questionRef = rootRef.child("question");
@@ -342,7 +374,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 list12 = new ArrayList( Arrays.asList(q12));
                 list13 = new ArrayList( Arrays.asList(q13));
                 list14 = new ArrayList( Arrays.asList(q14));
-                adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14,coursId, DisplayQuestionProf.this);
+                adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14,coursId,coursName, DisplayQuestionProf.this);
                 myListView2.setAdapter(adapt2);
                 adapt.notifyDataSetChanged();
             }
@@ -362,6 +394,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
 
         b = getIntent().getExtras();
         coursId = b.getString("key");
+        coursName=b.getString("name");
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference questionRef = rootRef.child("question");
@@ -570,7 +603,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                             list12 = new ArrayList( Arrays.asList(q12));
                             list13 = new ArrayList( Arrays.asList(q13));
                             list14 = new ArrayList( Arrays.asList(q14));
-                            adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14,coursId,DisplayQuestionProf.this);
+                            adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14,coursId,coursName,DisplayQuestionProf.this);
                             myListView2.setAdapter(adapt2);
                         }
 
@@ -601,7 +634,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                 list12 = new ArrayList( Arrays.asList(q12));
                 list13 = new ArrayList( Arrays.asList(q13));
                 list14 = new ArrayList( Arrays.asList(q14));
-                adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14, coursId, DisplayQuestionProf.this);
+                adapt2 = new CustomAdapterProf2(list4, list5, list6, list7, list8, list11, list12, list13, list14, coursId,coursName, DisplayQuestionProf.this);
                 myListView2.setAdapter(adapt2);
 
                // Button triBtn=(Button) findViewById(R.id.triupvote);
@@ -651,7 +684,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                                 Map<String,Object> questionMap = new HashMap<String,Object>();
                                 questionMap.put("valide", true);
                                 ref.updateChildren(questionMap);
-                                Toast.makeText(DisplayQuestionProf.this, getString(R.string.la_question) + list1.get(position) + getString(R.string.a_ete_validee), Toast.LENGTH_LONG).show();
+                                Toasty.success(DisplayQuestionProf.this, getString(R.string.la_question) + list1.get(position) + getString(R.string.a_ete_validee), Toast.LENGTH_LONG).show();
                                 list1.remove(position);
                                 adapt.notifyDataSetChanged();
                                 updateList();
@@ -660,7 +693,7 @@ public class DisplayQuestionProf extends AppCompatActivity {
                                 // delete
                                 ref=FirebaseDatabase.getInstance().getReference().child("question").child(list2.get(position));
                                 ref.removeValue();
-                                Toast.makeText(DisplayQuestionProf.this, getString(R.string.la_question) + list1.get(position) + getString(R.string.a_ete_supprimee), Toast.LENGTH_LONG).show();
+                                Toasty.success(DisplayQuestionProf.this, getString(R.string.la_question) + list1.get(position) + getString(R.string.a_ete_supprimee), Toast.LENGTH_LONG).show();
                                 list1.remove(position); //or some other task
                                 adapt.notifyDataSetChanged();
                                 updateList();
@@ -846,6 +879,10 @@ public class DisplayQuestionProf extends AppCompatActivity {
         questionRef.addListenerForSingleValueEvent(eventListener);
     }
 
+    public void annuler() {
+        finish();
+    }
+
     public void goToMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -856,4 +893,8 @@ public class DisplayQuestionProf extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToHelpActivity(){
+        Intent intent = new Intent(this, HelpQuestionProf.class);
+        startActivity(intent);
+    }
 }

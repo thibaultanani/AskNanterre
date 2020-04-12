@@ -2,15 +2,19 @@ package com.example.asknanterre;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -100,6 +104,31 @@ public class DisplayAnswerQuizProf extends AppCompatActivity {
         //barDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
         barDataSet.setValueTextColor(Color.BLACK);
         barDataSet.setValueTextSize(18f);*/
+        Bundle b = getIntent().getExtras();
+        ActionBar ab = getSupportActionBar();
+        Normalizer n = new Normalizer();
+        ab.setSubtitle(n.normalizeTitre(b.getString("name")));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.action_back:
+            //add the function to perform here
+            annuler();
+            return(true);
+        case R.id.action_home:
+            //add the function to perform here
+            goToMainActivity();
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
     }
 
     private void getEntries() {
@@ -140,11 +169,12 @@ public class DisplayAnswerQuizProf extends AppCompatActivity {
                         barIndex.add(i);
                         barNumber.add(q.nbRep);
                         total1 = total1 + q.nbRep;
-                        barNames.add(q.rep);
                         if(q.correct) {
+                            barNames.add(q.rep + " " + getString(R.string.correcte));
                             barColors.add(getApplicationContext().getResources().getColor(R.color.colorAccentDark));
                         }
                         else {
+                            barNames.add(q.rep);
                             barColors.add(getApplicationContext().getResources().getColor(R.color.colorRed));
                         }
                         Log.d("HEY", product);
@@ -251,5 +281,14 @@ public class DisplayAnswerQuizProf extends AppCompatActivity {
         Log.v("Entree Taille", barEntries.size()+"");
         Log.v("Color Taille", barColors.size()+"");
         Log.v("Name Taille", barNames.size()+"");
+    }
+
+    public void annuler() {
+        finish();
+    }
+
+    public void goToMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
