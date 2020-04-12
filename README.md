@@ -12,8 +12,7 @@
 
 ## What is AskNanterre ?
 
-AskNanterre is a mobile application designed to build educational interactions between teachers and students during a class.
-It is available on Android.
+AskNanterre is a mobile application designed to build educational interactions between teachers and students during a class
 AskNanterre is an application which will allow you to :
 * Ask questions directly on the application without disturbing a presentation or a lesson
 * Know if the different lesson points have been understood correctly by asking the question on the application
@@ -23,22 +22,27 @@ AskNanterre is an application which will allow you to :
 
 ### Requirements
 
-You have to install some tools before being able to use our project
+You have to be in the possession of an Android device
 
-#### Install Android SDK
+## How to download the application
 
-* Download and install the SDK : http://www.oracle.com/technetwork/java/javase/downloads/index.html
+### QR Code
 
+First, you can download the application on your android device by scanning this QR Code down below
 
-## How to run the application
+![picture](qr_code_apk.png)
 
-### Use Android Studio emulator
+### Website
 
-Follow this tutorial : [Download AVD Manager](https://vogella.developpez.com/tutoriels/android/installation-outils-developpement/#L5)
+You can also download the application by clicking [here](https://thibaultanani.github.io/AskNanterre/) and then clicking on "Download"
 
-### Clone AskNanterre
+## How to install the application
 
-Once Git is installed, you have to do : git clone https://github.com/thibaultanani/AskNanterre.git
+Before you can install it on your phone you will need to make sure that third-party apps are allowed on your device
+* To achieve that you have to go to the Settings of your phone, then Security and check Unknown Sources. (Menu > Settings > Security)
+* Find the APK file on your phone (thanks to a file browser for example)
+* Launch the APK file and follow the instructions
+* (Optional but recommended) Deactivate unknown sources
 
 ## Developpers
 
